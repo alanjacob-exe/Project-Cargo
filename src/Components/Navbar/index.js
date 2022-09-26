@@ -27,24 +27,12 @@ const Navbar = () => {
         <Bars />
 
         <NavMenu>
-          <NavLink to="/Home" activeStyle>
-            Home
-          </NavLink>
-          <NavLink to="/buses" activeStyle>
-            Buses
-          </NavLink>
-          <NavLink to="/track" activeStyle>
-            Track
-          </NavLink>
-          <NavLink to="/contact" activeStyle>
-            Contact
-          </NavLink>
-          <NavLink to="/Dev" activeStyle>
-            Developers
-          </NavLink>
-          <NavLink to="/sign-up" activeStyle>
-            Sign Up
-          </NavLink>
+          <NavLink to="/Home">Home</NavLink>
+          <NavLink to="/buses">Buses</NavLink>
+          <NavLink to="/track">Track</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/Dev">Developers</NavLink>
+          <NavLink to="/sign-up">Sign Up</NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
@@ -52,8 +40,7 @@ const Navbar = () => {
           <NavBtnLink to="/signin">Sign In</NavBtnLink>
         </NavBtn>
       </Nav>
-      </div>
-
+    </div>
   );
 };
 

@@ -22,6 +22,7 @@ export const NavLink = styled(Link)`
   font-size: 18px;
   display: flex;
   align-items: center;
+  font-size:20px;
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
@@ -35,7 +36,7 @@ export const NavLink = styled(Link)`
   }
   &:hover {
     transition: all 0.2s ease-in-out;
-    color: #000000;
+    color: #c71585;
   }
 `;
 

@@ -1,21 +1,24 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
   
 const AnnualReport = () => {
   return (
     <div>
 
-    <Navbar/>
     <div
       style={{
         display: 'flex',
         justifyContent: 'Left',
         alignItems: 'Right',
-        height: '100vh'
+        height: '100vh',
+        backgroundColor:'#0A1D2E',
+        marginTop:"-4px",
+
       }}
     >
-      <h1>Annual Report</h1>
+      <h1 style={{marginTop:'90px',color:'white'}}>Tracking Portal</h1>
+    <div style={{color:'white'}}>Source And Destination</div>
     </div>
+
     </div>
 
   );

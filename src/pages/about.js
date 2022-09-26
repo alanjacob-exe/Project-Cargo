@@ -7,8 +7,8 @@ import DarkVariantExample from "../Components/Carousel";
 
 const About = () => {
   return (
-    <div >
-      <div className="carousel">
+    <div style={{marginTop:'-4px',marginLeft:'-2px'}} >
+      <div className="carousel" >
         <DarkVariantExample />
       </div>
       <div >
