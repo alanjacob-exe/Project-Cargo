@@ -1,0 +1,19 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "ART_ID": 0,
+          "TITLE": "Tao Te Ching Ch. 15 for Mezzo-Soprano",
+          "DESCRIPTION": "",
+          "AUTHOR": "Genevieve Miedema",
+          "URL": "https://sites.google.com/..."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [39.640195,-86.861623]
+        }
+      }
+    ]
+  }

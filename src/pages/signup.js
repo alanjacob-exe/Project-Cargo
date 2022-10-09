@@ -1,22 +1,20 @@
-import React from 'react';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
-const SignUp = () => {
-return (
-	<div
-	style={{
-		display: 'flex',
-        justifyContent: 'Left',
-		alignItems: 'Right',
-		height: '100vh',
-		backgroundColor:'#0A1D2E',
-		marginTop:"-4px",
+export default function CountrySelect() {
+  return (
+<Autocomplete
+  disablePortal
+  id="combo-box-demo"
+  options={countries}
+  sx={{ width: 300 }}
+  renderInput={(params) => <TextField {...params} label="Source" />}
+/>
+  );
+}
 
-
-	}}
-	>
-	<h1>Sign Up</h1>
-	</div>
-);
-};
-
-export default SignUp;
+const countries = ['ALAPPUZHA','ADOOR','ADKATHBAIL','ADIVARAM','ADIMALI','ADICHIRA','AMBALAMKUNNU','ALUVA','ALTHARA','ALATHOOR','ALATHIYUR',
+  
+];

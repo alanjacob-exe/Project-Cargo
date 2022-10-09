@@ -1,8 +1,6 @@
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
-
-
 export const NavLink = styled(Link)`
   color: #fff;
   margin-top:20px;
@@ -13,15 +11,14 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   font-family: "Kanit", sans-serif;
-  
   position:absolute;
-
+  
   cursor: pointer;
 
   }
   &:hover {
     transition: all 0.2s ease-in-out;
-    color: #fff;
+    color: #000;
     background-color:#000;
   }
 `;

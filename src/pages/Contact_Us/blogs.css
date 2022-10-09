@@ -1,0 +1,18 @@
+body {
+  background-color: #0a1d2e;
+}
+.top {
+  margin-top: 100px;
+  color: #fff;
+}
+
+.maps {
+  
+  position: center;
+}
+.container {
+  justify-content: center;
+  margin-left: 10%;
+  display: flex;
+  align-items:center;
+}

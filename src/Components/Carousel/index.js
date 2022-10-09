@@ -4,7 +4,8 @@ import "./index.css";
 import Picture1 from "../../Photos/landscape1.jpg";
 import Picture2 from "../../Photos/landscape2.jpg";
 import Picture3 from "../../Photos/landscape3.jpg";
-import { NavLink } from "./buttonElements";
+import { Link } from '@mui/material';
+
 
 const pictureList = [
   { picture: Picture1, alt: "First slide" },
@@ -13,14 +14,15 @@ const pictureList = [
 ];
 
 function DarkVariantExample() {
+  
   return (
     <div>
       <div className="text">
-        <h2> Your Next Destination Awaits You!</h2>
         <div>
-          <NavLink to="/track">
-            Explore!
-          </NavLink>
+          <h2> Your Next Destination Awaits You!</h2>
+        </div>
+        <div className="explore">
+        <Link href="/track" underline="hover">Explore!</Link>
         </div>
       </div>
 

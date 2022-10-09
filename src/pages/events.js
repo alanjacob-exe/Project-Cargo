@@ -10,11 +10,12 @@ const Events = () => {
 			height: '100vh',
 			backgroundColor:'#0A1D2E',
 			marginTop:"-4px",
+			color:"#fff",
 
 
 		}}
 	>
-	<h1>Welcome to GeeksforGeeks Events</h1>
+	<h1>Welcome to Project Cargo Events</h1>
 	</div>
 	);
 };

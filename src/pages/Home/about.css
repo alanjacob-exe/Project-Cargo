@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap");
+
+h1 {
+  font-family: "Kanit", sans-serif;
+}
+.card {
+  background-color: #000;
+  position: relative;
+  width: 6000px;
+  height: 700px;
+  margin-right: 2px;
+  margin-left: -200px;
+  color: #fff;
+}
+.para {
+  background-color: black;
+  color: white;
+}
+.carousel {
+  position: relative;
+  object-fit: cover;
+  margin-left: 1px;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.text {
+  z-index: 100;
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  left: 150px;
+  top: 350px;
+}
+.explore{
+  font-family: "Kanit", sans-serif;
+
+}

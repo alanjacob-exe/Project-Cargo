@@ -17,7 +17,6 @@ const Navbar = () => {
           src={logo}
           alt="Logo"
           style={{
-            marginLeft: "-210px",
             width: "70px",
             height: "70px",
             marginTop: "6px",
@@ -28,11 +27,11 @@ const Navbar = () => {
 
         <NavMenu>
           <NavLink to="/Home">Home</NavLink>
-          <NavLink to="/buses">Buses</NavLink>
-          <NavLink to="/track">Track</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/Dev">Developers</NavLink>
-          <NavLink to="/sign-up">Sign Up</NavLink>
+          <NavLink to="/buses">Destinations</NavLink>
+          <NavLink to="/track">Location</NavLink>
+          <NavLink to="/contact">Developers</NavLink>
+          <NavLink to="/Dev">Contact Us</NavLink>
+          <NavLink to="/sign-up">Technology</NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
@@ -42,6 +41,6 @@ const Navbar = () => {
       </Nav>
     </div>
   );
-};
+}
 
 export default Navbar;
