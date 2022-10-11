@@ -70,7 +70,6 @@ const AnnualReport = () => {
         <h5>Source: {state.fname}</h5>
         <h5>Destination: {state.lname}</h5>
       </div> */}
-    <Map />
 
     </div>
   );
