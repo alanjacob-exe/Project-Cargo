@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages";
 import Spinner from "react-bootstrap/Spinner";
+import SignInForm from "./pages/Signin";
 
 // import About from "./pages/about";
 // import Events from "./pages/events";
@@ -13,17 +13,16 @@ import Spinner from "react-bootstrap/Spinner";
 // import SignUp from "./pages/signup";
 
 const About = React.lazy(() => import("./pages/Home/about"));
-const Events = React.lazy(() => import("./pages/events"));
+const Events = React.lazy(() => import("./pages/Destinations/events"));
 const AnnualReport = React.lazy(() => import("./pages/Tracking/annual"));
 const Teams = React.lazy(() => import("./pages/team"));
 const Blogs = React.lazy(() => import("./pages/Contact_Us/blogs"));
-const SignUp = React.lazy(() => import("./pages/signup"));
+const SignUp = React.lazy(() => import("./pages/Sign-up"));
 
 function App() {
   return (
     <Router>
       {/* <div className="border"> */}
-      <Navbar />
       {/* </div> */}
       <Suspense fallback={<Spinner animation="grow" variant="success" />}>
         <Routes>
@@ -33,7 +32,10 @@ function App() {
           <Route path="/track" element={<AnnualReport />} />
           <Route path="/contact" element={<Teams />} />
           <Route path="/Dev" element={<Blogs />} />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/help" element={<Blogs/>} />
+          <Route path="/signin" element={<SignUp />} />
+
+
         </Routes>
       </Suspense>
     </Router>

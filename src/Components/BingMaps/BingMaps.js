@@ -22,7 +22,7 @@ function BingMap() {
         navigationBarMode: "square",
         enableHighDpi: "true",
       }}
-      width="1200px"
+      width="100vw"
       viewOptions={{
         center: { latitude: 11.056719, longitude: 76.096012 },
         mapTypeId: "road",

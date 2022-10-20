@@ -5,12 +5,13 @@ import "./about.css";
 
 import DarkVariantExample from "../../Components/Carousel/index";
 import Footer from "../../Components/Footer";
-import CountrySelect from "../signup";
+import CountrySelect from "../Signin";
+import Navbar from "../../Components/Navbar";
 
 const About = () => {
   
   return (
-    <div style={{ marginTop: "-4px", marginLeft: "-2px" }}>
+    <div style={{ marginTop: "-4px", marginLeft: "-2px" }}><Navbar/>
       <div className="carousel">
         <DarkVariantExample />
       </div>

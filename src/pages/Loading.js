@@ -1,6 +1,8 @@
 import React from 'react'
 import Spinner from 'react-bootstrap/Spinner';
 import './Loading.css';
+import { PushSpinner } from "react-spinners-kit";
+import { MagicSpinner } from "react-spinners-kit";
 
 
 export function Loading() {
@@ -9,7 +11,8 @@ export function Loading() {
     return (
         <div className='main'>
             <div>
-            <Spinner animation="grow" variant="success" />
+            <MagicSpinner size={30} color="#686769" loading={true} />;
+
 
             </div>
         </div>

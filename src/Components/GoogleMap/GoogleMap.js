@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
  
 const customizeMap = {
-  width: '1200px',
+  width: "100%",
   height: '600px'
 };
  

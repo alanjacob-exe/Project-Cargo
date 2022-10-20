@@ -2,6 +2,7 @@ import React from "react";
 import CurrentLocation from "../Components/Location/CurrentLocation";
 
 import Geolocation from "../Components/Location/CurrentLocation";
+import Navbar from "../Components/Navbar";
 
 const Teams = () => {
   const location = CurrentLocation();
@@ -16,6 +17,7 @@ const Teams = () => {
         color: "#fff",
       }}
     >
+      <Navbar/>
       <div style={{ marginTop: "100px" }}>
         <h1>Welcome to GeeksforGeeks pack</h1>
         <div>

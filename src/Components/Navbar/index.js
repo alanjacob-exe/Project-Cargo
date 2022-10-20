@@ -31,7 +31,7 @@ const Navbar = () => {
           <NavLink to="/track">Location</NavLink>
           <NavLink to="/contact">Developers</NavLink>
           <NavLink to="/Dev">Contact Us</NavLink>
-          <NavLink to="/sign-up">Technology</NavLink>
+          <NavLink to="/help">Help</NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>

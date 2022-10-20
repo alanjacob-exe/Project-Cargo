@@ -1,11 +1,7 @@
 import React from "react";
-import BingMap from "../../Components/BingMaps/BingMaps";
-import Openstreetmaps from "../../Components/Openstreetmaps/Osm";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "./blogs.css";
 import Navbar from "../../Components/Navbar";
-
-const Blogs = () => {
+import './event.css'
+const Events = () => {
   return (
     <div>
       <div
@@ -21,11 +17,11 @@ const Blogs = () => {
       >
         <Navbar/>
       <div className="margin">
-        <h1>Welcome to Project Cargo Events</h1>
+        <h1> transport maps</h1>
 		</div></div>
       
     </div>
   );
 };
 
-export default Blogs;
+export default Events;

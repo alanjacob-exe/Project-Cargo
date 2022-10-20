@@ -28,7 +28,7 @@ function DarkVariantExample() {
 
       <Carousel
         variant="dark"
-        controls={false}
+        controls={true}
         indicators={false}
         fade={true}
         interval={6000}
