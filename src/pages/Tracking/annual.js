@@ -63,8 +63,6 @@ const AnnualReport = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
       {/* </div>
       <div>
         <form>
@@ -93,7 +91,6 @@ const AnnualReport = () => {
         <h5>Destination: {state.lname}</h5>
       </div> */}
 
->>>>>>> 852137e0af15c8dcb87fba9870703d7e8d371196
     </div>
   );
 };
