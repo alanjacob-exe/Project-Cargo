@@ -63,6 +63,37 @@ const AnnualReport = () => {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+      {/* </div>
+      <div>
+        <form>
+          <label>
+            Source:{" "}
+            <input
+              type="text"
+              name="fname"
+              value={state.fname}
+              onChange={handleChange}
+              style={{ color: "#000" }}
+            />
+          </label>{" "}
+          <label>
+            Destination:{" "}
+            <input
+              type="text"
+              name="lname"
+              value={state.lname}
+              onChange={handleChange}
+              style={{ color: "#000" }}
+            />
+          </label>
+        </form>
+        <h5>Source: {state.fname}</h5>
+        <h5>Destination: {state.lname}</h5>
+      </div> */}
+
+>>>>>>> 852137e0af15c8dcb87fba9870703d7e8d371196
     </div>
   );
 };
