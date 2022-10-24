@@ -63,7 +63,7 @@ export const NavMenu = styled.div`
   /* Third Nav */
   /* width: 100vw;
   white-space: nowrap; */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     display: none;
   }
 `;
@@ -75,7 +75,7 @@ export const NavBtn = styled.nav`
     /* Third Nav 
   /* justify-content: flex-end;
   width: 100vw; */ @media screen
-    and (max-width: 768px) {
+    and (max-width: 992px) {
     display: none;
   }
 `;
@@ -97,7 +97,7 @@ export const NavBtnLink = styled(Link)`
     background: #fff;
     color: #000;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992) {
     display: none;
   }
 `;

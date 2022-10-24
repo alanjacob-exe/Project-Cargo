@@ -18,6 +18,9 @@ const About = () => {
         <div className="title">
           <div>Project Cargo</div>
         </div>
+        <div className="image">
+            <DarkVariantExample />
+          </div>{" "}
         <div>
         <div className="purple">
             <div></div>
@@ -38,12 +41,9 @@ const About = () => {
             </MDBCardBody>
           </MDBCard>
         </div>
-        heyyy
         <div className="carousel">
           <div></div>
-          <div className="image">
-            <DarkVariantExample />
-          </div>{" "}
+          
         </div>
       </div>
     </div>
