@@ -45,7 +45,7 @@
   }
   
   .bg-glass {
-    background-color: hsla(0, 0%, 100%, 0.9) !important;
+    background-color: hsla(0, 0%, 100%, 0.5) !important;
     backdrop-filter: saturate(200%) blur(25px);
   }
  
@@ -61,6 +61,9 @@ body{
     height:100vh;
 }
 
+.card{
+  height:100vh;
+}
 @media screen and (max-width: 992px) {
     .margin {
         margin-top:-20px;

@@ -18,8 +18,8 @@ function DarkVariantExample() {
   return (
     <div>
       <div className="text">
-        <div>
-          <h2> Your Next Destination Awaits You!</h2>
+        <div >
+          <h2 > Your Next Destination Awaits You!</h2>
         </div>
         <div className="explore">
         <Link href="/track" underline="hover">Explore!</Link>

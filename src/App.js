@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import SignInForm from "./pages/Signin";
+import Loading from "./pages/Loading";
 
 // import About from "./pages/about";
 // import Events from "./pages/events";
@@ -24,7 +25,7 @@ function App() {
     <Router>
       {/* <div className="border"> */}
       {/* </div> */}
-      <Suspense fallback={<Spinner animation="grow" variant="success" />}>
+      <Suspense fallback={<Loading/>}>
         <Routes>
           <Route path="/" exact element={<About />}/>
           <Route path="/Home" element={<About />} />

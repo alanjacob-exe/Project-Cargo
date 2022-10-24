@@ -1,87 +1,60 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap");
 
-body {
-  background-color: #0a1d2e;
-
-
-
-
+.top {
+  margin-top: -48px;
 }
-.bus{
-  margin-top:70px;
-}
-.main{
-  color:#fff;
-  
-
-}
-.header{
-  border-style: solid;
-  border-width: 1px;
-  height:100px;
-  max-width:100%;
-  color:#fff;
-
-
-}
-.find{
-  
-  width:1530px;
-  height:70px;
-  
-
-
-}
-.text{
-  color:#fff;
-  font-size:40px;
-  font-family: "Kanit", sans-serif;
-  margin-left:30px;
-  width:100%;
-  height:70px;
-  margin-top:120px;
- 
-}
-.border{
-  border-style: solid;
-  border-width: 1px;
-  color:#fff;
-}
-.table{
-  display: table;
-  width:100%;
-
-}
-.destination{
-  margin-left:50px;
-}
-.source{
-  float:left;
-  margin-top:15px;
-}
-.source1{
-  float:left;
-  font-family: 'Abyssinica SIL', serif;
-  font-size:25px;
-margin-top:20px;
-margin-left:30px;
-}
-.float1{
-  float:left;
-}
-.float1{
-  float:right;
-  margin:20px;
-}
-.margin{
-  margin-top:90px;
-  position:center;
+.bg-glass {
+  background-color: hsla(0, 0%, 90%, 0.3) !important;
+  backdrop-filter: saturate(200%) blur(25px);
 }
 
+.color {
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218, 41%, 35%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218, 41%, 45%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
 
-.green{
-  border-style: solid;
-  border-width: 1px;
-  border-color:green;
+.margin {
+  margin-top: 10%;
+}
+.height {
+  height: 100vh;
+}
+
+.width {
+  width: 100vw;
+}
+
+#radius-shape-1 {
+  height: 220px;
+  width: 220px;
+  top: 160px;
+  left: 130px;
+  background: radial-gradient(#44006b, #ad1fff);
+  overflow: hidden;
+}
+
+#radius-shape-2 {
+  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+  bottom: 20px;
+  right: 110px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(#44006b, #ad1fff);
+  overflow: hidden;
 }
