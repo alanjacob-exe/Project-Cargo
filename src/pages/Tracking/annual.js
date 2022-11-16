@@ -25,46 +25,87 @@ import { TransportMap } from "../../Components/TransportMap";
 import Places3 from "../../Components/BingPlacesApi/Places3";
 import Places4 from "../../Components/BingPlacesApi/places4";
 
-
-
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
 
 const key = process.env.REACT_APP_BING_KEY;
-
-
+const pointurl1 = "https://dev.virtualearth.net/REST/V1/Routes/Driving?wp.0=";
+  const pointurl2 = "&wp.1=";
+  const pointurl3 = "&optmz=distance&routeAttributes=routePath&output=json&key=";
 
 const AnnualReport = () => {
   const position = [10.95590759312288, 76.22946062699094];
   const position2 = [11.0568857, 76.0956861];
+  
+  const [pointers,Setpointers]=useState("")
+  // console.log("pointers:  "+pointers)
+
 
   const [source, setsource] = useState("perinthalmanna"); //for Source Autocomplete
   const [destination, setdestination] = useState("kottayam");
   const [coordinates, setcoordinates] = useState("");
-  const [sourceCoordinate,setsourceCoordinate]=useState([10.95590759312288, 76.22946062699094])
-  const [destinationcoordinate,setdestinationCoordinate]=useState([10.95590759312288, 76.22946062699094])
-  console.log("source coordinate:"+sourceCoordinate)
-  console.log("destination coordinate:"+destinationcoordinate)
-  // console.log(coordinates)
+  const [sourceCoordinate, setsourceCoordinate] = useState([
+    10.95590759312288, 76.22946062699094,
+  ]);
+  const [destinationcoordinate, setdestinationCoordinate] = useState([
+    10.95590759312288, 76.22946062699094,
+  ]);
+  const [mapSource, setmapSource] = useState([
+    10.95590759312288, 76.22946062699094,
+  ]);
+  const [mapDestination, setmapDestionation] = useState([
+    10.95590759312288, 76.22946062699094,
+  ]);
+  // console.log("source coordinate:" + sourceCoordinate);
+  // console.log("destination coordinate:" + destinationcoordinate);       //to check if dynamic marker is working or not
 
   // console.log(coordinates);
   // console.log(source.label);
   // console.log(destination.label)
   const options = [
-    { label: "Perinthalmanna", id: "1" },
-    { label: "Manjeri", id: "3" },
-    { label: "Kottakkal", id: "4" },
-    { label: "Malappuram", id: "5" },
-    { label: "Wandoor", id: "6" },
-    { label: "Tirur", id: "7" },
-    { label: "Ponnani", id: "8" },
-    { label: "Vengar", id: "3" },
-    { label: "Parappanangadi", id: "3" },
-    { label: "Cherpulaserri", id: "3" },
-    { label: "Nilambur", id: "3" },
-    { label: "Kottayam", id: "3" },
-    { label: "Areekode", id: "3" },
+    { label: "Perinthalmanna", id: "10.976088, 76.225511" },
+    { label: "Manjeri", id: "11.1192317,76.1207973" },
+    { label: "Kottakkal", id: "11.000956, 76.004727" },
+    { label: "Malappuram", id: "11.041769, 76.080161" },
+    { label: "Wandoor", id: "11.195534, 76.235986" },
+    { label: "Tirur", id: "10.916534, 75.924474" },
+    { label: "Ponnani", id: "10.766792, 75.925828" },
+    { label: "Vengara", id: "11.050791, 75.977101" },
+    { label: "Parappanangadi", id: "11.048634, 75.860053" },
+    { label: "Cherpulaserri", id: "10.878561, 76.312567" },
+    { label: "Nilambur", id: "11.276472, 76.225191" },
+    { label: "Kottayam", id: "9.591403, 76.522148" },
+    { label: "Areekode", id: "11.235016, 76.051832" },
   ];
+
+  const points = async (location1,location2) => {
+    const response = await fetch(
+      `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Data coud not be fetched!");
+    } else {
+      return response.json();
+    }
+  };
+
+  useEffect(() => {
+    points(mapSource,mapDestination)
+      .then((data) => {
+        if (
+          data.resourceSets &&
+          data.resourceSets.length >0
+        ) {
+            // console.log(data.resourceSets[0].resources[0].routePath.line.coordinates)
+            Setpointers(data.resourceSets[0].resources[0].routePath.line.coordinates)
+            return pointers
+        }
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, [mapSource,mapDestination]);
 
   const sourceData = async (location) => {
     const response = await fetch(`${baseURL1}${location}${baseURL2}${key}`);
@@ -111,9 +152,8 @@ const AnnualReport = () => {
       });
   }, [source.label]);
 
-
   useEffect(() => {
-    sourceData(destination.label)
+    destData(destination.label)
       .then((data) => {
         if (
           data.resourceSets &&
@@ -135,9 +175,6 @@ const AnnualReport = () => {
       });
   }, [destination.label]);
 
-  
-
-  
   return (
     <div className="height firstwidth color top ">
       <Navbar />
@@ -197,17 +234,19 @@ const AnnualReport = () => {
                 />
               </div>
               <div>
-                {/* <Button
+                <Button
                   className="button"
                   variant="contained"
                   onClick={() => {
-                    var place = Places4(source.label);
-
-                    console.log("place=" + place);
+                    setmapSource(source.id);
+                    setmapDestionation(destination.id);
+                    // console.log("mapsource is:" + mapSource);
+                    // console.log("map destination is:" + mapDestination);
+                    // <TransportMap mapsource={source.id}/>
                   }}
                 >
                   clickme
-                </Button> */}
+                </Button>
               </div>
             </div>
             <div className="view border">
@@ -217,7 +256,11 @@ const AnnualReport = () => {
               : "Location data not available"} */}
               </div>
               <div className="map">
-                <TransportMap location1={sourceCoordinate} location2={destinationcoordinate}/>
+                <TransportMap
+                  location1={sourceCoordinate}
+                  location2={destinationcoordinate}
+                  pointers={pointers}
+                />
               </div>
             </div>
           </MDBCardBody>

@@ -1,22 +1,24 @@
+import { point } from "leaflet";
 import React, { useState, useEffect } from "react";
 
 export default function Country(location) {
   const [countryItems, initCountry] = useState([]);
   const [coordinates, setcoordinates] = useState("");
+  const [pointers,Setpointers]=useState("")
+
   const baseURL =
-    "https://dev.virtualearth.net/REST/v1/Locations?q=aluva&key=AkZCq_Islhah9akzIeF4n7sG0nOiw3MRjNYDx3FK9-mI16gbmjGvBe3RP8QYD4N2";
-  const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
-  const baseURL2 = "&key=";
+    "https://dev.virtualearth.net/REST/V1/Routes/Driving?wp.0=perinthalmanna&wp.1=11.041799,%2076.080109&optmz=distance&routeAttributes=routePath&output=json&key=AkZCq_Islhah9akzIeF4n7sG0nOiw3MRjNYDx3FK9-mI16gbmjGvBe3RP8QYD4N2";
+  const pointurl1 = "https://dev.virtualearth.net/REST/V1/Routes/Driving?wp.0=";
+  const pointurl2 = "&wp.1=";
+  const pointurl3 = "&optmz=distance&routeAttributes=routePath&output=json&key=";
   const key = process.env.REACT_APP_BING_KEY;
 
-
-
-
-
-  const fetchData = async (location) => {
-    const response = await fetch(`${baseURL1}${location}${baseURL2}${key}`
+  const points = async () => {
+    const location1 = "perinthalmanna";
+    const location2 = "manjeri";
+    const response = await fetch(
+      `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
     );
-    console.log(`${baseURL1}${location}${baseURL2}${key}`)
 
     if (!response.ok) {
       throw new Error("Data coud not be fetched!");
@@ -26,21 +28,15 @@ export default function Country(location) {
   };
 
   useEffect(() => {
-    fetchData()
+    points()
       .then((data) => {
         if (
           data.resourceSets &&
-          data.resourceSets.length > 0 &&
-          data.resourceSets[0].resources &&
-          data.resourceSets[0].resources.length > 0
+          data.resourceSets.length >0
         ) {
-          var firstResult = data.resourceSets[0].resources[0];
-          var latitude = firstResult.point.coordinates[0];
-          var longitude = firstResult.point.coordinates[1];
-          console.log(latitude, longitude);
-          setcoordinates([latitude, longitude]);
-          console.log("coordinates are" + [latitude, longitude]);
-          return coordinates;
+            console.log(data.resourceSets[0].resources[0].routePath.line.coordinates)
+            Setpointers(data.resourceSets[0].resources[0].routePath.line.coordinates)
+            return pointers
         }
       })
       .catch((e) => {
@@ -49,6 +45,6 @@ export default function Country(location) {
   }, []);
 
   var value = countryItems[0];
-  console.log(value);
+  console.log("pointers"+pointers[0]);
   return <></>;
 }
