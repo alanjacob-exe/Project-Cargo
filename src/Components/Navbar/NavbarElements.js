@@ -15,6 +15,9 @@ export const Nav = styled.nav`
   z-index: 12;
   /* Third Nav */
   /* justify-content: flex-start; */
+  @media screen and (max-width: 768px) {
+    height:100px;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -42,13 +45,17 @@ export const NavLink = styled(Link)`
 
 export const Bars = styled(FaBars)`
   display: none;
-  color: #808080;
+  color: #000;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    color: #fff;
+  }
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 0;
+    top: 3%;
     right: 0;
-    transform: translate(-100%, 75%);
+    transform: translate(-100%, 100%);
     font-size: 1.8rem;
     cursor: pointer;
   }
@@ -75,7 +82,7 @@ export const NavBtn = styled.nav`
     /* Third Nav 
   /* justify-content: flex-end;
   width: 100vw; */ @media screen
-    and (max-width: 992px) {
+    and (max-width: 600px) {
     display: none;
   }
 `;
@@ -84,8 +91,10 @@ export const NavBtnLink = styled(Link)`
   border-radius: 12px;
 
   padding: 10px 22px;
+  align-items: center;
   color: #fff;
   outline: none;
+  margin-top:1%;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -94,10 +103,9 @@ export const NavBtnLink = styled(Link)`
   margin-left:20px;
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #000;
-  }
-  @media screen and (max-width: 992) {
+    color: #afa3d5;
+    }
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;

@@ -14,6 +14,7 @@ function BingMap() {
 
   const pushPins = [pushPin];
 
+
   return (
     <BingMapsReact
       bingMapsKey={process.env.REACT_APP_BING_KEY}
@@ -29,6 +30,7 @@ function BingMap() {
         zoom:16
       }}
       pushPins={pushPins}
+      
 
     />
   );

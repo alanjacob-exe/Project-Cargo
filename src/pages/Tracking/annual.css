@@ -1,12 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap");
 
+
+
+.button{
+  align:center;  
+}
 .top {
-  margin-top: -48px;
+  margin-top:-2%  ;
+
 }
 .bg-glass {
   background-color: hsla(0, 0%, 90%, 0.3) !important;
   backdrop-filter: saturate(200%) blur(25px);
+}
+.map{
+  width:100%;
+  height:85vh;
+}
+.leaflet-container {
+  width: 100%;
+  height:100%;
+  padding:1.5rem;
+}
+.dashbody{
+  padding:1.5rem;
+  font-size:24px;
+}
+.card{
+  height:100vh;
+  width:100vh;
+  margin-top:30px;
+  position:relative;
+
 }
 
 .color {
@@ -57,4 +83,59 @@
   height: 300px;
   background: radial-gradient(#44006b, #ad1fff);
   overflow: hidden;
+}
+.cardcontainer{
+  margin-top:6%;  
+}
+.container{
+  margintop:100px
+}
+.border{
+  border-radius:3px;
+}
+.borderred{
+  border-radius:3px;
+}
+.glass{
+padding:100px;
+}
+.dashboard{
+  float:left;
+  width:25%;
+  height:100%;
+  margin-left:1%;
+}
+.view{
+  float:left;
+  height:100%;
+  width:70vw;
+
+}
+.firstwidth{
+  width:99vw
+}
+
+@media screen and (max-width: 600px) {
+  .firstwidth{
+    width:100%;
+  }
+  .width{
+    width:100%;
+  }
+  .dashboard{
+    width:86vw;
+  }
+  .top{
+    margin-top:-8%
+  }
+  .view{
+    width:100%;
+    height:100%;  
+  }
+  .map{
+    width:100%;
+    height:30vh;
+    padding:.5rem;
+  }
+  .cardcontainer{margin-top:23%;}
 }

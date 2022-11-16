@@ -1,0 +1,180 @@
+{
+    "authenticationResultCode": "ValidCredentials",
+    "brandLogoUri": "http://dev.virtualearth.net/Branding/logo_powered_by.png",
+    "copyright": "Copyright © 2022 Microsoft and its suppliers. All rights reserved. This API cannot be accessed and the content and any results may not be used, reproduced or transmitted in any manner without express written permission from Microsoft Corporation.",
+    "resourceSets": [
+      {
+        "estimatedTotal": 4,
+        "resources": [
+          {
+            "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1",
+            "bbox": [
+              9.560897827148438,
+              76.47808074951172,
+              9.614337921142578,
+              76.56950378417969
+            ],
+            "name": "Kottayam, India",
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                9.59175396,
+                76.53190613
+              ]
+            },
+            "address": {
+              "adminDistrict": "KL",
+              "countryRegion": "India",
+              "formattedAddress": "Kottayam, India",
+              "locality": "Kottayam"
+            },
+            "confidence": "High",
+            "entityType": "PopulatedPlace",
+            "geocodePoints": [
+              {
+                "type": "Point",
+                "coordinates": [
+                  9.59175396,
+                  76.53190613
+                ],
+                "calculationMethod": "Rooftop",
+                "usageTypes": [
+                  "Display"
+                ]
+              }
+            ],
+            "matchCodes": [
+              "Ambiguous"
+            ]
+          },
+          {
+            "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1",
+            "bbox": [
+              9.402786254882812,
+              76.3662109375,
+              9.85142993927002,
+              76.98857879638672
+            ],
+            "name": "Kottayam",
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                9.63304615,
+                76.65449524
+              ]
+            },
+            "address": {
+              "adminDistrict": "KL",
+              "adminDistrict2": "Kottayam",
+              "countryRegion": "India",
+              "formattedAddress": "Kottayam"
+            },
+            "confidence": "Medium",
+            "entityType": "AdminDivision2",
+            "geocodePoints": [
+              {
+                "type": "Point",
+                "coordinates": [
+                  9.63304615,
+                  76.65449524
+                ],
+                "calculationMethod": "Rooftop",
+                "usageTypes": [
+                  "Display"
+                ]
+              }
+            ],
+            "matchCodes": [
+              "Ambiguous"
+            ]
+          },
+          {
+            "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1",
+            "bbox": [
+              11.946109771728516,
+              75.35468292236328,
+              11.965753555297852,
+              75.36981964111328
+            ],
+            "name": "Kottayam, India",
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                11.95715046,
+                75.36225128
+              ]
+            },
+            "address": {
+              "adminDistrict": "KL",
+              "adminDistrict2": "Kannur",
+              "countryRegion": "India",
+              "formattedAddress": "Kottayam, India",
+              "locality": "Cannanore"
+            },
+            "confidence": "Low",
+            "entityType": "Neighborhood",
+            "geocodePoints": [
+              {
+                "type": "Point",
+                "coordinates": [
+                  11.95715046,
+                  75.36225128
+                ],
+                "calculationMethod": "Rooftop",
+                "usageTypes": [
+                  "Display"
+                ]
+              }
+            ],
+            "matchCodes": [
+              "Ambiguous"
+            ]
+          },
+          {
+            "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1",
+            "bbox": [
+              9.58411087709485,
+              76.53048237225521,
+              9.591836312236204,
+              76.54092876055729
+            ],
+            "name": "Kottayam Police Campus, India",
+            "point": {
+              "type": "Point",
+              "coordinates": [
+                9.58797359,
+                76.53570557
+              ]
+            },
+            "address": {
+              "adminDistrict": "KL",
+              "countryRegion": "India",
+              "formattedAddress": "Kottayam Police Campus, India",
+              "locality": "Kottayam"
+            },
+            "confidence": "Low",
+            "entityType": "Neighborhood",
+            "geocodePoints": [
+              {
+                "type": "Point",
+                "coordinates": [
+                  9.58797359,
+                  76.53570557
+                ],
+                "calculationMethod": "Rooftop",
+                "usageTypes": [
+                  "Display"
+                ]
+              }
+            ],
+            "matchCodes": [
+              "Ambiguous"
+            ]
+          }
+        ]
+      }
+    ],
+    "statusCode": 200,
+    "statusDescription": "OK",
+    "traceId": "0b20bd447665446d8c6292a4879faa33|PUS00017C0|0.0.0.1|Ref A: D7A01E3C0F334411AC07183E1BD198B3 Ref B: SEL20EDGE0521 Ref C: 2022-11-09T12:56:24Z"
+  }

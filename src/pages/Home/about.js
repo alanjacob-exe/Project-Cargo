@@ -16,7 +16,7 @@ const About = () => {
 
       <div className="height width color top ">
         <div className="title">
-          <div>Project Cargo</div>
+          <div style={{marginTop:'5%'}}>Project Cargo</div>
         </div>
         <div className="image">
             <DarkVariantExample />
@@ -34,7 +34,7 @@ const About = () => {
             ></div>
           </div>
         </div>
-        <div>
+        {/* <div>
           <MDBCard className="my-5 bg-glass card">
             <MDBCardBody className="p-5">
               <div></div>
@@ -44,7 +44,7 @@ const About = () => {
         <div className="carousel">
           <div></div>
           
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -13,12 +13,15 @@ import Loading from "./pages/Loading";
 // import Blogs from "./pages/blogs";
 // import SignUp from "./pages/signup";
 
+
 const About = React.lazy(() => import("./pages/Home/about"));
 const Events = React.lazy(() => import("./pages/Destinations/events"));
 const AnnualReport = React.lazy(() => import("./pages/Tracking/annual"));
 const Teams = React.lazy(() => import("./pages/team"));
 const Blogs = React.lazy(() => import("./pages/Contact_Us/blogs"));
 const SignUp = React.lazy(() => import("./pages/Sign-up"));
+const Test = React.lazy(() => import("./pages/Test"));
+
 
 function App() {
   return (
@@ -35,6 +38,7 @@ function App() {
           <Route path="/Dev" element={<Blogs />} />
           <Route path="/help" element={<Blogs/>} />
           <Route path="/signin" element={<SignUp />} />
+          <Route path="test" element={<Test/>}/>
 
 
         </Routes>

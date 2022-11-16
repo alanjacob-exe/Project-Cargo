@@ -38,13 +38,32 @@
         transparent 100%);
   }
   
-
+.border{
+  border-radius:5px;
+}
+.leftbox{
+  float:left;
+  width:25%;
+  height:85vh;
+  color:white;
+}
+.rightbox{
+  color:black;
+  float:left;
+  height:85vh;
+  width:90vw;
+}
 .height{
     height:100vh;
+    
 }
 
 .width{
     width:100vw;
+
+}
+.margin{
+  margintop:70px;
 }
 @media screen and (max-width: 992px) {
     .media {

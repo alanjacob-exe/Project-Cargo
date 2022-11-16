@@ -8,6 +8,12 @@ import {
   NavBtn,
   NavBtnLink,
 } from "./NavbarElements";
+import { Link } from "@mui/material";
+import { MobNavbar } from "./MobNavbar";
+
+import "./navbar.css";
+
+
 
 const Navbar = () => {
   return (
@@ -23,24 +29,24 @@ const Navbar = () => {
           }}
         />
 
-        <Bars />
+        <Bars
+        />
 
         <NavMenu>
           <NavLink to="/Home">Home</NavLink>
           <NavLink to="/buses">Destinations</NavLink>
-          <NavLink to="/track">Location</NavLink>
-          <NavLink to="/contact">Developers</NavLink>
+          <Link href="/track" className="button">
+            Location
+          </Link>
           <NavLink to="/Dev">Contact Us</NavLink>
           <NavLink to="/help">Help</NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-        <NavBtn>
-          <NavBtnLink to="/signin">Sign In</NavBtnLink>
-        </NavBtn>
+        <NavBtnLink to="/signin">Sign In</NavBtnLink>
       </Nav>
     </div>
   );
-}
+};
 
 export default Navbar;
