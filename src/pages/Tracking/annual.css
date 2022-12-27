@@ -1,38 +1,66 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
+body {
+  background-color: hsl(218, 41%, 15%);
+}
 
+.container {
+  height: 100vh;
+  width: 99vw;
+  position: fixed;
+}
+.glasscontainer {
+  width: 50vw;
+  position: absolute;
+  margin-left:-30%;
+}
 
-.button{
-  align:center;  
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+.button {
+  align: center;
+  left:40%;
+}
+.details {
+  width: 94%;
+  height: 22%;
+  background-color: #000;
+  margin-bottom: 2px;
+  position: absolute;
+  bottom: 0px;
+  margin-left: 1%;
 }
 .top {
-  margin-top:-2%  ;
-
-}
+    margin-top:-2%  ;
+  }
 .bg-glass {
   background-color: hsla(0, 0%, 90%, 0.3) !important;
   backdrop-filter: saturate(200%) blur(25px);
 }
-.map{
-  width:100%;
-  height:85vh;
+.map {
+  width: 100%;
+  height: 81.9vh;
 }
 .leaflet-container {
   width: 100%;
-  height:100%;
-  padding:1.5rem;
+  height: 72%;
+  padding: 1.5rem;
+  border-radius:12px;
 }
-.dashbody{
-  padding:1.5rem;
-  font-size:24px;
+.dashbody {
+  padding: 1.5rem;
+  font-size: 24px;
 }
-.card{
-  height:100vh;
-  width:100vh;
-  margin-top:30px;
-  position:relative;
 
+//parent division
+.card {
+  height: 100vh;
+  width: 100vw;
+  margin-top: 30px;
+  position: relative;
 }
 
 .color {
@@ -64,6 +92,8 @@
 
 .width {
   width: 100vw;
+  margin-left: -20px;
+  height: 100vh;
 }
 
 #radius-shape-1 {
@@ -84,58 +114,123 @@
   background: radial-gradient(#44006b, #ad1fff);
   overflow: hidden;
 }
-.cardcontainer{
-  margin-top:6%;  
-}
-.container{
-  margintop:100px
-}
-.border{
-  border-radius:3px;
-}
-.borderred{
-  border-radius:3px;
-}
-.glass{
-padding:100px;
-}
-.dashboard{
-  float:left;
-  width:25%;
-  height:100%;
-  margin-left:1%;
-}
-.view{
-  float:left;
-  height:100%;
-  width:70vw;
+.cardcontainer {
+  margin-top: 6%;
+  height: 65vh;
+  margin-left: 20px;
 
 }
-.firstwidth{
-  width:99vw
+.border {
+  border-radius: 3px;
+}
+.borderred {
+  border-radius: 3px;
 }
 
+.dashboard {
+  float: left;
+  width: 22%;
+  height: 74%;
+  margin-left: 1%;
+  background-color: hsla(0, 0%, 90%, 0.3);
+  border-radius:12px;
+  margin-right:2%;
+}
+.view {
+  float: left;
+  height: 75%;
+  width: 70vw;
+}
+.firstwidth {
+  width: 99vw;
+  margin-left:-12px;
+  position:fixed;
+}
+.card1{
+  margin-left:-50px;
+  margin-top:-7%;
+}
 @media screen and (max-width: 600px) {
-  .firstwidth{
-    width:100%;
+  .firstwidth {
+    width: 100%;
   }
-  .width{
-    width:100%;
+  .width {
+    width: 100%;
   }
-  .dashboard{
-    width:86vw;
+  .dashboard {
+    width: 86vw;
   }
-  .top{
-    margin-top:-8%
+  .top {
+    margin-top: -8%;
   }
-  .view{
-    width:100%;
-    height:100%;  
+  .view {
+    width: 100%;
+    height: 100%;
   }
-  .map{
-    width:100%;
-    height:30vh;
-    padding:.5rem;
+  .map {
+    width: 100%;
+    height: 30vh;
+    padding: 0.5rem;
   }
-  .cardcontainer{margin-top:23%;}
+  /* .cardcontainer {
+    margin-top: 23%;
+  } */
 }
+
+.infotab {
+  width: 70%;
+  height: 20%;
+  position: absolute;
+  bottom: 2%;
+  margin-left:10%;
+  border-radius:12px;
+}
+
+/* .container {
+    width: 75vw;
+    height: 20vh;
+    border-radius: 12px;
+    border-color: red;
+    border: 2px;
+    background-color: #d9d9d9;
+    position:absolute;
+  }
+  .section1 {
+    float: left;
+    position: relative;
+    width: 33%;
+    font-family: "Inter", sans-serif;
+    font-size: 25px;
+  }
+  .section2 {
+    float: left;
+    position: absolute;
+    width: 33%;
+    font-family: "Inter", sans-serif;
+    font-size: 25px;
+    background-color: #404040;
+    height: 100%;
+    color:#fff;
+  }
+  .section3 {
+    float: left;
+    position: absolute;
+    width: 34%;
+    font-family: "Inter", sans-serif;
+    font-size: 25px;
+    background-color: #404040;
+    height: 100%;
+    color:#fff;
+  
+  }
+  
+  .top1 {
+    margin-top: 7%;
+    position: relative;
+    margin-left: 3%;
+  }
+  
+  .down {
+    margin-left: 3%;
+    margin-top: 15px;
+  } */

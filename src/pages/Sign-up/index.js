@@ -23,8 +23,10 @@ import Form from "react-bootstrap/Form";
 import "./index.css";
 import { useState } from "react";
 import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthValue } from "./AuthContext";
+
 import "./forms.css";
 
 function Login() {
@@ -33,6 +35,10 @@ function Login() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [justifyActive, setJustifyActive] = useState("tab1");
+  // const { setTimeActive } = useAuthValue();
+  const navigate = useNavigate();
+
+
 
   const validatePassword = () => {
     let isValid = true;
@@ -51,8 +57,11 @@ function Login() {
     if (validatePassword()) {
       // Create a new user with email and password using firebase
       createUserWithEmailAndPassword(auth, email, password)
-        .then((res) => {
-          console.log(res.user);
+        .then(() => {
+          sendEmailVerification(auth.currentUser).then(() => {
+            // setTimeActive(true);
+            navigate("/verify-email");
+          });
         })
         .catch((err) => setError(err.message));
     }
@@ -221,7 +230,7 @@ function Login() {
 
                   <MDBTabsPane show={justifyActive === "tab2"}>
                     <div className="text-center mb-3">
-                      <p>Sign un with:</p>
+                      <p>Sign in with:</p>
 
                       <div
                         className="d-flex justify-content-between mx-auto"
@@ -278,6 +287,7 @@ function Login() {
                       onChange={(e) => setEmail(e.target.value)}
                       sx={{ backgroundColor: "#fff", borderRadius: "12px" }}
                     />
+                    <br></br>
                     <TextField
                       type="password"
                       value={password}

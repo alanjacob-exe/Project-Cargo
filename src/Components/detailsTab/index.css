@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
+
+.parentcontainer {
+  position: relative;
+  width: 50%;
+  height: 10%;
+  border-style: solid;
+  font-family: "Inter", sans-serif;
+}
+.bg-glass {
+  background-color: hsla(0, 0%, 90%, 0.3) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}
+.container {
+  width: 75vw;
+  height: 20vh;
+  border-radius: 12px;
+  border: 2px;
+  /* background-color: #d9d9d9; */
+  color:#fff;
+}
+.section1 {
+  float: left;
+  position: relative;
+  width: 33%;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+}
+.section2 {
+  float: left;
+  position: relative;
+  width: 33%;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  /* background-color: #404040; */
+  height: 100%;
+  /* color: #fff; */
+}
+.section3 {
+  float: left;
+  position: relative;
+  width: 34%;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  /* background-color: #404040; */
+  height: 100%;
+  /* color: #fff; */
+}
+
+.top {
+  margin-top: 7%;
+  position: relative;
+  margin-left: 3%;
+}
+
+.down {
+  margin-left: 3%;
+  margin-top: 15px;
+}

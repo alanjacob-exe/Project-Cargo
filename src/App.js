@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import SignInForm from "./pages/Signin";
 import Loading from "./pages/Loading";
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 // import About from "./pages/about";
 // import Events from "./pages/events";
@@ -12,6 +14,9 @@ import Loading from "./pages/Loading";
 // import Teams from "./pages/team";
 // import Blogs from "./pages/blogs";
 // import SignUp from "./pages/signup";
+import Signup from "../src/Booking/Login-Signup/Signup"
+// import LogOrsign from "./Components/Login-Signup/LogOrsign";
+import Homepage from "./Booking/Homepage/Homepage";
 
 
 const About = React.lazy(() => import("./pages/Home/about"));
@@ -19,8 +24,12 @@ const Events = React.lazy(() => import("./pages/Destinations/events"));
 const AnnualReport = React.lazy(() => import("./pages/Tracking/annual"));
 const Teams = React.lazy(() => import("./pages/team"));
 const Blogs = React.lazy(() => import("./pages/Contact_Us/blogs"));
-const SignUp = React.lazy(() => import("./pages/Sign-up"));
-const Test = React.lazy(() => import("./pages/Test"));
+const SignUp = React.lazy(() => import("./pages/Sign-up/index"));
+const Test = React.lazy(() => import("./pages/just"));
+// const Homepage=React.lazy(()=>import ("./Booking/Homepage/Homepage"))
+// const LogOrsign=React.lazy(()=>import ("./Booking/Login-Signup/LogOrsign"))
+// const Signup=React.lazy(()=> import ("./pages/Sign-up/index"))
+const VerifyEmail=React.lazy(()=> import("./pages/Sign-up/VerifyEmail"))
 
 
 function App() {
@@ -37,12 +46,22 @@ function App() {
           <Route path="/contact" element={<Teams />} />
           <Route path="/Dev" element={<Blogs />} />
           <Route path="/help" element={<Blogs/>} />
-          <Route path="/signin" element={<SignUp />} />
-          <Route path="test" element={<Test/>}/>
+          <Route path="/test" element={<Test/>}/>
+          <Route path="/signin" element={<SignUp/>}/>
+          <Route path="/verify-email" element={<VerifyEmail/>}/>
+       
+
+
 
 
         </Routes>
       </Suspense>
+     
+
+
+
+
+        
     </Router>
   );
 }

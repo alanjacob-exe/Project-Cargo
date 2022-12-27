@@ -24,22 +24,22 @@ import { useState } from "react";
 import { TransportMap } from "../../Components/TransportMap";
 import Places3 from "../../Components/BingPlacesApi/Places3";
 import Places4 from "../../Components/BingPlacesApi/places4";
+import Ui from "../../Components/detailsTab";
 
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
 
 const key = process.env.REACT_APP_BING_KEY;
 const pointurl1 = "https://dev.virtualearth.net/REST/V1/Routes/Driving?wp.0=";
-  const pointurl2 = "&wp.1=";
-  const pointurl3 = "&optmz=distance&routeAttributes=routePath&output=json&key=";
+const pointurl2 = "&wp.1=";
+const pointurl3 = "&optmz=distance&routeAttributes=routePath&output=json&key=";
 
 const AnnualReport = () => {
   const position = [10.95590759312288, 76.22946062699094];
   const position2 = [11.0568857, 76.0956861];
-  
-  const [pointers,Setpointers]=useState("")
-  // console.log("pointers:  "+pointers)
 
+  const [pointers, Setpointers] = useState("");
+  // console.log("pointers:  "+pointers[0])
 
   const [source, setsource] = useState("perinthalmanna"); //for Source Autocomplete
   const [destination, setdestination] = useState("kottayam");
@@ -59,9 +59,23 @@ const AnnualReport = () => {
   // console.log("source coordinate:" + sourceCoordinate);
   // console.log("destination coordinate:" + destinationcoordinate);       //to check if dynamic marker is working or not
 
-  // console.log(coordinates);
-  // console.log(source.label);
-  // console.log(destination.label)
+  console.log(source.label);
+  console.log(destination.label);
+
+  const [data, setData] = useState("");
+  const [duration, setduration] = useState("00");
+  const [eta, seteta] = useState("");
+  const [traffic, settraffic] = useState("");
+  const [distance, setDistance] = useState("");
+  // const query=data;
+  // const [duration,setduration]=useState("");
+  // const [eta, seteta] = useState("")
+  // const [traffic, settraffic] = useState('')
+  // settraffic(query.resourceSets[0].resources[0].trafficCongestion)
+  // setduration(query.resourceSets[0].resources[0].travelDuration)
+  // seteta(query.resourceSets[0].resources[0].travelDurationTraffic)
+  // console.log("data is" + data.resourceSets[0].resources[0].travelDuration);
+
   const options = [
     { label: "Perinthalmanna", id: "10.976088, 76.225511" },
     { label: "Manjeri", id: "11.1192317,76.1207973" },
@@ -78,7 +92,8 @@ const AnnualReport = () => {
     { label: "Areekode", id: "11.235016, 76.051832" },
   ];
 
-  const points = async (location1,location2) => {
+  const points = async (location1, location2) => {
+    // console.log(`${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`)
     const response = await fetch(
       `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
     );
@@ -91,21 +106,40 @@ const AnnualReport = () => {
   };
 
   useEffect(() => {
-    points(mapSource,mapDestination)
+    points(mapSource, mapDestination)
       .then((data) => {
-        if (
-          data.resourceSets &&
-          data.resourceSets.length >0
-        ) {
-            // console.log(data.resourceSets[0].resources[0].routePath.line.coordinates)
-            Setpointers(data.resourceSets[0].resources[0].routePath.line.coordinates)
-            return pointers
+        if (data.resourceSets && data.resourceSets.length > 0) {
+          Setpointers(
+            data.resourceSets[0].resources[0].routePath.line.coordinates
+          );
+          return pointers;
         }
       })
       .catch((e) => {
         console.log(e.message);
       });
-  }, [mapSource,mapDestination]);
+  }, [mapSource, mapDestination]);
+
+  // for details ui
+
+  useEffect(() => {
+    points(mapSource, mapDestination)
+      .then((data) => {
+        if (data.resourceSets && data.resourceSets.length > 0) {
+          // console.log("traval time"+data.resourceSets[0].resources[0])
+          setData(data);
+
+          settraffic(data.resourceSets[0].resources[0].trafficCongestion);
+          setduration(data.resourceSets[0].resources[0].travelDuration);
+          seteta(data.resourceSets[0].resources[0].travelDurationTraffic);
+          setDistance(data.resourceSets[0].resources[0].travelDistance);
+          return pointers;
+        }
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, [mapSource, mapDestination]);
 
   const sourceData = async (location) => {
     const response = await fetch(`${baseURL1}${location}${baseURL2}${key}`);
@@ -188,11 +222,13 @@ const AnnualReport = () => {
       ></div>
 
       <div>
-        <MDBCard className="bg-glass width">
-          <MDBCardBody className="glass border cardcontainer">
-            <div className="dashboard border">
+        <MDBCard className="bg-glass width card1">
+          <MDBCardBody className="  cardcontainer">
+            <div className="dashboard ">
               <div className="dashbody">
-                <label>Enter Your Location:</label>
+                <label className="montserrat" style={{ color: "#fff" }}>
+                  Enter Your Location:
+                </label>
                 <Autocomplete
                   disablePortal
                   id="combo-box-demo"
@@ -214,7 +250,9 @@ const AnnualReport = () => {
               </div>
 
               <div className="dashbody">
-                <label>Enter Your Destination:</label>
+                <label className="montserrat" style={{ color: "#fff" }}>
+                  Enter Your Destination:
+                </label>
                 <Autocomplete
                   disablePortal
                   id="combo-box-demo"
@@ -245,11 +283,11 @@ const AnnualReport = () => {
                     // <TransportMap mapsource={source.id}/>
                   }}
                 >
-                  clickme
+                  Find!
                 </Button>
               </div>
             </div>
-            <div className="view border">
+            <div className="view ">
               <div>
                 {/* {location.loaded
               ? JSON.stringify(location)
@@ -262,6 +300,16 @@ const AnnualReport = () => {
                   pointers={pointers}
                 />
               </div>
+            </div>
+            <div className="bg-glass infotab">
+              <Ui
+                source={source.label}
+                destination={destination.label}
+                duration={duration}
+                eta={eta}
+                traffic={traffic}
+                distance={distance}
+              ></Ui>
             </div>
           </MDBCardBody>
         </MDBCard>

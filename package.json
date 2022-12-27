@@ -43,7 +43,17 @@
     "react-spinners-kit": "^1.9.1",
     "regenerator-runtime": "^0.13.10",
     "styled-components": "^5.3.5",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "redux": "^4.0.5",
+    "react-transition-group": "^4.4.1",
+    "react-datepicker": "^2.16.0",
+    "react-credit-cards": "^0.8.2",
+    "npm i jwt-decode": "^2.2.0",
+    "@types/date-fns": "^2.6.0"
+
+
+
+    
   },
   "scripts": {
     "start": "react-scripts start",

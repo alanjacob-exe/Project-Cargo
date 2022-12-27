@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import "../../data.json"
 import { useState } from "react";
 
 const baseURL = "https://dev.virtualearth.net/REST/v1/Locations?q=aluva&key=AkZCq_Islhah9akzIeF4n7sG0nOiw3MRjNYDx3FK9-mI16gbmjGvBe3RP8QYD4N2";

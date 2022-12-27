@@ -9,6 +9,7 @@ bodY {
     justify-content: center;
     align-items: center;
     background: #000;
+    width:100vw;
   }
   .wave {
     width: 5px;

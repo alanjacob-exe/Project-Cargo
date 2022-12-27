@@ -22,7 +22,7 @@ import Places4 from "../../Components/BingPlacesApi/places4";
 import axios from "axios";
 import { json } from "react-router-dom";
 import { useEffect } from "react";
-import Country from "../Test";
+// import Country from "../Test";
 
 const Events = () => {
   var async = require("async");
@@ -97,7 +97,7 @@ const Events = () => {
 
         <div>
           <div style={{ position: "relative" }}>
-            <div className="border rightbox" style={{ marginTop: "6%" }}>
+            {/* <div className="border rightbox" style={{ marginTop: "6%" }}>
             <Autocomplete
                   disablePortal
                   id="combo-box-demo"
@@ -122,12 +122,12 @@ const Events = () => {
                 onClick={() => fetchData(destination.label)}
               >
                 clickme
-              </Button>
+              </Button> */}
+              <div>hello</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
