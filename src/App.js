@@ -14,9 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // import Teams from "./pages/team";
 // import Blogs from "./pages/blogs";
 // import SignUp from "./pages/signup";
-import Signup from "../src/Booking/Login-Signup/Signup"
 // import LogOrsign from "./Components/Login-Signup/LogOrsign";
-import Homepage from "./Booking/Homepage/Homepage";
 
 
 const About = React.lazy(() => import("./pages/Home/about"));
