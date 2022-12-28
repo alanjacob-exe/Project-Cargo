@@ -3,9 +3,14 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
-import SignInForm from "./pages/Signin";
 import Loading from "./pages/Loading";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { AuthProvider } from "./pages/Sign-up/AuthContext";
+import { useState, useEffect } from "react";
+import {onAuthStateChanged} from 'firebase/auth'
+import {auth} from './firebase'
+
+
 
 
 // import About from "./pages/about";
@@ -28,14 +33,25 @@ const Test = React.lazy(() => import("./pages/just"));
 // const LogOrsign=React.lazy(()=>import ("./Booking/Login-Signup/LogOrsign"))
 // const Signup=React.lazy(()=> import ("./pages/Sign-up/index"))
 const VerifyEmail=React.lazy(()=> import("./pages/Sign-up/VerifyEmail"))
-
+const Loggedin=React.lazy(()=>import("./pages/loggedin/loggedin"))
+const Profile=React.lazy(()=>import("./pages/Sign-up/Profile"))
 
 function App() {
+
+  const [currentUser, setCurrentUser] = useState(null)
+  const [timeActive, setTimeActive] = useState(false)
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+    })
+  }, [])
   return (
     <Router>
-      {/* <div className="border"> */}
-      {/* </div> */}
+      
       <Suspense fallback={<Loading/>}>
+      <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
+
         <Routes>
           <Route path="/" exact element={<About />}/>
           <Route path="/Home" element={<About />} />
@@ -47,12 +63,17 @@ function App() {
           <Route path="/test" element={<Test/>}/>
           <Route path="/signin" element={<SignUp/>}/>
           <Route path="/verify-email" element={<VerifyEmail/>}/>
+          <Route path="/loggedin" element={<Loggedin/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+
+
        
 
 
 
 
         </Routes>
+        </AuthProvider>
       </Suspense>
      
 

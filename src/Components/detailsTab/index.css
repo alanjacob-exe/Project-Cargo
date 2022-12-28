@@ -16,7 +16,6 @@
   height: 20vh;
   border-radius: 12px;
   border: 2px;
-  /* background-color: #d9d9d9; */
   color:#fff;
 }
 .section1 {
@@ -32,9 +31,7 @@
   width: 33%;
   font-family: "Inter", sans-serif;
   font-size: 25px;
-  /* background-color: #404040; */
   height: 100%;
-  /* color: #fff; */
 }
 .section3 {
   float: left;
@@ -42,9 +39,7 @@
   width: 34%;
   font-family: "Inter", sans-serif;
   font-size: 25px;
-  /* background-color: #404040; */
   height: 100%;
-  /* color: #fff; */
 }
 
 .top {

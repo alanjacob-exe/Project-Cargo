@@ -9,9 +9,7 @@ import {
   NavBtnLink,
 } from "./NavbarElements";
 import { Link } from "@mui/material";
-import { MobNavbar } from "./MobNavbar";
 
-import "./navbar.css";
 
 
 

@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css";
-import { useState } from "react";
 
  function Ui(props) {
     // const query=props.data;

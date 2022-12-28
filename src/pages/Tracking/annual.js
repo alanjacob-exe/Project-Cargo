@@ -13,7 +13,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import Navbar from "../../Components/Navbar";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 import { margin } from "@mui/system";
-import AutocompleteOption from "../../Components/Autocomplete/AutoCompleteOption";
 import Places from "../../Components/BingPlacesApi/PlacesApi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";

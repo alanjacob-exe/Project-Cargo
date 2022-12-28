@@ -1,6 +1,5 @@
 import React from "react";
 import BingMap from "../../Components/BingMaps/BingMaps";
-import Openstreetmaps from "../../Components/Openstreetmaps/Osm";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./blogs.css";
 import Navbar from "../../Components/Navbar";

@@ -6,7 +6,6 @@ import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 
 import DarkVariantExample from "../../Components/Carousel/index";
 import Footer from "../../Components/Footer";
-import CountrySelect from "../Signin";
 import Navbar from "../../Components/Navbar";
 
 const About = () => {
