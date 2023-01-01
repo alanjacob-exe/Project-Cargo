@@ -1,16 +1,42 @@
+
+
+import { useState } from 'react';
+
 import React from 'react'
-import {useAuthValue} from '../pages/Sign-up/AuthContext'
+import "./just.css"
+
+export default function Just(props) {
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [status, setStatus] = useState(null);
 
 
 
 
-export default function Loggedin(props) {
-    
-    const {currentUser} = useAuthValue()
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+      setStatus('Geolocation is not supported by your browser');
+    } else {
+      setStatus('Locating...');
+      navigator.geolocation.getCurrentPosition((position) => {
+        setStatus(null);
+        setLat(position.coords.latitude);
+        setLng(position.coords.longitude);
+      }, () => {
+        setStatus('Unable to retrieve your location');
+      });
+    }
+  }
 
-    return (
-        <div>
-            This is the proposed site for Logged in page{currentUser?.displayName}
-        </div>
-    )
+  return (
+    <>
+      <div className="App">
+  <button onClick={getLocation}>Get Location</button>
+  <h1>Coordinates</h1>
+  <p>{status}</p>
+  {lat && <p>Latitude: {lat}</p>}
+  {lng && <p>Longitude: {lng}</p>}
+</div>
+    </>
+  )
 }

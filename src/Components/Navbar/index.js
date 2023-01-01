@@ -33,7 +33,7 @@ const Navbar = () => {
         <NavMenu>
           <NavLink to="/Home">Home</NavLink>
           <NavLink to="/buses">Destinations</NavLink>
-          <Link href="/track" className="button">
+          <Link href="/track" className="button" sx={{color:"#fff", fontSize:"18px"}}>
             Location
           </Link>
           <NavLink to="/Dev">Contact Us</NavLink>
@@ -41,7 +41,8 @@ const Navbar = () => {
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-        <NavBtnLink to="/signin">Sign In</NavBtnLink>
+        <Link href="/signin" className="button" sx={{color:"#fff", fontSize:"18px",marginTop:"2.5%"}}>Signin</Link>
+        {/* <NavBtnLink to="/signin">Sign In</NavBtnLink> */}
       </Nav>
     </div>
   );

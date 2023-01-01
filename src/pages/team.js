@@ -7,7 +7,7 @@
 // 	const [course , Setcourse] = useState("");
 // 	const sub = (e) => {
 // 		e.preventDefault();
-		
+
 // 		// Add data to the store
 // 		db.collection("data").add({
 // 			Nane: name,

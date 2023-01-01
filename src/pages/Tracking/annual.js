@@ -24,6 +24,9 @@ import { TransportMap } from "../../Components/TransportMap";
 import Places3 from "../../Components/BingPlacesApi/Places3";
 import Places4 from "../../Components/BingPlacesApi/places4";
 import Ui from "../../Components/detailsTab";
+import {useAuthValue} from '../Sign-up/AuthContext'
+import Tracker from "../tem";
+
 
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
@@ -58,14 +61,20 @@ const AnnualReport = () => {
   // console.log("source coordinate:" + sourceCoordinate);
   // console.log("destination coordinate:" + destinationcoordinate);       //to check if dynamic marker is working or not
 
-  console.log(source.label);
-  console.log(destination.label);
+  // console.log(source.label);
+  // console.log(destination.label);
 
   const [data, setData] = useState("");
   const [duration, setduration] = useState("00");
   const [eta, seteta] = useState("");
   const [traffic, settraffic] = useState("");
   const [distance, setDistance] = useState("");
+  const [isShown, setIsShown] = useState(false);  //for source,destination markers
+  const {currentUser} = useAuthValue()  //for current user details
+
+  console.log(currentUser?.email)
+
+
   // const query=data;
   // const [duration,setduration]=useState("");
   // const [eta, seteta] = useState("")
@@ -74,6 +83,14 @@ const AnnualReport = () => {
   // setduration(query.resourceSets[0].resources[0].travelDuration)
   // seteta(query.resourceSets[0].resources[0].travelDurationTraffic)
   // console.log("data is" + data.resourceSets[0].resources[0].travelDuration);
+
+  const handleClick = (event) => {
+    // 👇️ toggle shown state
+    setIsShown((current) => !current);
+
+    // 👇️ or simply set it to true
+    // setIsShown(true);
+  };
 
   const options = [
     { label: "Perinthalmanna", id: "10.976088, 76.225511" },
@@ -91,6 +108,10 @@ const AnnualReport = () => {
     { label: "Areekode", id: "11.235016, 76.051832" },
   ];
 
+
+  ///////////////////////////////////////       for finding Polyline ////////////////////////////////
+
+
   const points = async (location1, location2) => {
     // console.log(`${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`)
     const response = await fetch(
@@ -103,6 +124,10 @@ const AnnualReport = () => {
       return response.json();
     }
   };
+
+
+
+  ///////////////////////////////////////       for finding Polyline ////////////////////////////////
 
   useEffect(() => {
     points(mapSource, mapDestination)
@@ -119,7 +144,7 @@ const AnnualReport = () => {
       });
   }, [mapSource, mapDestination]);
 
-  // for details ui
+  // console.log("points"+pointers)
 
   useEffect(() => {
     points(mapSource, mapDestination)
@@ -246,6 +271,9 @@ const AnnualReport = () => {
                     />
                   )}
                 />
+                <Button variant="contained" onClick={handleClick}>
+                  Show Stops
+                </Button>
               </div>
 
               <div className="dashbody">
@@ -293,10 +321,13 @@ const AnnualReport = () => {
               : "Location data not available"} */}
               </div>
               <div className="map">
+                {/* <Tracker
+                pointers={pointers}/> */}
                 <TransportMap
                   location1={sourceCoordinate}
                   location2={destinationcoordinate}
                   pointers={pointers}
+                  isShown={isShown}
                 />
               </div>
             </div>

@@ -54,3 +54,9 @@
   margin-left: 3%;
   margin-top: 15px;
 }
+
+.App{
+  margin-top:50%;
+  text-align:center;
+  height:100vh;
+}

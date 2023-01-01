@@ -1738,6 +1738,11 @@
   "resolved" "https://registry.npmjs.org/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.8.0.tgz"
   "version" "0.8.0"
 
+"@fortawesome/fontawesome-free@^6.2.1":
+  "integrity" "sha512-viouXhegu/TjkvYQoiRZK3aax69dGXxgEjpvZW81wIJdxm5Fnvp3VVIP4VHKqX4SvFw6qpmkILkD4RJWAdrt7A=="
+  "resolved" "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.2.1.tgz"
+  "version" "6.2.1"
+
 "@googlemaps/js-api-loader@^1.13.2", "@googlemaps/js-api-loader@^1.7.0":
   "integrity" "sha512-6iIb+qpGgQpgIHmIFO44WhE1rDUxPVHuezNFL30wRJnkvhwFm94tD291UvNg9L05hLDSoL16jd0lbqqmdy4C5g=="
   "resolved" "https://registry.npmjs.org/@googlemaps/js-api-loader/-/js-api-loader-1.14.3.tgz"
@@ -1815,9 +1820,9 @@
     "warning" "^4.0.3"
 
 "@iconify/icons-mdi@^1.2.31":
-  "integrity" "sha512-/F9YDLpXXTicI2WOw5lqucNt4xoLH/yBOo35MJloCUTSmWENQIQcI72a3pEG5qUHyEkonhZVGZPRXfyyfd5e9w=="
-  "resolved" "https://registry.npmjs.org/@iconify/icons-mdi/-/icons-mdi-1.2.31.tgz"
-  "version" "1.2.31"
+  "integrity" "sha512-GDunVg2NVwRZVa0nCC5Q0RMavD7Lk9YiQMD3AAh62S7jBanqlmN9VrxbQohFDeNVteBNFz5oy45iD1te2d5IDg=="
+  "resolved" "https://registry.npmjs.org/@iconify/icons-mdi/-/icons-mdi-1.2.38.tgz"
+  "version" "1.2.38"
   dependencies:
     "@iconify/types" "*"
 
@@ -5689,7 +5694,7 @@
   "resolved" "https://registry.npmjs.org/fs-constants/-/fs-constants-1.0.0.tgz"
   "version" "1.0.0"
 
-"fs-extra@^10.0.0":
+"fs-extra@^10.0.0", "fs-extra@^10.1.0":
   "integrity" "sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ=="
   "resolved" "https://registry.npmjs.org/fs-extra/-/fs-extra-10.1.0.tgz"
   "version" "10.1.0"
@@ -7180,6 +7185,11 @@
   "version" "1.0.5"
   dependencies:
     "language-subtag-registry" "~0.3.2"
+
+"leaflet-drift-marker@^2.0.0":
+  "integrity" "sha512-dmYMW5A/rpNA2YGnakMzhhQNGJADjJG1L6THa/UKMYZ/CI3podhmsCaWCNh0/DnqcxRaSCR/8JBp+iimNx7lEQ=="
+  "resolved" "https://registry.npmjs.org/leaflet-drift-marker/-/leaflet-drift-marker-2.0.0.tgz"
+  "version" "2.0.0"
 
 "leaflet-overpass-layer@^2.9.0":
   "integrity" "sha512-r6V4qfTp4yXhjeRu07wyRFg3cJh+ZdL/zqDVdHd6MdqZDnBjbDhV/NwstTMz1kP6PwXckOPDD5aWtkogfron1g=="
@@ -9000,6 +9010,14 @@
     "react" "^16.4.0"
     "react-leaflet" "^1.9.1"
 
+"react-leaflet-tracking-marker@^1.0.16":
+  "integrity" "sha512-P1HzdPUUgCqXCR6AYofLOsA0hbNI4CP+44IdujewYiWlz4Vsk4ucqcVrbB5TEysstU+5FwJxwwyCB4DdZ0y8Nw=="
+  "resolved" "https://registry.npmjs.org/react-leaflet-tracking-marker/-/react-leaflet-tracking-marker-1.0.16.tgz"
+  "version" "1.0.16"
+  dependencies:
+    "fs-extra" "^10.1.0"
+    "rimraf" "^3.0.2"
+
 "react-leaflet@^1.9.1":
   "integrity" "sha512-QiYpjyf1DHy0gLAR2958Mo5Wlu2u7FubIjapPpuUAQNFmjkVSteiDLlEdDpGswTHTyNAfKLS+u9PqvfipMDZKA=="
   "resolved" "https://registry.npmjs.org/react-leaflet/-/react-leaflet-1.9.1.tgz"
@@ -9535,7 +9553,25 @@
     "ajv" "^6.12.4"
     "ajv-keywords" "^3.5.2"
 
-"schema-utils@^3.0.0", "schema-utils@^3.1.0", "schema-utils@^3.1.1":
+"schema-utils@^3.0.0":
+  "integrity" "sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw=="
+  "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-3.1.1.tgz"
+  "version" "3.1.1"
+  dependencies:
+    "@types/json-schema" "^7.0.8"
+    "ajv" "^6.12.5"
+    "ajv-keywords" "^3.5.2"
+
+"schema-utils@^3.1.0":
+  "integrity" "sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw=="
+  "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-3.1.1.tgz"
+  "version" "3.1.1"
+  dependencies:
+    "@types/json-schema" "^7.0.8"
+    "ajv" "^6.12.5"
+    "ajv-keywords" "^3.5.2"
+
+"schema-utils@^3.1.1":
   "integrity" "sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw=="
   "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-3.1.1.tgz"
   "version" "3.1.1"
@@ -10719,15 +10755,7 @@
     "tapable" "^2.0.0"
     "webpack-sources" "^2.2.0"
 
-"webpack-sources@^1.1.0":
-  "integrity" "sha512-lgTS3Xhv1lCOKo7SA5TjKXMjpSM4sBjNV5+q2bqesbSPs5FjGmU6jjtBSkX9b4qW87vDIsCIlUPOEhbZrMdjeQ=="
-  "resolved" "https://registry.npmjs.org/webpack-sources/-/webpack-sources-1.4.3.tgz"
-  "version" "1.4.3"
-  dependencies:
-    "source-list-map" "^2.0.0"
-    "source-map" "~0.6.1"
-
-"webpack-sources@^1.4.3":
+"webpack-sources@^1.1.0", "webpack-sources@^1.4.3":
   "integrity" "sha512-lgTS3Xhv1lCOKo7SA5TjKXMjpSM4sBjNV5+q2bqesbSPs5FjGmU6jjtBSkX9b4qW87vDIsCIlUPOEhbZrMdjeQ=="
   "resolved" "https://registry.npmjs.org/webpack-sources/-/webpack-sources-1.4.3.tgz"
   "version" "1.4.3"

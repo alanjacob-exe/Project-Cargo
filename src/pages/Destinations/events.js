@@ -14,13 +14,7 @@ import {
   MDBCheckbox,
   MDBIcon,
 } from "mdb-react-ui-kit";
-import PlacesApi from "../../Components/BingPlacesApi/PlacesApi";
-import { TextField } from "@mui/material";
-import { Button } from "@mui/material";
-import Places3 from "../../Components/BingPlacesApi/Places3";
-import Places4 from "../../Components/BingPlacesApi/places4";
-import axios from "axios";
-import { json } from "react-router-dom";
+
 import { useEffect } from "react";
 // import Country from "../Test";
 

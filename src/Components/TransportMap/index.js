@@ -1,4 +1,5 @@
-import React from "react";
+import { Button } from "bootstrap";
+import {React, useState} from "react";
 import {
   MapContainer,
   Circle,
@@ -12,11 +13,11 @@ import file from "../../file.json";
 // import Marker from 'react-leaflet-animated-marker';
 
 export function TransportMap(position) {
+  var isShown=position.isShown;
   const polyline = position.pointers;
   const blueOptions = { color: "blue" };
   const data=file;
 
-  //   console.log("mapsource in tmaps"+position.mapsource)
   console.log("marker 1  " + position.location1);
   const marker1 = position.location1;
   const marker2 = position.location2;
@@ -25,8 +26,13 @@ export function TransportMap(position) {
   const destinationBusstops = nearbyBusstops(marker2);
 
   // console.log("location 2 " + position.location2);
-  console.log("Source Busstops " + sourceBusstops);
+  console.log("points"+polyline[2]);
   console.log("Destination Busstops " + destinationBusstops);
+
+
+
+  
+
 
 
   function nearbyBusstops(marker1) {
@@ -154,7 +160,7 @@ export function TransportMap(position) {
       const value = index4[i];
       coordinates[i] = data.features[value].geometry.coordinates;
     }
-    // console.log(coordinates)
+    console.log(index4)
     return index4;
     // return coordinates[1];
   }
@@ -164,7 +170,7 @@ export function TransportMap(position) {
   for(var i=0;i<sourceBusstops.length;i++){
     var value=sourceBusstops[i];
     console.log("list"+sourceBusstops[i])
-    maarker.push([data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]);
+    maarker.push(sourceBusstops[i]);
 
   }
 
@@ -174,11 +180,15 @@ export function TransportMap(position) {
   //   maarker1.push([data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]);
 
   // } 
-  // console.log(maarker);
+  console.log("maarker:"+maarker);
+
+  console.log("name:"+data.features[325].properties["name"]);
+
   // const indexelements=sourceBusstops.map((value)=> value*2)
   // console.log("double elements"+indexelements)
 
   return (
+    
     <MapContainer center={[10.9984717, 76.1401113]} zoom={11} zoomOffset={-1}>
       <TileLayer
         attribution='&copy; <a href="https://www.thunderforest.com/">Transport Map</a> contributors'
@@ -186,19 +196,20 @@ export function TransportMap(position) {
       />
       <Marker position={position.location1} />
       <Marker position={position.location2} />
-      {maarker.map((value) => (
-        <Marker key={value} position={value}>
-          <Popup>{value}</Popup>
+      {isShown && maarker.map((value) => (
+        <Marker key={value} position={[data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]}>
+          <Popup>{data.features[value].properties["name"]}</Popup>
           </Marker>
       ))}
 
-{maarker1.map((value) => (
-        <Marker key={value} position={value}>
+{/* {maarker1.map((value) => (
+        <Marker key={value} position={[data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]}>
           <Popup>{value}</Popup>
           </Marker>
-      ))}
+      ))} */}
 
       <Polyline pathOptions={blueOptions} positions={polyline} />
     </MapContainer>
+    
   );
 }

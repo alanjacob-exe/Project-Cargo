@@ -1,17 +1,12 @@
 import React, { Suspense } from "react";
 import "./App.css";
-import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
 import Loading from "./pages/Loading";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthProvider } from "./pages/Sign-up/AuthContext";
 import { useState, useEffect } from "react";
-import {onAuthStateChanged} from 'firebase/auth'
-import {auth} from './firebase'
-
-
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
 
 // import About from "./pages/about";
 // import Events from "./pages/events";
@@ -20,7 +15,6 @@ import {auth} from './firebase'
 // import Blogs from "./pages/blogs";
 // import SignUp from "./pages/signup";
 // import LogOrsign from "./Components/Login-Signup/LogOrsign";
-
 
 const About = React.lazy(() => import("./pages/Home/about"));
 const Events = React.lazy(() => import("./pages/Destinations/events"));
@@ -32,55 +26,53 @@ const Test = React.lazy(() => import("./pages/just"));
 // const Homepage=React.lazy(()=>import ("./Booking/Homepage/Homepage"))
 // const LogOrsign=React.lazy(()=>import ("./Booking/Login-Signup/LogOrsign"))
 // const Signup=React.lazy(()=> import ("./pages/Sign-up/index"))
-const VerifyEmail=React.lazy(()=> import("./pages/Sign-up/VerifyEmail"))
-const Loggedin=React.lazy(()=>import("./pages/loggedin/loggedin"))
-const Profile=React.lazy(()=>import("./pages/Sign-up/Profile"))
+const VerifyEmail = React.lazy(() => import("./pages/Sign-up/VerifyEmail"));
+const Loggedin = React.lazy(() => import("./pages/loggedin/loggedin"));
+const Profile = React.lazy(() => import("./pages/Sign-up/Profile"));
+const PageNotFound=React.lazy(()=>import("./pages/404/404"));
+const Temp=React.lazy(()=>import("./pages/tem/index"))
+
 
 function App() {
-
-  const [currentUser, setCurrentUser] = useState(null)
-  const [timeActive, setTimeActive] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null);
+  const [timeActive, setTimeActive] = useState(false);
+  const [isLoggedin, setisLoggedin] = useState(false)
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
-    })
-  }, [])
+      setCurrentUser(user);
+      setisLoggedin(true)
+    });
+  }, []);
+
+
+
+
+
   return (
     <Router>
-      
-      <Suspense fallback={<Loading/>}>
-      <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
-
-        <Routes>
-          <Route path="/" exact element={<About />}/>
-          <Route path="/Home" element={<About />} />
-          <Route path="/buses" element={<Events />} />
-          <Route path="/track" element={<AnnualReport />} />
-          <Route path="/contact" element={<Teams />} />
-          <Route path="/Dev" element={<Blogs />} />
-          <Route path="/help" element={<Blogs/>} />
-          <Route path="/test" element={<Test/>}/>
-          <Route path="/signin" element={<SignUp/>}/>
-          <Route path="/verify-email" element={<VerifyEmail/>}/>
-          <Route path="/loggedin" element={<Loggedin/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-
-
-       
+      <Suspense fallback={<Loading />}>
+        <AuthProvider value={{ currentUser, timeActive, setTimeActive }}>  
+          <Routes>
+            <Route path="/" exact element={<About />} />
+            <Route path="/*" element={<PageNotFound/>} />
+            <Route path="/Home" element={<About />} />
+            <Route path="/buses" element={<Events />} />
+            <Route path="/track" element={<AnnualReport />} />
+            <Route path="/contact" element={<Teams />} />
+            <Route path="/Dev" element={<Blogs />} />
+            <Route path="/help" element={<Blogs />} />
+            <Route path="/test" element={<Test />} />
+            <Route path="/signin" element={<SignUp />} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
+            <Route path="/loggedin" element={<Loggedin />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/temp" element={<Temp/>} />
 
 
-
-
-        </Routes>
+          </Routes>
         </AuthProvider>
       </Suspense>
-     
-
-
-
-
-        
     </Router>
   );
 }

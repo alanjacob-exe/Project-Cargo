@@ -44,8 +44,7 @@ function Login() {
   const [user, setuser]=useState("0")
   const { setTimeActive } = useAuthValue();
   const navigate = useNavigate();
-  console.log(email);
-  console.log(password);
+  
 
   const validatePassword = () => {
     let isValid = true;
@@ -92,7 +91,18 @@ function Login() {
       .catch((err) => setError(err.message));
   };
 
+  console.log(auth.currentUser)
 
+if(auth.currentUser==null)
+{
+  console.log("no user")
+
+}
+else{
+  console.log(" user")
+
+
+}
 
   const handleJustifyClick = (value) => {
     if (value === justifyActive) {
@@ -106,24 +116,24 @@ function Login() {
     <div>
       <MDBContainer
         fluid
-        className="p-4 background-radial-gradient overflow-hidden height"
+        className="p-4 background-radial-gradient overflow-hidden "
       >
         <MDBTabsContent></MDBTabsContent>
         <MDBRow>
           <MDBCol
             md="6"
-            className="text-center text-md-start d-flex flex-column justify-content-center"
+            className="text-center text-md-start d-flex flex-column justify-content-center topcard "
             style={{ marginTop: "-150px" }}
           >
             <h1
-              className="my-5 display-3 fw-bold ls-tight px-3"
+              className="my-5 display-3 fw-bold ls-tight px-3 "
               style={{ color: "hsl(218, 81%, 95%)" }}
             >
               Be a part of <br />
               <span style={{ color: "hsl(218, 81%, 75%)" }}>Project Cargo</span>
             </h1>
 
-            <p className="px-3" style={{ color: "hsl(218, 81%, 85%)" }}>
+            <p className="px-3" style={{ color: "hsl(218, 81%, 85%)", display:"overlay" }}>
               Be a part of our online community and get updated with latest news
               and trends by becoming a member! What are you waiting for? Join us
               today.
@@ -141,10 +151,10 @@ function Login() {
             ></div>
 
             <MDBCard
-              className="my-5  bg-glass"
+              className="my-5  bg-glass logincard"
               style={{ marginBottom: "400px", borderRadius: "12px" }}
             >
-              <MDBCardBody className="p-7 glass">
+              <MDBCardBody className="p-7 glass h-4/5">
                 <MDBCol col="6">
                   <div style={{ padding: "1.25rem" }}>
                     <MDBTabs
@@ -257,9 +267,7 @@ function Login() {
                           <a href="!#">Forgot password?</a>
                         </div>
 
-                        <p className="text-center">
-                          Not a member? <a href="#!">Register</a>
-                        </p>
+                        
                       </MDBTabsPane>
 
                       <MDBTabsPane show={justifyActive === "tab2"}>
