@@ -31,6 +31,8 @@ const Loggedin = React.lazy(() => import("./pages/loggedin/loggedin"));
 const Profile = React.lazy(() => import("./pages/Sign-up/Profile"));
 const PageNotFound=React.lazy(()=>import("./pages/404/404"));
 const Temp=React.lazy(()=>import("./pages/tem/index"))
+const Sim=React.lazy(()=>import("./simulation/tem/index"));
+
 
 
 function App() {
@@ -51,7 +53,7 @@ function App() {
 
   return (
     <Router>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading/>}>
         <AuthProvider value={{ currentUser, timeActive, setTimeActive }}>  
           <Routes>
             <Route path="/" exact element={<About />} />
@@ -68,6 +70,7 @@ function App() {
             <Route path="/loggedin" element={<Loggedin />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/temp" element={<Temp/>} />
+            <Route path="/sim" element={<Sim/>}/>
 
 
           </Routes>

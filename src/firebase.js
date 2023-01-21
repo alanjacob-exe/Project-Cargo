@@ -1,6 +1,10 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCf2cVG0cshwyOkStuY5I7fI6ud8zll2rQ",
@@ -12,7 +16,11 @@ const firebaseConfig = {
 };
 
 // Use these for db & auth
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
 firebase.initializeApp(firebaseConfig);
 var auth = firebase.auth();
 var provider = new firebase.auth.GithubAuthProvider();
-export { auth, provider };
+export { auth, provider, db };

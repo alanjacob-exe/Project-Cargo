@@ -24,9 +24,8 @@ import { TransportMap } from "../../Components/TransportMap";
 import Places3 from "../../Components/BingPlacesApi/Places3";
 import Places4 from "../../Components/BingPlacesApi/places4";
 import Ui from "../../Components/detailsTab";
-import {useAuthValue} from '../Sign-up/AuthContext'
-import Tracker from "../tem";
-
+import { useAuthValue } from "../Sign-up/AuthContext";
+import Tracker from "../../simulation/tem";
 
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
@@ -69,11 +68,10 @@ const AnnualReport = () => {
   const [eta, seteta] = useState("");
   const [traffic, settraffic] = useState("");
   const [distance, setDistance] = useState("");
-  const [isShown, setIsShown] = useState(false);  //for source,destination markers
-  const {currentUser} = useAuthValue()  //for current user details
+  const [isShown, setIsShown] = useState(false); //for source,destination markers
+  const { currentUser } = useAuthValue(); //for current user details
 
-  console.log(currentUser?.email)
-
+  console.log(currentUser?.email);
 
   // const query=data;
   // const [duration,setduration]=useState("");
@@ -108,9 +106,7 @@ const AnnualReport = () => {
     { label: "Areekode", id: "11.235016, 76.051832" },
   ];
 
-
   ///////////////////////////////////////       for finding Polyline ////////////////////////////////
-
 
   const points = async (location1, location2) => {
     // console.log(`${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`)
@@ -124,8 +120,6 @@ const AnnualReport = () => {
       return response.json();
     }
   };
-
-
 
   ///////////////////////////////////////       for finding Polyline ////////////////////////////////
 
@@ -253,7 +247,7 @@ const AnnualReport = () => {
                 <label className="montserrat" style={{ color: "#fff" }}>
                   Enter Your Location:
                 </label>
-                <Autocomplete
+                {/* <Autocomplete
                   disablePortal
                   id="combo-box-demo"
                   sx={{}}
@@ -270,6 +264,14 @@ const AnnualReport = () => {
                       style={{ backgroundColor: "#fff", borderRadius: "12px" }}
                     />
                   )}
+                /> */}
+                <DestinationComplete
+                  options={options}
+                  getOptionLabel={(option) => option.label}
+                  isOptionEqualToValue={(option, value) =>
+                    option.id === value.id
+                  }
+                  onChange={(event, value) => setsource(value)}
                 />
                 <Button variant="contained" onClick={handleClick}>
                   Show Stops

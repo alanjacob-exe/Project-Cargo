@@ -16,6 +16,8 @@ import {
 } from "mdb-react-ui-kit";
 
 import { useEffect } from "react";
+import { TransportMap } from "../../Components/TransportMap";
+import Container from "../../Components/container";
 // import Country from "../Test";
 
 const Events = () => {
@@ -30,10 +32,8 @@ const Events = () => {
   const [coordinates, setcoordinates] = useState("");
   const [destination, setdestination] = useState("");
 
-
-
   const [location, setlocation] = useState("");
-  console.log("location= "+destination.label)
+  console.log("location= " + destination.label);
   const fetchData = async (location) => {
     const response = await fetch(`${baseURL1}${location}${baseURL2}${key}`);
     console.log(`${baseURL1}${location}${baseURL2}${key}`);
@@ -85,43 +85,12 @@ const Events = () => {
   ];
 
   return (
-    <div className="width height color">
-      <div>
-        <Navbar />
+    <div>
+      <Container ></Container>
+      <Container location="kottakkal"></Container>
+      <Container location="perinthalmanna"></Container>
 
-        <div>
-          <div style={{ position: "relative" }}>
-            {/* <div className="border rightbox" style={{ marginTop: "6%" }}>
-            <Autocomplete
-                  disablePortal
-                  id="combo-box-demo"
-                  options={options}
-                  getOptionLabel={(option) => option.label}
-                  isOptionEqualToValue={(option, value) =>
-                    option.id === value.id
-                  }
-                  onChange={(event, value) => setdestination(value)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Destination"
-                      style={{ backgroundColor: "#fff", borderRadius: "12px" }}
-                    />
-                  )}
-                />
-              
-              <Button
-                className="button"
-                variant="contained"
-                onClick={() => fetchData(destination.label)}
-              >
-                clickme
-              </Button> */}
-              <div>hello</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
   );
 };
 

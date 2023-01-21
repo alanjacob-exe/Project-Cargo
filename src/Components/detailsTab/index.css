@@ -12,7 +12,7 @@
   backdrop-filter: saturate(200%) blur(25px);
 }
 .container {
-  width: 65vw;
+  width: 75vw;
   height: 20vh;
   border-radius: 12px;
   border: 2px;

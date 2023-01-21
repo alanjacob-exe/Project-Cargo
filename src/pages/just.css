@@ -1,62 +1,50 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
-
-.parentcontainer {
-  position: relative;
-  width: 50%;
-  height: 10%;
-  border-style: solid;
-  font-family: "Inter", sans-serif;
-}
-.container {
-  width: 75vw;
-  height: 20vh;
-  border-radius: 12px;
-  border-color: red;
-  border: 2px;
-  background-color: #d9d9d9;
-}
-.section1 {
-  float: left;
-  position: relative;
-  width: 33%;
-  font-family: "Inter", sans-serif;
-  font-size: 25px;
-}
-.section2 {
-  float: left;
-  position: relative;
-  width: 33%;
-  font-family: "Inter", sans-serif;
-  font-size: 25px;
-  background-color: #404040;
-  height: 100%;
-  color:#fff;
-}
-.section3 {
-  float: left;
-  position: relative;
-  width: 34%;
-  font-family: "Inter", sans-serif;
-  font-size: 25px;
-  background-color: #404040;
-  height: 100%;
-  color:#fff;
-
+.addTask{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  z-index: 100;
+  width:50vw;
+  height:70vh;
 }
 
-.top1 {
-  margin-top: 7%;
-  position: relative;
-  margin-left: 3%;
+.addTask input{
+  height: 40px;
+  border: unset;
+  font-size: 18px;
+  box-sizing: border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing: border-box;
+  border-bottom: 1.5px solid hsl(210, 10%, 75%);
+  padding-left: 5px;
 }
 
-.down {
-  margin-left: 3%;
-  margin-top: 15px;
+.addTask input:focus{
+  outline: none;
 }
 
-.App{
-  margin-top:50%;
-  text-align:center;
-  height:100vh;
+.addTask button {
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: hsl(210, 12%, 15%);
+}
+
+.addTask textarea {
+  height: 30px;
+  border-color: hsl(210, 10%, 75%);
+  padding: 5px;
+  font-size: 18px;
+}
+
+.addTask textarea:focus { 
+  outline: none;
+}
+
+.addTask button:hover {
+  background-color: hsl(210, 12%, 25%);
+}
+
+.addTask button:active {
+  background-color: hsl(210, 12%, 15%);
 }

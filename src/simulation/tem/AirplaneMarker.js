@@ -11,6 +11,7 @@ const icon = L.icon({
   iconUrl: airplaneIcon
 });
 
+
 export default function AirplaneMarker({ data }) {
   const  lat  = data[0];
   const  lng  = data[1];
