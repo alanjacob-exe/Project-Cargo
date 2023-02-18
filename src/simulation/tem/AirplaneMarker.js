@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 import L from "leaflet";
 
-import airplaneIcon from "./airplane.jpg";
+import airplaneIcon from "../../Photos/busIcon.png";
 import { Popup } from "react-leaflet";
 
 const icon = L.icon({
@@ -12,11 +12,11 @@ const icon = L.icon({
 });
 
 
-export default function AirplaneMarker({ data }) {
+export default function AirplaneMarker({ data,display }) {
   const  lat  = data[0];
   const  lng  = data[1];
 
-  console.log(lat)
+  // console.log([lat,lng])
   const [prevPos, setPrevPos] = useState([lat, lng]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function AirplaneMarker({ data }) {
       previousPosition={prevPos}
       duration={1000}
     >
-      <Popup>{"Hello, there! 🐱‍🏍 "}</Popup>
+      <Popup>{display}</Popup>
     </LeafletTrackingMarker>
   );
 }

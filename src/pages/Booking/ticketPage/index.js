@@ -1,5 +1,6 @@
 import React from 'react'
-import './just.css'
+import './index.css'
+import { Navigate } from 'react-router-dom'
 export default function TicketPage({ history }) {
 
     const handleSignOut = e => {                          //signoutt
@@ -12,7 +13,7 @@ export default function TicketPage({ history }) {
     }
     const handleBookAgainIcon = e => {                   //redirect to booking page
         e.preventDefault()
-        history.push('/routes')
+        Navigate('/routes')
     }
     const getLocationData = () => {                               //pass location and destination
         let from = localStorage.getItem("start")

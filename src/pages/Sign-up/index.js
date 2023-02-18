@@ -23,28 +23,32 @@ import { useContext } from "react";
 
 import "./index.css";
 import { useState } from "react";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuthValue } from "./AuthContext";
+import { doc, setDoc } from "firebase/firestore";
 
 import "./forms.css";
 import userEvent from "@testing-library/user-event";
+import Modal from "../../Components/Modal";
 
 function Login() {
   const [email, setEmail] = useState("");
+  const [Name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [justifyActive, setJustifyActive] = useState("tab1");
-  const [user, setuser]=useState("0")
+  const [user, setuser] = useState("0");
   const { setTimeActive } = useAuthValue();
   const navigate = useNavigate();
-  
+  const pageLocation = useLocation();
 
   const validatePassword = () => {
     let isValid = true;
@@ -57,52 +61,101 @@ function Login() {
     return isValid;
   };
 
-  const register = (e) => {
+  // useEffect(() => {
+  //   if (!isLoggedin) {
+  //     navigate("/signin");
+  //     console.log("here"+isLoggedin)
+  //   } else {
+  //     navigate("/track");
+  //   }
+  // }, [isLoggedin]);
+
+  // const register = (e) => {
+  //   e.preventDefault();
+  //   setError("");
+  //   if (validatePassword()) {
+  //     // Create a new user with email and password using firebase
+  //     createUserWithEmailAndPassword(auth, email, password)
+  //       .then(() => {
+  //         console.log("user created with email:"+email+"password"+password)
+  //       })
+  //       .catch((err) => setError(err.message));
+  //   }
+  //   setEmail("");
+  //   setPassword("");
+  //   setConfirmPassword("");
+  // };
+
+  // const login = async(e)=>{
+  //   e.preventDefault();
+  //   try{
+  //     const res=await signInWithEmailAndPassword(auth,email,password)
+
+  //   }
+  //   catch(e)
+
+  // }
+  const register = async (e) => {
+    // setIsLoading(true);
+
     e.preventDefault();
-    setError("");
-    if (validatePassword()) {
-      // Create a new user with email and password using firebase
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          console.log("user created with email:"+email+"password"+password)
-        })
-        .catch((err) => setError(err.message));
+
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+
+      await updateProfile(res.user, {
+        displayName: Name,
+      });
+
+      const doctorsRef = doc(db, "users", res.user.email);
+      await setDoc(doctorsRef, {
+        email,
+        password,
+      });
+
+      localStorage.setItem("user", JSON.stringify(res.user));
+
+      // setIsLoading(false);
+
+      // navigate();
+    } catch (e) {
+      // setIsLoading(false);
     }
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
   };
+
+  // console.log("user=="+localStorage.getItem('user', JSON.stringify(user))
 
   const login = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        if(!auth.currentUser.emailVerified) {
+        if (!auth.currentUser.emailVerified) {
           sendEmailVerification(auth.currentUser)
-          .then(() => {
-            setTimeActive(true)
-            navigate('/verify-email')
-          })
-        .catch(err => alert(err.message))
-      }else{
-        navigate('/profile')
-      }
+            .then(() => {
+              setTimeActive(true);
+              navigate("/verify-email");
+            })
+            .catch((err) => alert(err.message));
+        } else {
+          navigate("/profile");
+          // sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+        }
       })
       .catch((err) => setError(err.message));
   };
 
-  console.log(auth.currentUser)
+  //   console.log(auth.currentUser)
 
-if(auth.currentUser==null)
-{
-  console.log("no user")
+  // if(auth.currentUser==null)
+  // {
+  //   console.log("no user")
 
-}
-else{
-  console.log(" user")
+  // }
+  // else{
+  //   console.log(" user")
 
-
-}
+  // }
+  // console.log("session storage "+sessionStorage.getItem('Auth Token'))
 
   const handleJustifyClick = (value) => {
     if (value === justifyActive) {
@@ -133,7 +186,10 @@ else{
               <span style={{ color: "hsl(218, 81%, 75%)" }}>Project Cargo</span>
             </h1>
 
-            <p className="px-3" style={{ color: "hsl(218, 81%, 85%)", display:"overlay" }}>
+            <p
+              className="px-3"
+              style={{ color: "hsl(218, 81%, 85%)", display: "overlay" }}
+            >
               Be a part of our online community and get updated with latest news
               and trends by becoming a member! What are you waiting for? Join us
               today.
@@ -266,8 +322,6 @@ else{
                           />
                           <a href="!#">Forgot password?</a>
                         </div>
-
-                        
                       </MDBTabsPane>
 
                       <MDBTabsPane show={justifyActive === "tab2"}>
@@ -318,6 +372,17 @@ else{
                           <p className="text-center mt-3">or:</p>
                         </div>
                         {error && <div className="auth__error">{error}</div>}
+                        <MDBInput
+                          type="Name"
+                          value={Name}
+                          required
+                          label="Name"
+                          onChange={(e) => setName(e.target.value)}
+                          sx={{
+                            backgroundColor: "#fff",
+                            borderRadius: "12px",
+                          }}
+                        />
 
                         <form name="registration_form" onSubmit={register}>
                           <MDBInput
@@ -380,5 +445,4 @@ else{
 
 export default Login;
 
-export const emailContext=createContext(auth.currentUser);
-
+export const emailContext = createContext(auth.currentUser);

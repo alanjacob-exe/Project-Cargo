@@ -2,7 +2,6 @@
 
 .parentcontainer {
   position: relative;
-  width: 50%;
   height: 10%;
   border-style: solid;
   font-family: "Inter", sans-serif;
@@ -12,7 +11,7 @@
   backdrop-filter: saturate(200%) blur(25px);
 }
 .container {
-  width: 75vw;
+  
   height: 20vh;
   border-radius: 12px;
   border: 2px;
@@ -21,14 +20,14 @@
 .section1 {
   float: left;
   position: relative;
-  width: 33%;
+  width: 30%;
   font-family: "Inter", sans-serif;
   font-size: 25px;
 }
 .section2 {
   float: left;
   position: relative;
-  width: 33%;
+  width: 36%;
   font-family: "Inter", sans-serif;
   font-size: 25px;
   height: 100%;

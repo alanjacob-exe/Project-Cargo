@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+
 import DestinationComplete from "../../Components/Autocomplete/DestinationAutocomplete";
 import Footer from "../../Components/Footer";
 import "./annual.css";
@@ -18,6 +19,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Button } from "@mui/material";
 import Places2 from "../../Components/BingPlacesApi/PlacesApi2";
+import { useHistory } from "react-router-dom";
 
 import { useState } from "react";
 import { TransportMap } from "../../Components/TransportMap";
@@ -26,6 +28,27 @@ import Places4 from "../../Components/BingPlacesApi/places4";
 import Ui from "../../Components/detailsTab";
 import { useAuthValue } from "../Sign-up/AuthContext";
 import Tracker from "../../simulation/tem";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  getDocs,
+} from "firebase/firestore";
+import { db } from "../../firebase";
+import Buslist from "../../Components/busList/index";
+import {
+  MDBBtn,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+} from "mdb-react-ui-kit";
+import Modal from "../../Components/Modal/index";
 
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
@@ -38,6 +61,7 @@ const pointurl3 = "&optmz=distance&routeAttributes=routePath&output=json&key=";
 const AnnualReport = () => {
   const position = [10.95590759312288, 76.22946062699094];
   const position2 = [11.0568857, 76.0956861];
+  let pageLocation = useLocation();
 
   const [pointers, Setpointers] = useState("");
   // console.log("pointers:  "+pointers[0])
@@ -63,15 +87,54 @@ const AnnualReport = () => {
   // console.log(source.label);
   // console.log(destination.label);
 
-  const [data, setData] = useState("");
+  const [data, setData] = useState(null);
   const [duration, setduration] = useState("00");
   const [eta, seteta] = useState("");
   const [traffic, settraffic] = useState("");
   const [distance, setDistance] = useState("");
   const [isShown, setIsShown] = useState(false); //for source,destination markers
   const { currentUser } = useAuthValue(); //for current user details
+  const { isLoggedin } = useAuthValue();
+  const navigate = useNavigate();
+  const prevLocation = useLocation();
+  const [appointments, setAppointments] = useState("");
 
-  console.log(currentUser?.email);
+  console.log("useelocation====" + prevLocation.pathname);
+
+  // useEffect(() => {
+
+  //   const fetchPost = async () => {
+  //       await getDocs(collection(db, "buses")).then((querySnapshot) => {
+  //         const newData = querySnapshot.docs.map((doc) => ({
+  //           info: doc.data(),
+  //           id: doc.id,
+  //         }));
+  //         setbuses(setInfo);
+  //         console.log(buses, setInfo);
+  //       });
+  //     };
+
+  // }, [])
+
+  ///////////////////////////////////////Changing Style After Click   ///////////////////////
+
+  const [style, setStyle] = useState("dashboard");
+  const [infostyle, setInfoStyle] = useState("infotab");
+
+  const changeDashboard = () => {
+    console.log("you just clicked");
+
+    setStyle("dashboardAfter");
+  };
+
+  const changeDetailsTab = () => {
+    console.log("you just clicked");
+
+    setInfoStyle("infotabAfter");
+  };
+
+  // console.log("current user=" + currentUser?.email);
+  // console.log(isLoggedin);
 
   // const query=data;
   // const [duration,setduration]=useState("");
@@ -90,6 +153,17 @@ const AnnualReport = () => {
     // setIsShown(true);
   };
 
+  ///////////////////////////////////////// to redirect if theuser is not logged in///////////////////
+  useEffect(() => {
+    // Checking if user is not loggedIn
+    if (!localStorage.getItem("user")) {
+      navigate("/signin");
+    } else {
+      navigate("/track");
+    }
+  }, []);
+
+  console.log("logged in?" + isLoggedin);
   const options = [
     { label: "Perinthalmanna", id: "10.976088, 76.225511" },
     { label: "Manjeri", id: "11.1192317,76.1207973" },
@@ -109,7 +183,9 @@ const AnnualReport = () => {
   ///////////////////////////////////////       for finding Polyline ////////////////////////////////
 
   const points = async (location1, location2) => {
-    // console.log(`${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`)
+    // console.log(
+    //   `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
+    // );
     const response = await fetch(
       `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
     );
@@ -134,7 +210,7 @@ const AnnualReport = () => {
         }
       })
       .catch((e) => {
-        console.log(e.message);
+        console.error(e.message);
       });
   }, [mapSource, mapDestination]);
 
@@ -161,7 +237,7 @@ const AnnualReport = () => {
 
   const sourceData = async (location) => {
     const response = await fetch(`${baseURL1}${location}${baseURL2}${key}`);
-    console.log(`${baseURL1}${location}${baseURL2}${key}`);
+    // console.log(`${baseURL1}${location}${baseURL2}${key}`);
 
     if (!response.ok) {
       throw new Error("Data coud not be fetched!");
@@ -172,7 +248,7 @@ const AnnualReport = () => {
 
   const destData = async (location) => {
     const response = await fetch(`${baseURL1}${location}${baseURL2}${key}`);
-    console.log(`${baseURL1}${location}${baseURL2}${key}`);
+    // console.log(`${baseURL1}${location}${baseURL2}${key}`);
 
     if (!response.ok) {
       throw new Error("Data coud not be fetched!");
@@ -227,6 +303,118 @@ const AnnualReport = () => {
       });
   }, [destination.label]);
 
+  useEffect(() => {
+    const q = query(collection(db, "buses"), orderBy("created", "desc"));
+    onSnapshot(q, (querySnapshot) => {
+      setbuses(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
+
+  ///////////////////////////////    collecting data from database  ////////////////////
+
+  const [buses, setbuses] = useState([]);
+  const [info, setInfo] = useState([]);
+
+  const [click, setclick] = useState(false);
+
+  const fetchPost = async () => {
+    await getDocs(collection(db, "buses")).then((querySnapshot) => {
+      const newData = querySnapshot.docs.map((doc) => ({
+        info: doc.data(),
+        id: doc.id,
+      }));
+      setbuses(setInfo);
+      console.log(buses, setInfo);
+    });
+  };
+
+  useEffect(() => {
+    fetchPost();
+  }, [click]);
+
+  function isClicked() {
+    if (click === false) {
+      console.log("this is   true");
+      setclick(true);
+
+      return true;
+    } else {
+      console.log("this is    false");
+      setclick(false);
+
+      return false;
+    }
+  }
+
+  // const [busdetails, setbusdetails] = useState("");
+  // useEffect(() => {
+  //   const currentUser = JSON.parse(localStorage.getItem("user"));
+  //   const fetchPost = async () => {
+  //     await getDocs(collection(db, "buses")).then((querySnapshot) => {
+  //       const newData = querySnapshot.docs.map((doc) => ({
+  //         info: doc.data(),
+  //         id: doc.id,
+  //       }));
+  //       setbuses(setInfo);
+  //       console.log(buses, setInfo);
+  //     });
+  //   };
+  // }, []);
+
+  // console.log("userdetails"+currentUser.displayName)
+  // console.log("busname====" + setbuses[0].data.busName);
+
+  // console.log("isloggedin"+isLoggedin)
+
+  /////////////////////////////batabse communication////////////
+const [busColl, setbusColl] = useState([])
+
+useEffect(() => {
+  const q = query(collection(db, "buses"));
+  onSnapshot(q, (querySnapshot) => {
+    setbusColl(
+      querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        data: doc.data(),
+      }))
+    );
+  });
+}, []);
+console.log(busColl)
+
+
+  // const busCollection = async () => {
+  //   const response=db.collection("buses");
+  //   const data= await response.get()
+  //   data.docs.forEach(item=>{
+  //     setbusColl([...busColl,item.data()])
+  //   })
+  // };
+
+  // useEffect(() => {
+  //   busCollection();
+  // }, [])
+
+  // console.log(busColl)
+
+
+  const [centredModal, setCentredModal] = useState(false);
+
+  const handleFindButtonClick = () => {
+    setCentredModal(!centredModal);
+    console.log("centered modal" + centredModal);
+  };
+
+  const toggleShow = () => {
+    setCentredModal(!centredModal);
+    console.log("centered modal" + centredModal);
+  };
+
   return (
     <div className="height firstwidth color top ">
       <Navbar />
@@ -242,7 +430,7 @@ const AnnualReport = () => {
       <div>
         <MDBCard className="bg-glass width card1">
           <MDBCardBody className="  cardcontainer">
-            <div className="dashboard ">
+            <div className={style}>
               <div className="dashbody">
                 <label className="montserrat" style={{ color: "#fff" }}>
                   Enter Your Location:
@@ -305,15 +493,21 @@ const AnnualReport = () => {
                   className="button"
                   variant="contained"
                   onClick={() => {
+                    changeDashboard();
+                    changeDetailsTab();
                     setmapSource(source.id);
                     setmapDestionation(destination.id);
-                    // console.log("mapsource is:" + mapSource);
-                    // console.log("map destination is:" + mapDestination);
-                    // <TransportMap mapsource={source.id}/>
+                    isClicked();
                   }}
                 >
                   Find!
                 </Button>
+                <Button></Button>
+                {/* </div>
+              {/* <div>
+                {buses.map((busdetails) => (
+                  <Buslist key={busdetails.id} Name={busdetails[0].data.busName} />
+                ))} */}
               </div>
             </div>
             <div className="view ">
@@ -329,11 +523,11 @@ const AnnualReport = () => {
                   location1={sourceCoordinate}
                   location2={destinationcoordinate}
                   pointers={pointers}
-                  isShown={isShown}
+                  isShown={isShown} //for displaying busstop on map
                 />
               </div>
             </div>
-            <div className="bg-glass infotab">
+            <div className={infostyle}>
               <Ui
                 source={source.label}
                 destination={destination.label}
@@ -343,6 +537,7 @@ const AnnualReport = () => {
                 distance={distance}
               ></Ui>
             </div>
+            <div></div>
           </MDBCardBody>
         </MDBCard>
       </div>

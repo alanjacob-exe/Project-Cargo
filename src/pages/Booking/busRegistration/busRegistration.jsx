@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import {db} from "../../firebase"
+import {db} from "../../../firebase"
 import { Button } from "@mui/material";
 export default function FormExample5() {
   const [companyName, setcompanyName] = useState(null);

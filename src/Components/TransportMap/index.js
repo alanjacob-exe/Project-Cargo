@@ -26,8 +26,8 @@ export function TransportMap(position) {
   const destinationBusstops = nearbyBusstops(marker2);
 
   // console.log("location 2 " + position.location2);
-  console.log("points"+polyline[2]);
-  console.log("Destination Busstops " + destinationBusstops);
+  // console.log("points"+polyline[2]);
+  // console.log("Destination Busstops " + destinationBusstops);
 
 
 
@@ -50,11 +50,11 @@ export function TransportMap(position) {
     var newEast = [new_latitude[2], coor[0]];
     var newWest = [new_latitude[3], coor[0]];
 
-    console.log("north" + newNorth);
-    console.log("south" + newSouth[1]);
+    // console.log("north" + newNorth);
+    // console.log("south" + newSouth[1]);
 
-    console.log("East" + newEast);
-    console.log("West" + newWest);
+    // console.log("East" + newEast);
+    // console.log("West" + newWest);
 
     function ToNorthPosition(coordinate) {
       var North = coordinate[0] + (1 / r_earth) * (180 / pi);
@@ -160,7 +160,7 @@ export function TransportMap(position) {
       const value = index4[i];
       coordinates[i] = data.features[value].geometry.coordinates;
     }
-    console.log(index4)
+    // console.log(index4)
     return index4;
     // return coordinates[1];
   }
@@ -169,7 +169,7 @@ export function TransportMap(position) {
 
   for(var i=0;i<sourceBusstops.length;i++){
     var value=sourceBusstops[i];
-    console.log("list"+sourceBusstops[i])
+    // console.log("list"+sourceBusstops[i])
     maarker.push(sourceBusstops[i]);
 
   }
@@ -180,9 +180,9 @@ export function TransportMap(position) {
   //   maarker1.push([data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]);
 
   // } 
-  console.log("maarker:"+maarker);
+  // console.log("maarker:"+maarker);
 
-  console.log("name:"+data.features[325].properties["name"]);
+  // console.log("name:"+data.features[325].properties["name"]);
 
   // const indexelements=sourceBusstops.map((value)=> value*2)
   // console.log("double elements"+indexelements)

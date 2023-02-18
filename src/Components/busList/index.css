@@ -1,0 +1,48 @@
+.buslist {
+    width: 272px;
+    height: 500px;
+    background-color: #000;
+  }
+  .list {
+    margin-top:2%;
+    border-style: solid;
+    border-color: red;
+    height: 100px;
+    color: #fff;
+    border-radius:12px;
+    border:1px solid white;
+    transition: 1s;
+
+
+  }
+  .list:hover{
+    height:150px;
+  }
+  
+  .bg-glass {
+    background-color: hsla(0, 0%, 90%, 0.3) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+  }
+  .businfo {
+    color: #fff;
+  }
+  .time {
+    margin-top:2%;
+    margin-left:3%;
+    font-size:18px;
+  
+  }
+  .arrival {
+    float: left;
+    width: 40%;
+  }
+  
+  .name {
+    font-size: 20px;
+    margin-left:3%;
+  
+  }
+  .button {
+    text-align: center;
+  }
+  

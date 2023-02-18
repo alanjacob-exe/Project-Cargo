@@ -24,3 +24,4 @@ firebase.initializeApp(firebaseConfig);
 var auth = firebase.auth();
 var provider = new firebase.auth.GithubAuthProvider();
 export { auth, provider, db };
+export default db;

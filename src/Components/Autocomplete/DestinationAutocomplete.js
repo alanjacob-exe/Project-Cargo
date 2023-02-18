@@ -16,7 +16,7 @@ export default function DestinationComplete({
       disablePortal
       id="combo-box-demo"
       options={options}
-      sx={{ width: 300 }}
+      sx={{}}
       getOptionLabel={getOptionLabel}
       getOptionSelected={getOptionSelected}
       onChange={onChange}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaAngleDoubleDown } from "react-icons/fa";
-import './just.css'
+import './index.css'
 export default function SeatSelection() {
     const [name, setName] = useState([])
     const [arrowDown, setArrowDown] = useState(false)

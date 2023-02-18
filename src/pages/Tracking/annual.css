@@ -129,12 +129,15 @@ body {
 .dashboard {
   float: left;
   width: 22%;
-  height: 74%;
+  height: 75%;
   margin-left: 1%;
   background-color: hsla(0, 0%, 90%, 0.3);
   border-radius: 12px;
   margin-right: 2%;
+  transition: width 2s;
+
 }
+
 .view {
   float: left;
   height: 75%;
@@ -179,4 +182,42 @@ body {
   bottom: 2%;
   margin-left: 10%;
   border-radius: 12px;
+  width:70%;
+  transition: width 2s;
+
+  
+
+}
+
+
+
+.infotabAfter{
+  height: 20%;
+  position: absolute;
+  bottom: 2%;
+  margin-left: 23%;
+  border-radius: 12px;
+  background-color: hsla(0, 0%, 90%, 0.3) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+
+  
+}
+.dashboardAfter{
+  float: left;
+  width: 22%;
+  height: 100%;
+  margin-left: 1%;
+  background-color: hsla(0, 0%, 90%, 0.3);
+  border-radius: 12px;
+  margin-right: 2%;
+  transition: width 2s;
+
+}
+
+.busdetails{
+  width:100%;
+  height:50%;
+  color:#000;
+  border-radius:12px;
+  
 }

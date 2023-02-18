@@ -1,6 +1,11 @@
 import React, { Suspense } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Loading from "./pages/Loading";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthProvider } from "./pages/Sign-up/AuthContext";
@@ -29,35 +34,69 @@ const Test = React.lazy(() => import("./pages/just"));
 const VerifyEmail = React.lazy(() => import("./pages/Sign-up/VerifyEmail"));
 const Loggedin = React.lazy(() => import("./pages/loggedin/loggedin"));
 const Profile = React.lazy(() => import("./pages/Sign-up/Profile"));
-const PageNotFound=React.lazy(()=>import("./pages/404/404"));
-const Temp=React.lazy(()=>import("./pages/tem/index"))
-const Sim=React.lazy(()=>import("./simulation/tem/index"));
-
-
-
+const PageNotFound = React.lazy(() => import("./pages/404/404"));
+const Temp = React.lazy(() => import("./pages/tem/index"));
+const Sim = React.lazy(() => import("./simulation/tem/index"));
+const SeatSelection = React.lazy(() => import("./pages/Booking/seatSelection"));
+const Ticket = React.lazy(() => import("./pages/Booking/ticketPage/index"));
+const BusRegistration=React.lazy(()=> import("./pages/Booking/busRegistration/busRegistration"))
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [timeActive, setTimeActive] = useState(false);
-  const [isLoggedin, setisLoggedin] = useState(false)
+  const [isLoggedin, setisLoggedin] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      setisLoggedin(true)
+
+      if (user) {
+        setisLoggedin(true);
+        localStorage.setItem('user', JSON.stringify(currentUser));
+
+        // console.log("from appjs"+isLoggedin)
+      } else {
+        setisLoggedin(false);
+      }
     });
+  }, [currentUser]);
+
+  useEffect(() => {
+    // localStorage.setItem('user', JSON.stringify(currentUser));
+  }, [currentUser]);
+
+  // if(localStorage.getItem("user"))
+  // {
+  //   const locuser = JSON.parse(localStorage.getItem('user'));
+  //   console.log("user from app"+locuser.email)
+  // }
+
+  const usernow = JSON.parse(localStorage.getItem("user"));
+
+  console.log(usernow);
+  useEffect(() => {
+    // if(!currentUser.uid)
+    //     {
+    //       setisLoggedin(true)
+    //       console.log("true")
+    //     }
+    //     else{
+    //     setisLoggedin(false)
+    //     console.log("false")
+    //     }
   }, []);
 
-
-
-
+  // console.log("useremail?"+ currentUser?.email)
+  // console.log("is logged in"+isLoggedin)
 
   return (
     <Router>
-      <Suspense fallback={<Loading/>}>
-        <AuthProvider value={{ currentUser, timeActive, setTimeActive }}>  
+      <Suspense fallback={<Loading />}>
+        <AuthProvider
+          value={{ currentUser, timeActive, setTimeActive, isLoggedin }}
+        >
           <Routes>
             <Route path="/" exact element={<About />} />
-            <Route path="/*" element={<PageNotFound/>} />
+            <Route path="/*" element={<PageNotFound />} />
             <Route path="/Home" element={<About />} />
             <Route path="/buses" element={<Events />} />
             <Route path="/track" element={<AnnualReport />} />
@@ -69,10 +108,11 @@ function App() {
             <Route path="/verify-email" element={<VerifyEmail />} />
             <Route path="/loggedin" element={<Loggedin />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/temp" element={<Temp/>} />
-            <Route path="/sim" element={<Sim/>}/>
-
-
+            <Route path="/temp" element={<Temp />} />
+            <Route path="/sim" element={<Sim />} />
+            <Route path="/seatselection" element={<SeatSelection />} />
+            <Route path="/ticket" element={<Ticket />} />
+            <Route path="/registration" element={<BusRegistration/>}/>
           </Routes>
         </AuthProvider>
       </Suspense>
