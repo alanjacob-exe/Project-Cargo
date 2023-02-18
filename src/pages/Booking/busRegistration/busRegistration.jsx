@@ -83,7 +83,7 @@ export default function FormExample5() {
               Bus Number
             </label>
             <input
-            onChange={(e) => setbusNumber(e.target.value)}
+            onChange={(e) => setbusNumber(e.target.value.toUpperCase())}
             value={busNumber}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -97,8 +97,7 @@ export default function FormExample5() {
               Start city
             </label>
             <input
-            onChange={(e) => setstartCity(e.target.value)}
-            placeholder="StartCity"
+            onChange={(e) => setstartCity(e.target.value.toUpperCase())}
             value={startCity}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -112,8 +111,7 @@ export default function FormExample5() {
               DestinationCity
             </label>
             <input
-            onChange={(e) => setdestinationCity(e.target.value)}
-            placeholder="DEstination city"
+            onChange={(e) => setdestinationCity(e.target.value.toUpperCase())}
             value={destinationCity}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -128,7 +126,6 @@ export default function FormExample5() {
             </label>
             <input
             onChange={(e) => setavailableSeates(e.target.value)}
-            placeholder="Available seats"
             value={availableSeates}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -143,7 +140,6 @@ export default function FormExample5() {
             </label>
             <input
             onChange={(e) => settotalSeats(e.target.value)}
-            placeholder="Total seats"
             value={totalSeats}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -158,7 +154,6 @@ export default function FormExample5() {
             </label>
             <input
             onChange={(e) => setpricePerSeat(e.target.value)}
-            placeholder="Price Per Seat"
             value={pricePerSeat}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -173,7 +168,6 @@ export default function FormExample5() {
             </label>
             <input
             onChange={(e) => setbookedSeats(e.target.value)}
-            placeholder="Booked Seats"
             value={bookedSeats}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -187,23 +181,20 @@ export default function FormExample5() {
               BusName
             </label>
             <input
-            onChange={(e) => setbusName(e.target.value.toUpperCase())}
+            onChange={(e) => setbusName(e.target.value)}
             value={busName}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mt-6">
-            <Button type="submit">Register</Button>
+            <Button variant="contained" type="submit" sx={{}}>Register</Button>
           </div>
         </form>
 
         <p className="mt-8 text-xs font-light text-center text-gray-700">
           {" "}
-          Already have an account?{" "}
-          <a href="#" className="font-medium text-indigo-600 hover:underline">
-            Sign in
-          </a>
+          
         </p>
       </div>
     </div>
