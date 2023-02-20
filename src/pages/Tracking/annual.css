@@ -116,7 +116,7 @@ body {
 .cardcontainer {
   margin-top: 6%;
   height: 65vh;
-  width:100vw;
+  width: 100vw;
   margin-left: 20px;
 }
 .border {
@@ -129,13 +129,13 @@ body {
 .dashboard {
   float: left;
   width: 22%;
-  height: 75%;
+  height: 74%;
   margin-left: 1%;
   background-color: hsla(0, 0%, 90%, 0.3);
   border-radius: 12px;
   margin-right: 2%;
-  transition: width 2s;
-
+  transition: 2s;
+  overflow:hidden;
 }
 
 .view {
@@ -179,30 +179,26 @@ body {
 .infotab {
   height: 20%;
   position: absolute;
-  bottom: 2%;
+  bottom:3%;
   margin-left: 10%;
   border-radius: 12px;
-  width:70%;
+  /* width: 60%; */
   transition: width 2s;
-
-  
-
+}
+.busmap {
 }
 
-
-
-.infotabAfter{
+.infotabAfter {
   height: 20%;
   position: absolute;
   bottom: 2%;
-  margin-left: 23%;
+  width: 70%;
+  margin-left: 24%;
   border-radius: 12px;
-  background-color: hsla(0, 0%, 90%, 0.3) !important;
-  backdrop-filter: saturate(200%) blur(25px);
-
   
+  transition: 1s;
 }
-.dashboardAfter{
+.dashboardAfter {
   float: left;
   width: 22%;
   height: 100%;
@@ -210,14 +206,14 @@ body {
   background-color: hsla(0, 0%, 90%, 0.3);
   border-radius: 12px;
   margin-right: 2%;
-  transition: width 2s;
+  transition: 1s;
+  overflow:hidden;
 
 }
 
-.busdetails{
-  width:100%;
-  height:50%;
-  color:#000;
-  border-radius:12px;
-  
+.busdetails {
+  width: 100%;
+  height: 50%;
+  color: #000;
+  border-radius: 12px;
 }

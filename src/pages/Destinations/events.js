@@ -1,97 +1,62 @@
 import React from "react";
 import Navbar from "../../Components/Navbar";
 import "./event.css";
-import { useState } from "react";
-import Autocomplete from "@mui/material/Autocomplete";
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBCheckbox,
-  MDBIcon,
-} from "mdb-react-ui-kit";
 
-import { useEffect } from "react";
-import { TransportMap } from "../../Components/TransportMap";
-import Container from "../../Components/container";
-// import Country from "../Test";
-
-const Events = () => {
-  var async = require("async");
-  const baseURL =
-    "https://dev.virtualearth.net/REST/v1/Locations?q=aluva&key=AkZCq_Islhah9akzIeF4n7sG0nOiw3MRjNYDx3FK9-mI16gbmjGvBe3RP8QYD4N2";
-  const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
-  const baseURL2 = "&key=";
-
-  const key = process.env.REACT_APP_BING_KEY;
-  const [countryItems, initCountry] = useState([]);
-  const [coordinates, setcoordinates] = useState("");
-  const [destination, setdestination] = useState("");
-
-  const [location, setlocation] = useState("");
-  console.log("location= " + destination.label);
-  const fetchData = async (location) => {
-    const response = await fetch(`${baseURL1}${location}${baseURL2}${key}`);
-    console.log(`${baseURL1}${location}${baseURL2}${key}`);
-
-    if (!response.ok) {
-      throw new Error("Data coud not be fetched!");
-    } else {
-      return response.json();
-    }
-  };
-
-  useEffect(() => {
-    fetchData(destination.label)
-      .then((data) => {
-        if (
-          data.resourceSets &&
-          data.resourceSets.length > 0 &&
-          data.resourceSets[0].resources &&
-          data.resourceSets[0].resources.length > 0
-        ) {
-          var firstResult = data.resourceSets[0].resources[0];
-          var latitude = firstResult.point.coordinates[0];
-          var longitude = firstResult.point.coordinates[1];
-          console.log(latitude, longitude);
-          setcoordinates([latitude, longitude]);
-          console.log("coordinates are" + [latitude, longitude]);
-          return coordinates;
-        }
-      })
-      .catch((e) => {
-        console.log(e.message);
-      });
-  }, [destination.label]);
-  // console.log(location);
-  const options = [
-    { label: "Perinthalmanna", id: "1" },
-    { label: "Manjeri", id: "3" },
-    { label: "Kottakkal", id: "4" },
-    { label: "Malappuram", id: "5" },
-    { label: "Wandoor", id: "6" },
-    { label: "Tirur", id: "7" },
-    { label: "Ponnani", id: "8" },
-    { label: "Vengar", id: "3" },
-    { label: "Parappanangadi", id: "3" },
-    { label: "Cherpulaserri", id: "3" },
-    { label: "Nilambur", id: "3" },
-    { label: "Kottayam", id: "3" },
-    { label: "Areekode", id: "3" },
-  ];
-
+export default function Events(props) {
   return (
-    <div>
-      <Container ></Container>
-      <Container location="kottakkal"></Container>
-      <Container location="perinthalmanna"></Container>
+      <div>
+        <Navbar/>
+      <div className="container">
+        <div className="card">
+          <h1>Perinthalmanna</h1>
+          <img src="https://www.onmanorama.com/content/dam/mm/en/news/kerala/images/2020/1/8/Aerial-View-of-Malappuram-Town.jpg.transform/845x440/image.jpg"></img>
+          <div className="text">
+            A buzzling town, Perinthalmanna is a municipality in Malappuram
+            district, Kerala, India. It serves as the headquarters of the
+            Perinthalmanna Taluk. The town is located 23 kilometres southwest to
+            the city of Malappuram at the centre of the
+            Kozhikode–Malappuram–Perinthalmanna–Palakkad National Highway 966.
+          </div>
+        </div>
 
-    </div>
+        <div className="card">
+          <h1>Kottakal</h1>
+          <img src="https://www.onmanorama.com/content/dam/mm/en/news/kerala/images/2020/1/8/Aerial-View-of-Malappuram-Town.jpg.transform/845x440/image.jpg"></img>
+          <div className="text">
+            A side stop on the way to Tirur, Kottakkal is a municipal town 12 km
+            southwet of Malappuram.The town is best known for the Arya Vaidya
+            Sala, one of the top Ayurvedic health centres of the world. It's
+            just 4.5 km away from Tirur railway station.The National Highway 66
+            separates the municipality from Edarikode grama panchayat on some
+            parts to the west
+          </div>
+        </div>
+
+        <div className="card">
+          <h1>Manjeri</h1>
+          <img src="https://www.onmanorama.com/content/dam/mm/en/news/kerala/images/2020/1/8/Aerial-View-of-Malappuram-Town.jpg.transform/845x440/image.jpg"></img>
+          <div className="text">
+            A brimming town, Manjeri is also a municipality in Malappuram
+            district, Kerala, India. It is the fourth-most populous municipality
+            in state. It is situated 23 kilometres southeast to Karipur
+            International Airport and 13 kilometres northeast to Malappuram, the
+            district headquarters, and forms a part of Malappuram metropolitan
+            area
+          </div>
+        </div>
+
+        <div className="card">
+          <h1>Malappuram</h1>
+          <img src="https://www.onmanorama.com/content/dam/mm/en/news/kerala/images/2020/1/8/Aerial-View-of-Malappuram-Town.jpg.transform/845x440/image.jpg"></img>
+          <div className="text">
+            The heart of the district, Malappuram, the fastest growing city in
+            the world, is situated 54 km southeast of Calicut and 90 km
+            northwest of Palakkad. The first municipality in the district formed
+            in 1970, Malappuram serves as the administrative headquarters of
+            Malappuram district.
+          </div>
+        </div>
+      </div>
+      </div>
   );
-};
-
-export default Events;
+}

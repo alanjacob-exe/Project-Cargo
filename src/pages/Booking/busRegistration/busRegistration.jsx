@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
-import {db} from "../../../firebase"
+import { collection, addDoc, Timestamp, doc, setDoc } from "firebase/firestore";
+import { db } from "../../../firebase";
 import { Button } from "@mui/material";
 export default function FormExample5() {
   const [companyName, setcompanyName] = useState(null);
@@ -15,30 +15,56 @@ export default function FormExample5() {
   const [bookedSeats, setbookedSeats] = useState(null);
   const [busName, setbusName] = useState(null);
 
+    // const handleSubmit = async (e) => {
+    //   e.preventDefault();
+    //   try {
+    //     await addDoc(collection(db, "buses",busName), {
+    //       companyName: companyName,
+    //       busType: busType,
+    //       busNumber: busNumber,
+    //       startCity: startCity,
+    //       destinationCity: destinationCity,
+    //       totalSeats: totalSeats,
+    //       availableSeats: availableSeates,
+    //       pricePerSeat: pricePerSeat,
+    //       bookedSeats: bookedSeats,
+    //       busName: busName,
+    //     });
+    //     alert("inserted sucessfully");
+    //     e.preventDefault();
+
+    //   } catch (err) {
+    //     alert(err);
+    //   }
+    // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await addDoc(collection(db, "buses"), {
-        companyName: companyName,
-        busType: busType,
-        busNumber: busNumber,
-        startCity: startCity,
-        destinationCity: destinationCity,
-        totalSeats: totalSeats,
-        availableSeats: availableSeates,
-        pricePerSeat: pricePerSeat,
-        bookedSeats: bookedSeats,
-        busName: busName,
-      });
-      alert("inserted sucessfully");
-      e.preventDefault();
 
-    } catch (err) {
-      alert(err);
+    try {
+
+      const busCollection = doc(db, "buses", busName);
+      await setDoc(busCollection, {
+        companyName: companyName,
+          busType: busType,
+          busNumber: busNumber,
+          startCity: startCity,
+          destinationCity: destinationCity,
+          totalSeats: totalSeats,
+          availableSeats: availableSeates,
+          pricePerSeat: pricePerSeat,
+          bookedSeats: bookedSeats,
+          busName: busName,
+      })
+      alert("Inserted Sucessfully")
+
+
+    } catch (e) {
     }
   };
-
-
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-black-100 lg:max-w-xl">
@@ -50,13 +76,12 @@ export default function FormExample5() {
             <label
               for="text"
               className="block text-sm font-semibold text-gray-800"
-             
             >
               Company Name
             </label>
             <input
-             onChange={(e) => setcompanyName(e.target.value.toUpperCase())}
-             value={companyName}
+              onChange={(e) => setcompanyName(capitalizeFirstLetter(e.target.value))}
+              value={companyName}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -69,8 +94,8 @@ export default function FormExample5() {
               Bus Type
             </label>
             <input
-            onChange={(e) => setbusType(e.target.value)}
-            value={busType}
+              onChange={(e) => setbusType(e.target.value)}
+              value={busType}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -83,8 +108,8 @@ export default function FormExample5() {
               Bus Number
             </label>
             <input
-            onChange={(e) => setbusNumber(e.target.value.toUpperCase())}
-            value={busNumber}
+              onChange={(e) => setbusNumber(e.target.value.toUpperCase())}
+              value={busNumber}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -97,8 +122,8 @@ export default function FormExample5() {
               Start city
             </label>
             <input
-            onChange={(e) => setstartCity(e.target.value.toUpperCase())}
-            value={startCity}
+              onChange={(e) => setstartCity(capitalizeFirstLetter(e.target.value))}
+              value={startCity}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -111,8 +136,8 @@ export default function FormExample5() {
               DestinationCity
             </label>
             <input
-            onChange={(e) => setdestinationCity(e.target.value.toUpperCase())}
-            value={destinationCity}
+              onChange={(e) => setdestinationCity(capitalizeFirstLetter(e.target.value))}
+              value={destinationCity}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -125,8 +150,8 @@ export default function FormExample5() {
               Available Seats
             </label>
             <input
-            onChange={(e) => setavailableSeates(e.target.value)}
-            value={availableSeates}
+              onChange={(e) => setavailableSeates(e.target.value)}
+              value={availableSeates}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -139,8 +164,8 @@ export default function FormExample5() {
               Total Seats
             </label>
             <input
-            onChange={(e) => settotalSeats(e.target.value)}
-            value={totalSeats}
+              onChange={(e) => settotalSeats(e.target.value)}
+              value={totalSeats}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -153,8 +178,8 @@ export default function FormExample5() {
               Price per Seat
             </label>
             <input
-            onChange={(e) => setpricePerSeat(e.target.value)}
-            value={pricePerSeat}
+              onChange={(e) => setpricePerSeat(e.target.value)}
+              value={pricePerSeat}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -167,8 +192,8 @@ export default function FormExample5() {
               Booked Seats
             </label>
             <input
-            onChange={(e) => setbookedSeats(e.target.value)}
-            value={bookedSeats}
+              onChange={(e) => setbookedSeats(e.target.value)}
+              value={bookedSeats}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -181,21 +206,20 @@ export default function FormExample5() {
               BusName
             </label>
             <input
-            onChange={(e) => setbusName(e.target.value)}
-            value={busName}
+              onChange={(e) => setbusName(capitalizeFirstLetter(e.target.value))}
+              value={busName}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mt-6">
-            <Button variant="contained" type="submit" sx={{}}>Register</Button>
+            <Button variant="contained" type="submit" sx={{}}>
+              Register
+            </Button>
           </div>
         </form>
 
-        <p className="mt-8 text-xs font-light text-center text-gray-700">
-          {" "}
-          
-        </p>
+        <p className="mt-8 text-xs font-light text-center text-gray-700"> </p>
       </div>
     </div>
   );

@@ -49,6 +49,7 @@ import {
   MDBModalFooter,
 } from "mdb-react-ui-kit";
 import Modal from "../../Components/Modal/index";
+import SourceComplete from "../../Components/Autocomplete/SourceAutocomplete";
 
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
@@ -99,7 +100,8 @@ const AnnualReport = () => {
   const prevLocation = useLocation();
   const [appointments, setAppointments] = useState("");
 
-  console.log("useelocation====" + prevLocation.pathname);
+  // console.log("source and dest"+source,destination)
+  // console.log("useelocation====" + prevLocation.pathname);
 
   // useEffect(() => {
 
@@ -120,16 +122,15 @@ const AnnualReport = () => {
 
   const [style, setStyle] = useState("dashboard");
   const [infostyle, setInfoStyle] = useState("infotab");
+  const [shrink, setshrink] = useState("container")
 
   const changeDashboard = () => {
-    console.log("you just clicked");
 
     setStyle("dashboardAfter");
   };
 
   const changeDetailsTab = () => {
-    console.log("you just clicked");
-
+    setshrink("containerAfter")
     setInfoStyle("infotabAfter");
   };
 
@@ -163,7 +164,7 @@ const AnnualReport = () => {
     }
   }, []);
 
-  console.log("logged in?" + isLoggedin);
+  // console.log("logged in?" + isLoggedin);
   const options = [
     { label: "Perinthalmanna", id: "10.976088, 76.225511" },
     { label: "Manjeri", id: "11.1192317,76.1207973" },
@@ -303,18 +304,6 @@ const AnnualReport = () => {
       });
   }, [destination.label]);
 
-  useEffect(() => {
-    const q = query(collection(db, "buses"), orderBy("created", "desc"));
-    onSnapshot(q, (querySnapshot) => {
-      setbuses(
-        querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      );
-    });
-  }, []);
-
   ///////////////////////////////    collecting data from database  ////////////////////
 
   const [buses, setbuses] = useState([]);
@@ -322,32 +311,25 @@ const AnnualReport = () => {
 
   const [click, setclick] = useState(false);
 
-  const fetchPost = async () => {
-    await getDocs(collection(db, "buses")).then((querySnapshot) => {
-      const newData = querySnapshot.docs.map((doc) => ({
-        info: doc.data(),
-        id: doc.id,
-      }));
-      setbuses(setInfo);
-      console.log(buses, setInfo);
-    });
-  };
+  // const fetchPost = async () => {
+  //   await getDocs(collection(db, "buses")).then((querySnapshot) => {
+  //     const newData = querySnapshot.docs.map((doc) => ({
+  //       info: doc.data(),
+  //       id: doc.id,
+  //     }));
+  //     setbuses(setInfo);
+  //     // console.log(buses, setInfo);
+  //   });
+  // };
 
-  useEffect(() => {
-    fetchPost();
-  }, [click]);
+  // useEffect(() => {
+  //   fetchPost();
+  // }, [click]);
 
   function isClicked() {
     if (click === false) {
       console.log("this is   true");
       setclick(true);
-
-      return true;
-    } else {
-      console.log("this is    false");
-      setclick(false);
-
-      return false;
     }
   }
 
@@ -372,48 +354,44 @@ const AnnualReport = () => {
   // console.log("isloggedin"+isLoggedin)
 
   /////////////////////////////batabse communication////////////
-const [busColl, setbusColl] = useState([])
+  const [busColl, setbusColl] = useState([]);
 
-useEffect(() => {
-  const q = query(collection(db, "buses"));
-  onSnapshot(q, (querySnapshot) => {
-    setbusColl(
-      querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        data: doc.data(),
-      }))
-    );
-  });
-}, []);
-console.log(busColl)
+  useEffect(() => {
+    const q = query(collection(db, "buses"));
+    onSnapshot(q, (querySnapshot) => {
+      setbusColl(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
 
+  const [availableBuses, setavailableBuses] = useState([]);
+  const [sortedList, setsortedList] = useState([]);
+  let arrays = [];
 
-  // const busCollection = async () => {
-  //   const response=db.collection("buses");
-  //   const data= await response.get()
-  //   data.docs.forEach(item=>{
-  //     setbusColl([...busColl,item.data()])
-  //   })
-  // };
-
-  // useEffect(() => {
-  //   busCollection();
-  // }, [])
-
-  // console.log(busColl)
-
-
-  const [centredModal, setCentredModal] = useState(false);
-
-  const handleFindButtonClick = () => {
-    setCentredModal(!centredModal);
-    console.log("centered modal" + centredModal);
+  const sortedBusList = (start,destination) => {
+    console.log("start location" + start,destination);
+    setsortedList( busColl.filter((buses) => buses.data.startCity == start && buses.data.destinationCity==destination
+    ));
   };
 
-  const toggleShow = () => {
-    setCentredModal(!centredModal);
-    console.log("centered modal" + centredModal);
-  };
+  useEffect(() => {
+    sortedBusList(source.label,destination.label);
+  }, [source,destination]);
+
+  console.log("full buses" + busColl.length);
+
+  console.log("sorted11" + sortedList.length);
+
+  var a = [];
+  
+
+  
+
+  ////////////////////////////////////////////     Modal Working  ////////////////////////////////////
 
   return (
     <div className="height firstwidth color top ">
@@ -435,25 +413,8 @@ console.log(busColl)
                 <label className="montserrat" style={{ color: "#fff" }}>
                   Enter Your Location:
                 </label>
-                {/* <Autocomplete
-                  disablePortal
-                  id="combo-box-demo"
-                  sx={{}}
-                  options={options}
-                  getOptionLabel={(option) => option.label}
-                  isOptionEqualToValue={(option, value) =>
-                    option.id === value.id
-                  }
-                  onChange={(event, value) => setsource(value)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Source"
-                      style={{ backgroundColor: "#fff", borderRadius: "12px" }}
-                    />
-                  )}
-                /> */}
-                <DestinationComplete
+
+                <SourceComplete
                   options={options}
                   getOptionLabel={(option) => option.label}
                   isOptionEqualToValue={(option, value) =>
@@ -470,22 +431,13 @@ console.log(busColl)
                 <label className="montserrat" style={{ color: "#fff" }}>
                   Enter Your Destination:
                 </label>
-                <Autocomplete
-                  disablePortal
-                  id="combo-box-demo"
+                <DestinationComplete
                   options={options}
                   getOptionLabel={(option) => option.label}
                   isOptionEqualToValue={(option, value) =>
                     option.id === value.id
                   }
                   onChange={(event, value) => setdestination(value)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Destination"
-                      style={{ backgroundColor: "#fff", borderRadius: "12px" }}
-                    />
-                  )}
                 />
               </div>
               <div>
@@ -497,17 +449,18 @@ console.log(busColl)
                     changeDetailsTab();
                     setmapSource(source.id);
                     setmapDestionation(destination.id);
-                    isClicked();
+                    isClicked()
                   }}
                 >
                   Find!
                 </Button>
-                <Button></Button>
-                {/* </div>
-              {/* <div>
-                {buses.map((busdetails) => (
-                  <Buslist key={busdetails.id} Name={busdetails[0].data.busName} />
-                ))} */}
+              </div>
+              <div className="busmap">
+                {click && sortedList.map((bus) => (
+                  <Buslist key={bus.id} Name={bus.data.busName} onClick={()=>{
+                    navigate("/unknown")
+                  }} />
+                ))}
               </div>
             </div>
             <div className="view ">
@@ -535,6 +488,7 @@ console.log(busColl)
                 eta={eta}
                 traffic={traffic}
                 distance={distance}
+                shrink={shrink}
               ></Ui>
             </div>
             <div></div>
