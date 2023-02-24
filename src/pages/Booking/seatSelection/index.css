@@ -8,6 +8,20 @@ html {
   font-size: 16px;
 }
 
+.bg-glass {
+  background-color: hsla(0, 0%, 90%, 0.3) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}
+
+.container{
+  height:20vh;
+  width:55vw;
+  border-radius:12px;
+}
+.card
+
+
+
 .row {
   background-color: hsla(0, 0%, 90%, 0.3) !important;
   backdrop-filter: saturate(200%) blur(25px);
@@ -33,6 +47,11 @@ ol {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+.container2{
+  float:left;
+  width:55%;
+  margin-top:2%;
 }
 
 .seats {
@@ -237,7 +256,6 @@ ol {
   /* position: relative;  */
   left: -50px;
   margin-top: 49px;
-  border: 1px solid white;
   height: auto;
   border-radius: 5px;
 }

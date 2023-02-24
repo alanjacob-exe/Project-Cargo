@@ -50,7 +50,7 @@ import {
 } from "mdb-react-ui-kit";
 import Modal from "../../Components/Modal/index";
 import SourceComplete from "../../Components/Autocomplete/SourceAutocomplete";
-
+import Route1 from "../../simulation/tem/file.json";
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
 
@@ -122,15 +122,14 @@ const AnnualReport = () => {
 
   const [style, setStyle] = useState("dashboard");
   const [infostyle, setInfoStyle] = useState("infotab");
-  const [shrink, setshrink] = useState("container")
+  const [shrink, setshrink] = useState("container");
 
   const changeDashboard = () => {
-
     setStyle("dashboardAfter");
   };
 
   const changeDetailsTab = () => {
-    setshrink("containerAfter")
+    setshrink("containerAfter");
     setInfoStyle("infotabAfter");
   };
 
@@ -368,28 +367,54 @@ const AnnualReport = () => {
     });
   }, []);
 
-  const [availableBuses, setavailableBuses] = useState([]);
   const [sortedList, setsortedList] = useState([]);
-  let arrays = [];
 
-  const sortedBusList = (start,destination) => {
-    console.log("start location" + start,destination);
-    setsortedList( busColl.filter((buses) => buses.data.startCity == start && buses.data.destinationCity==destination
-    ));
+  const sortedBusList = (start, destination) => {
+    console.log("start location" + start, destination);
+    setsortedList(
+      busColl.filter(
+        (buses) =>
+          buses.data.startCity == start &&
+          buses.data.destinationCity == destination
+      )
+    );
   };
 
   useEffect(() => {
-    sortedBusList(source.label,destination.label);
-  }, [source,destination]);
+    sortedBusList(source.label, destination.label);
+  }, [source, destination]);
 
-  console.log("full buses" + busColl.length);
+  // console.log("full buses" + busColl.length);
 
-  console.log("sorted11" + sortedList.length);
+  ////////////////////////////////////////////location working check/////////////////////////////
 
-  var a = [];
-  
+  //   const [seconds, setSeconds] = useState(0);
+  //   const [cursor, setcursor] = useState(0)
+  // console.log(route1[cursor])
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       if(cursor>=route1.length){
+  //       setcursor(0)}
+  //       setcursor(cursor => cursor + 1);
 
-  
+  //     }, 2000);
+  //     return () => clearInterval(interval);
+  //   }, []);
+  //   console.log(cursor)
+
+  ///////////////////////////////////////handleclick//////////////
+
+  const handleDualButtonClickOne = () => {
+    changeDashboard();
+    changeDetailsTab();
+    setmapSource(source.id);
+    setmapDestionation(destination.id);
+    isClicked();
+  };
+
+  const handleDualButtonClickTwo=()=>{
+    navigate("/seatselection")
+  }
 
   ////////////////////////////////////////////     Modal Working  ////////////////////////////////////
 
@@ -444,23 +469,18 @@ const AnnualReport = () => {
                 <Button
                   className="button"
                   variant="contained"
-                  onClick={() => {
-                    changeDashboard();
-                    changeDetailsTab();
-                    setmapSource(source.id);
-                    setmapDestionation(destination.id);
-                    isClicked()
-                  }}
+                  onClick={() => 
+                    click?handleDualButtonClickTwo():handleDualButtonClickOne()
+                  }
                 >
-                  Find!
+                  {click ? "Track" : "Find!"}
                 </Button>
               </div>
               <div className="busmap">
-                {click && sortedList.map((bus) => (
-                  <Buslist key={bus.id} Name={bus.data.busName} onClick={()=>{
-                    navigate("/unknown")
-                  }} />
-                ))}
+                {click &&
+                  sortedList.map((bus) => (
+                    <Buslist key={bus.id} Name={bus.data.busName} data={bus} />
+                  ))}
               </div>
             </div>
             <div className="view ">

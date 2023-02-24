@@ -36,7 +36,7 @@ const Navbar = () => {
           <Link href="/track" className="button" sx={{color:"#fff", fontSize:"18px"}}>
             Location
           </Link>
-          <NavLink to="/Dev">Contact Us</NavLink>
+          <NavLink to="/Dev">Developers</NavLink>
           <NavLink to="/help">Help</NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}

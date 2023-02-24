@@ -40,6 +40,9 @@ const Sim = React.lazy(() => import("./simulation/tem/index"));
 const SeatSelection = React.lazy(() => import("./pages/Booking/seatSelection"));
 const Ticket = React.lazy(() => import("./pages/Booking/ticketPage/index"));
 const BusRegistration=React.lazy(()=> import("./pages/Booking/busRegistration/busRegistration"))
+const Payment=React.lazy(()=>import("./pages/CardPayment/PostCard"))
+
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [timeActive, setTimeActive] = useState(false);
@@ -113,6 +116,7 @@ function App() {
             <Route path="/seatselection" element={<SeatSelection />} />
             <Route path="/ticket" element={<Ticket />} />
             <Route path="/registration" element={<BusRegistration/>}/>
+            <Route path="/payment" element={<Payment/>}/>
           </Routes>
         </AuthProvider>
       </Suspense>

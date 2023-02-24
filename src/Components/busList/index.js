@@ -2,20 +2,27 @@ import "./index.css";
 
 import React from "react";
 import { Button } from "bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function Buslist(props) {
-  
-
+  const navigate = useNavigate();
+  const data = props.data;
+const a= localStorage.getItem("busid");
+console.log(a)
   return (
     // <div className="buslist ">
-      <div className="list">
-        <div className="name">Name:{props.Name}</div>
-        <div className="time">
-          <div className="arrival">Arrival:{}</div>
-          <div className="departure">Reaches at:{}
-          </div>
-        </div>
+    <div
+      className="list"
+      onClick={() => {
+        localStorage.setItem("busid", data.id);
+      }}
+    >
+      <div className="name">Name:{props.Name}</div>
+      <div className="time">
+        <div className="arrival">Bus No:{data.data.busNumber}</div>
+        <div className="departure">Reaches at:{data.data.busName}</div>
       </div>
+    </div>
     // </div>
   );
 }
