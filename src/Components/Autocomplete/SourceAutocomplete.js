@@ -4,16 +4,11 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useState } from "react";
 
-
-
-
 // function AutocompleteOption(source){
 //   // console.log(source.label)
 
 //   return (source.label);
 // }
-
-
 
 export default function SourceComplete({
   onChange,
@@ -25,11 +20,6 @@ export default function SourceComplete({
   // setValue = (newValue) => {
   // console.log(newValue);}
 
-
-  
-
-
-  
   return (
     <Autocomplete
       disablePortal
@@ -40,17 +30,13 @@ export default function SourceComplete({
       getOptionSelected={getOptionSelected}
       onChange={onChange}
       isOptionEqualToValue={isOptionEqualToValue}
-
       renderInput={(params) => (
         <TextField
           {...params}
           label="Source"
-          style={{ backgroundColor: "#fff", borderRadius: "12px" }}
+          style={{  borderRadius: "12px" }}
         />
       )}
     />
   );
 }
-
-
-

@@ -170,7 +170,7 @@ function Login() {
     <div>
       <MDBContainer
         fluid
-        className="p-4 background-radial-gradient overflow-hidden "
+        className="p-4 background-radial-gradient overflow-hidden containercard"
       >
         <MDBTabsContent></MDBTabsContent>
         <MDBRow>
@@ -211,7 +211,7 @@ function Login() {
               className="my-5  bg-glass logincard"
               style={{ marginBottom: "400px", borderRadius: "12px" }}
             >
-              <MDBCardBody className="p-7 glass h-4/5">
+              <MDBCardBody className="p-7 glass h-2/4">
                 <MDBCol col="6">
                   <div style={{ padding: "1.25rem" }}>
                     <MDBTabs

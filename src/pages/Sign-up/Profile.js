@@ -8,6 +8,7 @@ import Navbar from "../../Components/Navbar";
 function Profile() {
   const { currentUser } = useAuthValue();
   const { isLoggedin } = useAuthValue();
+  const navigate=useNavigate();
 
   console.log("signup loggedin" + isLoggedin);
 
@@ -29,6 +30,7 @@ function Profile() {
             onClick={() => {
               signOut(auth);
               localStorage.removeItem("user");
+              navigate("/")
             }}
           >
             Sign Out

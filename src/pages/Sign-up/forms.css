@@ -109,3 +109,13 @@ body{
         margin: 0 auto 10px auto;
     }
   }
+
+  .logincard{
+    height:60%;
+  }
+  .containercard{
+    height:100vh;
+  }
+  .topcard{
+    top:30%;
+  }

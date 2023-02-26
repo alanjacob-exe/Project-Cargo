@@ -25,7 +25,7 @@ export default function DestinationComplete({
         <TextField
           {...params}
           label="Destination"
-          style={{ backgroundColor: "#fff", borderRadius: "12px" }}
+          style={{ borderRadius: "12px" }}
         />
       )}
     />
