@@ -15,6 +15,7 @@ console.log(a)
       className="list"
       onClick={() => {
         localStorage.setItem("busid", data.id);
+        navigate("/seatselection")
       }}
     >
       <div className="name">Name:{props.Name}</div>

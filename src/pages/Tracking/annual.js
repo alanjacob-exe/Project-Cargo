@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import DestinationComplete from "../../Components/Autocomplete/DestinationAutocomplete";
 import Footer from "../../Components/Footer";
@@ -35,6 +37,8 @@ import {
   orderBy,
   onSnapshot,
   getDocs,
+  doc,
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import Buslist from "../../Components/busList/index";
@@ -51,6 +55,12 @@ import {
 import Modal from "../../Components/Modal/index";
 import SourceComplete from "../../Components/Autocomplete/SourceAutocomplete";
 import Route1 from "../../simulation/tem/file.json";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import dayjs from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
 
@@ -63,6 +73,7 @@ const AnnualReport = () => {
   const position = [10.95590759312288, 76.22946062699094];
   const position2 = [11.0568857, 76.0956861];
   let pageLocation = useLocation();
+  const [value, setValue] = useState(dayjs("2014-08-18T21:11:54"));
 
   const [pointers, Setpointers] = useState("");
   // console.log("pointers:  "+pointers[0])
@@ -98,7 +109,7 @@ const AnnualReport = () => {
   const { isLoggedin } = useAuthValue();
   const navigate = useNavigate();
   const prevLocation = useLocation();
-  const [appointments, setAppointments] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
 
   // console.log("source and dest"+source,destination)
   // console.log("useelocation====" + prevLocation.pathname);
@@ -117,6 +128,9 @@ const AnnualReport = () => {
   //     };
 
   // }, [])
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
 
   ///////////////////////////////////////Changing Style After Click   ///////////////////////
 
@@ -183,9 +197,9 @@ const AnnualReport = () => {
   ///////////////////////////////////////       for finding Polyline ////////////////////////////////
 
   const points = async (location1, location2) => {
-    // console.log(
-    //   `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
-    // );
+    console.log(
+      `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
+    );
     const response = await fetch(
       `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
     );
@@ -198,6 +212,15 @@ const AnnualReport = () => {
   };
 
   ///////////////////////////////////////       for finding Polyline ////////////////////////////////
+  const [bbox, setbbox] = useState([
+    [10.974977],
+    [76.080194],
+    [11.041843, [76.225484]],
+  ]);
+  // const [bboxValues, setbboxValues] = useState([
+  //   [50.505, -29.09],
+  //   [52.505, 29.09],
+  // ])
 
   useEffect(() => {
     points(mapSource, mapDestination)
@@ -206,6 +229,8 @@ const AnnualReport = () => {
           Setpointers(
             data.resourceSets[0].resources[0].routePath.line.coordinates
           );
+          setbbox(data.resourceSets[0].resources[0].bbox);
+          return bbox;
           return pointers;
         }
       })
@@ -214,7 +239,7 @@ const AnnualReport = () => {
       });
   }, [mapSource, mapDestination]);
 
-  // console.log("points"+pointers)
+  console.log("bbox" + bbox[0]);
 
   useEffect(() => {
     points(mapSource, mapDestination)
@@ -367,6 +392,17 @@ const AnnualReport = () => {
     });
   }, []);
 
+  // console.log("fetched data isssss"+dummy.fullName)
+
+
+  //   const cityRef = db.collection('cities').doc('SF');
+  // const doc = await cityRef.get();
+  // if (!doc.exists) {
+  //   console.log('No such document!');
+  // } else {
+  //   console.log('Document data:', doc.data());
+  // }
+
   const [sortedList, setsortedList] = useState([]);
 
   const sortedBusList = (start, destination) => {
@@ -412,9 +448,9 @@ const AnnualReport = () => {
     isClicked();
   };
 
-  const handleDualButtonClickTwo=()=>{
-    navigate("/seatselection")
-  }
+  const handleDualButtonClickTwo = () => {
+    navigate("/seatselection");
+  };
 
   ////////////////////////////////////////////     Modal Working  ////////////////////////////////////
 
@@ -447,30 +483,40 @@ const AnnualReport = () => {
                   }
                   onChange={(event, value) => setsource(value)}
                 />
-                <Button variant="contained" onClick={handleClick}>
-                  Show Stops
-                </Button>
-              </div>
+                <div className="datepicker">
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DesktopDatePicker
+                      label="Select Date"
+                      inputFormat="DD/MM/YYYY"
+                      value={value}
+                      onChange={handleChange}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
+                </div>
 
-              <div className="dashbody">
-                <label className="montserrat" style={{ color: "#fff" }}>
-                  Enter Your Destination:
-                </label>
-                <DestinationComplete
-                  options={options}
-                  getOptionLabel={(option) => option.label}
-                  isOptionEqualToValue={(option, value) =>
-                    option.id === value.id
-                  }
-                  onChange={(event, value) => setdestination(value)}
-                />
+                <div className="destinationpicker">
+                  <label className="montserrat" style={{ color: "#fff" }}>
+                    Enter Your Destination:
+                  </label>
+                  <DestinationComplete
+                    options={options}
+                    getOptionLabel={(option) => option.label}
+                    isOptionEqualToValue={(option, value) =>
+                      option.id === value.id
+                    }
+                    onChange={(event, value) => setdestination(value)}
+                  />
+                </div>
               </div>
               <div>
                 <Button
                   className="button"
                   variant="contained"
-                  onClick={() => 
-                    click?handleDualButtonClickTwo():handleDualButtonClickOne()
+                  onClick={() =>
+                    // click
+                    // handleDualButtonClickTwo()
+                    handleDualButtonClickOne()
                   }
                 >
                   {click ? "Track" : "Find!"}
@@ -497,6 +543,7 @@ const AnnualReport = () => {
                   location2={destinationcoordinate}
                   pointers={pointers}
                   isShown={isShown} //for displaying busstop on map
+                  bbox={bbox}
                 />
               </div>
             </div>

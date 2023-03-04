@@ -16,7 +16,9 @@ body {
   position: absolute;
   margin-left: -30%;
 }
-
+.datepicker{
+  margin-top:30px;
+}
 .montserrat {
   font-family: "Montserrat", sans-serif;
 }
@@ -53,6 +55,11 @@ body {
 .dashbody {
   padding: 1.5rem;
   font-size: 24px;
+}
+
+.destinationpicker{
+  margin-top:20px;
+
 }
 
 .card {

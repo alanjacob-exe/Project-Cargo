@@ -1,29 +1,41 @@
-import React, { useState } from 'react'
-import Card from "react-credit-cards";
+import React from "react";
 import "./just.css";
-import jwt_decode from "jwt-decode";
+import BookOnlineIcon from "@mui/icons-material/BookOnline";
 
-// import {
-//   formatCreditCardNumber,
-//   formatCVC,
-//   formatExpirationDate,
-//   formatFormData,
-// } from "./Modal.js";
-import "react-credit-cards/es/styles-compiled.css";
-
-export default function Credit(props) {
-    const [number, setnumber] = useState("initialState")
-
-    return (
-        <>
-             <Card
-                number={number}
-                // name={name}
-                // expiry={expiry}
-                // cvc={cvc}
-                // focused={focused}
-                callback={this.handleCallback}
-              />{" "}
-        </>
-    )
+export default function Just(props) {
+  return (
+    <div>
+      <div className="sidebar">
+        <div>
+          <div className="sidebartopelement">Project Cargo </div>
+        </div>
+        <div>
+          <div className="sidebarelements">
+            <div>
+              <div className="icon">
+                <BookOnlineIcon fontSize="small" />
+              </div>
+              <div className="name">Bookings</div>
+            </div>
+          </div>
+          <div className="sidebarelements">
+            <div>
+              <div className="icon">
+                <BookOnlineIcon fontSize="small" />
+              </div>
+              <div className="name">Profile</div>
+            </div>
+          </div>
+          <div className="sidebarelements">
+            <div>
+              <div className="icon">
+                <BookOnlineIcon fontSize="small" />
+              </div>
+              <div className="name">Contact</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

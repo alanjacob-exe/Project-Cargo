@@ -1,52 +1,49 @@
 .buslist {
-    width: 272px;
-    height: 500px;
-    background-color: #000;
-  }
-  .list {
-    margin-top:2%;
-    border-style: solid;
-    border-color: red;
-    height: 100px;
-    color: #fff;
-    border-radius:12px;
-    border:1px solid white;
-    transition: 1s;
+  width: 272px;
+  height: 500px;
+  background-color: #000;
+}
+.list {
+  margin-top: 2%;
+  border-style: solid;
+  border-color: red;
+  height: 100px;
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid white;
+  transition: 0.3s;
+}
+.list:hover {
+  background: white;
+  color:#000;
+}
+.list:active {
+  color: #000;
+}
 
+.bg-glass {
+  background-color: hsla(0, 0%, 90%, 0.3) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}
+.businfo {
+  color: #fff;
+}
+.time {
+  margin-top: 2%;
+  margin-left: 3%;
+  font-size: 18px;
+}
+.arrival {
+  float: left;
+  display: block;
+}
+.departure {
+}
 
-
-  }
-  .list:hover{
-    height:120px;
-  }
-  
-  .bg-glass {
-    background-color: hsla(0, 0%, 90%, 0.3) !important;
-    backdrop-filter: saturate(200%) blur(25px);
-  }
-  .businfo {
-    color: #fff;
-  }
-  .time {
-    margin-top:2%;
-    margin-left:3%;
-    font-size:18px;
-  
-  }
-  .arrival {
-    float: left;
-    display:block;
-  }
-  .departure{
-
-  }
-  
-  .name {
-    font-size: 20px;
-    margin-left:3%;
-  
-  }
-  .button {
-    text-align: center;
-  }
-  
+.name {
+  font-size: 20px;
+  margin-left: 3%;
+}
+.button {
+  text-align: center;
+}

@@ -22,6 +22,7 @@ export default function SourceComplete({
 
   return (
     <Autocomplete
+    clearOnEscape={true}
       disablePortal
       id="combo-box-demo"
       options={options}

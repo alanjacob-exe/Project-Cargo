@@ -1,5 +1,5 @@
-import { Button } from "bootstrap";
-import {React, useState} from "react";
+import { Button } from "@mui/material";
+import { React, useState } from "react";
 import {
   MapContainer,
   Circle,
@@ -9,14 +9,21 @@ import {
   Popup,
 } from "react-leaflet";
 import file from "../../file.json";
+import Control from "react-leaflet-custom-control";
+
 
 // import Marker from 'react-leaflet-animated-marker';
 
 export function TransportMap(position) {
-  var isShown=position.isShown;
   const polyline = position.pointers;
   const blueOptions = { color: "blue" };
-  const data=file;
+  const data = file;
+  const bbox=position.bbox;
+  console.log("from transport"+bbox)
+ const bboxValues=[[bbox[0],bbox[1]],[bbox[2],bbox[3]]];
+  console.log("from transport"+bboxValues[0])
+
+
 
   console.log("marker 1  " + position.location1);
   const marker1 = position.location1;
@@ -28,12 +35,6 @@ export function TransportMap(position) {
   // console.log("location 2 " + position.location2);
   // console.log("points"+polyline[2]);
   // console.log("Destination Busstops " + destinationBusstops);
-
-
-
-  
-
-
 
   function nearbyBusstops(marker1) {
     // console.log("length of data:"+data.features.length)
@@ -160,18 +161,17 @@ export function TransportMap(position) {
       const value = index4[i];
       coordinates[i] = data.features[value].geometry.coordinates;
     }
-    // console.log(index4)
+    console.log(index4)
     return index4;
     // return coordinates[1];
   }
-  var maarker=[]
-  var maarker1=[]
+  var maarker = [];
+  var maarker1 = [];
 
-  for(var i=0;i<sourceBusstops.length;i++){
-    var value=sourceBusstops[i];
+  for (var i = 0; i < sourceBusstops.length; i++) {
+    var value = sourceBusstops[i];
     // console.log("list"+sourceBusstops[i])
     maarker.push(sourceBusstops[i]);
-
   }
 
   // for(var i=0;i<destinationBusstops.length;i++){
@@ -179,7 +179,7 @@ export function TransportMap(position) {
   //   console.log("list"+destinationBusstops[i])
   //   maarker1.push([data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]);
 
-  // } 
+  // }
   // console.log("maarker:"+maarker);
 
   // console.log("name:"+data.features[325].properties["name"]);
@@ -187,22 +187,46 @@ export function TransportMap(position) {
   // const indexelements=sourceBusstops.map((value)=> value*2)
   // console.log("double elements"+indexelements)
 
+  const handleClick = (event) => {
+    // 👇️ toggle shown state
+    setIsShown((current) => !current);
+
+    // 👇️ or simply set it to true
+    // setIsShown(true);
+  };
+  const [isShown, setIsShown] = useState(false); //for source,destination markers
+  const outerBounds = [
+    [50.505, -29.09],
+    [52.505, 29.09],
+  ]
+  
   return (
-    
-    <MapContainer center={[10.9984717, 76.1401113]} zoom={11} zoomOffset={-1}>
+    <MapContainer bounds={bboxValues}  zoom={11} zoomOffset={-1}>
       <TileLayer
         attribution='&copy; <a href="https://www.thunderforest.com/">Transport Map</a> contributors'
         url="https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=b27fc203562944ceb7363792b9e8c9d2"
-      />
+      ></TileLayer>
+
+      <Control prepend position="topright">
+        <Button variant="outlined" onClick={handleClick}>Show Stops</Button>
+      </Control>
+
       <Marker position={position.location1} />
       <Marker position={position.location2} />
-      {isShown && maarker.map((value) => (
-        <Marker key={value} position={[data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]}>
-          <Popup>{data.features[value].properties["name"]}</Popup>
+      {isShown &&
+        maarker.map((value) => (
+          <Marker
+            key={value}
+            position={[
+              data.features[value].geometry.coordinates[1],
+              data.features[value].geometry.coordinates[0],
+            ]}
+          >
+            <Popup>{data.features[value].properties["name"]}</Popup>
           </Marker>
-      ))}
+        ))}
 
-{/* {maarker1.map((value) => (
+      {/* {maarker1.map((value) => (
         <Marker key={value} position={[data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]}>
           <Popup>{value}</Popup>
           </Marker>
@@ -210,6 +234,5 @@ export function TransportMap(position) {
 
       <Polyline pathOptions={blueOptions} positions={polyline} />
     </MapContainer>
-    
   );
 }

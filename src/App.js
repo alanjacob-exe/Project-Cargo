@@ -40,8 +40,8 @@ const Sim = React.lazy(() => import("./simulation/tem/index"));
 const SeatSelection = React.lazy(() => import("./pages/Booking/seatSelection"));
 const Ticket = React.lazy(() => import("./pages/Booking/ticketPage/index"));
 const BusRegistration=React.lazy(()=> import("./pages/Booking/busRegistration/busRegistration"))
-const Payment=React.lazy(()=>import("./pages/CardPayment/PostCard"))
-
+const Payment=React.lazy(()=>import("./pages/Payment/Form"));
+const SimTest=React.lazy(()=>import("./simulation/tem/simulationTest"))
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -73,20 +73,10 @@ function App() {
   //   console.log("user from app"+locuser.email)
   // }
 
-  const usernow = JSON.parse(localStorage.getItem("user"));
+  // const usernow = JSON.parse(localStorage.getItem("user"));
 
-  console.log(usernow);
-  useEffect(() => {
-    // if(!currentUser.uid)
-    //     {
-    //       setisLoggedin(true)
-    //       console.log("true")
-    //     }
-    //     else{
-    //     setisLoggedin(false)
-    //     console.log("false")
-    //     }
-  }, []);
+  // console.log(usernow);
+
 
   // console.log("useremail?"+ currentUser?.email)
   // console.log("is logged in"+isLoggedin)
@@ -117,6 +107,7 @@ function App() {
             <Route path="/ticket" element={<Ticket />} />
             <Route path="/registration" element={<BusRegistration/>}/>
             <Route path="/payment" element={<Payment/>}/>
+            <Route path="/simtest" element={<SimTest/>}/>
           </Routes>
         </AuthProvider>
       </Suspense>

@@ -2,29 +2,72 @@ import { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import AirplaneMarker from "./AirplaneMarker";
 import data from "./file.json";
-import pmnaManj from "./pmna-Manj.json"
-import pmnaKKl from "./pmnaKottakkal.json"
+import pmnaManj from "./pmna-Manj.json";
+import pmnaKKl from "./pmnaKottakkal.json";
 import { Button } from "bootstrap";
-import "./styles.css"
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  getDocs,
+  doc,
+  getDoc,
+} from "firebase/firestore";
+import { db } from "../../firebase";
+import "./styles.css";
 
 let cursor = 0;
 let cursor1 = 0;
 let kottakkalcursor = 0;
 
-
 export default function Tracker(props) {
   var dataStory = data.resourceSets[0].resources[0].routePath.line.coordinates;
-  var manjeriRoute= pmnaManj.resourceSets[0].resources[0].routePath.line.coordinates;
-  var pmnaKottakkalRoute=pmnaKKl.resourceSets[0].resources[0].routePath.line.coordinates;
+  var manjeriRoute =
+    pmnaManj.resourceSets[0].resources[0].routePath.line.coordinates;
+  var pmnaKottakkalRoute =
+    pmnaKKl.resourceSets[0].resources[0].routePath.line.coordinates;
   const [latitude, setLatitude] = useState(10.975958);
   const [longitude, setLongitude] = useState(76.225454);
   const [status, setStatus] = useState(null);
 
-  
   const [currentTrack, setCurrentTrack] = useState({});
-  const [manjeriTrack, setmanjeriTrack] = useState({})
-const [KottakkalTrack, setKottakkalTrack] = useState({})
-  const pmnaManjeriTime=54;
+  const [manjeriTrack, setmanjeriTrack] = useState({});
+  const [KottakkalTrack, setKottakkalTrack] = useState({});
+  const pmnaManjeriTime = 54;
+
+  ///////////////////////////////
+  const [busColl, setbusColl] = useState([]);
+
+  useEffect(() => {
+    const q = query(collection(db, "buses"));
+    onSnapshot(q, (querySnapshot) => {
+      setbusColl(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
+  // console.log(busColl.data.startCity)
+
+  const [test, settest] = useState([11.027775, 76.099903])
+  const liveListner = async () => {
+    const unsub = onSnapshot(
+      doc(db, "buses", "Merelal", "location", "Merelal"),
+      (doc) => {
+        settest(doc.data().location);
+        console.log("Current data: ", doc.data().location);
+      }
+    );
+      // console.log("data is"+test.location)
+
+  };
+  useEffect(() => {
+    liveListner();
+  }, []);
+  // console.log("data is"+test.location)
 
   useEffect(() => {
     setCurrentTrack(dataStory[cursor]);
@@ -44,9 +87,8 @@ const [KottakkalTrack, setKottakkalTrack] = useState({})
     };
   }, []);
 
-
   /////////////////   Perinthalmanna - Manjeri ///////////////
-console.log(manjeriTrack)
+  // console.log(manjeriTrack)
   useEffect(() => {
     setmanjeriTrack(manjeriRoute[cursor1]);
 
@@ -59,7 +101,7 @@ console.log(manjeriTrack)
 
       cursor1 += 1;
       setmanjeriTrack(manjeriRoute[cursor1]);
-    }, 5000 );
+    }, 5000);
     return () => {
       clearInterval(interval);
     };
@@ -79,7 +121,7 @@ console.log(manjeriTrack)
 
       kottakkalcursor += 1;
       setKottakkalTrack(pmnaKottakkalRoute[kottakkalcursor]);
-    }, 5000 );
+    }, 5000);
     return () => {
       clearInterval(interval);
     };
@@ -90,17 +132,18 @@ console.log(manjeriTrack)
       setStatus("Geolocation is not supported by your browser");
     } else {
       setStatus("Locating...");
-      navigator.geolocation.watchPosition(function(position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-      
-      // navigator.geolocation.watchPosition(
-      //   (position) => {
+      navigator.geolocation.watchPosition(
+        function (position) {
+          console.log("Latitude is :", position.coords.latitude);
+          console.log("Longitude is :", position.coords.longitude);
+
+          // navigator.geolocation.watchPosition(
+          //   (position) => {
           setStatus(null);
           setLatitude(position.coords.latitude);
           setLongitude(position.coords.longitude);
-      },
-      //   },
+        },
+        //   },
         () => {
           setStatus("Unable to retrieve your location");
         }
@@ -124,10 +167,10 @@ console.log(manjeriTrack)
           attribution='&copy; <a href="https://www.thunderforest.com/">Transport Map</a> contributors'
           url="https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=b27fc203562944ceb7363792b9e8c9d2"
         />
-        <AirplaneMarker data={currentTrack ?? {}} />
+        {/* <AirplaneMarker data={currentTrack ?? {}} />
         <AirplaneMarker data={manjeriTrack ?? {}} display="Manjeri" />
-        <AirplaneMarker data={KottakkalTrack ?? {}} display="kottakkal" />
-
+        <AirplaneMarker data={KottakkalTrack ?? {}} display="kottakkal" /> */}
+        <AirplaneMarker data={test ?? {} }display="database"/>
         <Marker position={[latitude, longitude]} />
       </MapContainer>
     </div>

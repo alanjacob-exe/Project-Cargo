@@ -1,13 +1,23 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import "./index.css";
 import { MDBInput } from "mdb-react-ui-kit";
 import { MDBRadio, MDBBtnGroup } from "mdb-react-ui-kit";
 import Navbar from "../../../Components/Navbar";
-import { collection, getDocs, setDoc, doc, addDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+  addDoc,
+  getDoc,
+  updateDoc,
+  query,
+  onSnapshot
+} from "firebase/firestore";
 import db from "../../../firebase";
 import { useAuthValue } from "../../Sign-up/AuthContext";
-
+import { useNavigate } from "react-router-dom";
 
 export default function SeatSelection() {
   const [name, setName] = useState([]);
@@ -17,6 +27,7 @@ export default function SeatSelection() {
   const [seatNumber, setSeatnumber] = useState([]);
   const { currentUser } = useAuthValue(); //for current user details
 
+  const navigate = useNavigate();
 
   // const [passengers, setPassengers] = useState([])
   // useEffect(()=>{
@@ -35,6 +46,30 @@ export default function SeatSelection() {
   //         console.log(reservedSeat)
   //     })
   // }
+
+  const [user, setuser] = useState();
+  useEffect(() => {
+    setuser(localStorage.getItem("users"));
+  }, []);
+  const selectedBus = localStorage.getItem("busid");
+  console.log("selected bus" + selectedBus);
+
+  const [dummy, setdummy] = useState();
+  const busData = async (e) => {
+    const busRef = doc(db, "buses", selectedBus, "bookings", currentUser.email);
+    try {
+      const docSnap = await getDoc(busRef);
+      setdummy(docSnap.data());
+      console.log("fetched data" + docSnap.data());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    busData();
+  }, []);
+
   const getSeatNumber = (e) => {
     renderPassengerData(seatNumber);
     let newSeat = e.target.value;
@@ -66,9 +101,26 @@ export default function SeatSelection() {
       // setPassengers(prevState => ({ ...prevState, SeatNo: seatNo, Name: value }))
     }
   };
-useEffect(() => {
+  useEffect(() => {
     const userDetails = localStorage.getItem("user");
-}, [])
+  }, []);
+
+// const [book, setbook] = useState()
+//   useEffect(() => {
+//     const q = query(collection(db, "buses"));
+//     onSnapshot(q, (querySnapshot) => {
+//       setbook(
+//         querySnapshot.docs.map((doc) => ({
+//           id: doc.id,
+//           data: doc.data(),
+//         }))
+//       );
+//     });
+//     console.log(book.data)
+//   }, []);
+
+
+
 
   const bookingSubmit = async (e) => {
     e.preventDefault();
@@ -80,42 +132,49 @@ useEffect(() => {
         doc(db, "buses", selectedBus, "bookings", currentUser.email),
         {
           fullName: name,
-          Gender:gender,
-          Seatnumber:seatNumber,
+          Gender: gender,
+          Seatnumber: seatNumber,
         }
-
       );
       await setDoc(
         doc(db, "users", currentUser.email, "bookings", selectedBus),
         {
-            fullName: name,
-            Gender:gender,
-            Seatnumber:seatNumber,
+          fullName: name,
+          Gender: gender,
+          Seatnumber: seatNumber,
         }
       );
+      await addDoc(doc(db, "buses", "Merelal", "reservedSeats",), {
+        bookedSeats: seatNumber,
+      });
       alert("inserted sucessfully");
     } catch (err) {
-        alert(err);
-
+      alert(err);
 
       console.error(err);
     }
   };
 
-//   console.log("current email",currentUser.email)
+  // const bookingSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(name);
+  //   console.log(gender);
+  //   console.log(seatNumber);
 
+  // };
+  //   console.log("current email",currentUser.email)
 
-  const handleSubmitDetails = (e) => {
-    e.preventDefault();
-    setArrowDown(true);
-    // console.log(("reservedSeats", JSON.stringify(seatNumber))
-    // localStorage.setItem("nameData", JSON.stringify(name))
-    console.log(name);
-    console.log(gender);
-    console.log(seatNumber);
-  };
-  const selectedBus = localStorage.getItem("busid");
-  console.log("selected bus" + selectedBus);
+  // const bookingSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(name);
+  //   console.log(gender);
+  //   console.log(seatNumber);
+  //   localStorage.setItem("bookingName",name)
+  //   localStorage.setItem("bookingGender",gender)
+  //   localStorage.setItem("bookingSeat",seatNumber)
+  //   navigate("/payment")
+
+  // };
 
   const renderPassengerData = (seatArray) => {
     return seatArray.map((seat, idx) => {

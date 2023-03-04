@@ -120,7 +120,7 @@ function Login() {
       // navigate();
     } catch (e) {
       // setIsLoading(false);
-      alert(e)
+      alert(e);
     }
   };
 
