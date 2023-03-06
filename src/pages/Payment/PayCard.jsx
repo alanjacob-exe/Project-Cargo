@@ -10,9 +10,8 @@ import {
   formatExpirationDate,
   formatFormData,
 } from "./utils";
-import { ReactDOM } from "react";
 
-import styles from "./styles.css";
+import "./styles.css";
 
 import "react-credit-cards/es/styles-compiled.css";
 

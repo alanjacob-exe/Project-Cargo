@@ -109,6 +109,7 @@ function Login() {
 
       const doctorsRef = doc(db, "users", res.user.email);
       await setDoc(doctorsRef, {
+        Name,
         email,
         password,
       });
@@ -117,7 +118,7 @@ function Login() {
 
       // setIsLoading(false);
 
-      // navigate();
+      alert("Registration Successfull")
     } catch (e) {
       // setIsLoading(false);
       alert(e);

@@ -1,17 +1,170 @@
-.profile{
-  width: 90%;
-  max-width: 400px;
-  border: 1px solid #dcdcdc;
-  padding: 20px;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@600;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;600&display=swap");
+.sidebar {
+  width: 16%;
+  float: left;
+  color: #000;
+  height: 100vh;
+  background-color: #866ec7;
+  justify-content: center;
+  position: absolute;
+  min-width: 270px;
+  overflow: hidden;
+}
+
+.sidebartopelement {
+  color: #fff;
+  width: 20vw;
+  height: ;
+  display: block;
+  font-size: 40px;
+  /* border:1px solid black; */
+  font-family: "Darker Grotesque", sans-serif;
+  margin-top: 18%;
+  margin-left: 3%;
+  font-weight: bold;
+  margin-bottom: 15%;
+  overflow: hidden;
+}
+.sidebarelements {
+  margin-top: 3%;
+  color: #faf9f6;
+  font-family: "Public Sans", sans-serif;
+  font-size: 17px;
+  margin-left: 7%;
+  height: 45px;
+  border-bottom: 1px solid white;
+}
+.sidebarelements:hover {
+  color: #000 ;
+  transition: 0.3s;
+}
+.icon {
+  display: inline-block;
+}
+.signouticon {
+  display: inline-block;
+}
+.name {
+  margin-left: 15%;
+  margin-top: -11%;
+  display: flex;
+}
+
+.signout {
+  position: absolute;
+  display: flex;
+  /* border:1px solid black; */
+  height: 30px;
+  right:10px;
+  bottom: 20px;
+  width: 100%;
+  color: #fff;
+  right: 0px;
+  font-family: "Public Sans", sans-serif;
+  margin-left: 2%;
+}
+.signout:hover {
+  color: #000;
+  transition: 0.3s;
+}
+.logo {
+  width: 70px;
+  height: 70px;
+  /* background-image: url("C:\Users\dell\Documents\Project\01-starting-setup\src\Photos\bus2.png"); */
+}
+.parent {
+  display: flex;
+}
+.holder {
+  height: 100vh;
+  width: 83%;
+  float: left;
+  color: #000;
+  border: 1px solid black;
+  margin-left: 270px;
+  overflow: hidden;
+}
+.shapes {
+  overflow: hidden;
+  height: 70vh;
+  width: 70vw;
+}
+#radius-shape-1 {
+  height: 220px;
+  position: absolute;
+  width: 220px;
+  bottom: 70px;
+  left: 300px;
+  background: radial-gradient(#44006b, #ad1fff);
+  overflow: hidden;
+}
+
+#radius-shape-2 {
+  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+  top: 100px;
+  position: absolute;
+
+  left: 1200px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(#44006b, #ad1fff);
+  overflow: hidden;
+}
+.color {
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218, 41%, 35%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218, 41%, 45%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+
+.bg-glass1 {
+  background-color: hsla(0, 0%, 90%, 0.3) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}
+.dashboard {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  
+}
+.welcome {
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2%;
+  margin-left: 3%;
+  height: 90px;
+  width:40vw;
+  border-radius: 12px;
   text-align: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px 0 rgba(31, 38,135,.52);
+
+  backdrop-filter: saturate(200%) blur(25px);
 }
 
-.profile p {
-  text-align: left;
-}
-
-.profile > span{
-  color: blue;
-  margin-top: 30px;
-  cursor: pointer;
+.details {
+  width: 75vw;
+  height: 80vh;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px 0 rgba(31, 38,135,.80);
+  border-radius: 12px;
+  margin-top: 6%;
 }

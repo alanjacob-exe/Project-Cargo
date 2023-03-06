@@ -13,11 +13,13 @@ import {
   getDoc,
   updateDoc,
   query,
-  onSnapshot
+  onSnapshot,
+  Timestamp,
 } from "firebase/firestore";
 import db from "../../../firebase";
 import { useAuthValue } from "../../Sign-up/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { add } from "date-fns/esm";
 
 export default function SeatSelection() {
   const [name, setName] = useState([]);
@@ -28,6 +30,8 @@ export default function SeatSelection() {
   const { currentUser } = useAuthValue(); //for current user details
 
   const navigate = useNavigate();
+
+  
 
   // const [passengers, setPassengers] = useState([])
   // useEffect(()=>{
@@ -52,7 +56,12 @@ export default function SeatSelection() {
     setuser(localStorage.getItem("users"));
   }, []);
   const selectedBus = localStorage.getItem("busid");
-  console.log("selected bus" + selectedBus);
+  // console.log("selected bus" + selectedBus);
+
+
+
+
+
 
   const [dummy, setdummy] = useState();
   const busData = async (e) => {
@@ -68,6 +77,7 @@ export default function SeatSelection() {
 
   useEffect(() => {
     busData();
+    testfunc()
   }, []);
 
   const getSeatNumber = (e) => {
@@ -105,54 +115,77 @@ export default function SeatSelection() {
     const userDetails = localStorage.getItem("user");
   }, []);
 
-// const [book, setbook] = useState()
-//   useEffect(() => {
-//     const q = query(collection(db, "buses"));
-//     onSnapshot(q, (querySnapshot) => {
-//       setbook(
-//         querySnapshot.docs.map((doc) => ({
-//           id: doc.id,
-//           data: doc.data(),
-//         }))
-//       );
-//     });
-//     console.log(book.data)
-//   }, []);
+  // const [book, setbook] = useState()
+  //   useEffect(() => {
+  //     const q = query(collection(db, "buses"));
+  //     onSnapshot(q, (querySnapshot) => {
+  //       setbook(
+  //         querySnapshot.docs.map((doc) => ({
+  //           id: doc.id,
+  //           data: doc.data(),
+  //         }))
+  //       );
+  //     });
+  //     console.log(book.data)
+  //   }, []);
 
+  const [test, settest] = useState();
 
+  const testfunc = async () => {
+    const docRef = doc(db, "buses", selectedBus, "bookings", currentUser.email);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      settest(docSnap.data());
+      console.log("Document data:", docSnap.data());
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  };
+  // console.log("length is" + test);
+  // useEffect(() => {
+  //   testfunc();
+  // }, []);
 
+  // console.log(datetime);
 
   const bookingSubmit = async (e) => {
     e.preventDefault();
     console.log(name);
     console.log(gender);
     console.log(seatNumber);
-    try {
-      await setDoc(
-        doc(db, "buses", selectedBus, "bookings", currentUser.email),
-        {
-          fullName: name,
-          Gender: gender,
-          Seatnumber: seatNumber,
-        }
-      );
-      await setDoc(
-        doc(db, "users", currentUser.email, "bookings", selectedBus),
-        {
-          fullName: name,
-          Gender: gender,
-          Seatnumber: seatNumber,
-        }
-      );
-      await addDoc(doc(db, "buses", "Merelal", "reservedSeats",), {
-        bookedSeats: seatNumber,
-      });
-      alert("inserted sucessfully");
-    } catch (err) {
-      alert(err);
+    localStorage.setItem("bookingName",name)
+    localStorage.setItem("bookingGender",gender)
+    localStorage.setItem("bookingSeat",seatNumber)    // try {
+    //   await setDoc(
+    //     doc(db, "buses", selectedBus, "bookings", currentUser.email),
+    //     {
+    //       fullName: name,
+    //       Gender: gender,
+    //       Seatnumber: seatNumber,
+    //       createdAt:Timestamp.fromDate(new Date())
 
-      console.error(err);
-    }
+    //     }
+    //   );
+    //   await setDoc(doc(db, "users", currentUser.email, "bookings", selectedBus), {
+    //     fullName: name,
+    //     Gender: gender,
+    //     Seatnumber: seatNumber,
+    //     time: datetime,
+    //     busName:selectedBus,
+    //   });
+    //   // await addDoc(doc(db, "buses", "Merelal", "reservedSeats",), {
+    //   //   bookedSeats: seatNumber,
+    //   // });
+
+    //   alert("inserted sucessfully");
+    //   navigate("/payment")
+    // } catch (err) {
+    //   alert(err);
+
+    //   console.error(err);
+    // }
+    navigate("/payment")
   };
 
   // const bookingSubmit = async (e) => {

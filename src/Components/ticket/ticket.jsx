@@ -1,7 +1,6 @@
 import React from "react";
-import "./index.scss";
-
-export default function TicketPage(props) {
+import "./ticket.scss";
+export default function TicketComponent(props) {
   return (
     <>
       <div className="boarding-pass">
@@ -26,7 +25,7 @@ export default function TicketPage(props) {
             <strong>PMNA</strong>
           </div>
           <svg className="airplane">
-            <use ></use>
+            <use></use>
           </svg>
         </section>
         <section className="infos">
@@ -82,9 +81,7 @@ export default function TicketPage(props) {
               <strong>Mon, 1 Jan 2015</strong>
             </div>
           </div>
-          <svg className="qrcode">
-            
-          </svg>
+          <svg className="qrcode"></svg>
         </section>
       </div>
 

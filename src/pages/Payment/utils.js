@@ -18,19 +18,19 @@ export function formatCreditCardNumber(value) {
       nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
         4,
         10
-      )} ${clearValue.slice(10, 15)}`;
+      )} ${clearValue.slice(10, 16)}`;
       break;
     case "dinersclub":
       nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
         4,
         10
-      )} ${clearValue.slice(10, 14)}`;
+      )} ${clearValue.slice(10, 16)}`;
       break;
     default:
       nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
         4,
         8
-      )} ${clearValue.slice(8, 12)} ${clearValue.slice(12, 19)}`;
+      )} ${clearValue.slice(8, 12)} ${clearValue.slice(12, 16)}`;
       break;
   }
 
@@ -39,7 +39,7 @@ export function formatCreditCardNumber(value) {
 
 export function formatCVC(value, prevValue, allValues = {}) {
   const clearValue = clearNumber(value);
-  let maxLength = 4;
+  let maxLength = 3;
 
   if (allValues.number) {
     const issuer = Payment.fns.cardType(allValues.number);

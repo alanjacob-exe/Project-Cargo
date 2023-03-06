@@ -183,15 +183,15 @@ const AnnualReport = () => {
     { label: "Manjeri", id: "11.1192317,76.1207973" },
     { label: "Kottakkal", id: "11.000956, 76.004727" },
     { label: "Malappuram", id: "11.041769, 76.080161" },
-    { label: "Wandoor", id: "11.195534, 76.235986" },
+    // { label: "Wandoor", id: "11.195534, 76.235986" },
     { label: "Tirur", id: "10.916534, 75.924474" },
-    { label: "Ponnani", id: "10.766792, 75.925828" },
-    { label: "Vengara", id: "11.050791, 75.977101" },
-    { label: "Parappanangadi", id: "11.048634, 75.860053" },
-    { label: "Cherpulaserri", id: "10.878561, 76.312567" },
-    { label: "Nilambur", id: "11.276472, 76.225191" },
-    { label: "Kottayam", id: "9.591403, 76.522148" },
-    { label: "Areekode", id: "11.235016, 76.051832" },
+    // { label: "Ponnani", id: "10.766792, 75.925828" },
+    // { label: "Vengara", id: "11.050791, 75.977101" },
+    // { label: "Parappanangadi", id: "11.048634, 75.860053" },
+    // { label: "Cherpulaserri", id: "10.878561, 76.312567" },
+    // { label: "Nilambur", id: "11.276472, 76.225191" },
+    // { label: "Kottayam", id: "9.591403, 76.522148" },
+    // { label: "Areekode", id: "11.235016, 76.051832" },
   ];
 
   ///////////////////////////////////////       for finding Polyline ////////////////////////////////

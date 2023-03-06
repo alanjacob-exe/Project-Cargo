@@ -118,6 +118,7 @@ const navigate=useNavigate();
 
   const handleReset = () => {
     setActiveStep(0);
+    navigate("/track")
   };
 
   return (
@@ -196,6 +197,8 @@ const navigate=useNavigate();
                     {steps.map((label, index) => {
                       const stepProps = {};
                       const labelProps = {};
+                      
+
                       if (isStepOptional(index)) {
                         labelProps.optional = (
                           <Typography variant="caption"></Typography>
@@ -247,7 +250,13 @@ const navigate=useNavigate();
                           <Button
                             variant="contained"
                             style={{ background: "#2E3B55", color: "#ffffff" }}
-                            onClick={handleNext}
+                            onClick={()=>{
+                              if(activeStep===steps.length-1)
+                              {
+                                navigate("/track")
+                              }
+                              else handleNext()
+                            }}
                             className={classes.button}
                           >
                             {activeStep === steps.length - 1

@@ -6,7 +6,7 @@
   float: left;
   color: #000;
   height: 100vh;
-  background-color: #494ca2;
+  background-color: #866EC7;
   justify-content: center;
   position: absolute;
   min-width: 270px;
@@ -14,7 +14,7 @@
 
 .sidebartopelement {
   color: #fff;
-  width: 100vw;
+  width: 20vw;
   height: ;
   display: block;
   font-size: 40px;
@@ -23,29 +23,53 @@
   margin-top: 18%;
   margin-left: 3%;
   font-weight: bold;
-  margin-bottom:15%;
+  margin-bottom: 15%;
+  overflow: hidden;
 }
 .sidebarelements {
   margin-top: 3%;
-  color: #fff;
+  color: #FAF9F6;
   font-family: "Public Sans", sans-serif;
   font-size: 17px;
   margin-left: 7%;
   height: 45px;
-    border-bottom: 1px solid white;
+  border-bottom: 1px solid white;
 }
-.sidebarelements:hover{
-  color:#000;
-  transition:.3s;
+.sidebarelements:hover {
+  color: #000;
+  transition: 0.3s;
 }
 .icon {
   display: inline-block;
-  
-
+}
+.signouticon {
+  display: inline-block;
 }
 .name {
   margin-left: 15%;
-  margin-top:-11%;
-  display:flex;
+  margin-top: -11%;
+  display: flex;
+}
 
+.signout {
+  position: absolute;
+  display: flex;
+  /* border:1px solid black; */
+  height: 30px;
+  bottom: 20px;
+  width: 100%;
+  color: #fff;
+  right: 0px;
+  font-family: "Public Sans", sans-serif;
+  margin-left:2%;
+}
+.signout:hover{
+  color:#000;
+  transition: 0.3s;
+
+}
+.logo{
+  width:70px;
+  height:70px;
+  /* background-image: url("C:\Users\dell\Documents\Project\01-starting-setup\src\Photos\bus2.png"); */
 }

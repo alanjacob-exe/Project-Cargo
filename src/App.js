@@ -32,7 +32,6 @@ const Test = React.lazy(() => import("./pages/just"));
 // const LogOrsign=React.lazy(()=>import ("./Booking/Login-Signup/LogOrsign"))
 // const Signup=React.lazy(()=> import ("./pages/Sign-up/index"))
 const VerifyEmail = React.lazy(() => import("./pages/Sign-up/VerifyEmail"));
-const Loggedin = React.lazy(() => import("./pages/loggedin/loggedin"));
 const Profile = React.lazy(() => import("./pages/Sign-up/Profile"));
 const PageNotFound = React.lazy(() => import("./pages/404/404"));
 const Temp = React.lazy(() => import("./pages/tem/index"));
@@ -99,7 +98,6 @@ function App() {
             <Route path="/test" element={<Test />} />
             <Route path="/signin" element={<SignUp />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
-            <Route path="/loggedin" element={<Loggedin />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/temp" element={<Temp />} />
             <Route path="/sim" element={<Sim />} />

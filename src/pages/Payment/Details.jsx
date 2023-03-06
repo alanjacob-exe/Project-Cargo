@@ -6,6 +6,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import { useAuthValue } from "../Sign-up/AuthContext";
+import { useState,useEffect } from "react";
 const useStyles = makeStyles({
   root: {
     minWidth: 400,
@@ -30,8 +32,19 @@ const useStyles = makeStyles({
 
 export default function Details() {
   const classes = useStyles();
+  const { currentUser } = useAuthValue(); //for current user details
   const bull = <span className={classes.bullet}>•</span>;
+  const [address, setaddress] = useState("");
+  // console.log(address);
 
+  useEffect(() => {
+    localStorage.setItem("address", address);
+  }, [address]);
+
+  useEffect(() => {
+    const dummy = localStorage.getItem("address");
+    console.log(dummy);
+  }, [address]);
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -47,6 +60,7 @@ export default function Details() {
           id="filled-basic"
           label="Username"
           variant="filled"
+          value={currentUser?.email}
           className={classes.text}
         />
         <br />
@@ -54,6 +68,8 @@ export default function Details() {
           id="filled-basic"
           label="Address"
           variant="filled"
+          value={address}
+          onChange={(e) => setaddress(e.target.value)}
           multiline
           rows={4}
           className={classes.text}
