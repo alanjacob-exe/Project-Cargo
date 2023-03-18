@@ -10,6 +10,8 @@
   justify-content: center;
   position: absolute;
   min-width: 270px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38,135,.52);
+
   overflow: hidden;
 }
 
@@ -82,8 +84,10 @@
   width: 83%;
   float: left;
   color: #000;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin-left: 270px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38,135,.52);
+
   overflow: hidden;
 }
 .shapes {

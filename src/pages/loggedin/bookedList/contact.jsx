@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import BusMap from "../../../Components/Busmap/busMap";
 
 export default function Contact(props) {
-    
-
-    return (
-        <>
-            <h1>Hello There!</h1>
-        </>
-    )
+  return (
+    <div>
+      <div>
+        <h1>Hello</h1>
+      </div>
+    </div>
+  );
 }

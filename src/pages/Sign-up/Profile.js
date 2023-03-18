@@ -16,7 +16,6 @@ import PayCard from "../Payment/PayCard";
 import Success from "../Payment/Success";
 import PaymentMode from "../Payment/PaymentMode";
 import { Link } from "@mui/material";
-import { NavLink } from "./Navlink";
 import Ticket from "../loggedin/ticket";
 import Contact from "../loggedin/bookedList/contact";
 
@@ -149,7 +148,7 @@ export default function Just(props) {
         </div>
       )}
       <div className="holder color">
-        <div className="">
+        {/* <div className="">
           <div
             id="radius-shape-1"
             className="position-absolute rounded-circle shadow-5-strong"
@@ -158,7 +157,7 @@ export default function Just(props) {
             id="radius-shape-2"
             className="position-absolute rounded-circle shadow-5-strong"
           ></div>
-        </div>
+        </div> */}
         <div className="dashboard bg-glass1">
           <div className="welcome ">
             Welcome Back! {currentUser?.displayName}

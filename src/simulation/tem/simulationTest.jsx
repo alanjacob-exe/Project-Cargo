@@ -9,7 +9,7 @@ export default function SimulationTest(props) {
   var cursor = 0;
   var cursor1 = 45;
   var man_pmn = 0;
-  var man_pmn1 = 6;
+  var man_pmn1 = 50;
 
   ///////////////////////     Perinthalmanna - Malappuram     ////////////////
   useEffect(() => {
@@ -48,10 +48,7 @@ export default function SimulationTest(props) {
   // console.log("current track:"+currentTrack);
   // console.log("dummy track:"+dummyTrack);
 
-  useEffect(() => {
-    const selectedBus = localStorage.getItem("busid");
-  }, []);
-  const selectedBus = localStorage.getItem("busid");
+ 
 
   ///////////////////    Threestar Bus databse   ///////////////////////
 
@@ -60,13 +57,13 @@ export default function SimulationTest(props) {
     // const coordinates=props
     console.log("from Threestars==" + "i:  " + i + "route: " + Route[i]);
 
-    // try {
-    //   await setDoc(doc(db, "buses", "Threestars", "location", "Threestars"), {
-    //     location: Route[i],
-    //   });
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    try {
+      await setDoc(doc(db, "buses", "Threestars", "location", "Threestars"), {
+        location: Route[i],
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   ///////////////////    Merelal Bus databse   ///////////////////////
@@ -75,20 +72,20 @@ export default function SimulationTest(props) {
     const Route = data.resourceSets[0].resources[0].routePath.line.coordinates;
     // console.log(Route.length);
     console.log("from merelal" + "i:" + i + "route:" + Route[i]);
-    // try {
-    //   await setDoc(doc(db, "buses", "Merelal", "location", "Merelal"), {
-    //     location: Route[i],
-    //   });
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    try {
+      await setDoc(doc(db, "buses", "Merelal", "location", "Merelal"), {
+        location: Route[i],
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   ////////////////////////////////////////   Manjeri - Perinthalmanna    ///////////////
 
   useEffect(() => {
     Aradhana(man_pmn);
-    // Merelal(cursor1);
+    Jazza(man_pmn1);
 
     const interval = setInterval(() => {
       if (man_pmn === 240) {
@@ -122,13 +119,13 @@ export default function SimulationTest(props) {
       p_manjeri.resourceSets[0].resources[0].routePath.line.coordinates;
     // console.log(Route.length);
     console.log("from aradhana" + "i:" + i + "route:" + Route[i]);
-    // try {
-    //   await setDoc(doc(db, "buses", "Aradhana", "location", "Aradhana"), {
-    //     location: Route[i],
-    //   });
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    try {
+      await setDoc(doc(db, "buses", "Aradhana", "location", "Aradhana"), {
+        location: Route[i],
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const Jazza = async (i) => {
@@ -136,13 +133,13 @@ export default function SimulationTest(props) {
       p_manjeri.resourceSets[0].resources[0].routePath.line.coordinates;
     // console.log(Route.length);
     console.log("from Jazza" + "i:" + i + "route:" + Route[i]);
-    // try {
-    //   await setDoc(doc(db, "buses", "Jazza", "location", "Jazza"), {
-    //     location: Route[i],
-    //   });
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    try {
+      await setDoc(doc(db, "buses", "Jazza", "location", "Jazza"), {
+        location: Route[i],
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
 

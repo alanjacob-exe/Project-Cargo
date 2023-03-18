@@ -58,14 +58,14 @@ export function TransportMap(position) {
     // console.log("West" + newWest);
 
     function ToNorthPosition(coordinate) {
-      var North = coordinate[0] + (1 / r_earth) * (180 / pi);
-      var South = coordinate[0] - (1 / r_earth) * (180 / pi);
-      var East =
-        coordinate[1] +
-        ((1 / r_earth) * (180 / pi)) / Math.cos((coordinate[0] * pi) / 180);
-      var west =
-        coordinate[1] -
-        ((1 / r_earth) * (180 / pi)) / Math.cos((coordinate[0] * pi) / 180);
+        var North = coordinate[0] + (1 / r_earth) * (180 / pi);
+        var South = coordinate[0] - (1 / r_earth) * (180 / pi);
+        var East =
+          coordinate[1] +
+          ((1 / r_earth) * (180 / pi)) / Math.cos((coordinate[0] * pi) / 180);
+        var west =
+          coordinate[1] -
+          ((1 / r_earth) * (180 / pi)) / Math.cos((coordinate[0] * pi) / 180);
 
       // console.log("South 1kms is"+South))
       // console.log("north 1kms is"+North);

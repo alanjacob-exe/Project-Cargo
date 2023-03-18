@@ -56,7 +56,7 @@ export default function Tracker(props) {
         console.log("Current data: ", doc.data().location);
       }
     );
-    console.log("data is"+test.location)
+    // console.log("data is"+test.location)
   };
   useEffect(() => {
     liveListner();
@@ -108,7 +108,7 @@ export default function Tracker(props) {
         <AirplaneMarker data={test ?? {}} display="database" />
         <AirplaneMarker data={aradhana ?? {}} display="Aradhana"/>
         <AirplaneMarker data={Jazza ?? {}} display="Jazza"/>
-        <Marker position={[latitude, longitude]} />
+        {/* <Marker position={[latitude, longitude]} /> */}
       </MapContainer>
   );
 }

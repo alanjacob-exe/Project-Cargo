@@ -9,3 +9,7 @@
     border-bottom: 5px solid red;
 
 }
+.leaflet-container {
+    width: 100wh; 
+    height: 100vh;
+  }

@@ -178,7 +178,7 @@ function Login() {
           <MDBCol
             md="6"
             className="text-center text-md-start d-flex flex-column justify-content-center topcard "
-            style={{ marginTop: "-150px" }}
+            style={{ marginTop: "-10%" }}
           >
             <h1
               className="my-5 display-3 fw-bold ls-tight px-3 "
@@ -190,7 +190,7 @@ function Login() {
 
             <p
               className="px-3"
-              style={{ color: "hsl(218, 81%, 85%)", display: "overlay" }}
+              style={{ color: "hsl(218, 81%, 85%)", display: "overlay", marginTop:"-10%" }}
             >
               Be a part of our online community and get updated with latest news
               and trends by becoming a member! What are you waiting for? Join us

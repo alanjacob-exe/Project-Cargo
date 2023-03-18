@@ -17,7 +17,11 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import BookedList from "./bookedList/bookedList";
-
+import { TransportMap } from "../../Components/TransportMap";
+import { MapContainer, TileLayer } from "react-leaflet";
+import BusMap from "../../Components/Busmap/busMap";
+import Tracker from "../../simulation/tem";
+import { Button } from "@mui/material";
 export default function Ticket(props) {
   const { currentUser } = useAuthValue();
   const [test, settest] = useState();
@@ -36,6 +40,19 @@ export default function Ticket(props) {
       );
     });
   }, []);
+
+  // const bookedBus = localStorage.getItem("bookedbus");
+  // console.log(bookedBus);
+  // const BusTracker = async () => {
+  //   const unsub = onSnapshot(
+  //     doc(db, "buses", , "location", "Aradhana"),
+  //     (doc) => {
+  //       setaradhana(doc.data().location);
+  //       // console.log("Current data: ", doc.data().location);
+  //     }
+  //   );
+  //   // console.log("data is"+test.location)
+  // };
   // console.log(busColl);
   // function getStepContent(step) {
   //   switch (step) {
@@ -49,6 +66,25 @@ export default function Ticket(props) {
   //     //   return <Success />;
   //     default:
   //       return "Unknown step";
+
+  // function getStepContent(step) {
+  //   switch (step) {
+  //     case 0:
+  //       return <Ticket/>;
+  //     case 1:
+  //       return <Contact/>;
+  //     // case 2:
+  //     //   return <PayCard />;
+  //     // case 3:
+  //     //   return <Success />;
+  //     default:
+  //       return "Unknown step";
+  //   }
+
+  const [page, setpage] = useState(0);
+  const [currentBus, setcurrentBus] = useState("")
+  // console.log("From basePage"+currentBus)
+
   return (
     <>
       <div>
@@ -58,12 +94,19 @@ export default function Ticket(props) {
               <div className="title">
                 Your Bookings
                 {busColl.map((bus) => (
-                  <BookedList key={bus.id} busName={bus.data.busName} />
+                  <BookedList key={bus.id} busName={bus.data.busName} onclick={()=>setcurrentBus(bus.data.busName)} />
                 ))}
               </div>
             </div>
             <div className="titleScreen">
               <div className="busdetails">Bus Details</div>
+              <div className="mapcontainer">
+                <BusMap busName={currentBus}/>
+              </div>
+              <div>
+                <Button variant="outlined" onclick={()=>{}}> Stop</Button>
+              </div>
+
             </div>
           </div>
         </div>

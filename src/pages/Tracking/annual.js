@@ -468,7 +468,7 @@ const AnnualReport = () => {
 
       <div>
         <MDBCard className="bg-glass width card1">
-          <MDBCardBody className="  cardcontainer">
+          <MDBCardBody className="cardcontainer">
             <div className={style}>
               <div className="dashbody">
                 <label className="montserrat" style={{ color: "#fff" }}>

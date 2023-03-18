@@ -1,0 +1,92 @@
+"filename", "language", "PostCSS", "JavaScript JSX", "JSON", "JavaScript", "SCSS", "comment", "blank", "total"
+"c:\Users\dell\Documents\Project\01-starting-setup\src\App.css", "PostCSS", 14, 0, 0, 0, 0, 0, 1, 15
+"c:\Users\dell\Documents\Project\01-starting-setup\src\App.js", "JavaScript", 0, 0, 0, 57, 0, 47, 13, 117
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Autocomplete\DestinationAutocomplete.js", "JavaScript", 0, 0, 0, 32, 0, 0, 2, 34
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Autocomplete\SourceAutocomplete.js", "JavaScript", 0, 0, 0, 33, 0, 6, 5, 44
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\BingMaps\BingMaps.js", "JavaScript", 0, 0, 0, 32, 0, 0, 7, 39
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\BingPlacesApi\Places3.js", "JavaScript", 0, 0, 0, 0, 0, 25, 4, 29
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\BingPlacesApi\PlacesApi.js", "JavaScript", 0, 0, 0, 24, 0, 5, 17, 46
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\BingPlacesApi\PlacesApi2.js", "JavaScript", 0, 0, 0, 24, 0, 7, 10, 41
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\BingPlacesApi\places4.js", "JavaScript", 0, 0, 0, 43, 0, 2, 11, 56
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Busmap\busMap.jsx", "JavaScript JSX", 0, 50, 0, 0, 0, 26, 12, 88
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Busmap\busmap.css", "PostCSS", 10, 0, 0, 0, 0, 0, 0, 10
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Carousel\index.css", "PostCSS", 26, 0, 0, 0, 0, 0, 12, 38
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Carousel\index.js", "JavaScript", 0, 0, 0, 40, 0, 0, 7, 47
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Footer\FooterStyles.js", "JavaScript", 0, 0, 0, 50, 0, 1, 11, 62
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Footer\index.js", "JavaScript", 0, 0, 0, 75, 0, 0, 2, 77
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\GoogleMap\GoogleMap.js", "JavaScript", 0, 0, 0, 48, 0, 0, 9, 57
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\GoogleMap\maps.css", "PostCSS", 38, 0, 0, 0, 0, 0, 8, 46
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Location\CurrentLocation.js", "JavaScript", 0, 0, 0, 34, 0, 0, 10, 44
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Modal\index.js", "JavaScript", 0, 0, 0, 41, 0, 0, 6, 47
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Navbar\NavbarElements.js", "JavaScript", 0, 0, 0, 91, 0, 10, 11, 112
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\Navbar\index.js", "JavaScript", 0, 0, 0, 65, 0, 0, 8, 73
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\TransportMap\index.css", "PostCSS", 4, 0, 0, 0, 0, 0, 1, 5
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\TransportMap\index.js", "JavaScript", 0, 0, 0, 124, 0, 70, 45, 239
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\axios\axios.js", "JavaScript", 0, 0, 0, 18, 0, 0, 10, 28
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\busList\index.css", "PostCSS", 47, 0, 0, 0, 0, 0, 3, 50
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\busList\index.js", "JavaScript", 0, 0, 0, 25, 0, 2, 3, 30
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\container\index.css", "PostCSS", 45, 0, 0, 0, 0, 0, 2, 47
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\container\index.js", "JavaScript", 0, 0, 0, 19, 0, 0, 3, 22
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\detailsTab\index.css", "PostCSS", 60, 0, 0, 0, 0, 0, 6, 66
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\detailsTab\index.js", "JavaScript", 0, 0, 0, 28, 0, 10, 13, 51
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\ticket\ticket.jsx", "JavaScript JSX", 0, 251, 0, 0, 0, 0, 4, 255
+"c:\Users\dell\Documents\Project\01-starting-setup\src\Components\ticket\ticket.scss", "SCSS", 0, 0, 0, 0, 177, 18, 43, 238
+"c:\Users\dell\Documents\Project\01-starting-setup\src\file.json", "JSON", 0, 0, 9024, 0, 0, 0, 0, 9024
+"c:\Users\dell\Documents\Project\01-starting-setup\src\firebase.js", "JavaScript", 0, 0, 0, 20, 0, 1, 6, 27
+"c:\Users\dell\Documents\Project\01-starting-setup\src\index.css", "PostCSS", 9, 0, 0, 0, 0, 0, 4, 13
+"c:\Users\dell\Documents\Project\01-starting-setup\src\index.js", "JavaScript", 0, 0, 0, 8, 0, 0, 8, 16
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\404\404.js", "JavaScript", 0, 0, 0, 21, 0, 0, 4, 25
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\404\index.css", "PostCSS", 61, 0, 0, 0, 0, 0, 10, 71
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Booking\busRegistration\busRegistration.jsx", "JavaScript JSX", 0, 224, 0, 0, 0, 21, 9, 254
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Booking\seatSelection\index.css", "PostCSS", 327, 0, 0, 0, 0, 3, 40, 370
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Booking\seatSelection\index.js", "JavaScript", 0, 0, 0, 344, 0, 90, 31, 465
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Booking\ticketPage\index.css", "PostCSS", 443, 0, 0, 0, 0, 0, 52, 495
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Booking\ticketPage\index.js", "JavaScript", 0, 0, 0, 252, 0, 0, 6, 258
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Booking\ticketPage\index.scss", "SCSS", 0, 0, 0, 0, 176, 19, 41, 236
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Contact_Us\blogs.css", "PostCSS", 28, 0, 0, 0, 0, 0, 9, 37
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Contact_Us\blogs.js", "JavaScript", 0, 0, 0, 36, 0, 1, 14, 51
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Destinations\event.css", "PostCSS", 123, 0, 0, 0, 0, 0, 11, 134
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Destinations\events.js", "JavaScript", 0, 0, 0, 58, 0, 0, 5, 63
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Home\about.css", "PostCSS", 141, 0, 0, 0, 0, 4, 16, 161
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Home\about.js", "JavaScript", 0, 0, 0, 45, 0, 9, 7, 61
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Loading.css", "PostCSS", 59, 0, 0, 0, 0, 0, 2, 61
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Loading.js", "JavaScript", 0, 0, 0, 24, 0, 0, 3, 27
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\Details.jsx", "JavaScript JSX", 0, 76, 0, 0, 0, 1, 4, 81
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\Footer.jsx", "JavaScript JSX", 0, 19, 0, 0, 0, 0, 4, 23
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\Form.jsx", "JavaScript JSX", 0, 257, 0, 0, 0, 2, 21, 280
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\PayCard.jsx", "JavaScript JSX", 0, 154, 0, 0, 0, 8, 15, 177
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\PaymentMode.jsx", "JavaScript JSX", 0, 73, 0, 0, 0, 0, 5, 78
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\Success.jsx", "JavaScript JSX", 0, 129, 0, 0, 0, 3, 9, 141
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\index.jsx", "JavaScript JSX", 0, 8, 0, 0, 0, 0, 5, 13
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\styles.css", "PostCSS", 164, 0, 0, 0, 0, 0, 27, 191
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Payment\utils.js", "JavaScript", 0, 0, 0, 52, 0, 0, 13, 65
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Sign-up\AuthContext.js", "JavaScript", 0, 0, 0, 12, 0, 0, 4, 16
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Sign-up\Profile.css", "PostCSS", 160, 0, 0, 0, 0, 4, 11, 175
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Sign-up\Profile.js", "JavaScript", 0, 0, 0, 115, 0, 47, 10, 172
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Sign-up\VerifyEmail.css", "PostCSS", 21, 0, 0, 0, 0, 0, 4, 25
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Sign-up\VerifyEmail.js", "JavaScript", 0, 0, 0, 64, 0, 0, 8, 72
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Sign-up\forms.css", "PostCSS", 109, 0, 0, 0, 0, 0, 12, 121
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Sign-up\index.css", "PostCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Sign-up\index.js", "JavaScript", 0, 0, 0, 360, 0, 44, 47, 451
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Tracking\annual.css", "PostCSS", 207, 0, 0, 0, 0, 1, 18, 226
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\Tracking\annual.js", "JavaScript", 0, 0, 0, 383, 0, 118, 69, 570
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\just.css", "PostCSS", 77, 0, 0, 0, 0, 3, 5, 85
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\just.js", "JavaScript", 0, 0, 0, 0, 0, 36, 6, 42
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\loggedin\bookedList\bookedList.css", "PostCSS", 34, 0, 0, 0, 0, 3, 3, 40
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\loggedin\bookedList\bookedList.jsx", "JavaScript JSX", 0, 11, 0, 0, 0, 0, 2, 13
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\loggedin\bookedList\contact.jsx", "JavaScript JSX", 0, 11, 0, 0, 0, 0, 2, 13
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\loggedin\index.css", "PostCSS", 47, 0, 0, 0, 0, 2, 5, 54
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\loggedin\ticket.jsx", "JavaScript JSX", 0, 70, 0, 0, 0, 39, 8, 117
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\team.js", "JavaScript", 0, 0, 0, 0, 0, 42, 5, 47
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\tem\Modal.js", "JavaScript", 0, 0, 0, 52, 0, 0, 13, 65
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\tem\index.css", "PostCSS", 104, 0, 0, 0, 0, 0, 23, 127
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\tem\index.js", "JavaScript", 0, 0, 0, 15, 0, 7, 14, 36
+"c:\Users\dell\Documents\Project\01-starting-setup\src\pages\tem\modal.css", "PostCSS", 40, 0, 0, 0, 0, 0, 4, 44
+"c:\Users\dell\Documents\Project\01-starting-setup\src\simulation\tem\AirplaneMarker.js", "JavaScript", 0, 0, 0, 29, 0, 1, 8, 38
+"c:\Users\dell\Documents\Project\01-starting-setup\src\simulation\tem\file.json", "JSON", 0, 0, 839, 0, 0, 0, 1, 840
+"c:\Users\dell\Documents\Project\01-starting-setup\src\simulation\tem\index.js", "JavaScript", 0, 0, 0, 94, 0, 7, 14, 115
+"c:\Users\dell\Documents\Project\01-starting-setup\src\simulation\tem\p-Manjeri.json", "JSON", 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\dell\Documents\Project\01-starting-setup\src\simulation\tem\pmnaKottakkal.json", "JSON", 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\dell\Documents\Project\01-starting-setup\src\simulation\tem\simulationTest.jsx", "JavaScript JSX", 0, 112, 0, 0, 0, 14, 30, 156
+"c:\Users\dell\Documents\Project\01-starting-setup\src\simulation\tem\styles.css", "PostCSS", 3, 0, 0, 0, 0, 0, 0, 3
+"Total", "-", 2401, 1445, 9865, 2887, 353, 759, 1007, 18717

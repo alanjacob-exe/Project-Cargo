@@ -33,20 +33,16 @@ h1 {
   left: 150px;
   top: 350px;
 }
-.explore{
+.explore {
   font-family: "Kanit", sans-serif;
-
 }
-
-
-
 
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap");
 
 .top {
-  height:100vh;
-  width:100%;
+  height: 100vh;
+  width: 100%;
 }
 .bg-glass {
   background-color: hsla(0, 0%, 90%, 0.3) !important;
@@ -84,6 +80,13 @@ h1 {
   width: 100vw;
 }
 
+.contentcontainer{
+  height:100%;
+  width:100vw;
+  position:relative;
+  
+}
+
 #radius-shape-1 {
   height: 220px;
   width: 220px;
@@ -101,35 +104,102 @@ h1 {
   background: radial-gradient(#44006b, #ad1fff);
   overflow: hidden;
 }
-.title{
-  width:100%;
-  /* margin: auto; */
-  color:#fff;
+.nameholder{
+  min-width:70vw;
+  display:inline-block;
+  height:8vh;
+  margin:0 auto;
+}
+
+.mobilenavbarcontainer{
+  height:90px;
+  width:100vw;
+  position:top;
+  display:inline-block;
+}
+.title {
+  /* width: 65%; */
+  margin: 0 auto;
+  color: #fff;
   font-family: "Kanit", sans-serif;
-  font-size:30px;
+  font-size: 30px;
   text-align: center;
-  padding:1px;
-
-
-
-}
-.card{
-  height:100vh;
-  border-radius:21px;
+  padding: 1px;
+  display:inline-block;
+  margin-top:5%;
+  margin-left:5%
 }
 
-@media screen and (max-width: 600px) {
-  div.image{
-    display:none;
+.phonecontainer {
+  width: 100%;
+  height: 92vh;
 
-  }
+}
+.card {
+  height: 100vh;
+  border-radius: 21px;
+}
+
+.phonetitle {
+  font-family: "Kanit", sans-serif;
+  font-size: 30px;
+  margin: 0 auto;
+  margin-top:30%;
   
 }
+.mobilenavbar{
+  position:relative;
+  display:inline-block;
+  float:right;
+  margin:0 auto;
+  width:25vw;
+  height:8vh;
+}
+@media screen and (max-width: 600px) {
+  div.image {
+    display: none;
+  }
+  div.navbarshow{
+    display:none;
+  }
+  .phoneglass {
+    height:100%;
+    width:100vw;
+    color: #fff;
+    border-radius: 12px;
+    background-color: hsla(0, 0%, 90%, 0.3) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+    position: relative;
+    display:flex;
+    
+  }
+  /* body{
+    height:100vh;
+  } */
+
+  .top {
+    height: 100vh;
+  }
+}
 @media screen and (min-width: 992px) {
-  div.title{
+  div.title {
+    display: none;
+  }
+  div.purple {
+    display: none;
+  }
+  div.phoneglass{
     display:none;
   }
-  div.purple{
+  div.mobilenavbar{
     display:none;
   }
+  div.logo{
+    display:none;
+  }
+  div.phonecontainer{
+    display:none
+  }
+  div.nameholder{display:none}
+
 }

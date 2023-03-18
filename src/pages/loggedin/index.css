@@ -41,3 +41,14 @@
     width:100vw;
     height:100vh;
 }
+.mapcontainer{
+    border: 1px solid black;
+    width:100%;
+    height:50%;
+}
+.leaflet-control-container {
+    width: 100%;
+    height: 72%;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
