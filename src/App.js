@@ -41,6 +41,13 @@ const Ticket = React.lazy(() => import("./pages/Booking/ticketPage/index"));
 const BusRegistration=React.lazy(()=> import("./pages/Booking/busRegistration/busRegistration"))
 const Payment=React.lazy(()=>import("./pages/Payment/Form"));
 const SimTest=React.lazy(()=>import("./simulation/tem/simulationTest"))
+const AdminPage=React.lazy(()=>import("./pages/AdminPage/AdminPage"))
+const BusEdit=React.lazy(()=>import("./pages/AdminPage/BusEdit/Busedit"))
+const AdminHome=React.lazy(()=>import("./pages/AdminPage/AdminHome/AdminHome"))
+const UserDetails=React.lazy(()=> import("./pages/AdminPage/Userlist/UserList"))
+const AddUser=React.lazy(()=>import("./pages/AdminPage/Userlist/AddUser"))
+
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -66,19 +73,7 @@ function App() {
     // localStorage.setItem('user', JSON.stringify(currentUser));
   }, [currentUser]);
 
-  // if(localStorage.getItem("user"))
-  // {
-  //   const locuser = JSON.parse(localStorage.getItem('user'));
-  //   console.log("user from app"+locuser.email)
-  // }
 
-  // const usernow = JSON.parse(localStorage.getItem("user"));
-
-  // console.log(usernow);
-
-
-  // console.log("useremail?"+ currentUser?.email)
-  // console.log("is logged in"+isLoggedin)
 
   return (
     <Router>
@@ -106,6 +101,11 @@ function App() {
             <Route path="/registration" element={<BusRegistration/>}/>
             <Route path="/payment" element={<Payment/>}/>
             <Route path="/simtest" element={<SimTest/>}/>
+            <Route path="/adminbuses" element={<AdminPage/>}/>
+            <Route path="/adminedit" element={<BusEdit/>}/>
+            <Route path="/adminhome" element={<AdminHome/>}/>
+            <Route path="/adminuser" element={<UserDetails/>}/>
+            <Route path="/adminadduser" element={<AddUser/>}/>
           </Routes>
         </AuthProvider>
       </Suspense>

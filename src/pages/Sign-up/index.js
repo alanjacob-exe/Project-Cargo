@@ -118,7 +118,7 @@ function Login() {
 
       // setIsLoading(false);
 
-      alert("Registration Successfull")
+      alert("Registration Successfull");
     } catch (e) {
       // setIsLoading(false);
       alert(e);
@@ -190,7 +190,11 @@ function Login() {
 
             <p
               className="px-3"
-              style={{ color: "hsl(218, 81%, 85%)", display: "overlay", marginTop:"-10%" }}
+              style={{
+                color: "hsl(218, 81%, 85%)",
+                display: "overlay",
+                marginTop: "-10%",
+              }}
             >
               Be a part of our online community and get updated with latest news
               and trends by becoming a member! What are you waiting for? Join us
@@ -374,7 +378,10 @@ function Login() {
                           <p className="text-center mt-3">or:</p>
                         </div>
                         {error && <div className="auth__error">{error}</div>}
+                        <form name="registration_form" onSubmit={register}>
+
                         <MDBInput
+                          wrapperClass="mb-4"
                           type="Name"
                           value={Name}
                           required
@@ -386,8 +393,8 @@ function Login() {
                           }}
                         />
 
-                        <form name="registration_form" onSubmit={register}>
                           <MDBInput
+                            wrapperClass="mb-4"
                             type="email"
                             value={email}
                             label="Email"
@@ -398,8 +405,8 @@ function Login() {
                               borderRadius: "12px",
                             }}
                           />
-                          <br></br>
                           <MDBInput
+                            wrapperClass="mb-4"
                             type="password"
                             value={password}
                             required
@@ -411,6 +418,7 @@ function Login() {
                             }}
                           />
                           <MDBInput
+                            wrapperClass="mb-4"
                             type="password"
                             value={confirmPassword}
                             required

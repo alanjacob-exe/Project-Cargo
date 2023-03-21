@@ -120,7 +120,7 @@ export default function Just(props) {
                 <div className="name">Contact</div>
               </div>
             </div>
-            <div className="sidebarelements" onClick={()=>{ navigate("/track")}}>
+            <div className="sidebarelements" onClick={()=>{navigate("/track")}}>
               <div>
                 <div className="icon">
                   <ContactPhoneIcon fontSize="small" />
@@ -136,7 +136,7 @@ export default function Just(props) {
               onClick={() => {
                 signOut(auth);
                 localStorage.removeItem("user");
-                navigate("/");
+                navigate("/signin");
               }}
             >
               Not You? Signout

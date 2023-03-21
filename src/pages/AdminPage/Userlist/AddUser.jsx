@@ -13,10 +13,9 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
-import { db } from "../firebase";
-import Logo from "../Photos/bus2.png";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import MuiModal from "../Components/Modal/MuiModal";
+import { db } from "../../../firebase";
+import Logo from "../../../Photos/bus2.png";
+import MuiModal from "../../../Components/Modal/MuiModal";
 
 export default function Just(props) {
   const [open, setOpen] = React.useState(false);

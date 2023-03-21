@@ -19,6 +19,7 @@
     "@mui/base": "^5.0.0-alpha.99",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.10",
+    "@mui/x-data-grid": "^6.0.2",
     "@mui/x-date-pickers": "^5.0.20",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",

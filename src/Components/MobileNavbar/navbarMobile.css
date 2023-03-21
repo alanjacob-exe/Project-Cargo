@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Rasa:wght@600&display=swap');
+
+
 .cont{
     height:80px;
     /* width:100vw; */
@@ -19,8 +23,8 @@
 .burger{
     /* margin:0 auto; */
     position:absolute;
-    top:2.3vh;
-    right:5vw;
+    top:3vh;
+    right:6.5vw;
     /* margin-left:10%; */
     /* height:100%; */
 }
@@ -77,6 +81,8 @@
     height:6vh;
     /* border:1px solid white; */
     display:flex;
+    transition: .5s;
+
     /* border-bottom:1px solid white; */
 
 }
@@ -85,6 +91,8 @@
     font-size:20px;
     font-weight:bold;
     transition: .5s;
+    margin:auto 0;
+    margin-left:6vw;
 
 }
 .item:hover{
@@ -92,6 +100,8 @@
 }
 .itemcontainer{
     height:50vh;
+    transition: 1s;
+
 }
 
 .logo{

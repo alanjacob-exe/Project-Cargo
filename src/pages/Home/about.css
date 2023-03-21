@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cabin:wght@700&family=Rasa:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap");
+
 
 h1 {
   font-family: "Kanit", sans-serif;
@@ -37,8 +41,6 @@ h1 {
   font-family: "Kanit", sans-serif;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap");
 
 .top {
   height: 100vh;
@@ -84,6 +86,7 @@ h1 {
   height:100%;
   width:100vw;
   position:relative;
+  color:#000;
   
 }
 
@@ -107,27 +110,33 @@ h1 {
 .nameholder{
   min-width:70vw;
   display:inline-block;
-  height:8vh;
+  height:10vh;
   margin:0 auto;
+  color:#000;
+  /* text-align:center; */
+  justify-content:center;
+
 }
 
 .mobilenavbarcontainer{
-  height:90px;
+  height:10vh;
   width:100vw;
   position:top;
-  display:inline-block;
+  display:flex;
+  border: 1px solid black;
+
 }
-.title {
+.title1 {
   /* width: 65%; */
-  margin: 0 auto;
-  color: #fff;
-  font-family: "Kanit", sans-serif;
+  margin:auto auto;
+  color:#000;
+  font-family: 'Cabin', sans-serif;
   font-size: 30px;
   text-align: center;
   padding: 1px;
   display:inline-block;
-  margin-top:5%;
-  margin-left:5%
+  margin-top:8%;
+  margin-left:7%
 }
 
 .phonecontainer {
@@ -151,10 +160,29 @@ h1 {
   position:relative;
   display:inline-block;
   float:right;
-  margin:0 auto;
+  margin:auto auto;
   width:25vw;
-  height:8vh;
+  height:10vh;
+  position:relative;
 }
+.greettext{
+  margin:auto auto;
+}
+
+.greetings{
+  margin-top:5%;
+  height:6%;
+  border-radius:12px;
+  padding:6px;
+  margin-left:2%;
+  font-size:25px;
+  font-family: 'Archivo Black', sans-serif;
+  /* background-color: hsla(0, 0%, 90%, 0.4) !important;
+  backdrop-filter: saturate(200%) blur(25px); */
+  color:#000;
+}
+
+
 @media screen and (max-width: 600px) {
   div.image {
     display: none;
@@ -167,8 +195,7 @@ h1 {
     width:100vw;
     color: #fff;
     border-radius: 12px;
-    background-color: hsla(0, 0%, 90%, 0.3) !important;
-    backdrop-filter: saturate(200%) blur(25px);
+
     position: relative;
     display:flex;
     

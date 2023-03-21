@@ -4,30 +4,48 @@ import { collection, addDoc, Timestamp, doc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { Button } from "@mui/material";
 import TimePicker from "react-time-picker";
-import 'react-time-picker/dist/TimePicker.css';
-import 'react-clock/dist/Clock.css';
+import "react-time-picker/dist/TimePicker.css";
+import "react-clock/dist/Clock.css";
+import { useLocation } from "react-router-dom";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
+import MuiModal from "../../../Components/Modal/MuiModal";
 
-import { useLocation } from "react-router-dom";
 
-export default function FormExample5() {
-  const [companyName, setcompanyName] = useState(null);
-  const [busType, setbusType] = useState(null);
-  const [busNumber, setbusNumber] = useState(null);
-  const [startCity, setstartCity] = useState(null);
-  const [destinationCity, setdestinationCity] = useState(null);
-  const [totalSeats, settotalSeats] = useState(null);
-  const [availableSeates, setavailableSeates] = useState(null);
-  const [pricePerSeat, setpricePerSeat] = useState(null);
-  const [bookedSeats, setbookedSeats] = useState(null);
-  const [busName, setbusName] = useState(null);
+export default function BusEdit() {
+  const location = useLocation();
+  console.log(location.state.busname[0].id);
+  const [companyName, setcompanyName] = useState(
+    location.state.busname[0].companyName
+  );
+  const [busType, setbusType] = useState(location.state.busname[0].busType);
+  const [busNumber, setbusNumber] = useState(
+    location.state.busname[0].busNumber
+  );
+  const [startCity, setstartCity] = useState(
+    location.state.busname[0].startCity
+  );
+  const [destinationCity, setdestinationCity] = useState(
+    location.state.busname[0].destinationCity
+  );
+  const [totalSeats, settotalSeats] = useState(
+    location.state.busname[0].totalSeats
+  );
+  const [availableSeates, setavailableSeates] = useState(
+    location.state.busname[0].availableSeats
+  );
+  const [pricePerSeat, setpricePerSeat] = useState(
+    location.state.busname[0].pricePerSeat
+  );
+  const [bookedSeats, setbookedSeats] = useState(
+    location.state.busname[0].bookedSeats
+  );
+  const [busName, setbusName] = useState(location.state.busname[0].busName);
   const [value, onChange] = useState("10:00");
 
-  const location=useLocation();
-
+  console.log("time:" + value);
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   try {
@@ -51,6 +69,12 @@ export default function FormExample5() {
   //   }
   // };
 
+      const [open, setOpen] = React.useState(false);
+    const handleOpen =  () => setOpen(true);
+    const handleClose = () => setOpen(false);
+  
+const bodyText=" has been updated successfully!"
+console.log(`${busName}${bodyText}`)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,7 +92,7 @@ export default function FormExample5() {
         bookedSeats: bookedSeats,
         busName: busName,
       });
-      alert("Inserted Sucessfully");
+      handleOpen()
     } catch (e) {}
   };
   function capitalizeFirstLetter(string) {
@@ -76,9 +100,9 @@ export default function FormExample5() {
   }
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-      <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-black-100 lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center text-indigo-700 underline uppercase ">
-          Bus Registration Form
+      <div className="w-[60%] p-6 m-auto bg-white rounded-md shadow-xl shadow-black-300 lg:max-w-xl border">
+        <h1 className="text-3xl font-semibold text-center text-black underline uppercase ">
+          Bus Editing Form
         </h1>
         <form className="mt-6" onSubmit={handleSubmit}>
           <div className="mb-2">
@@ -94,6 +118,7 @@ export default function FormExample5() {
               }
               value={companyName}
               type="text"
+              placeholder={location.state.busname[0].companyName}
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
@@ -138,6 +163,7 @@ export default function FormExample5() {
               }
               value={startCity}
               type="text"
+              disabled={true}
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
@@ -149,6 +175,7 @@ export default function FormExample5() {
               DestinationCity
             </label>
             <input
+              disabled={true}
               onChange={(e) =>
                 setdestinationCity(capitalizeFirstLetter(e.target.value))
               }
@@ -221,6 +248,7 @@ export default function FormExample5() {
               BusName
             </label>
             <input
+            disabled={true}
               onChange={(e) =>
                 setbusName(capitalizeFirstLetter(e.target.value))
               }
@@ -230,7 +258,7 @@ export default function FormExample5() {
             />
           </div>
           <div className="mb-2">
-            <label
+            {/* <label
               for="text"
               className="block text-sm font-semibold text-gray-800"
             >
@@ -238,17 +266,18 @@ export default function FormExample5() {
             </label>
             <div>
               <TimePicker className="w-[20%]" onChange={onChange} value={"22:15:00"} />
-            </div>
+            </div> */}
           </div>
-          <div className="mt-6">
-            <Button variant="contained" type="submit" sx={{}}>
-              Register
+          <div className="mt-9 ">
+            <Button variant="contained" type="submit" sx={{width:"100%  "}}>
+              Update
             </Button>
           </div>
         </form>
 
-        <p className="mt-8 text-xs font-light text-center text-gray-700"> </p>
       </div>
+      <MuiModal open={open} handleclose={() => setOpen(false)} heading="Success" content={`${busName}${bodyText}`}></MuiModal>
+
     </div>
   );
 }

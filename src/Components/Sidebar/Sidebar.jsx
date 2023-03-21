@@ -1,5 +1,5 @@
 import React from 'react'
-import "./index.css"
+import "./sidebar.css"
 
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
@@ -10,17 +10,9 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import {  useNavigate } from "react-router-dom";
 import { Button } from "@mui/material"; // import Logo from "../Photos/bus2.png";
-import { useAuthValue } from "../Sign-up/AuthContext";
-import Details from "../Payment/Details";
-import Form from "../Payment/Form";
-import PayCard from "../Payment/PayCard";
-import Success from "../Payment/Success";
-import PaymentMode from "../Payment/PaymentMode";
-import { Link } from "@mui/material";
-import Ticket from "../loggedin/ticket";
-import Contact from "../loggedin/bookedList/contact";
 
-export default function Index(props) {
+
+export default function Sidebar(props) {
   const navigate=useNavigate()
   
 

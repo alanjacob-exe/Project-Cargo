@@ -15,15 +15,15 @@ const About = () => {
         <Navbar />
       </div>
 
-      <div className="color contentcontainer ">
+      <div className="contentcontainer ">
         <div>
           <div className="mobnavbarcontainer">
             <div>
               <div className="nameholder">
-                <div className="title">Project Cargo</div>
-                <div className="logo">
+                <div className="title1">Project Cargo</div>
+                {/* <div className="logo">
                   <img src={Logo}></img>
-                </div>
+                </div> */}
               </div>
               <div className="mobilenavbar">
                 <NavbarMobile />
@@ -36,7 +36,7 @@ const About = () => {
         </div>
         <div className="phonecontainer">
           <div className="purple">
-            <div>
+            {/* <div>
               <div></div>
               <div
                 id="radius-shape-1"
@@ -46,10 +46,14 @@ const About = () => {
                 id="radius-shape-2"
                 className="position-absolute   rounded-circle shadow-5-strong"
               ></div>
-            </div>
+            </div> */}
           </div>
 
-          <div className="phoneglass"></div>
+          <div className="phoneglass">
+            <div className="greetings">
+              <div className="greettext">Hello, Welcome back!</div>
+            </div>
+          </div>
         </div>
         {/* <div>
           <MDBCard className="my-5 bg-glass card">

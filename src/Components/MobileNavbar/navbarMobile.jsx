@@ -31,7 +31,7 @@ export default function NavbarMobile(props) {
     <div>
       <div className="cont">
         <div className="burger" onClick={handleShown}>
-          <MenuIcon fontSize="large" />
+          <MenuIcon fontSize="large" sx={{color:"#000"}} />
         </div>
         <div> </div>
       </div>
@@ -43,7 +43,7 @@ export default function NavbarMobile(props) {
 
                 <div className="close" onClick={handleShown}>
                   <div className="cbutton">
-                    <CloseIcon sx={{color:"black",}} fontSize="large" />
+                    <CloseIcon sx={{color:"#000"}} fontSize="large" />
                   </div>
                 </div>
               </div>
@@ -51,36 +51,36 @@ export default function NavbarMobile(props) {
               <div className="itemcontainer">
               <div className="elements">
                 <div className="item">
-                  <Link sx={{ color: "#fff", fontSize: "25px",textDecoration: 'none' }} href="/track">
+                  <Link sx={{ color: "#000", fontSize: "25px",textDecoration: 'none' }} href="/track">
                     Track
                   </Link>
                 </div>
               </div>
               <div className="elements">
                 <div className="item">
-                  <Link sx={{ color: "#fff", fontSize: "25px",textDecoration: 'none',classes:"item" }} href="/Dev">
+                  <Link sx={{ color: "#000", fontSize: "25px",textDecoration: 'none',classes:"item" }} href="/Dev">
                     Developers
                   </Link>
                 </div>
               </div>
               <div className="elements">
                 <div className="item">
-                  <Link sx={{ color: "#fff", fontSize: "25px",textDecoration: 'none' }} href="/bus">
+                  <Link sx={{ color: "#000", fontSize: "25px",textDecoration: 'none' }} href="/bus">
                     Destination
                   </Link>
                 </div>
               </div>
               <div className="elements">
                 <div className="item">
-                  <Link sx={{ color: "#fff", fontSize: "25px",textDecoration: 'none' }} href="/help">
+                  <Link sx={{ color: "#000", fontSize: "25px",textDecoration: 'none' }} href="/help">
                     Help
                   </Link>
                 </div>
               </div>
               <div className="elements">
                 <div className="item">
-                  <Link sx={{ color: "#fff", fontSize: "25px",textDecoration: 'none' }} href="/signin">
-                    Signin
+                  <Link sx={{ color: "#000", fontSize: "25px",textDecoration: 'none' }} href="/signin">
+                    Sign in
                   </Link>
                 </div>
               </div>

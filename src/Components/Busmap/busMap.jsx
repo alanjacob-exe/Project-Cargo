@@ -19,8 +19,11 @@ import { useState, useEffect } from "react";
 export default function BusMap(props) {
   const busname = props.busName;
   console.log("from busmap" + busname);
-  const [detach, setdetach] = useState(0);
+  console.log("from busmap bus"+Bus)
   const [Bus, setBus] = useState([11.027775, 76.099903]);
+
+
+  const [detach, setdetach] = useState(0);
   // const selectedBus = localStorage.getItem("busid");
 
   const busTracker = async (busname) => {
@@ -35,7 +38,7 @@ export default function BusMap(props) {
       setBus(doc.data().location);
       console.log(
         "current bus" + busname + "Current data: ",
-        doc.data().locacxztion
+        doc.data().locacation
       );
     });
     console.log("data is" + test.location);
@@ -66,10 +69,11 @@ export default function BusMap(props) {
   // const unsubscribe=onSnapshot(doc(db, "buses", busname, "location", busname),(  )=>{
 
   // });
-
   useEffect(() => {
-    busTracker(busname);
-  }, [busname]);
+    busTracker(busname)
+  }, [busname])
+
+
 
   return (
     <MapContainer
