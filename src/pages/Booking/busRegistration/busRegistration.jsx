@@ -55,7 +55,7 @@ export default function FormExample5() {
     e.preventDefault();
 
     try {
-      const busCollection = doc(db, "buses", busName);
+      const busCollection = doc(db, "buses", busNumber);
       await setDoc(busCollection, {
         companyName: companyName,
         busType: busType,
@@ -69,7 +69,9 @@ export default function FormExample5() {
         busName: busName,
       });
       alert("Inserted Sucessfully");
-    } catch (e) {}
+    } catch (e) {
+      console.log(e)
+    }
   };
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -165,9 +167,9 @@ export default function FormExample5() {
               Available Seats
             </label>
             <input
-              onChange={(e) => setavailableSeates(e.target.value)}
+              onChange={(event) => setavailableSeates(event.target.value)}
               value={availableSeates}
-              type="text"
+              type="number"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
@@ -181,7 +183,7 @@ export default function FormExample5() {
             <input
               onChange={(e) => settotalSeats(e.target.value)}
               value={totalSeats}
-              type="text"
+              type="number"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
@@ -195,7 +197,7 @@ export default function FormExample5() {
             <input
               onChange={(e) => setpricePerSeat(e.target.value)}
               value={pricePerSeat}
-              type="text"
+              type="number"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
@@ -221,8 +223,8 @@ export default function FormExample5() {
               BusName
             </label>
             <input
-              onChange={(e) =>
-                setbusName(capitalizeFirstLetter(e.target.value))
+              onChange={(event) =>
+                setbusName(capitalizeFirstLetter(event.target.value))
               }
               value={busName}
               type="text"

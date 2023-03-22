@@ -95,54 +95,8 @@ export default function Just(props) {
       editable: true,
     },
 
-    {
-      field: "Edit",
-      headerName: "Edit",
-      width: 100,
-      renderCell: (params) => {
-        return (
-          <Link
-            to="/adminedit"
-            state={{
-              busname: User.filter((item) => item.id === params.id),
-            }}
-          >
-            <Button variant="contained" size="small">
-              Edit
-            </Button>
-            {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
-                Uploaded
-              </Button> */}
-          </Link>
-        );
-      },
-    },
-    {
-      field: "remove",
-      headerName: "Remove",
-      width: 100,
-      renderCell: (params) => {
-        return (
-          <Link to="" state={{}}>
-            <Button
-              variant="outlined"
-              color="error"
-              size="small"
-              onClick={() => {
-                handleOpen();
-                // setremoveBus(Bus.filter((item) => item.id === params.id));
-              }}
-            >
-              Remove
-            </Button>
-            <div className="my-auto left-0 top-0 w-[40%] h-[60%] absolute"></div>
-            {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
-                Uploaded
-              </Button> */}
-          </Link>
-        );
-      },
-    },
+   
+    
   ];
 
   return (
@@ -160,19 +114,19 @@ export default function Just(props) {
       <div className="rounded-xl bg-white w-[90%] flex flex-col p-10 min-h-[50vh] space-y-4 border mt-5 ">
         <div className="flex justify-between">
           <div>
-            <h4 className="font-semibold">Buses Currently Running </h4>
+            <h4 className="font-semibold">User details</h4>
             <p className="text-secondary text-sm"></p>
           </div>
           <div className="flex">
             <Button
               variant="text"
               onClick={() => {
-                navigate("/registration");
+                navigate("/adminadduser");
               }}
               startIcon={<IoAddOutline />}
               sx={{ color: "black" }}
             >
-              Add Buses
+              Add user
             </Button>
             {/* <IconButton color="primary" component="label">
               <IoAddOutline></IoAddOutline> 
@@ -189,6 +143,8 @@ export default function Just(props) {
             rowsPerPageOptions={[10]}
             disableSelectionOnClick
           /> */}
+          <Divider/>
+        <div className="w-[50%] h-full m-auto">
         <DataGrid
           rows={User}
           columns={columns}
@@ -201,6 +157,7 @@ export default function Just(props) {
           }}
           pageSizeOptions={[5]}
         />
+        </div>
       </div>
       <Modal
         sx={{ backgroundColor: "none" }}

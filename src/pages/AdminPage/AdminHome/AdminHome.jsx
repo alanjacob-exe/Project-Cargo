@@ -49,7 +49,7 @@ export default function AdminHome(props) {
           {/* <div className="mx-auto bg-black w-full relative flex ">
             
           </div> */}
-          <div className="w-[30%]  h-[50%] rounded-xl m-auto inline-block border flex shadow-md hover:border-black transition ease-in-out hover:cursor-pointer hover:shadow-2xl" onClick={()=>{navigate("#")}}>
+          <div className="w-[30%]  h-[50%] rounded-xl m-auto inline-block border flex shadow-md hover:border-black transition ease-in-out hover:cursor-pointer hover:shadow-2xl" onClick={()=>{navigate("/adminuser")}}>
             <div className="m-auto font-semibold">Manage Users</div>
           </div>
           <div className="w-[30%]  h-[50%] rounded-xl m-auto  border flex shadow-md hover:border-black transition ease-in-out hover:cursor-pointer hover:shadow-2xl" onClick={()=>{navigate("/adminbuses")}}>

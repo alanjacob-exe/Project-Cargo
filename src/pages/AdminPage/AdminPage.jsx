@@ -58,6 +58,8 @@ export default function Just(props) {
   useEffect(() => {
     console.log("useeffect" + removeBus[0]?.busName);
   }, [removeBus]);
+
+  
   const style = {
     position: "absolute",
     top: "50%",

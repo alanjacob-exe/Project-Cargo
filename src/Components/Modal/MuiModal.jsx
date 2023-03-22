@@ -1,33 +1,32 @@
 import {
-    Avatar,
-    Button,
-    ButtonBase,
-    Divider,
-    IconButton,
-    Modal,
-    Typography,
-  } from "@mui/material";
-  import React, { useEffect, useState } from "react";
-  import Box from "@mui/material/Box";
+  Avatar,
+  Button,
+  ButtonBase,
+  Divider,
+  IconButton,
+  Modal,
+  Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
 import { Navigate, useNavigate } from "react-router-dom";
-  
 
+export default function MuiModal({
+  open,
+  handleclose,
+  heading,
+  content,
+  cancel,
+  cont,
+}) {
+  const navigate = useNavigate();
+  /////////////////////   variable to be declared in home page   //////////
+  // const [open, setOpen] = React.useState(false);
+  // const handleOpen =  () => setOpen(true);
+  // const handleClose = () => setOpen(false);
 
-
-
-export default function MuiModal({open,handleclose,heading,content,cancel,cont}) {
-const navigate=useNavigate()
-/////////////////////   variable to be declared in home page   //////////
-    // const [open, setOpen] = React.useState(false);
-    // const handleOpen =  () => setOpen(true);
-    // const handleClose = () => setOpen(false);
-  
-
-    ///////////////    Component Declaration  ////////
-    // <MuiModal open={open} handleclose={() => setOpen(false)}></MuiModal>
-
- 
-
+  ///////////////    Component Declaration  ////////
+  // <MuiModal open={open} handleclose={() => setOpen(false)}></MuiModal>
 
   const style = {
     position: "absolute",
@@ -45,8 +44,6 @@ const navigate=useNavigate()
 
   return (
     <div>
-
-        
       <Modal
         sx={{ backgroundColor: "none" }}
         aria-labelledby="spring-modal-title"
@@ -67,7 +64,6 @@ const navigate=useNavigate()
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {content}
-            
           </Typography>
           <Divider sx={{ mt: 2 }} />
           <div className="flex">
@@ -83,7 +79,8 @@ const navigate=useNavigate()
                 variant="contained"
                 color="error"
                 onClick={() => {
-navigate("/adminbuses")                }}
+                  navigate("/adminbuses");
+                }}
               >
                 Continue
               </Button>

@@ -15,6 +15,7 @@ console.log(a)
       className="list"
       onClick={() => {
         localStorage.setItem("busid", data.id);
+        console.log(data.id)
         navigate("/seatselection")
       }}
     >

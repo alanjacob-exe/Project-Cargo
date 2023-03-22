@@ -107,8 +107,8 @@ function Login() {
         displayName: Name,
       });
 
-      const doctorsRef = doc(db, "users", res.user.email);
-      await setDoc(doctorsRef, {
+      const userRef = doc(db, "users", res.user.email);
+      await setDoc(userRef, {
         Name,
         email,
         password,
@@ -127,8 +127,18 @@ function Login() {
 
   // console.log("user=="+localStorage.getItem('user', JSON.stringify(user))
 
-  const login = (e) => {
+  const login = async(e) => {
     e.preventDefault();
+
+    if(email==="admin@gmail.com"){
+      try{
+      const res=await signInWithEmailAndPassword(auth, email, password);
+        navigate("/adminhome")
+    }catch(e){
+      setError(e)
+    }
+    }
+    else{
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         if (!auth.currentUser.emailVerified) {
@@ -144,6 +154,7 @@ function Login() {
         }
       })
       .catch((err) => setError(err.message));
+    }
   };
 
   //   console.log(auth.currentUser)
@@ -430,11 +441,11 @@ function Login() {
                             }}
                           />
                           <div className="d-flex justify-content-center mb-4">
-                            <MDBCheckbox
+                            {/* <MDBCheckbox
                               name="flexCheck"
                               id="flexCheckDefault"
                               label="I have read and agree to the terms"
-                            />
+                            /> */}
                           </div>
                           <Button variant="contained" type="submit">
                             Signup

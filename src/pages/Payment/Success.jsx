@@ -17,12 +17,12 @@ import {
   getDoc,
   updateDoc,
   query,
-  onSnapshot,
   Timestamp,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useAuthValue } from "../Sign-up/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 const useStyles = makeStyles({
   root: {
@@ -54,13 +54,15 @@ const useStyles = makeStyles({
 });
 
 export default function Success() {
+
+
   const navigate = useNavigate();
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   const { currentUser } = useAuthValue();
 
   var currentdate = new Date();
-  var datetime =
+  var currentdatetime =
     currentdate.getDate() +
     "/" +
     (currentdate.getMonth() + 1) +
@@ -78,28 +80,32 @@ export default function Success() {
     const gender = localStorage.getItem("bookingGender");
     const seatNumber = localStorage.getItem("bookingSeat");
     const address = localStorage.getItem("address");
-    const selectedBus = localStorage.getItem("busid");
+    const busid = localStorage.getItem("busid");
     console.log(name);
     console.log(gender);
     console.log(seatNumber);
     try {
-      const busRef=doc(db, "buses", selectedBus, "bookings", currentUser.email);
-      await setDoc(busRef,
-        {
-          fullName: name,
-          Gender: gender,
-          Seatnumber: seatNumber,
-          createdAt: Timestamp.fromDate(new Date()),
-        }
+      const busRef = doc(
+        db,
+        "buses",
+        busid,
+        "bookings",
+        currentUser.email
       );
+      await setDoc(busRef, {
+        fullName: name,
+        Gender: gender,
+        Seatnumber: seatNumber,
+        createdAt: Timestamp.fromDate(new Date()),
+      });
       await setDoc(
-        doc(db, "users", currentUser.email, "bookings", selectedBus),
+        doc(db, "users", currentUser.email, "bookings", busid),
         {
           fullName: name,
           Gender: gender,
           Seatnumber: seatNumber,
-          time: datetime,
-          busName: selectedBus,
+          busId: busid,
+          createdAt: Timestamp.fromDate(new Date()),
         }
       );
       // await addDoc(doc(db, "buses", "Merelal", "reservedSeats",), {

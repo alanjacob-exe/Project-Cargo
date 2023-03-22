@@ -110,7 +110,14 @@ const AnnualReport = () => {
   const navigate = useNavigate();
   const prevLocation = useLocation();
   const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(dayjs(new Date()));
 
+  console.log(date)
+  useEffect(() => {
+    localStorage.setItem("bdate", date.$D);
+    console.log("date"+localStorage.getItem("bdate"))
+
+  }, [date]);
   // console.log("source and dest"+source,destination)
   // console.log("useelocation====" + prevLocation.pathname);
 
@@ -221,9 +228,11 @@ const AnnualReport = () => {
   //   [50.505, -29.09],
   //   [52.505, 29.09],
   // ])
+console.log("sourcecoordinate"+sourceCoordinate)
+console.log("sourcecoordinate"+destinationcoordinate)
 
   useEffect(() => {
-    points(mapSource, mapDestination)
+    points(sourceCoordinate, destinationcoordinate)
       .then((data) => {
         if (data.resourceSets && data.resourceSets.length > 0) {
           Setpointers(
@@ -237,7 +246,7 @@ const AnnualReport = () => {
       .catch((e) => {
         console.error(e.message);
       });
-  }, [mapSource, mapDestination]);
+  }, [sourceCoordinate, destinationcoordinate]);
 
   console.log("bbox" + bbox[0]);
 
@@ -296,7 +305,7 @@ const AnnualReport = () => {
           var longitude = firstResult.point.coordinates[1];
           // console.log(latitude, longitude);
           setsourceCoordinate([latitude, longitude]);
-          // console.log("source is " + [latitude, longitude]);
+          console.log("source is " + [latitude, longitude]);
           return coordinates;
         }
       })
@@ -394,7 +403,6 @@ const AnnualReport = () => {
 
   // console.log("fetched data isssss"+dummy.fullName)
 
-
   //   const cityRef = db.collection('cities').doc('SF');
   // const doc = await cityRef.get();
   // if (!doc.exists) {
@@ -484,12 +492,19 @@ const AnnualReport = () => {
                   onChange={(event, value) => setsource(value)}
                 />
                 <div className="datepicker">
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DesktopDatePicker
                       label="Select Date"
                       inputFormat="DD/MM/YYYY"
                       value={value}
                       onChange={handleChange}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider> */}
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DesktopDatePicker
+                      value={date}
+                      onChange={setDate}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </LocalizationProvider>
