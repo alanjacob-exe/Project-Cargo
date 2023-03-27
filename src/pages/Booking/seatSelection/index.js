@@ -28,28 +28,53 @@ export default function SeatSelection() {
   const [reservedSeat, setReservedSeat] = useState(["1A", "2A", "2B"]);
   const [seatNumber, setSeatnumber] = useState([]);
   const { currentUser } = useAuthValue(); //for current user details
-
+  const dummy = "disabled";
   const navigate = useNavigate();
+  const [bookingColl, setbookingColl] = useState(null);
+
+  const busid = localStorage.getItem("busid");
+  console.log(busid);
+  const test = [];
+
+  useEffect(() => {
+    const q = query(collection(db, "buses", busid, "bookings"));
+    onSnapshot(q, (querySnapshot) => {
+      setbookingColl(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
+
+  useEffect(() => {
+    if (bookingColl != null) {
+      for (var i = 0; i < bookingColl.length; i++) {
+        test.push(bookingColl[i].data.Seatnumber);
+      }
+    }
+  }, [bookingColl]);
+
+  const [Bseats, setBseats] = useState([]);
+
+  console.log(test);
+
+
+  useEffect(() => {
+    // console.log("fromuse"+seatNumber)
+    localStorage.setItem("bookedseat",seatNumber)
+    console.log("below")
+    console.log(localStorage.getItem("bookedseat"))
+  }, [seatNumber])
 
   
 
-  // const [passengers, setPassengers] = useState([])
-  // useEffect(()=>{
-  //     let bId = localStorage.getItem('selectedBusId')
-  //     if(bId){
-  //         getSeatArray(bId)
-  //     }
-  //     else return
-  // },[localStorage])
-  // const getSeatArray = async bId => {
-  //     const baseURL = "http://localhost:8080/booking/"
-  //     await axios.get(baseURL, bId)
-  //     .this(response=>response.data)
-  //     .this(data=>{
-  //         setReservedSeat(data)
-  //         console.log(reservedSeat)
-  //     })
-  // }
+  
+
+  // bookingColl.filter((buses) => setBseats(buses.data.seatNumber));
+
+  // console.log(Bseats);
 
   const [user, setuser] = useState();
   useEffect(() => {
@@ -57,28 +82,6 @@ export default function SeatSelection() {
   }, []);
   const selectedBus = localStorage.getItem("busid");
   // console.log("selected bus" + selectedBus);
-
-
-
-
-
-
-  const [dummy, setdummy] = useState();
-  const busData = async (e) => {
-    const busRef = doc(db, "buses", selectedBus, "bookings", currentUser.email);
-    try {
-      const docSnap = await getDoc(busRef);
-      setdummy(docSnap.data());
-      console.log("fetched data" + docSnap.data());
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    busData();
-    testfunc()
-  }, []);
 
   const getSeatNumber = (e) => {
     renderPassengerData(seatNumber);
@@ -89,6 +92,7 @@ export default function SeatSelection() {
         setSeatnumber(seatNumber.filter((seat) => seat !== newSeat));
       }
     } else {
+      console.log("selected seat:"+newSeat)
       setSeatnumber([...seatNumber, newSeat]);
       setReservedSeat([...reservedSeat, newSeat]);
       console.log(seatNumber);
@@ -129,85 +133,9 @@ export default function SeatSelection() {
   //     console.log(book.data)
   //   }, []);
 
-  const [test, settest] = useState();
-
-  const testfunc = async () => {
-    const docRef = doc(db, "buses", selectedBus, "bookings", currentUser.email);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      settest(docSnap.data());
-      console.log("Document data:", docSnap.data());
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  };
-  // console.log("length is" + test);
-  // useEffect(() => {
-  //   testfunc();
-  // }, []);
-
-  // console.log(datetime);
-
   const bookingSubmit = async (e) => {
-    e.preventDefault();
-    console.log(name);
-    console.log(gender);
-    console.log(seatNumber);
-    localStorage.setItem("bookingName",name)
-    localStorage.setItem("bookingGender",gender)
-    localStorage.setItem("bookingSeat",seatNumber)    // try {
-    //   await setDoc(
-    //     doc(db, "buses", selectedBus, "bookings", currentUser.email),
-    //     {
-    //       fullName: name,
-    //       Gender: gender,
-    //       Seatnumber: seatNumber,
-    //       createdAt:Timestamp.fromDate(new Date())
-
-    //     }
-    //   );
-    //   await setDoc(doc(db, "users", currentUser.email, "bookings", selectedBus), {
-    //     fullName: name,
-    //     Gender: gender,
-    //     Seatnumber: seatNumber,
-    //     time: datetime,
-    //     busName:selectedBus,
-    //   });
-    //   // await addDoc(doc(db, "buses", "Merelal", "reservedSeats",), {
-    //   //   bookedSeats: seatNumber,
-    //   // });
-
-    //   alert("inserted sucessfully");
-    //   navigate("/payment")
-    // } catch (err) {
-    //   alert(err);
-
-    //   console.error(err);
-    // }
-    navigate("/payment")
+    navigate("/payment");
   };
-
-  // const bookingSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(name);
-  //   console.log(gender);
-  //   console.log(seatNumber);
-
-  // };
-  //   console.log("current email",currentUser.email)
-
-  // const bookingSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(name);
-  //   console.log(gender);
-  //   console.log(seatNumber);
-  //   localStorage.setItem("bookingName",name)
-  //   localStorage.setItem("bookingGender",gender)
-  //   localStorage.setItem("bookingSeat",seatNumber)
-  //   navigate("/payment")
-
-  // };
 
   const renderPassengerData = (seatArray) => {
     return seatArray.map((seat, idx) => {
@@ -266,6 +194,30 @@ export default function SeatSelection() {
       );
     });
   };
+
+  const [is1aset, setis1aset] = useState(false);
+  const [is1bset, setis1bset] = useState(false);
+  const [is1cset, setis1cset] = useState(false);
+
+ if(bookingColl!=null)
+ {
+  for(var i=0;i<bookingColl.length;i++)
+  {
+    if(bookingColl[0].data.Seatnumber=="1A")
+    {
+      setis1aset(true)
+    }
+    if(bookingColl[0].data.Seatnumber=="1B")
+    {
+      setis1bset(true)
+    }
+    if(bookingColl[0].data.Seatnumber=="1C")
+    {
+      setis1cset(true)
+    }
+  }
+ }
+
   return (
     <div className="ss">
       <div className="row">
@@ -280,15 +232,30 @@ export default function SeatSelection() {
                   <li className="row row--1">
                     <ol className="seats" type="A">
                       <li className="seat">
-                        <input type="checkbox" value="1A" id="1A" />
+                        <input
+                          type="checkbox"
+                          disabled={is1aset}
+                          value="1A"
+                          id="1A"
+                        />
                         <label htmlFor="1A">1A</label>
                       </li>
                       <li className="seat">
-                        <input type="checkbox" id="1B" value="1B" />
+                        <input
+                          type="checkbox"
+                          disabled={is1bset}
+                          id="1B"
+                          value="1B"
+                        />
                         <label htmlFor="1B">1B</label>
                       </li>
                       <li className="seat">
-                        <input type="checkbox" value="1C" id="1C" />
+                        <input
+                          type="checkbox"
+                          disabled={is1cset}
+                          value="1C"
+                          id="1C"
+                        />
                         <label htmlFor="1C">1C</label>
                       </li>
                     </ol>
@@ -412,7 +379,7 @@ export default function SeatSelection() {
                         <label htmlFor="9A">9A</label>
                       </li>
                       <li className="seat">
-                        <input type="checkbox" value="9B" id="9B" />
+                        <input type="checkbox" disabled value="9B" id="9B" />
                         <label htmlFor="9B">9B</label>
                       </li>
                       <li className="seat">

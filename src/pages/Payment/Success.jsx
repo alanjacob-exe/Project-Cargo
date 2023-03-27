@@ -54,8 +54,6 @@ const useStyles = makeStyles({
 });
 
 export default function Success() {
-
-
   const navigate = useNavigate();
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
@@ -78,36 +76,48 @@ export default function Success() {
   const repopulateValues = async () => {
     const name = localStorage.getItem("bookingName");
     const gender = localStorage.getItem("bookingGender");
-    const seatNumber = localStorage.getItem("bookingSeat");
+    const seatNumber = localStorage.getItem("bookedseat");
     const address = localStorage.getItem("address");
     const busid = localStorage.getItem("busid");
-    console.log(name);
+    const bookingDate = localStorage.getItem("bdate");
+    const bookingMonth = localStorage.getItem("bmonth");
+    const bookingYear = localStorage.getItem("byear");
+    const busName = localStorage.getItem("busname");
+
+
+
+    console.log("booked seats"+seatNumber);
     console.log(gender);
-    console.log(seatNumber);
+    // console.log(seatNumber);
+    // console.log(bookingDate);
+    // console.log(bookingMonth);
+    // console.log(bookingYear);
+    // const BookingDate = [[bookingDate], [bookingMonth], [bookingYear]];
+    // console.log(BookingDate);
+
     try {
-      const busRef = doc(
-        db,
-        "buses",
-        busid,
-        "bookings",
-        currentUser.email
-      );
+      const busRef = doc(db, "buses", busid, "bookings",`${currentdate}`);
       await setDoc(busRef, {
         fullName: name,
         Gender: gender,
         Seatnumber: seatNumber,
-        createdAt: Timestamp.fromDate(new Date()),
+        bookedOn: Timestamp.fromDate(new Date()),
+        bookingDate,
+        bookingMonth,
+        bookingYear,
+        userId:currentUser.email
       });
-      await setDoc(
-        doc(db, "users", currentUser.email, "bookings", busid),
-        {
-          fullName: name,
-          Gender: gender,
-          Seatnumber: seatNumber,
-          busId: busid,
-          createdAt: Timestamp.fromDate(new Date()),
-        }
-      );
+      await setDoc(doc(db, "users", currentUser.email, "bookings", `${currentdate}`), {
+        fullName: name,
+        Gender: gender,
+        Seatnumber: seatNumber,
+        busId: busid,
+        busName,
+        bookedOn: Timestamp.fromDate(new Date()),
+        bookingDate,
+        bookingMonth,
+        bookingYear,
+      });
       // await addDoc(doc(db, "buses", "Merelal", "reservedSeats",), {
       //   bookedSeats: seatNumber,
       // });

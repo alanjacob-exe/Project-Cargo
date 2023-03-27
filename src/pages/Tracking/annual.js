@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import DestinationComplete from "../../Components/Autocomplete/DestinationAutocomplete";
 import Footer from "../../Components/Footer";
 import "./annual.css";
+
 import GeoLocation from "../../Components/Location/CurrentLocation";
 //import { FaBusAlt } from "react-icons/fa";
 import Map from "../../Components/GoogleMap/GoogleMap";
@@ -115,7 +116,15 @@ const AnnualReport = () => {
   console.log(date)
   useEffect(() => {
     localStorage.setItem("bdate", date.$D);
+    localStorage.setItem("bmonth", date.$M+1);
+    localStorage.setItem("byear", date.$y)
+
+
     console.log("date"+localStorage.getItem("bdate"))
+    console.log("month"+localStorage.getItem("bmonth"))
+
+    console.log("year"+localStorage.getItem("byear"))
+
 
   }, [date]);
   // console.log("source and dest"+source,destination)

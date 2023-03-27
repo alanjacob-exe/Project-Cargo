@@ -31,17 +31,7 @@ export default function Ticket(props) {
   // const [busColl, setbusColl] = useState([]);
   // // console.log(currentBus)
 
-  // useEffect(() => {
-  //   const q = query(collection(db, "users", currentUser?.email, "bookings"));
-  //   onSnapshot(q, (querySnapshot) => {
-  //     setbusColl(
-  //       querySnapshot.docs.map((doc) => ({
-  //         id: doc.id,
-  //         data: doc.data(),
-  //       }))
-  //     );
-  //   });
-  // }, []);
+
 
   // const bookedBus = localStorage.getItem("bookedbus");
   // console.log(bookedBus);

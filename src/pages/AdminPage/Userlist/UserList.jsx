@@ -93,6 +93,53 @@ export default function Just(props) {
       headerName: "Email",
       width: 250,
       editable: true,
+    },{
+      field: "Edit",
+      headerName: "Edit",
+      width: 100,
+      renderCell: (params) => {
+        return (
+          <Link
+            to="/adminedit"
+            state={{
+              // busname: Bus.filter((item) => item.id === params.id),
+            }}
+          >
+            <Button variant="contained" size="small">
+              Edit
+            </Button>
+            {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
+              Uploaded
+            </Button> */}
+          </Link>
+        );
+      },
+    },
+    {
+      field: "remove",
+      headerName: "Remove",
+      width: 100,
+      renderCell: (params) => {
+        return (
+          <Link to="" state={{}}>
+            <Button
+              variant="outlined"
+              color="error"
+              size="small"
+              onClick={() => {
+                handleOpen();
+                // setremoveBus(Bus.filter((item) => item.id === params.id));
+              }}
+            >
+              Remove
+            </Button>
+            <div className="my-auto left-0 top-0 w-[40%] h-[60%] absolute"></div>
+            {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
+              Uploaded
+            </Button> */}
+          </Link>
+        );
+      },
     },
 
    
@@ -144,7 +191,7 @@ export default function Just(props) {
             disableSelectionOnClick
           /> */}
           <Divider/>
-        <div className="w-[50%] h-full m-auto">
+        <div className="w-[70%] h-full m-auto">
         <DataGrid
           rows={User}
           columns={columns}

@@ -46,7 +46,7 @@ const BusEdit=React.lazy(()=>import("./pages/AdminPage/BusEdit/Busedit"))
 const AdminHome=React.lazy(()=>import("./pages/AdminPage/AdminHome/AdminHome"))
 const UserDetails=React.lazy(()=> import("./pages/AdminPage/Userlist/UserList"))
 const AddUser=React.lazy(()=>import("./pages/AdminPage/Userlist/AddUser"))
-
+const BusAdmin=React.lazy(()=> import("./pages/AdminPage/BusAdmin/busadmin"))
 
 
 function App() {
@@ -106,6 +106,7 @@ function App() {
             <Route path="/adminhome" element={<AdminHome/>}/>
             <Route path="/adminuser" element={<UserDetails/>}/>
             <Route path="/adminadduser" element={<AddUser/>}/>
+            <Route path="/adminbus" element={<BusAdmin/>}/>~
           </Routes>
         </AuthProvider>
       </Suspense>

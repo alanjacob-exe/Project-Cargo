@@ -10,8 +10,8 @@
   justify-content: center;
   position: absolute;
   min-width: 270px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38,135,.52);
-
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.52);
+  position: relative;
   overflow: hidden;
 }
 
@@ -39,7 +39,7 @@
   border-bottom: 1px solid white;
 }
 .sidebarelements:hover {
-  color: #000 ;
+  color: #000;
   transition: 0.3s;
 }
 .icon {
@@ -59,7 +59,7 @@
   display: flex;
   /* border:1px solid black; */
   height: 30px;
-  right:10px;
+  right: 10px;
   bottom: 20px;
   width: 100%;
   color: #fff;
@@ -86,7 +86,7 @@
   color: #000;
   /* border: 1px solid black; */
   margin-left: 270px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38,135,.52);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.52);
 
   overflow: hidden;
 }
@@ -144,7 +144,6 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  
 }
 .welcome {
   font-family: "Darker Grotesque", sans-serif;
@@ -154,12 +153,12 @@
   margin-top: 2%;
   margin-left: 3%;
   height: 90px;
-  width:40vw;
+  width: 40vw;
   border-radius: 12px;
   text-align: center;
   justify-content: center;
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 8px 32px 0 rgba(31, 38,135,.52);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.52);
 
   backdrop-filter: saturate(200%) blur(25px);
 }
@@ -167,8 +166,8 @@
 .details {
   width: 75vw;
   height: 80vh;
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 8px 32px 0 rgba(31, 38,135,.80);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.8);
   border-radius: 12px;
   margin-top: 6%;
 }

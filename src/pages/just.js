@@ -1,104 +1,59 @@
-// import { Avatar, Button, IconButton } from "@mui/material";
-// import React, { useEffect, useState } from "react";
-// import { IoMdLogOut } from "react-icons/io";
-// import { Link } from "react-router-dom";
-// import Box from "@mui/material/Box";
-// import { DataGrid } from "@mui/x-data-grid";
-// import {
-//   collection,
-//   query,
-//   orderBy,
-//   onSnapshot,
-//   getDocs,
-//   doc,
-//   getDoc,
-// } from "firebase/firestore";
-// import { db } from "../firebase";
-// import Logo from "../Photos/bus2.png";
-// import Sidebar from "../Components/Sidebar/Sidebar";
-// import MuiModal from "../Components/Modal/MuiModal";
-// import emailjs from '@emailjs/browser';
-// export default function Just(props) {
-//   const [open, setOpen] = React.useState(false);
-//   const handleOpen = () => setOpen(true);
-//   const handleClose = () => setOpen(false);
-//   const sendEmail = (e) => {
-//     e.preventDefault();
+import * as React from "react";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import CommentIcon from "@mui/icons-material/Comment";
+import IconButton from "@mui/material/IconButton";
+import {
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+  addDoc,
+  getDoc,
+  updateDoc,
+  query,
+  onSnapshot,
+  Timestamp,
+} from "firebase/firestore";
+import { db } from "../firebase";
+import { useEffect, useState } from "react";
 
-//     emailjs
-//       .sendForm(
-//         "service_c6if2zk",
-//         "template_88dkltf",
-//         form.current,
-//         "yXVltmEzWTiDthr0Oix32"
-//       )
-//       .then(
-//         (result) => {
-//           console.log(result.text);
-//         },
-//         (error) => {
-//           console.log(error.text);
-//         }
-//       );
-//   };
-//   return (
-//     <main className="bg-slate-50 min-h-screen flex justify-center py-12 ">
-//       <div className="h-[8vh] absolute top-0 bg-sky-900 w-screen">
-//         <div className="flex">
-//           <div className=" left-0 w-5 h-5 mt-2 ml-8 flex">
-//             <Avatar alt="project Cargo" src={Logo} />
-//           </div>
-//           <div className="text-white right-20  font-bold text-lg   top-0 absolute mt-3 ">
-//             Project Cargo
-//           </div>
-//         </div>
-//       </div>
-//       <div className="rounded-xl bg-white w-[90%] flex flex-col p-10 min-h-[50vh] space-y-4 border mt-5 ">
-//         <div className="flex justify-between">
-//           <div>
-//             <h4 className="font-semibold">Buses Currently Running </h4>
-//             <p className="text-secondary text-sm"></p>
-//           </div>
-//           <IconButton color="primary" component="label">
-//             <IoMdLogOut />
-//           </IconButton>
-//         </div>{" "}
-//         <div>
-// <form onSubmit={sendEmail}>     
+export default function GutterlessList() {
+  const [busColl, setbusColl] = useState([
+    { id: "bus", data: { busName: "test" } },
+  ]);
 
-// <input
-//               type="text"
-//               name="from_name"
-//               placeholder="from name"
-//               value={toSend.from_name}
-//               onChange={handleChange}
-//             />
-//             <input
-//               type="text"
-//               name="to_name"
-//               placeholder="to name"
-//               value={toSend.to_name}
-//               onChange={handleChange}
-//             />
-//             <input
-//               type="text"
-//               name="message"
-//               placeholder="Your message"
-//               value={toSend.message}
-//               onChange={handleChange}
-//             />
-//             <input
-//               type="text"
-//               name="reply_to"
-//               placeholder="Your email"
-//               value={toSend.reply_to}
-//               onChange={handleChange}
-//             />
-//             <button type="submit">Submit</button>
-//           </form>
-//         </div>
-//       </div>
-//       {/* <MuiModal open={open} handleclose={() => setOpen(false)} heading="hello" content="Testing content"></MuiModal> */}
-//     </main>
-//   );
-// }
+  useEffect(() => {
+    const q = query(
+      collection(db, "users", "alan.abin9388@gmail.com", "bookings")
+    );
+    onSnapshot(q, (querySnapshot) => {
+      setbusColl(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
+  //  const arraysi=[{name:"alan",rollno:"1"},{name:"alan",rollno:"1"}];
+
+  return (
+    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+      {busColl.map((value) => (
+        <ListItem
+          key={value.id}
+          disableGutters
+          secondaryAction={
+            <IconButton aria-label="comment">
+              <CommentIcon />
+            </IconButton>
+          }
+        >
+          <ListItemText primary={value.data.busName} />
+        </ListItem>
+      ))}
+    </List>
+  );
+}

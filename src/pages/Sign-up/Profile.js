@@ -7,7 +7,7 @@ import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material"; // import Logo from "../Photos/bus2.png";
 import { useAuthValue } from "../Sign-up/AuthContext";
 import Details from "../Payment/Details";
@@ -16,16 +16,15 @@ import PayCard from "../Payment/PayCard";
 import Success from "../Payment/Success";
 import PaymentMode from "../Payment/PaymentMode";
 import { Link } from "@mui/material";
-import Ticket from "../loggedin/ticket";
 import Contact from "../loggedin/bookedList/contact";
-
+import Tickets from "../loggedin/tickets/tickets";
 
 export default function Just(props) {
   const navigate = useNavigate();
   const [isshown, setisshown] = useState(true);
   const { currentUser } = useAuthValue(); //for current user details
   const { isLoggedin } = useAuthValue();
-  const [pageCount, setpageCount] = useState(0)
+  const [pageCount, setpageCount] = useState(0);
 
   const user = localStorage.getItem("user");
   // console.log(user)
@@ -76,9 +75,9 @@ export default function Just(props) {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <Ticket/>;
+        return <Tickets/>;
       case 1:
-        return <Contact/>;
+        return <Contact />;
       // case 2:
       //   return <PayCard />;
       // case 3:
@@ -87,7 +86,7 @@ export default function Just(props) {
         return "Unknown step";
     }
   }
-  const [page, setpage] = useState(0)
+  const [page, setpage] = useState(0);
   return (
     <div className="parent">
       {isshown && (
@@ -101,7 +100,14 @@ export default function Just(props) {
                 <div className="icon">
                   <BookOnlineIcon fontSize="small" />
                 </div>
-                <div className="name" onClick={()=>{setpage(0)}}>Booking</div>
+                <div
+                  className="name"
+                  onClick={() => {
+                    setpage(0);
+                  }}
+                >
+                  Booking
+                </div>
               </div>
             </div>
             <div className="sidebarelements">
@@ -112,7 +118,12 @@ export default function Just(props) {
                 <div className="name">Profile</div>
               </div>
             </div>
-            <div className="sidebarelements" onClick={()=>{setpage(1)}}>
+            <div
+              className="sidebarelements"
+              onClick={() => {
+                setpage(1);
+              }}
+            >
               <div>
                 <div className="icon">
                   <ContactPhoneIcon fontSize="small" />
@@ -120,7 +131,12 @@ export default function Just(props) {
                 <div className="name">Contact</div>
               </div>
             </div>
-            <div className="sidebarelements" onClick={()=>{navigate("/track")}}>
+            <div
+              className="sidebarelements"
+              onClick={() => {
+                navigate("/track");
+              }}
+            >
               <div>
                 <div className="icon">
                   <ContactPhoneIcon fontSize="small" />
@@ -147,25 +163,22 @@ export default function Just(props) {
           </div>
         </div>
       )}
-      <div className="holder color">
-        {/* <div className="">
-          <div
-            id="radius-shape-1"
-            className="position-absolute rounded-circle shadow-5-strong"
-          ></div>
-          <div
-            id="radius-shape-2"
-            className="position-absolute rounded-circle shadow-5-strong"
-          ></div>
-        </div> */}
+      <div className="w-full h-screen float-right   ml-auto color ">
+        <div className="w-[30%] h-[10%] ml-7 bg-white rounded-xl mb-3 border mt-16  flex">
+          <div className="font-semibold text-2xl text-black my-auto mx-auto">Welcome Back, {currentUser?.displayName}</div>
+        </div>
+        <div className=" rounded-xl bg-white w-[95%] h-[70%] border m-auto relative shadow-xl">
+        <div>{getStepContent(page)}</div>
+        </div>
+      </div>
+      {/* <div className="holder color">
         <div className="dashboard bg-glass1">
           <div className="welcome ">
             Welcome Back! {currentUser?.displayName}
-            {/* <Button onClick={handleClick}/> */}
             <div className="details">{getStepContent(page)}</div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
