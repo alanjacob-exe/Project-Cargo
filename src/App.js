@@ -27,7 +27,7 @@ const AnnualReport = React.lazy(() => import("./pages/Tracking/annual"));
 const Teams = React.lazy(() => import("./pages/team"));
 const Blogs = React.lazy(() => import("./pages/Contact_Us/blogs"));
 const SignUp = React.lazy(() => import("./pages/Sign-up/index"));
-const Test = React.lazy(() => import("./pages/just"));
+const Test = React.lazy(() => import("./pages/just.js"));
 // const Homepage=React.lazy(()=>import ("./Booking/Homepage/Homepage"))
 // const LogOrsign=React.lazy(()=>import ("./Booking/Login-Signup/LogOrsign"))
 // const Signup=React.lazy(()=> import ("./pages/Sign-up/index"))
@@ -47,6 +47,9 @@ const AdminHome=React.lazy(()=>import("./pages/AdminPage/AdminHome/AdminHome"))
 const UserDetails=React.lazy(()=> import("./pages/AdminPage/Userlist/UserList"))
 const AddUser=React.lazy(()=>import("./pages/AdminPage/Userlist/AddUser"))
 const BusAdmin=React.lazy(()=> import("./pages/AdminPage/BusAdmin/busadmin"))
+const ConductorReg=React.lazy(()=>import("./pages/AdminPage/BusConductors/conductorRegistration/ConductorRegistration"))
+const ConductorSignup=React.lazy(()=>import("./pages/AdminPage/BusConductors/conductorRegistration/ConductorSignup"))
+const ConductorEdit=React.lazy(()=> import("./pages/AdminPage/BusConductors/conductorRegistration/ConductorEdit"))
 
 
 function App() {
@@ -106,7 +109,10 @@ function App() {
             <Route path="/adminhome" element={<AdminHome/>}/>
             <Route path="/adminuser" element={<UserDetails/>}/>
             <Route path="/adminadduser" element={<AddUser/>}/>
-            <Route path="/adminbus" element={<BusAdmin/>}/>~
+            <Route path="/adminbus" element={<BusAdmin/>}/>
+            <Route path="/admin-conductor" element={<ConductorReg/>}/>
+            <Route path="/admin-conductor-registration" element={<ConductorSignup/>}/>
+            <Route path="/admin-conductor-edit" element={<ConductorEdit/>}/>
           </Routes>
         </AuthProvider>
       </Suspense>

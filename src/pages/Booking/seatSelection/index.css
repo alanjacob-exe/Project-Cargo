@@ -20,6 +20,10 @@ html {
   height:20vh;
   width:55%;
   border-radius:12px;
+  margin-top:12px;
+}
+.form-group{
+  margin-top:12px;
 }
 .card
 

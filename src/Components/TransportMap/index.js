@@ -201,7 +201,7 @@ export function TransportMap(position) {
   ]
   
   return (
-    <MapContainer bounds={bboxValues}  zoom={11} zoomOffset={-1}>
+    <MapContainer bounds={bboxValues} center={[11.035224, 76.099321]} zoom={11} zoomOffset={-1}>
       <TileLayer
         attribution='&copy; <a href="https://www.thunderforest.com/">Transport Map</a> contributors'
         url="https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=b27fc203562944ceb7363792b9e8c9d2"

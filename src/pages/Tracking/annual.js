@@ -9,7 +9,6 @@ import "./annual.css";
 
 import GeoLocation from "../../Components/Location/CurrentLocation";
 //import { FaBusAlt } from "react-icons/fa";
-import Map from "../../Components/GoogleMap/GoogleMap";
 import CurrentLocation from "../../Components/Location/CurrentLocation";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 // import Marker from "react-leaflet-animated-marker";
@@ -260,7 +259,7 @@ console.log("sourcecoordinate"+destinationcoordinate)
   console.log("bbox" + bbox[0]);
 
   useEffect(() => {
-    points(mapSource, mapDestination)
+    points(sourceCoordinate, destinationcoordinate)
       .then((data) => {
         if (data.resourceSets && data.resourceSets.length > 0) {
           // console.log("traval time"+data.resourceSets[0].resources[0])
@@ -276,7 +275,7 @@ console.log("sourcecoordinate"+destinationcoordinate)
       .catch((e) => {
         console.log(e.message);
       });
-  }, [mapSource, mapDestination]);
+  }, [sourceCoordinate, destinationcoordinate]);
 
   const sourceData = async (location) => {
     const response = await fetch(`${baseURL1}${location}${baseURL2}${key}`);
@@ -353,20 +352,6 @@ console.log("sourcecoordinate"+destinationcoordinate)
 
   const [click, setclick] = useState(false);
 
-  // const fetchPost = async () => {
-  //   await getDocs(collection(db, "buses")).then((querySnapshot) => {
-  //     const newData = querySnapshot.docs.map((doc) => ({
-  //       info: doc.data(),
-  //       id: doc.id,
-  //     }));
-  //     setbuses(setInfo);
-  //     // console.log(buses, setInfo);
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   fetchPost();
-  // }, [click]);
 
   function isClicked() {
     if (click === false) {
@@ -395,7 +380,7 @@ console.log("sourcecoordinate"+destinationcoordinate)
 
   // console.log("isloggedin"+isLoggedin)
 
-  /////////////////////////////batabse communication////////////
+  /////////////////////////////databse communication////////////
   const [busColl, setbusColl] = useState([]);
 
   useEffect(() => {
@@ -460,8 +445,6 @@ console.log("sourcecoordinate"+destinationcoordinate)
   const handleDualButtonClickOne = () => {
     changeDashboard();
     changeDetailsTab();
-    setmapSource(source.id);
-    setmapDestionation(destination.id);
     isClicked();
   };
 
@@ -513,6 +496,9 @@ console.log("sourcecoordinate"+destinationcoordinate)
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DesktopDatePicker
                       value={date}
+                      minDate={date}
+                      // maxDate={"01-04-2023"}
+
                       onChange={setDate}
                       renderInput={(params) => <TextField {...params} />}
                     />
@@ -549,7 +535,7 @@ console.log("sourcecoordinate"+destinationcoordinate)
               <div className="busmap">
                 {click &&
                   sortedList.map((bus) => (
-                    <Buslist key={bus.id} Name={bus.data.busName} data={bus} />
+                    <Buslist key={bus.id} Name={bus.data.busName} data={bus} eta={eta}/>
                   ))}
               </div>
             </div>

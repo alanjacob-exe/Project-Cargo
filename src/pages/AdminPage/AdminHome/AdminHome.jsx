@@ -17,7 +17,7 @@ export default function AdminHome(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   return (
     <main className="bg-slate-50 min-h-screen flex justify-center py-12 ">
@@ -37,23 +37,42 @@ export default function AdminHome(props) {
             <h4 className="font-semibold">Welcome Administrator!</h4>
             <p className="text-secondary text-sm"></p>
           </div>
-          
-          
-          <div><IconButton color="primary" component="label">
-            <IoMdLogOut />
-          </IconButton>
-          <Divider/></div>
+
+          <div>
+            <IconButton color="primary" component="label">
+              <IoMdLogOut />
+            </IconButton>
+            <Divider />
+          </div>
         </div>
-        <Divider/>
-        <div className="w-[50%]  h-[70%] border rounded-xl flex m-auto shadow-xl">
+        <Divider />
+        <div className="w-[60%]  h-[70%] border rounded-xl flex m-auto shadow-xl">
           {/* <div className="mx-auto bg-black w-full relative flex ">
             
           </div> */}
-          <div className="w-[30%]  h-[50%] rounded-xl m-auto inline-block border flex shadow-md hover:border-black transition ease-in-out hover:cursor-pointer hover:shadow-2xl" onClick={()=>{navigate("/adminuser")}}>
+          <div
+            className="w-[30%]  h-[50%] rounded-xl m-auto inline-block border flex shadow-md hover:border-black transition ease-in-out hover:cursor-pointer hover:shadow-2xl"
+            onClick={() => {
+              navigate("/adminuser");
+            }}
+          >
             <div className="m-auto font-semibold">Manage Users</div>
           </div>
-          <div className="w-[30%]  h-[50%] rounded-xl m-auto  border flex shadow-md hover:border-black transition ease-in-out hover:cursor-pointer hover:shadow-2xl" onClick={()=>{navigate("/adminbuses")}}>
-          <div className="m-auto font-semibold">Manage Buses</div>
+          <div
+            className="w-[30%]  h-[50%] rounded-xl m-auto  border flex shadow-md hover:border-black transition ease-in-out hover:cursor-pointer hover:shadow-2xl"
+            onClick={() => {
+              navigate("/adminbuses");
+            }}
+          >
+            <div className="m-auto font-semibold">Manage Buses</div>
+          </div>
+          <div
+            className="w-[30%]  h-[50%] rounded-xl m-auto  border flex shadow-md hover:border-black transition ease-in-out hover:cursor-pointer hover:shadow-2xl"
+            onClick={() => {
+              navigate("/admin-conductor");
+            }}
+          >
+            <div className="m-auto font-semibold">Manage Conductors</div>
           </div>
         </div>
       </div>

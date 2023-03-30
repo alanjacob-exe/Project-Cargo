@@ -70,8 +70,8 @@ export default class PayCard extends React.Component {
     return (
       <div key="Payment">
         <div className="App-payment">
-          <Grid container spacing={3}>
-            <Grid item xs={6} style={{ marginTop: "50px" }}>
+          <Grid container spacing={4}>
+            <Grid item xs={6} style={{ marginTop: "40px" }}>
               <Typography
                 variant="h5"
                 gutterBottom
@@ -117,7 +117,7 @@ export default class PayCard extends React.Component {
                     onFocus={this.handleInputFocus}
                   />
                 </div>
-                <div className="row">
+                <div className="form-group">
                   <div className="col-6">
                     <TextField
                       variant="outlined"

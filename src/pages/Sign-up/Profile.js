@@ -4,7 +4,7 @@ import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +18,19 @@ import PaymentMode from "../Payment/PaymentMode";
 import { Link } from "@mui/material";
 import Contact from "../loggedin/bookedList/contact";
 import Tickets from "../loggedin/tickets/tickets";
+import {
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+  addDoc,
+  getDoc,
+  updateDoc,
+  query,
+  onSnapshot,
+  Timestamp,
+} from "firebase/firestore";
+import { db } from "../../firebase";
 
 export default function Just(props) {
   const navigate = useNavigate();
@@ -87,6 +100,26 @@ export default function Just(props) {
     }
   }
   const [page, setpage] = useState(0);
+
+  const [users, setusers] = useState(null)
+
+  useEffect(() => {
+    const q = query(
+      collection(db, "users",)
+    );
+    onSnapshot(q, (querySnapshot) => {
+      setusers(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
+
+  console.log(users)
+
+
   return (
     <div className="parent">
       {isshown && (
@@ -133,15 +166,27 @@ export default function Just(props) {
             </div>
             <div
               className="sidebarelements"
-              onClick={() => {
-                navigate("/track");
-              }}
+              // onClick={() => {
+              //   navigate("/track");
+              // }}
             >
               <div>
                 <div className="icon">
                   <ContactPhoneIcon fontSize="small" />
                 </div>
-                <div className="name">Book Ticket</div>
+                <Link
+            href="/track"
+            state={{
+              // busname: Bus.filter((item) => item.id === params.id),
+            }}
+          >
+            <Button variant="text" size="small" sx={{textDecoration:"none",marginLeft:"12px"}} className="text-white font-sans hover:text-black">
+              Book Ticket
+            </Button>
+            {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
+              Uploaded
+            </Button> */}
+          </Link>
               </div>
             </div>
           </div>

@@ -1,0 +1,664 @@
+{
+  "authenticationResultCode": "ValidCredentials",
+  "brandLogoUri": "http://dev.virtualearth.net/Branding/logo_powered_by.png",
+  "copyright": "Copyright © 2023 Microsoft and its suppliers. All rights reserved. This API cannot be accessed and the content and any results may not be used, reproduced or transmitted in any manner without express written permission from Microsoft Corporation.",
+  "resourceSets": [
+    {
+      "estimatedTotal": 1,
+      "resources": [
+        {
+          "__type": "Route:http://schemas.microsoft.com/search/local/ws/rest/v1",
+          "bbox": [10.977522, 76.118964, 11.120081, 76.228444],
+          "id": "v70,h-1375729906,i0,a0,cen-US,dAAAAAAAAAAA1,y0,s1,m1,o2,t4,wQ0z0v309JkDiI_8fqQdTQA2~ALs7jiMBf12rAADgARlorj4C0~U2g3MSAvIENvdXJ0IFJvYWQ1~~~~~~~~v12,wngf7n5H0JUD2twTgnw5TQA2~ALs7jiNp-V6rAADgAanTKz8C0~cm9hZA2~~~~~~~~v12,k1,qatt:1",
+          "distanceUnit": "Kilometer",
+          "durationUnit": "Second",
+          "routeLegs": [
+            {
+              "actualEnd": {
+                "type": "Point",
+                "coordinates": [10.977522, 76.228444]
+              },
+              "actualStart": {
+                "type": "Point",
+                "coordinates": [11.120081, 76.119883]
+              },
+              "alternateVias": [],
+              "description": "Sh71, Sh73",
+              "endTime": "/Date(1680082786227-0700)/",
+              "itineraryItems": [
+                {
+                  "compassDirection": "south",
+                  "details": [
+                    {
+                      "compassDegrees": 185,
+                      "endPathIndices": [9],
+                      "maneuverType": "DepartStart",
+                      "mode": "Driving",
+                      "names": ["Court Road"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918167,
+                        "shields": [{ "labels": ["Sh71"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [0]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "DepartStart",
+                    "text": "Depart and head south on Sh71 / Court Road"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [11.120081, 76.119883]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 1.102,
+                  "travelDuration": 122,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "south",
+                  "details": [
+                    {
+                      "compassDegrees": 56,
+                      "endPathIndices": [12],
+                      "maneuverType": "EnterRoundabout",
+                      "mode": "Driving",
+                      "roadShieldRequestParameters": {
+                        "bucket": 918172,
+                        "shields": [{ "labels": ["Sh71"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [9]
+                    },
+                    {
+                      "compassDegrees": 162,
+                      "endPathIndices": [44],
+                      "maneuverType": "ExitRoundabout",
+                      "mode": "Driving",
+                      "names": ["Malappuram Road"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918167,
+                        "shields": [{ "labels": ["Sh71"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [12]
+                    }
+                  ],
+                  "exit": "2",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "EnterThenExitRoundabout",
+                    "text": "At the roundabout, take the 2nd exit"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [11.110655, 76.120728]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 2.899,
+                  "travelDuration": 246,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "east",
+                  "details": [
+                    {
+                      "compassDegrees": 74,
+                      "endPathIndices": [49],
+                      "maneuverType": "TurnLeft",
+                      "mode": "Driving",
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [44]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "TurnLeft",
+                    "text": "Turn left toward Anakkayam Bridge"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [11.087766, 76.120966]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0.636,
+                  "travelDuration": 84,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "south",
+                  "details": [
+                    {
+                      "compassDegrees": 162,
+                      "endPathIndices": [51],
+                      "maneuverType": "KeepStraight",
+                      "mode": "Driving",
+                      "names": ["Anakkayam Bridge"],
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [49]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "KeepStraight",
+                    "text": "Keep straight to get onto Anakkayam Bridge"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [11.083306, 76.124392]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0.066,
+                  "travelDuration": 5,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "south",
+                  "details": [
+                    {
+                      "compassDegrees": 162,
+                      "endPathIndices": [132],
+                      "maneuverType": "KeepStraight",
+                      "mode": "Driving",
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [51]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "KeepStraight",
+                    "text": "Keep straight to get onto road"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [11.082743, 76.124569]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 10.185,
+                  "travelDuration": 791,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "east",
+                  "details": [
+                    {
+                      "compassDegrees": 79,
+                      "endPathIndices": [214],
+                      "maneuverType": "TurnLeft",
+                      "mode": "Driving",
+                      "roadType": "Street",
+                      "startPathIndices": [132]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "TurnLeft",
+                    "text": "Turn left"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [11.017277, 76.177128]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 5.79,
+                  "travelDuration": 718,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "south",
+                  "details": [
+                    {
+                      "compassDegrees": 199,
+                      "endPathIndices": [240],
+                      "maneuverType": "TurnRight",
+                      "mode": "Driving",
+                      "names": ["Perinthalmanna Road"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918158,
+                        "shields": [{ "labels": ["Sh73"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "Highway",
+                      "startPathIndices": [214]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "TurnRight",
+                    "text": "Turn right onto Sh73 / Sh39 / Perinthalmanna Road"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [11.006568, 76.219964]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 3.36,
+                  "travelDuration": 394,
+                  "travelMode": "Driving",
+                  "warnings": [
+                    {
+                      "endTime": {
+                        "DateTime": "/Date(1680042142221)/",
+                        "OffsetMinutes": 0
+                      },
+                      "origin": "10.989007,76.226488",
+                      "severity": "None",
+                      "startTime": {
+                        "DateTime": "/Date(1679889450000)/",
+                        "OffsetMinutes": 0
+                      },
+                      "text": "Roadwork on SH73 - SH39 from Perinthalmanna Road to Kakkooth Road.",
+                      "to": "10.987896,76.226193",
+                      "warningType": "ScheduledConstruction"
+                    }
+                  ]
+                },
+                {
+                  "compassDirection": "east",
+                  "details": [
+                    {
+                      "compassDegrees": 91,
+                      "endPathIndices": [244],
+                      "maneuverType": "TurnLeft",
+                      "mode": "Driving",
+                      "roadType": "Street",
+                      "startPathIndices": [240]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "TurnLeft",
+                    "text": "Turn left"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.979102, 76.225596]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0.362,
+                  "travelDuration": 64,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "southeast",
+                  "details": [
+                    {
+                      "compassDegrees": 114,
+                      "endPathIndices": [244],
+                      "maneuverType": "ArriveFinish",
+                      "mode": "Driving",
+                      "roadType": "Street",
+                      "startPathIndices": [244]
+                    }
+                  ],
+                  "exit": "",
+                  "hints": [
+                    {
+                      "hintType": "PreviousIntersection",
+                      "text": "The last intersection before your destination is Sh73 / Sh39 / Ooty Road"
+                    }
+                  ],
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "ArriveFinish",
+                    "text": "Arrive at your destination on the left"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.977522, 76.228444]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Left",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0,
+                  "travelDuration": 0,
+                  "travelMode": "Driving"
+                }
+              ],
+              "routeRegion": "WWMX",
+              "routeSubLegs": [
+                {
+                  "endWaypoint": {
+                    "type": "Point",
+                    "coordinates": [10.977522, 76.228444],
+                    "description": "road",
+                    "isVia": false,
+                    "locationIdentifier": "0|187|59|142|35|105|249|94|171|0|0|224|1|169|211|43|63|2|10.977522,76.228444",
+                    "routePathIndex": 244
+                  },
+                  "startWaypoint": {
+                    "type": "Point",
+                    "coordinates": [11.120081, 76.119883],
+                    "description": "Sh71 / Court Road",
+                    "isVia": false,
+                    "locationIdentifier": "0|187|59|142|35|1|127|93|171|0|0|224|1|25|104|174|62|2|11.120081,76.119883",
+                    "routePathIndex": 0
+                  },
+                  "travelDistance": 24.4,
+                  "travelDuration": 2429
+                }
+              ],
+              "startTime": "/Date(1680080261227-0700)/",
+              "travelDistance": 24.4,
+              "travelDuration": 2429,
+              "travelMode": "Driving"
+            }
+          ],
+          "routePath": {
+            "generalizations": [],
+            "line": {
+              "type": "LineString",
+              "coordinates": [
+                [11.12008, 76.119882],
+                [11.117831, 76.119548],
+                [11.116816, 76.119491],
+                [11.115729, 76.119556],
+                [11.114738, 76.119772],
+                [11.112474, 76.119684],
+                [11.111117, 76.120051],
+                [11.110923, 76.120222],
+                [11.110783, 76.1206],
+                [11.110655, 76.120728],
+                [11.110661, 76.120737],
+                [11.110604, 76.120844],
+                [11.110507, 76.120799],
+                [11.110257, 76.120877],
+                [11.109039, 76.121064],
+                [11.108626, 76.121417],
+                [11.107774, 76.122417],
+                [11.107399, 76.122656],
+                [11.106487, 76.12295],
+                [11.105787, 76.122669],
+                [11.10436, 76.122446],
+                [11.103181, 76.122481],
+                [11.102736, 76.122247],
+                [11.102287, 76.122159],
+                [11.102045, 76.122022],
+                [11.101523, 76.121336],
+                [11.101338, 76.120984],
+                [11.101106, 76.120171],
+                [11.100939, 76.120043],
+                [11.100143, 76.119954],
+                [11.099107, 76.120123],
+                [11.098213, 76.120026],
+                [11.097437, 76.119625],
+                [11.095854, 76.119311],
+                [11.094909, 76.118974],
+                [11.094625, 76.11902],
+                [11.093789, 76.119901],
+                [11.093568, 76.120025],
+                [11.093366, 76.120057],
+                [11.091948, 76.119859],
+                [11.091639, 76.119934],
+                [11.090731, 76.1206],
+                [11.089924, 76.120733],
+                [11.08826, 76.120768],
+                [11.087766, 76.120966],
+                [11.087772, 76.120987],
+                [11.086244, 76.1224],
+                [11.085518, 76.12333],
+                [11.08483, 76.123736],
+                [11.083306, 76.124392],
+                [11.082835, 76.12454],
+                [11.082743, 76.124569],
+                [11.082683, 76.124588],
+                [11.079869, 76.125525],
+                [11.078228, 76.126924],
+                [11.077672, 76.127041],
+                [11.076709, 76.126926],
+                [11.076112, 76.127052],
+                [11.074942, 76.127545],
+                [11.074116, 76.128222],
+                [11.072955, 76.129428],
+                [11.072809, 76.129867],
+                [11.072673, 76.131417],
+                [11.072416, 76.132099],
+                [11.07209, 76.132406],
+                [11.070923, 76.133143],
+                [11.069699, 76.135024],
+                [11.068765, 76.136056],
+                [11.068481, 76.136685],
+                [11.06837, 76.13765],
+                [11.06819, 76.138173],
+                [11.067603, 76.138501],
+                [11.066671, 76.138753],
+                [11.064479, 76.13972],
+                [11.063703, 76.13975],
+                [11.062875, 76.140355],
+                [11.062706, 76.140416],
+                [11.062264, 76.140387],
+                [11.061502, 76.14094],
+                [11.060382, 76.142215],
+                [11.060293, 76.143155],
+                [11.060183, 76.143455],
+                [11.059562, 76.143715],
+                [11.059034, 76.144253],
+                [11.058643, 76.144516],
+                [11.05831, 76.145016],
+                [11.057687, 76.145506],
+                [11.057664, 76.145675],
+                [11.057852, 76.146176],
+                [11.057853, 76.146396],
+                [11.05777, 76.146562],
+                [11.057177, 76.14712],
+                [11.056988, 76.147548],
+                [11.056856, 76.148208],
+                [11.056965, 76.148975],
+                [11.056798, 76.149226],
+                [11.055758, 76.149776],
+                [11.053877, 76.149974],
+                [11.05288, 76.150455],
+                [11.051249, 76.150318],
+                [11.050334, 76.150732],
+                [11.047172, 76.151545],
+                [11.046588, 76.151586],
+                [11.045688, 76.151518],
+                [11.043827, 76.151988],
+                [11.043562, 76.15214],
+                [11.041621, 76.154319],
+                [11.040526, 76.155236],
+                [11.040268, 76.156193],
+                [11.039502, 76.156879],
+                [11.038515, 76.15797],
+                [11.037947, 76.158929],
+                [11.037444, 76.160013],
+                [11.035824, 76.162135],
+                [11.035034, 76.16344],
+                [11.034191, 76.164574],
+                [11.032041, 76.16602],
+                [11.030837, 76.165983],
+                [11.030464, 76.166264],
+                [11.029765, 76.168967],
+                [11.029653, 76.169135],
+                [11.028891, 76.169264],
+                [11.027227, 76.169809],
+                [11.025001, 76.169912],
+                [11.024357, 76.169968],
+                [11.024076, 76.170067],
+                [11.023364, 76.170581],
+                [11.022879, 76.171098],
+                [11.022258, 76.17257],
+                [11.021957, 76.173098],
+                [11.020991, 76.173701],
+                [11.020356, 76.174572],
+                [11.017276, 76.177127],
+                [11.017407, 76.177834],
+                [11.017622, 76.178959],
+                [11.017012, 76.179519],
+                [11.016674, 76.180152],
+                [11.016531, 76.180281],
+                [11.016118, 76.181644],
+                [11.016216, 76.181916],
+                [11.016738, 76.182672],
+                [11.016792, 76.183473],
+                [11.016682, 76.18366],
+                [11.016269, 76.183729],
+                [11.01622, 76.184267],
+                [11.016359, 76.184672],
+                [11.016411, 76.185918],
+                [11.016265, 76.186384],
+                [11.01586, 76.187117],
+                [11.015421, 76.187584],
+                [11.015189, 76.188111],
+                [11.013863, 76.188999],
+                [11.013485, 76.189174],
+                [11.012891, 76.189207],
+                [11.012489, 76.189648],
+                [11.012138, 76.189869],
+                [11.011636, 76.190549],
+                [11.01165, 76.190824],
+                [11.011393, 76.191541],
+                [11.011186, 76.191654],
+                [11.010774, 76.19147],
+                [11.010108, 76.191478],
+                [11.009657, 76.191058],
+                [11.00926, 76.191569],
+                [11.009138, 76.191905],
+                [11.009155, 76.193061],
+                [11.008936, 76.194066],
+                [11.009045, 76.194551],
+                [11.008653, 76.195139],
+                [11.008746, 76.195623],
+                [11.008634, 76.19629],
+                [11.008502, 76.196482],
+                [11.008373, 76.197024],
+                [11.008532, 76.197277],
+                [11.009214, 76.197386],
+                [11.009325, 76.197513],
+                [11.009226, 76.198159],
+                [11.009262, 76.198689],
+                [11.009092, 76.199374],
+                [11.00932, 76.199842],
+                [11.00951, 76.200531],
+                [11.00933, 76.201952],
+                [11.009609, 76.202328],
+                [11.009677, 76.202888],
+                [11.009883, 76.203241],
+                [11.009858, 76.20397],
+                [11.009983, 76.204608],
+                [11.009562, 76.205912],
+                [11.009741, 76.207065],
+                [11.009652, 76.207529],
+                [11.009978, 76.208428],
+                [11.010199, 76.209785],
+                [11.010168, 76.209973],
+                [11.009409, 76.210568],
+                [11.009204, 76.210912],
+                [11.008762, 76.211159],
+                [11.008683, 76.211368],
+                [11.008825, 76.212215],
+                [11.008772, 76.212392],
+                [11.008393, 76.212693],
+                [11.008456, 76.212993],
+                [11.008382, 76.213567],
+                [11.008088, 76.214211],
+                [11.008522, 76.214782],
+                [11.008325, 76.215388],
+                [11.007824, 76.215549],
+                [11.007385, 76.216059],
+                [11.007508, 76.216279],
+                [11.007532, 76.216523],
+                [11.006926, 76.217582],
+                [11.006921, 76.218033],
+                [11.006724, 76.218309],
+                [11.006792, 76.218706],
+                [11.006955, 76.219044],
+                [11.006568, 76.219964],
+                [11.006447, 76.21992],
+                [11.006035, 76.21989],
+                [11.005472, 76.22001],
+                [11.004975, 76.220183],
+                [11.004252, 76.220591],
+                [11.002974, 76.220923],
+                [11.000788, 76.221226],
+                [10.999764, 76.22169],
+                [10.998348, 76.221749],
+                [10.996652, 76.222192],
+                [10.995757, 76.222506],
+                [10.995483, 76.222731],
+                [10.993845, 76.225214],
+                [10.993532, 76.225397],
+                [10.992539, 76.225516],
+                [10.991385, 76.226379],
+                [10.990867, 76.226962],
+                [10.990619, 76.227016],
+                [10.989831, 76.226821],
+                [10.98805, 76.226208],
+                [10.986057, 76.225925],
+                [10.985044, 76.225578],
+                [10.982344, 76.225001],
+                [10.981755, 76.225075],
+                [10.980553, 76.225476],
+                [10.979101, 76.225595],
+                [10.979096, 76.225776],
+                [10.978852, 76.226291],
+                [10.977947, 76.227584],
+                [10.977522, 76.228444]
+              ]
+            }
+          },
+          "trafficCongestion": "None",
+          "trafficDataUsed": "None",
+          "travelDistance": 24.4,
+          "travelDuration": 2429,
+          "travelDurationTraffic": 2525,
+          "travelMode": "Driving"
+        }
+      ]
+    }
+  ],
+  "statusCode": 200,
+  "statusDescription": "OK",
+  "traceId": "87286e8f89394f5ab5fdc86ded56183f|PUS0004C60|0.0.0.0|HKG00067D7, Leg0-HKG00067CD"
+}

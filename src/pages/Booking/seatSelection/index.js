@@ -31,13 +31,16 @@ export default function SeatSelection() {
   const dummy = "disabled";
   const navigate = useNavigate();
   const [bookingColl, setbookingColl] = useState(null);
+  const [sb, setsb] = useState([]);
 
-  const busid = localStorage.getItem("busid");
-  console.log(busid);
+  const set = localStorage.getItem("busid");
+  const busid = set.trim();
+
+  console.log("bus id" + busid);
   const test = [];
 
-  useEffect(() => {
-    const q = query(collection(db, "buses", busid, "bookings"));
+  const seatQuery = async () => {
+    const q = query(collection(db, "buses", "KL103217", "bookings"));
     onSnapshot(q, (querySnapshot) => {
       setbookingColl(
         querySnapshot.docs.map((doc) => ({
@@ -46,31 +49,32 @@ export default function SeatSelection() {
         }))
       );
     });
+  };
+  useEffect(() => {
+    seatQuery();
   }, []);
 
   useEffect(() => {
     if (bookingColl != null) {
-      for (var i = 0; i < bookingColl.length; i++) {
-        test.push(bookingColl[i].data.Seatnumber);
+      const limit = bookingColl.length;
+      console.log(limit + "limitttt");
+      for (var i = 0; i < limit; i++) {
+        console.log(bookingColl[i].data.Seatnumber);
+        setBseats(bookingColl[i].data.Seatnumber);
+        setsb([...sb, Bseats]);
       }
     }
   }, [bookingColl]);
+  console.log(sb);
 
   const [Bseats, setBseats] = useState([]);
 
-  console.log(test);
-
-
   useEffect(() => {
     // console.log("fromuse"+seatNumber)
-    localStorage.setItem("bookedseat",seatNumber)
-    console.log("below")
-    console.log(localStorage.getItem("bookedseat"))
-  }, [seatNumber])
-
-  
-
-  
+    localStorage.setItem("bookedseat", seatNumber);
+    console.log("below");
+    console.log(localStorage.getItem("bookedseat"));
+  }, [seatNumber]);
 
   // bookingColl.filter((buses) => setBseats(buses.data.seatNumber));
 
@@ -92,7 +96,7 @@ export default function SeatSelection() {
         setSeatnumber(seatNumber.filter((seat) => seat !== newSeat));
       }
     } else {
-      console.log("selected seat:"+newSeat)
+      console.log("selected seat:" + newSeat);
       setSeatnumber([...seatNumber, newSeat]);
       setReservedSeat([...reservedSeat, newSeat]);
       console.log(seatNumber);
@@ -136,15 +140,17 @@ export default function SeatSelection() {
   const bookingSubmit = async (e) => {
     navigate("/payment");
   };
+  // console.log(seatArray)
 
   const renderPassengerData = (seatArray) => {
     return seatArray.map((seat, idx) => {
       return (
-        <form key={idx} className="container bg-glass px-5 mb-2 ">
+        <form key={idx} className="container bg-glass px-5 mb-2 mt-4 ">
           <div className="text-xl text-center text-white">Seat No.{seat}</div>
 
-          <div className="mt-3">
+          <div className="mt-3 text-white">
             <MDBInput
+            className="text-white"
               label="Enter Name"
               id="formWhite"
               onBlur={(e) => handlePassengerName(e, seat)}
@@ -152,8 +158,49 @@ export default function SeatSelection() {
               name="passenger-name"
             />
           </div>
+          <div className="w-full mt-2">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="female"
+                value="Female"
+                onClick={(e) => handleGender(e, seat)}
+              />
+              <label class="form-check-label" htmlFor="female">
+                Female
+              </label>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  value="Male"
+                  onClick={(e) => handleGender(e, seat)}
+                />
+                <label class="form-check-label" for="male">
+                  Male
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="Other"
+                  value="Other"
+                  onClick={(e) => handleGender(e, seat)}
+                />
+                <label class="form-check-label" for="male">
+                  Other
+                </label>
+              </div>
+            </div>
+          </div>
 
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <MDBBtnGroup>
               <MDBRadio
                 btn
@@ -178,7 +225,7 @@ export default function SeatSelection() {
                 />
               </div>
             </MDBBtnGroup>
-          </div>
+          </div> */}
 
           {/* <p class="text-capitalize text-center ">Seat No:{seat}</p>
                     <input className="form-control seatInp" onBlur={e => handlePassengerName(e, seat)} type="text" name="passenger-name" placeholder="Enter Name" />
@@ -189,7 +236,7 @@ export default function SeatSelection() {
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="gender" id="female" value="Female" onClick={e => handleGender(e, seat)} />
                         <label class="form-check-label" htmlFor="female">Female</label>
-                    </div> */}
+                    // </div> */}
         </form>
       );
     });
@@ -199,24 +246,19 @@ export default function SeatSelection() {
   const [is1bset, setis1bset] = useState(false);
   const [is1cset, setis1cset] = useState(false);
 
- if(bookingColl!=null)
- {
-  for(var i=0;i<bookingColl.length;i++)
-  {
-    if(bookingColl[0].data.Seatnumber=="1A")
-    {
-      setis1aset(true)
-    }
-    if(bookingColl[0].data.Seatnumber=="1B")
-    {
-      setis1bset(true)
-    }
-    if(bookingColl[0].data.Seatnumber=="1C")
-    {
-      setis1cset(true)
+  if (bookingColl != null) {
+    for (var i = 0; i < bookingColl.length; i++) {
+      if (bookingColl[0].data.Seatnumber == "1A") {
+        setis1aset(true);
+      }
+      if (bookingColl[0].data.Seatnumber == "1B") {
+        setis1bset(true);
+      }
+      if (bookingColl[0].data.Seatnumber == "1C") {
+        setis1cset(true);
+      }
     }
   }
- }
 
   return (
     <div className="ss">
@@ -409,9 +451,11 @@ export default function SeatSelection() {
             </div>
           </div>
         </div>
-        <div className="container2 ">
+        <div className="column2 mt-9 ">
           <div className="seatInfo">
-            <form className="">{renderPassengerData(seatNumber)}</form>
+            <form className="form-group mt-3">
+              {renderPassengerData(seatNumber)}
+            </form>
             <div>
               <button
                 onClick={(e) => bookingSubmit(e)}

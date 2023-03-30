@@ -75,6 +75,7 @@ export default function Ticket(props) {
 
   const [page, setpage] = useState(0);
   const [currentBus, setcurrentBus] = useState("");
+  
   // console.log("From basePage"+currentBus)
   // const [Bus, setBus] = useState([11.027775, 76.099903]);
 

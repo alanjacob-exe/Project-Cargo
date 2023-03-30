@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect } from "react";
 import {
   MDBBtn,
   MDBContainer,
@@ -29,14 +29,27 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   updateProfile,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuthValue } from "./AuthContext";
-import { doc, setDoc } from "firebase/firestore";
 
 import "./forms.css";
 import userEvent from "@testing-library/user-event";
 import Modal from "../../Components/Modal";
+import {
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+  addDoc,
+  getDoc,
+  updateDoc,
+  query,
+  onSnapshot,
+  Timestamp,
+} from "firebase/firestore";
+import { Email } from "@material-ui/icons";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -49,6 +62,25 @@ function Login() {
   const { setTimeActive } = useAuthValue();
   const navigate = useNavigate();
   const pageLocation = useLocation();
+
+  const [users, setusers] = useState(null);
+  const [busColl, setbusColl] = useState([]);
+
+  const bookedData = () => {
+    const q = query(collection(db, "conductors"));
+    onSnapshot(q, (querySnapshot) => {
+      setbusColl(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+        }))
+      );
+    });
+  };
+
+  useEffect(() => {
+    bookedData();
+  }, []);
+  console.log(busColl); // console.log("user data"+users.id);
 
   const validatePassword = () => {
     let isValid = true;
@@ -95,6 +127,27 @@ function Login() {
   //   catch(e)
 
   // }
+
+  const resetPassword = async (e) => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("Email Sent With Reset Link");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+
+        // ..
+      });
+  };
+
+  const handleBusConductor = (email) => {
+    busColl.filter((value) => {
+      if (value.id === email) return true;
+    });
+  };
+
   const register = async (e) => {
     // setIsLoading(true);
 
@@ -114,7 +167,7 @@ function Login() {
         password,
       });
 
-      localStorage.setItem("user", JSON.stringify(res.user));
+      // localStorage.setItem("user", JSON.stringify(res.user));
 
       // setIsLoading(false);
 
@@ -127,33 +180,34 @@ function Login() {
 
   // console.log("user=="+localStorage.getItem('user', JSON.stringify(user))
 
-  const login = async(e) => {
+  const login = async (e) => {
     e.preventDefault();
+    if (email === "admin@gmail.com") {
+      try {
+        const res = await signInWithEmailAndPassword(auth, email, password);
+        navigate("/adminhome");
+      } catch (e) {
+        setError(e);
+      }
+    } else {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          if (!auth.currentUser.emailVerified) {
+            sendEmailVerification(auth.currentUser)
+              .then(() => {
+                setTimeActive(true);
+                navigate("/verify-email");
+                localStorage.setItem("userEmail", email);
+              })
+              .catch((err) => alert(err.message));
+          } else {
+            navigate("/profile");
+            localStorage.setItem("userEmail", email);
 
-    if(email==="admin@gmail.com"){
-      try{
-      const res=await signInWithEmailAndPassword(auth, email, password);
-        navigate("/adminhome")
-    }catch(e){
-      setError(e)
-    }
-    }
-    else{
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        if (!auth.currentUser.emailVerified) {
-          sendEmailVerification(auth.currentUser)
-            .then(() => {
-              setTimeActive(true);
-              navigate("/verify-email");
-            })
-            .catch((err) => alert(err.message));
-        } else {
-          navigate("/profile");
-          // sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
-        }
-      })
-      .catch((err) => setError(err.message));
+            // sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+          }
+        })
+        .catch((err) => setError(err.message));
     }
   };
 
@@ -188,8 +242,8 @@ function Login() {
         <MDBRow>
           <MDBCol
             md="6"
-            className="text-center text-md-start d-flex flex-column justify-content-center topcard "
-            style={{ marginTop: "-10%" }}
+            className="text-center text-md-start d-flex flex-column justify-content-center   "
+            // style={{ marginTop: "-10%" }}
           >
             <h1
               className="my-5 display-3 fw-bold ls-tight px-3 "
@@ -259,13 +313,16 @@ function Login() {
                           className="text-center mb-3"
                           style={{ borderRadius: "12px", borderColor: "red" }}
                         >
-                          <p>Sign in with:</p>
+                          <p className="text-white font-semibold text-xl">
+                            {" "}
+                            Sign in
+                          </p>
 
-                          <div
+                          {/* <div
                             className="d-flex justify-content-between mx-auto"
                             style={{ width: "40%" }}
-                          >
-                            <MDBBtn
+                          > */}
+                          {/* <MDBBtn
                               tag="a"
                               color="none"
                               className="m-1"
@@ -300,9 +357,9 @@ function Login() {
                             >
                               <MDBIcon fab icon="github" size="sm" />
                             </MDBBtn>
-                          </div>
+                          </div> */}
 
-                          <p className="text-center mt-3">or:</p>
+                          {/* <p className="text-center mt-3">or:</p> */}
                         </div>
 
                         <div>
@@ -315,6 +372,7 @@ function Login() {
                               type="email"
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
+                              className="bg-disabled"
                             />
                             <MDBInput
                               wrapperClass="mb-4"
@@ -337,7 +395,9 @@ function Login() {
                             id="flexCheckDefault"
                             label="Remember me"
                           />
-                          <a href="!#">Forgot password?</a>
+                          <Button variant="text" onClick={resetPassword}>
+                            Forgot password?/
+                          </Button>
                         </div>
                       </MDBTabsPane>
 
@@ -390,20 +450,18 @@ function Login() {
                         </div>
                         {error && <div className="auth__error">{error}</div>}
                         <form name="registration_form" onSubmit={register}>
-
-                        <MDBInput
-                          wrapperClass="mb-4"
-                          type="Name"
-                          value={Name}
-                          required
-                          label="Name"
-                          onChange={(e) => setName(e.target.value)}
-                          sx={{
-                            backgroundColor: "#fff",
-                            borderRadius: "12px",
-                          }}
-                        />
-
+                          <MDBInput
+                            wrapperClass="mb-4"
+                            type="Name"
+                            value={Name}
+                            required
+                            label="Name"
+                            onChange={(e) => setName(e.target.value)}
+                            sx={{
+                              backgroundColor: "#fff",
+                              borderRadius: "12px",
+                            }}
+                          />
                           <MDBInput
                             wrapperClass="mb-4"
                             type="email"

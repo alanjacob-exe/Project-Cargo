@@ -24,7 +24,7 @@ import {
   getFirestore,
 } from "firebase/firestore";
 // import { db } from "../../firebase";
-import Logo from "../../Photos/bus2.png";
+import Logo from "../../../../Photos/bus2.png";
 import { IoAddOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
@@ -32,17 +32,17 @@ export default function Just(props) {
   const db = getFirestore();
   const navigate = useNavigate();
   const [Bus, setBus] = useState("");
+  const [conductor, setconductor] = useState([]);
 
-
-  
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   var deleteRecord = async (e) => {
-    var deleteBus = String(removeBus[0].busName);
+    var deleteBus = String(removeBus[0].email);
+    console.log("gggg  " + deleteBus);
 
-    var docRef = doc(db, "buses", deleteBus);
+    var docRef = doc(db, "conductors", deleteBus);
     deleteDoc(docRef)
       .then(() => {
         console.log("Entire Document has been deleted successfully.");
@@ -62,7 +62,6 @@ export default function Just(props) {
     console.log("useeffect" + removeBus[0]?.busName);
   }, [removeBus]);
 
-  
   const style = {
     position: "absolute",
     top: "50%",
@@ -78,55 +77,35 @@ export default function Just(props) {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "buses"));
+    const q = query(collection(db, "conductors"));
     onSnapshot(q, (querySnapshot) => {
-      setBus(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setconductor(
+        querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
     });
   }, []);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 150 },
     {
-      field: "busName",
-      headerName: "Bus name",
+      field: "Name",
+      headerName: "Name",
       width: 150,
       editable: true,
     },
     {
-      field: "startCity",
-      headerName: "Start city",
+      field: "busid",
+      headerName: "Bus Number",
       width: 150,
       editable: true,
     },
     {
-      field: "destinationCity",
-      headerName: "End city",
-      width: 150,
+      field: "email",
+      headerName: "Email Id",
+      width: 200,
       editable: true,
     },
-    {
-      field: "busNumber",
-      headerName: "Bus number",
-      type: "number",
-      width: 150,
-      editable: false,
-    },
-    {
-      field: "companyName",
-      headerName: "Company Name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 150,
-      //   valueGetter: (params) =>
-      //     `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    },
-    {
-      field: "totalSeats",
-      headerName: "Seat Capacity",
 
-      width: 150,
-      editable: true,
-    },
     {
       field: "Edit",
       headerName: "Edit",
@@ -134,17 +113,17 @@ export default function Just(props) {
       renderCell: (params) => {
         return (
           <Link
-            to="/adminedit"
+            to="/admin-conductor-edit"
             state={{
-              busname: Bus.filter((item) => item.id === params.id),
+              details: conductor.filter((item) => item.id === params.id),
             }}
           >
             <Button variant="contained" size="small">
               Edit
             </Button>
             {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
-              Uploaded
-            </Button> */}
+                Uploaded
+              </Button> */}
           </Link>
         );
       },
@@ -162,15 +141,15 @@ export default function Just(props) {
               size="small"
               onClick={() => {
                 handleOpen();
-                setremoveBus(Bus.filter((item) => item.id === params.id));
+                setremoveBus(conductor.filter((item) => item.id === params.id));
               }}
             >
               Remove
             </Button>
             <div className="my-auto left-0 top-0 w-[40%] h-[60%] absolute"></div>
             {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
-              Uploaded
-            </Button> */}
+                Uploaded
+              </Button> */}
           </Link>
         );
       },
@@ -192,47 +171,37 @@ export default function Just(props) {
       <div className="rounded-xl bg-white w-[90%] flex flex-col p-10 min-h-[50vh] space-y-4 border mt-5 ">
         <div className="flex justify-between">
           <div>
-            <h4 className="font-semibold">Buses Currently Running </h4>
+            <h4 className="font-semibold">Manage Bus Conductors </h4>
             <p className="text-secondary text-sm"></p>
           </div>
           <div className="flex">
             <Button
               variant="text"
               onClick={() => {
-                navigate("/registration");
+                navigate("/admin-conductor-registration");
               }}
               startIcon={<IoAddOutline />}
               sx={{ color: "black" }}
             >
-              Add Buses
+              Add Conductors
             </Button>
             {/* <IconButton color="primary" component="label">
-            <IoAddOutline></IoAddOutline> 
-          </IconButton> */}
+              <IoAddOutline></IoAddOutline> 
+            </IconButton> */}
             {/* <div className="inline-block my-auto text-black font-semibold">
-              Add Bus
-            </div> */}
+                Add Bus
+              </div> */}
           </div>
         </div>
-        {/* <DataGrid
-          rows={appointments}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          disableSelectionOnClick
-        /> */}
-        <DataGrid
-          rows={Bus}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 10,
-              },
-            },
-          }}
-          pageSizeOptions={[5]}
-        />
+        <div className="w-[70%] h-full mx-auto">
+          <DataGrid
+            rows={conductor}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            disableSelectionOnClick
+          />
+        </div>
       </div>
       <Modal
         sx={{ backgroundColor: "none" }}

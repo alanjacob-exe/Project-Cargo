@@ -16,33 +16,33 @@ import {
 import { db } from "../../firebase";
 import { useState, useEffect } from "react";
 
-export default function BusMap(props) {
-  const busname = props.busName;
-  console.log("from busmap" + busname);
-  console.log("from busmap bus"+Bus)
-  const [Bus, setBus] = useState([11.027775, 76.099903]);
+export default function BusMap({Bus,busId}) {
+  // const busname = props.busName;
+  // console.log("from busmap" + busname);
+  // console.log("from busmap bus"+Bus)
+  // const [Bus, setBus] = useState([11.027775, 76.099903]);
 
 
-  const [detach, setdetach] = useState(0);
+  // const [detach, setdetach] = useState(0);
   // const selectedBus = localStorage.getItem("busid");
 
-  const busTracker = async (busname) => {
-    console.log("bus tracker" + busname);
+  // const busTracker = async (busname) => {
+  //   console.log("bus tracker" + busname);
 
-    // if (detach===1){
-    //   unsub.off();
-    // }
-    const docRef = doc(db, "buses", busname, "location", busname);
+  //   // if (detach===1){
+  //   //   unsub.off();
+  //   // }
+  //   const docRef = doc(db, "buses", busname, "location", busname);
 
-    const unsub = onSnapshot(docRef, (doc) => {
-      setBus(doc.data().location);
-      console.log(
-        "current bus" + busname + "Current data: ",
-        doc.data().locacation
-      );
-    });
-    console.log("data is" + test.location);
-  };
+  //   const unsub = onSnapshot(docRef, (doc) => {
+  //     setBus(doc.data().location);
+  //     console.log(
+  //       "current bus" + busname + "Current data: ",
+  //       doc.data().locacation
+  //     );
+  //   });
+  //   console.log("data is" + test.location);
+  // };
 
   // const unsubscribe = onSnapshot(
   //   doc(db, "buses", "Jazza", "location", "Jazza"),
@@ -69,17 +69,18 @@ export default function BusMap(props) {
   // const unsubscribe=onSnapshot(doc(db, "buses", busname, "location", busname),(  )=>{
 
   // });
-  useEffect(() => {
-    busTracker(busname)
-  }, [busname])
+  // useEffect(() => {
+  //   // busTracker(busname)
+  // }, [busname])
 
 
+  // console.log("from busmanp"+Bus)
 
   return (
     <MapContainer
       center={[10.975958, 76.225454]}
       zoom={11}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.thunderforest.com/">Transport Map</a> contributors'

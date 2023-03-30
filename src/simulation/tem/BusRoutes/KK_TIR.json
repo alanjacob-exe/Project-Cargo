@@ -1,0 +1,557 @@
+{
+  "authenticationResultCode": "ValidCredentials",
+  "brandLogoUri": "http://dev.virtualearth.net/Branding/logo_powered_by.png",
+  "copyright": "Copyright © 2023 Microsoft and its suppliers. All rights reserved. This API cannot be accessed and the content and any results may not be used, reproduced or transmitted in any manner without express written permission from Microsoft Corporation.",
+  "resourceSets": [
+    {
+      "estimatedTotal": 1,
+      "resources": [
+        {
+          "__type": "Route:http://schemas.microsoft.com/search/local/ws/rest/v1",
+          "bbox": [10.913486, 75.918876, 10.999038, 75.99178],
+          "id": "v70,h936333659,i0,a0,cen-US,dAAAAAAAAAAA1,y0,s1,m1,o2,t4,wDDuMSX__JUCMLJljef9SQA2~ALs7jiPx312rAADgAQAAAAAA0~Tkg2NiAvIENhbGljdXQgUm9hZA2~~~~~~~~v12,wp_3ev9zVJUB7PATA_vpSQA2~ALs7jiMJNlyrAADgAYzT4T0B0~Q291cnQgUm9hZA2~~~~~~~~v12,k1,qatt:1",
+          "distanceUnit": "Kilometer",
+          "durationUnit": "Second",
+          "routeLegs": [
+            {
+              "actualEnd": {
+                "type": "Point",
+                "coordinates": [10.917526, 75.921718]
+              },
+              "actualStart": {
+                "type": "Point",
+                "coordinates": [10.999038, 75.99178]
+              },
+              "alternateVias": [],
+              "description": "Sh71",
+              "endTime": "/Date(1680100043145-0700)/",
+              "itineraryItems": [
+                {
+                  "compassDirection": "south",
+                  "details": [
+                    {
+                      "compassDegrees": 181,
+                      "endPathIndices": [1],
+                      "maneuverType": "DepartStart",
+                      "mode": "Driving",
+                      "names": ["Calicut Road"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918163,
+                        "shields": [{ "labels": ["NH66"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "Highway",
+                      "startPathIndices": [0]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "DepartStart",
+                    "text": "Head south on NH66 / Sh71 / Calicut Road toward Sh71 / Malappuram Road"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.999038, 75.99178]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "towardsRoadName": "Sh71 / Malappuram Road",
+                  "transitTerminus": "",
+                  "travelDistance": 0.01,
+                  "travelDuration": 1,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "west",
+                  "details": [
+                    {
+                      "compassDegrees": 248,
+                      "endPathIndices": [7],
+                      "maneuverType": "TurnRight",
+                      "mode": "Driving",
+                      "names": ["Calicut Road"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918163,
+                        "shields": [{ "labels": ["NH66"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "Highway",
+                      "startPathIndices": [1]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "TurnRight",
+                    "text": "Turn right onto NH66 / Sh71 / Calicut Road"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.998947, 75.991776]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 1.295,
+                  "travelDuration": 165,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "south",
+                  "details": [
+                    {
+                      "compassDegrees": 192,
+                      "endPathIndices": [11],
+                      "maneuverType": "EnterRoundabout",
+                      "mode": "Driving",
+                      "names": ["Edarikode Juction"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918163,
+                        "shields": [{ "labels": ["NH66"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "Highway",
+                      "startPathIndices": [7]
+                    },
+                    {
+                      "compassDegrees": 201,
+                      "endPathIndices": [58],
+                      "maneuverType": "ExitRoundabout",
+                      "mode": "Driving",
+                      "names": ["Tirur Road"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918172,
+                        "shields": [{ "labels": ["Sh71"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [11]
+                    }
+                  ],
+                  "exit": "1",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "EnterThenExitRoundabout",
+                    "text": "At the roundabout, take the 1st exit for Sh71 / Tirur Road"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.994931, 75.980648]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 6.824,
+                  "travelDuration": 600,
+                  "travelMode": "Driving",
+                  "warnings": [
+                    {
+                      "origin": "10.95752,75.957523",
+                      "severity": "None",
+                      "text": "Sh71 / Tirur Road SH71 is closed from Malappuram Kottakkal Tirur Road to Main Road / Vailature Puthanathani Road.",
+                      "to": "10.953551,75.946258",
+                      "warningType": "BlockedRoad"
+                    }
+                  ]
+                },
+                {
+                  "compassDirection": "west",
+                  "details": [
+                    {
+                      "compassDegrees": 259,
+                      "endPathIndices": [86],
+                      "maneuverType": "KeepToStayLeft",
+                      "mode": "Driving",
+                      "names": ["Tirur Road"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918167,
+                        "shields": [{ "labels": ["Sh71"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [58]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "KeepToStayLeft",
+                    "text": "Keep left to stay on Sh71 / Tirur Road"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.9536, 75.945088]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 4.766,
+                  "travelDuration": 448,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "southwest",
+                  "details": [
+                    {
+                      "compassDegrees": 133,
+                      "endPathIndices": [88],
+                      "maneuverType": "EnterRoundabout",
+                      "mode": "Driving",
+                      "roadShieldRequestParameters": {
+                        "bucket": 918172,
+                        "shields": [{ "labels": ["Sh71"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [86]
+                    },
+                    {
+                      "compassDegrees": 218,
+                      "endPathIndices": [100],
+                      "maneuverType": "ExitRoundabout",
+                      "mode": "Driving",
+                      "names": ["Over Bridge Road"],
+                      "roadShieldRequestParameters": {
+                        "bucket": 918172,
+                        "shields": [{ "labels": ["Sh71"], "roadShieldType": 2 }]
+                      },
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [88]
+                    }
+                  ],
+                  "exit": "2",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "EnterThenExitRoundabout",
+                    "text": "Pass through 3 roundabouts, staying on Sh71"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.917284, 75.925029]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0.823,
+                  "travelDuration": 114,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "south",
+                  "details": [
+                    {
+                      "compassDegrees": 159,
+                      "endPathIndices": [103],
+                      "maneuverType": "EnterRoundabout",
+                      "mode": "Driving",
+                      "names": ["Thazhepalam Juction"],
+                      "roadType": "MajorRoad",
+                      "startPathIndices": [100]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "EnterRoundabout",
+                    "text": "Enter the roundabout"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.913562, 75.919138]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0.023,
+                  "travelDuration": 8,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "north",
+                  "details": [
+                    {
+                      "compassDegrees": 341,
+                      "endPathIndices": [106],
+                      "maneuverType": "ExitRoundabout",
+                      "mode": "Driving",
+                      "roadType": "Arterial",
+                      "startPathIndices": [103]
+                    }
+                  ],
+                  "exit": "0",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "ExitRoundabout",
+                    "text": "Exit the roundabout at Exit 0"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.913564, 75.919063]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0.081,
+                  "travelDuration": 8,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "east",
+                  "details": [
+                    {
+                      "compassDegrees": 83,
+                      "endPathIndices": [115],
+                      "maneuverType": "TurnRight",
+                      "mode": "Driving",
+                      "names": ["Court Road"],
+                      "roadType": "Arterial",
+                      "startPathIndices": [106]
+                    }
+                  ],
+                  "exit": "",
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "TurnRight",
+                    "text": "Turn right onto Court Road"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.914261, 75.918876]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Unknown",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0.645,
+                  "travelDuration": 97,
+                  "travelMode": "Driving"
+                },
+                {
+                  "compassDirection": "northeast",
+                  "details": [
+                    {
+                      "compassDegrees": 63,
+                      "endPathIndices": [115],
+                      "maneuverType": "ArriveFinish",
+                      "mode": "Driving",
+                      "names": ["Court Road"],
+                      "roadType": "Arterial",
+                      "startPathIndices": [115]
+                    }
+                  ],
+                  "exit": "",
+                  "hints": [
+                    {
+                      "hintType": "PreviousIntersection",
+                      "text": "The last intersection before your destination is Thazhepalam Juction"
+                    },
+                    {
+                      "hintType": "NextIntersection",
+                      "text": "If you reach Sh71 / Over Bridge Road, you've gone too far"
+                    }
+                  ],
+                  "iconType": "Auto",
+                  "instruction": {
+                    "formattedText": null,
+                    "maneuverType": "ArriveFinish",
+                    "text": "Arrive at Court Road on the left"
+                  },
+                  "isRealTimeTransit": false,
+                  "maneuverPoint": {
+                    "type": "Point",
+                    "coordinates": [10.917526, 75.921718]
+                  },
+                  "realTimeTransitDelay": 0,
+                  "sideOfStreet": "Left",
+                  "tollZone": "",
+                  "transitTerminus": "",
+                  "travelDistance": 0,
+                  "travelDuration": 0,
+                  "travelMode": "Driving"
+                }
+              ],
+              "routeRegion": "WWMX",
+              "routeSubLegs": [
+                {
+                  "endWaypoint": {
+                    "type": "Point",
+                    "coordinates": [10.917526, 75.921718],
+                    "description": "Court Road",
+                    "isVia": false,
+                    "locationIdentifier": "0|187|59|142|35|9|54|92|171|0|0|224|1|140|211|225|61|1|10.917526,75.921718",
+                    "routePathIndex": 115
+                  },
+                  "startWaypoint": {
+                    "type": "Point",
+                    "coordinates": [10.999038, 75.99178],
+                    "description": "NH66 / Calicut Road",
+                    "isVia": false,
+                    "locationIdentifier": "0|187|59|142|35|241|223|93|171|0|0|224|1|0|0|0|0|0|10.999038,75.99178",
+                    "routePathIndex": 0
+                  },
+                  "travelDistance": 14.467,
+                  "travelDuration": 1447
+                }
+              ],
+              "startTime": "/Date(1680098597145-0700)/",
+              "travelDistance": 14.467,
+              "travelDuration": 1447,
+              "travelMode": "Driving"
+            }
+          ],
+          "routePath": {
+            "generalizations": [],
+            "line": {
+              "type": "LineString",
+              "coordinates": [
+                [10.999038, 75.991779],
+                [10.998946, 75.991776],
+                [10.998901, 75.991661],
+                [10.998292, 75.99025],
+                [10.997329, 75.987644],
+                [10.995987, 75.983317],
+                [10.995348, 75.981513],
+                [10.994931, 75.980648],
+                [10.9949, 75.98064],
+                [10.994883, 75.980632],
+                [10.994869, 75.98062],
+                [10.994857, 75.980605],
+                [10.994722, 75.980552],
+                [10.993726, 75.980588],
+                [10.992896, 75.980513],
+                [10.991061, 75.979224],
+                [10.987222, 75.976007],
+                [10.986319, 75.975109],
+                [10.983691, 75.973349],
+                [10.981512, 75.971449],
+                [10.980866, 75.970334],
+                [10.980518, 75.970088],
+                [10.979485, 75.969577],
+                [10.978309, 75.969134],
+                [10.975966, 75.96752],
+                [10.974561, 75.966921],
+                [10.974103, 75.966877],
+                [10.971732, 75.966991],
+                [10.971252, 75.966878],
+                [10.968292, 75.963706],
+                [10.968226, 75.96333],
+                [10.968465, 75.962775],
+                [10.968199, 75.961849],
+                [10.968283, 75.961468],
+                [10.968204, 75.96141],
+                [10.967951, 75.96153],
+                [10.967787, 75.961468],
+                [10.96683, 75.960211],
+                [10.966285, 75.959825],
+                [10.965448, 75.959052],
+                [10.964526, 75.958403],
+                [10.963297, 75.957753],
+                [10.962812, 75.957572],
+                [10.962174, 75.957466],
+                [10.960652, 75.957586],
+                [10.959321, 75.958097],
+                [10.958826, 75.958196],
+                [10.958331, 75.958235],
+                [10.958088, 75.958185],
+                [10.957853, 75.958022],
+                [10.957588, 75.957671],
+                [10.956808, 75.955806],
+                [10.954935, 75.953711],
+                [10.953886, 75.95275],
+                [10.953525, 75.952123],
+                [10.953338, 75.950953],
+                [10.953224, 75.948799],
+                [10.953605, 75.945741],
+                [10.9536, 75.945088],
+                [10.953579, 75.944975],
+                [10.95338, 75.944335],
+                [10.953116, 75.944018],
+                [10.951011, 75.942995],
+                [10.949386, 75.941834],
+                [10.949027, 75.941693],
+                [10.947513, 75.941667],
+                [10.946128, 75.941514],
+                [10.945693, 75.94137],
+                [10.945311, 75.941033],
+                [10.943582, 75.938926],
+                [10.942392, 75.93804],
+                [10.941766, 75.937815],
+                [10.936631, 75.936637],
+                [10.932209, 75.933972],
+                [10.931422, 75.933367],
+                [10.930704, 75.932622],
+                [10.930051, 75.932355],
+                [10.928035, 75.931766],
+                [10.926317, 75.931007],
+                [10.923435, 75.930269],
+                [10.92276, 75.929959],
+                [10.922092, 75.92942],
+                [10.921131, 75.927915],
+                [10.92053, 75.927218],
+                [10.919894, 75.926769],
+                [10.91842, 75.925931],
+                [10.917284, 75.925028],
+                [10.917267, 75.925046],
+                [10.917163, 75.924995],
+                [10.917059, 75.924912],
+                [10.916696, 75.92462],
+                [10.916586, 75.924625],
+                [10.916555, 75.924517],
+                [10.915821, 75.924107],
+                [10.915384, 75.923642],
+                [10.914843, 75.922635],
+                [10.914628, 75.922184],
+                [10.914657, 75.922117],
+                [10.91393, 75.920941],
+                [10.913662, 75.920042],
+                [10.913562, 75.919137],
+                [10.913541, 75.919145],
+                [10.913487, 75.919089],
+                [10.913563, 75.919062],
+                [10.913771, 75.918992],
+                [10.914212, 75.918887],
+                [10.91426, 75.918875],
+                [10.914268, 75.918938],
+                [10.914504, 75.919963],
+                [10.915001, 75.920422],
+                [10.915794, 75.920594],
+                [10.916897, 75.920321],
+                [10.917356, 75.920336],
+                [10.917733, 75.920899],
+                [10.917452, 75.921267],
+                [10.917526, 75.921718]
+              ]
+            }
+          },
+          "trafficCongestion": "None",
+          "trafficDataUsed": "None",
+          "travelDistance": 14.467,
+          "travelDuration": 1447,
+          "travelDurationTraffic": 1446,
+          "travelMode": "Driving"
+        }
+      ]
+    }
+  ],
+  "statusCode": 200,
+  "statusDescription": "OK",
+  "traceId": "ba98bd3cd276491a872cc34f6986a67b|PUS00017C0|0.0.0.0|HKG00067D8, Leg0-HKG00067CE"
+}

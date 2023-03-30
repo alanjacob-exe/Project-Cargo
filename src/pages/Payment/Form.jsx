@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -11,6 +11,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
+import { Box } from "@mui/material";
 import Avatar from "@material-ui/core/Avatar";
 import Details from "./Details";
 import PaymentMode from "./PaymentMode";
@@ -20,9 +21,7 @@ import Footer from "./Footer";
 import { useAuthValue } from "../Sign-up/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-
-import Logo from "../../Photos/bus2.png"
-
+import Logo from "../../Photos/bus2.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "column",
   },
   button: {
     marginRight: theme.spacing(1),
@@ -67,12 +67,14 @@ function getStepContent(step) {
 }
 
 export default function Form() {
+  const emailform = useRef();
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
   const { currentUser } = useAuthValue(); //for current user details
-const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -93,9 +95,9 @@ const navigate=useNavigate();
     setSkipped(newSkipped);
   };
 
-  const handleNavigationChange=()=>{
-    navigate("/")
-  }
+  const handleNavigationChange = () => {
+    navigate("/");
+  };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -118,7 +120,7 @@ const navigate=useNavigate();
 
   const handleReset = () => {
     setActiveStep(0);
-    navigate("/track")
+    navigate("/track");
   };
 
   return (
@@ -132,148 +134,185 @@ const navigate=useNavigate();
         className="position-absolute shadow-5-strong"
       ></div>
       <div className={classes.root}>
-      <Grid container direction="row" justifyContent="center" alignItems="center">
-        <Grid item xs={12}>
-          <AppBar position="static" style={{ background: "#2E3B55" }}>
-            <Toolbar>
-              <img
-                src={Logo}
-                alt="logo"
-                style={{ height: 50 }}
-                className={classes.logo}
-              />
-              <Typography
-                variant="h6"
-                style={{
-                  flexGrow: 1,
-                  textAlign: "center",
-                  paddingRight: "30px",
-                }}
-              >
-                Payment Gateway
-              </Typography>
-              <IconButton
-                edge="end"
-                color="inherit"
-                style={{ alignSelf: "end" }}
-              >
-                <Avatar>AJ</Avatar><Typography
-                style={{
-                  flexGrow: 1,
-                  textAlign: "center",
-                  paddingRight: "30px",
-                  paddingLeft: "15px"
-                }}>{}</Typography>
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-        </Grid>
-        <Grid item xs={6}>
-          <Card variant="outlined" style={{ marginTop: "5%" }} className="bg-glass">
-            <CardContent>
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-              >
-                <Grid item xs={12}>
-                  <AppBar
-                    position="static"
-                    style={{ background: "#2E3B55", alignItems: "center" }}
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item xs={12}>
+            <AppBar position="static" style={{ background: "#2E3B55" }}>
+              <Toolbar>
+                <img
+                  src={Logo}
+                  alt="logo"
+                  style={{ height: 50 }}
+                  className={classes.logo}
+                />
+                <Typography
+                  variant="h6"
+                  style={{
+                    flexGrow: 1,
+                    textAlign: "center",
+                    paddingRight: "30px",
+                  }}
+                >
+                  Payment Gateway
+                </Typography>
+                <IconButton
+                  edge="end"
+                  color="inherit"
+                  style={{ alignSelf: "end" }}
+                >
+                  <Avatar>AJ</Avatar>
+                  <Typography
+                    style={{
+                      flexGrow: 1,
+                      textAlign: "center",
+                      paddingRight: "30px",
+                      paddingLeft: "15px",
+                    }}
                   >
-                    <Toolbar>
-                      <img
-                        src={Logo}
-                        style={{ height: 30 }}
-                        alt="logo"
-                        className={classes.logo}
-                      />
-                    </Toolbar>
-                  </AppBar>
-                </Grid>
-                <Grid item xs={12}>
-                  <Stepper  className={classes.stepper}>
-                    {steps.map((label, index) => {
-                      const stepProps = {};
-                      const labelProps = {};
-                      
-
-                      if (isStepOptional(index)) {
-                        labelProps.optional = (
-                          <Typography variant="caption"></Typography>
+                    {}
+                  </Typography>
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+          </Grid>
+          <Grid item xs={6}>
+            <Card
+              variant="outlined"
+              style={{ marginTop: "5%" }}
+              className="bg-glass"
+            >
+              <CardContent>
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <Grid item xs={12}>
+                    <AppBar
+                      position="static"
+                      style={{ background: "#2E3B55", alignItems: "center" }}
+                    >
+                      <Toolbar>
+                        <img
+                          src={Logo}
+                          style={{ height: 30 }}
+                          alt="logo"
+                          className={classes.logo}
+                        />
+                      </Toolbar>
+                    </AppBar>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Stepper activeStep={activeStep}>
+                      {steps.map((label, index) => {
+                        const stepProps = {};
+                        const labelProps = {};
+                        if (isStepOptional(index)) {
+                          labelProps.optional = (
+                            <Typography variant="caption">Optional</Typography>
+                          );
+                        }
+                        if (isStepSkipped(index)) {
+                          stepProps.completed = false;
+                        }
+                        return (
+                          <Step key={label} {...stepProps}>
+                            <StepLabel {...labelProps}>{label}</StepLabel>
+                          </Step>
                         );
-                      }
-                      if (isStepSkipped(index)) {
-                        stepProps.completed = false;
-                      }
-                      return (
-                        <Step key={label} {...stepProps}>
-                          <StepLabel {...labelProps}>{label}</StepLabel>
-                        </Step>
-                      );
-                    })}
-                  </Stepper>
-                </Grid>
-                <Grid item xs={12}>
-                  <div className={classes.actions}>
-                    {activeStep === steps.length ? (
-                      <div>
-                        <Typography
-                          className={classes.instructions}
-                        ></Typography>
-                        <Button
-                          onClick={handleReset}
-                          className={classes.button}
-                        >
-                          Reset
-                        </Button>
-                      </div>
-                    ) : (
-                      <div>
-                        <Typography
-                          className={classes.instructions}
-                          style={{ height: "350px" }}
-                        >
-                          {getStepContent(activeStep)}
-                          <br />
-                        </Typography>
-                        <div className={classes.actions}>
-                          <Button
-                            disabled={activeStep === 0}
-                            onClick={handleBack}
-                            className={classes.button}
-                          >
-                            Back
-                          </Button>
-
-                          <Button
-                            variant="contained"
-                            style={{ background: "#2E3B55", color: "#ffffff" }}
-                            onClick={()=>{
-                              if(activeStep===steps.length-1)
-                              {
-                                navigate("/track")
-                              }
-                              else handleNext()
+                      })}
+                    </Stepper>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <div className={classes.actions}>
+                      {activeStep === steps.length ? (
+                        <React.Fragment>
+                          <Typography sx={{ mt: 2, mb: 1 }}>
+                            All steps completed - you&apos;re finished
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              flexDirection: "row",
+                              pt: 2,
                             }}
-                            className={classes.button}
                           >
-                            {activeStep === steps.length - 1
-                              ? "Finish"
-                              : "Next"}
-                          </Button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                            <Box sx={{ flex: "1 1 auto" }} />
+                            <Button onClick={handleReset}>Reset</Button>
+                          </Box>
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment>
+                          <Typography sx={{ mt: 2, mb: 1 }}>
+                            {/* Step {activeStep + 1} */}
+                            {getStepContent(activeStep)}
+                            <br></br>
+                          </Typography>
+                          <div className=" ">
+                            <Box
+                              sx={{
+                                width: "100%",
+                                display: "flex",
+                                bottom: 0,
+                                flexDirection: "row",
+                                pt: 2,
+                              }}
+                            >
+                              <Button
+                                color="inherit"
+                                disabled={activeStep === 0}
+                                onClick={handleBack}
+                                sx={{ mr: 1 }}
+                              >
+                                Back
+                              </Button>
+                              <Box sx={{ flex: "1 1 auto" }} />
+                              {isStepOptional(activeStep) && (
+                                <Button
+                                  color="inherit"
+                                  onClick={handleSkip}
+                                  sx={{ mr: 1 }}
+                                >
+                                  Skip
+                                </Button>
+                              )}
+
+                              <Button
+                                onClick={() => {
+                                  if (activeStep === steps.length - 1) {
+                                    handleNext();
+                                    emailform?.current.dispatchEvent(
+                                      new Event("submit", {
+                                        cancelable: true,
+                                        bubbles: true,
+                                      })
+                                    );
+                                  }
+                                  else
+                                  handleNext();
+                                }}
+                              >
+                                {activeStep === steps.length - 1
+                                  ? "Finish"
+                                  : "Next"}
+                              </Button>
+                            </Box>
+                          </div>
+                        </React.Fragment>
+                      )}
+                    </div>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
     </div>
   );
 }
