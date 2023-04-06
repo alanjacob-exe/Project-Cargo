@@ -93,7 +93,8 @@ export default function Just(props) {
       headerName: "Email",
       width: 250,
       editable: true,
-    },{
+    },
+    {
       field: "Edit",
       headerName: "Edit",
       width: 100,
@@ -101,9 +102,11 @@ export default function Just(props) {
         return (
           <Link
             to="/adminedit"
-            state={{
-              // busname: Bus.filter((item) => item.id === params.id),
-            }}
+            state={
+              {
+                // busname: Bus.filter((item) => item.id === params.id),
+              }
+            }
           >
             <Button variant="contained" size="small">
               Edit
@@ -141,30 +144,36 @@ export default function Just(props) {
         );
       },
     },
-
-   
-    
   ];
 
   return (
-    <main className="bg-slate-50 min-h-screen flex justify-center py-12 ">
-      <div className="h-[8vh] absolute top-0 bg-sky-900 w-screen">
-        <div className="flex">
-          <div className=" left-0 w-5 h-5 mt-2 ml-8 flex">
+    <main className="main ">
+      <div className="navcontainer">
+        <div style={{ display: "flex" }}>
+          <div className=" logoholder">
             <Avatar alt="project Cargo" src={Logo} />
           </div>
-          <div className="text-white right-20  font-bold text-lg   top-0 absolute mt-3 ">
-            Project Cargo
-          </div>
+          <div className="cargoholder">Voyage</div>
         </div>
       </div>
-      <div className="rounded-xl bg-white w-[90%] flex flex-col p-10 min-h-[50vh] space-y-4 border mt-5 ">
-        <div className="flex justify-between">
+      <div className="main-container">
+        <div style={{ display: "flex" }}>
           <div>
-            <h4 className="font-semibold">User details</h4>
-            <p className="text-secondary text-sm"></p>
+            <h4 style={{ fontWeight: 600 }}>User Details</h4>
+            <p
+              style={{
+                color: "black",
+                fontSize: "0.875rem",
+                lineHeight: "1.25rem",
+                right: "0px",
+                display: "flex",
+              }}
+              className="text-secondary text-sm"
+            ></p>
           </div>
-          <div className="flex">
+          <div
+            style={{ right: "0px", position: "relative", marginLeft: "auto" }}
+          >
             <Button
               variant="text"
               onClick={() => {
@@ -190,20 +199,22 @@ export default function Just(props) {
             rowsPerPageOptions={[10]}
             disableSelectionOnClick
           /> */}
-          <Divider/>
-        <div className="w-[70%] h-full m-auto">
-        <DataGrid
-          rows={User}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 10,
+        <Divider />
+        <div className="sub-container">
+          <DataGrid
+            autoHeight
+            
+            rows={User}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 5,
+                },
               },
-            },
-          }}
-          pageSizeOptions={[5]}
-        />
+            }}
+            pageSizeOptions={[5]}
+          />
         </div>
       </div>
       <Modal

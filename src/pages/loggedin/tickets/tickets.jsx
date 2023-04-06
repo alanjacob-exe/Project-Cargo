@@ -22,6 +22,8 @@ import { IoArrowForwardOutline } from "react-icons/io5";
 import { useAuthValue } from "../../Sign-up/AuthContext";
 import { TransportMap } from "../../../Components/TransportMap";
 import BusMap from "../../../Components/Busmap/busMap";
+import "./tickets.css"
+
 
 export default function Tickets(props) {
   const { currentUser } = useAuthValue();
@@ -55,6 +57,8 @@ export default function Tickets(props) {
 
   const [Bus, setBus] = useState([11.027775, 76.099903]);
   const busIDstore = [];
+
+  
   const bustracker = () => {
     console.log("bus tracker" + busId);
     // const docRef2 = doc(db, "buses", "KL108923", "location", "KL108923");
@@ -74,7 +78,6 @@ export default function Tickets(props) {
       return () => unsub();
     }
   };
-  console.log(busIDstore);
 
   useEffect(() => {
     bustracker();
@@ -85,25 +88,24 @@ export default function Tickets(props) {
   // console.log(Bus+"from Tickets")
 
   const [sortedBooking, setsortedBooking] = useState();
-  console.log(sortedBooking)
+  console.log(busColl)
 
   return (
-    <div className="w-full h-full absolute border rounded-xl">
-      <div className="w-[25%] h-full  rounded-xl border absolute bg-white">
-        <div className=" h-[10%] border flex rounded-xl w-full  text-black mx-auto ">
-          <div className="font-semibold   text-xl m-auto"> Your Bookings</div>
+    <div className="main">
+      <div className="parent-container">
+        <div className="parent-subcontainer ">
+          <div style={{fontWeight:"600",fontSize:"1.25rem",lineHeight:"1.75rem",marginLeft:"auto",marginRight:"auto",marginTop:"auto",marginBottom:"auto",height:"10%",height:"50%"}}>Your Bookings </div>
         </div>
-        <div className="block h-[50%]">
-          <div className="font-semibold mt-3 ml-3
-          ">Select a Date: </div>
-          <List className="w-[90%] mx-auto">
+        <div style={{display:"block",height:"50%"}} >
+          <div style={{fontWeight:"600",marginTop:"0.75rem",marginLeft:"0.75rem",height:"10%"}} 
+          >Select a Date: </div>
+          <List style={{width:"90%",marginLeft:"auto",marginRight:"auto"}}  >
             {busColl?.map((value) => (
               <IconButton
                 key={value.id}
                 size="medium"
                 color="primary"
                 sx={{ backgroundColor: "#F5F5F5" }}
-                className="bg-sky-300"
                 onClick={() => {
                   setsortedBooking(
                     busColl.filter(
@@ -117,7 +119,7 @@ export default function Tickets(props) {
                   );
                 }}
               >
-                <div className="text-lg font-sans">
+                <div style={{fontSize:"1.25rem",lineHeight:"1.75rem",}} >
                   {value.data.bookingDate}
                 </div>
               </IconButton>
@@ -142,11 +144,14 @@ export default function Tickets(props) {
               </ListItem>
             ))}
           </List>
+          
         </div>
       </div>
-      <div className="bg-white w-[75%]  right-0 ml-auto h-full flex absolute">
+      <div className="mapcontainer">
         <BusMap Bus={Bus} />
       </div>
     </div>
   );
+  console.log(sortedBooking);
+
 }

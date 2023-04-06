@@ -4,7 +4,10 @@ import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
-import { useState, useEffect} from "react";
+import { IoTicketSharp } from "react-icons/io5";
+import { IoMdLocate } from "react-icons/io";
+import { MdEmail,MdDelete } from "react-icons/md";
+import { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +34,8 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import CancelTickets from "../loggedin/cancelTickets/cancel";
+import EditProfile from "../loggedin/editProfile/editProfile.jsx";
 
 export default function Just(props) {
   const navigate = useNavigate();
@@ -48,52 +53,17 @@ export default function Just(props) {
   };
   // console.log("welcome back!")
   console.log(isshown);
-  // const [activeStep, setActiveStep] = React.useState(0);
-  // const [skipped, setSkipped] = React.useState(new Set());
-  // const isStepOptional = (step) => {
-  //   return step === 1;
-  // };
 
-  // const isStepSkipped = (step) => {
-  //   return skipped.has(step);
-  // };
-
-  // const handleNext = () => {
-  //   let newSkipped = skipped;
-  //   if (isStepSkipped(activeStep)) {
-  //     newSkipped = new Set(newSkipped.values());
-  //     newSkipped.delete(activeStep);
-  //   }
-
-  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  //   setSkipped(newSkipped);
-  // };
-
-  // function getPageContent(step) {
-  //   switch (step) {
-  //     case 0:
-  //       return <Details />;
-  //     case 1:
-  //       return <PaymentMode />;
-  //     case 2:
-  //       return <PayCard />;
-  //     case 3:
-  //       return <Success />;
-  //     default:
-  //       return "Unknown step";
-  //   }
-  // }
-
-  // <Link href="/track" sx={{color:"#fff"}}>Book</Link>
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <Tickets/>;
+        return <Tickets />;
       case 1:
         return <Contact />;
-      // case 2:
-      //   return <PayCard />;
-      // case 3:
+      case 2:
+        return <CancelTickets />;
+      case 3:
+        return <EditProfile />;
       //   return <Success />;
       default:
         return "Unknown step";
@@ -101,12 +71,10 @@ export default function Just(props) {
   }
   const [page, setpage] = useState(0);
 
-  const [users, setusers] = useState(null)
+  const [users, setusers] = useState(null);
 
   useEffect(() => {
-    const q = query(
-      collection(db, "users",)
-    );
+    const q = query(collection(db, "users"));
     onSnapshot(q, (querySnapshot) => {
       setusers(
         querySnapshot.docs.map((doc) => ({
@@ -117,8 +85,7 @@ export default function Just(props) {
     });
   }, []);
 
-  console.log(users)
-
+  console.log(users);
 
   return (
     <div className="parent">
@@ -131,7 +98,7 @@ export default function Just(props) {
             <div className="sidebarelements">
               <div>
                 <div className="icon">
-                  <BookOnlineIcon fontSize="small" />
+                  <IoMdLocate fontSize="large" />
                 </div>
                 <div
                   className="name"
@@ -139,18 +106,11 @@ export default function Just(props) {
                     setpage(0);
                   }}
                 >
-                  Booking
+                  Track
                 </div>
               </div>
             </div>
-            <div className="sidebarelements">
-              <div>
-                <div className="icon">
-                  <AccountCircleIcon fontSize="small" />
-                </div>
-                <div className="name">Profile</div>
-              </div>
-            </div>
+            
             <div
               className="sidebarelements"
               onClick={() => {
@@ -159,9 +119,22 @@ export default function Just(props) {
             >
               <div>
                 <div className="icon">
-                  <ContactPhoneIcon fontSize="small" />
+                  <MdEmail fontSize="large" />
                 </div>
                 <div className="name">Contact</div>
+              </div>
+            </div>
+            <div
+              className="sidebarelements"
+              onClick={() => {
+                setpage(2);
+              }}
+            >
+              <div>
+                <div className="icon">
+                  <MdDelete fontSize="large" />
+                </div>
+                <div className="name">Cancel Ticket</div>
               </div>
             </div>
             <div
@@ -172,21 +145,28 @@ export default function Just(props) {
             >
               <div>
                 <div className="icon">
-                  <ContactPhoneIcon fontSize="small" />
+                  <IoTicketSharp fontSize="large" />
                 </div>
                 <Link
-            href="/track"
-            state={{
-              // busname: Bus.filter((item) => item.id === params.id),
-            }}
-          >
-            <Button variant="text" size="small" sx={{textDecoration:"none",marginLeft:"12px"}} className="text-white font-sans hover:text-black">
-              Book Ticket
-            </Button>
-            {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
+                  href="/track"
+                  state={
+                    {
+                      // busname: Bus.filter((item) => item.id === params.id),
+                    }
+                  }
+                >
+                  <Button
+                    variant="text"
+                    size="small"
+                    sx={{ textDecoration: "none", marginLeft: "12px" }}
+                    className="text-white font-sans hover:text-black"
+                  >
+                    Book Ticket
+                  </Button>
+                  {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
               Uploaded
             </Button> */}
-          </Link>
+                </Link>
               </div>
             </div>
           </div>
@@ -208,12 +188,14 @@ export default function Just(props) {
           </div>
         </div>
       )}
-      <div className="w-full h-screen float-right   ml-auto color ">
-        <div className="w-[30%] h-[10%] ml-7 bg-white rounded-xl mb-3 border mt-16  flex">
-          <div className="font-semibold text-2xl text-black my-auto mx-auto">Welcome Back, {currentUser?.displayName}</div>
+      <div className="right-container color ">
+        <div className="right-subcontainer">
+          <div className="name-container">
+            Welcome Back, {currentUser?.displayName}
+          </div>
         </div>
-        <div className=" rounded-xl bg-white w-[95%] h-[70%] border m-auto relative shadow-xl">
-        <div>{getStepContent(page)}</div>
+        <div className="content-container">
+          <div>{getStepContent(page)}</div>
         </div>
       </div>
       {/* <div className="holder color">

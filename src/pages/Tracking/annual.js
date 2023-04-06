@@ -1,61 +1,21 @@
 import React from "react";
 import { useEffect } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import DestinationComplete from "../../Components/Autocomplete/DestinationAutocomplete";
-import Footer from "../../Components/Footer";
 import "./annual.css";
-
-import GeoLocation from "../../Components/Location/CurrentLocation";
-//import { FaBusAlt } from "react-icons/fa";
-import CurrentLocation from "../../Components/Location/CurrentLocation";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-// import Marker from "react-leaflet-animated-marker";
-
 import Navbar from "../../Components/Navbar";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
-import { margin } from "@mui/system";
-import Places from "../../Components/BingPlacesApi/PlacesApi";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import { Button } from "@mui/material";
-import Places2 from "../../Components/BingPlacesApi/PlacesApi2";
-import { useHistory } from "react-router-dom";
-
 import { useState } from "react";
 import { TransportMap } from "../../Components/TransportMap";
-import Places3 from "../../Components/BingPlacesApi/Places3";
-import Places4 from "../../Components/BingPlacesApi/places4";
 import Ui from "../../Components/detailsTab";
 import { useAuthValue } from "../Sign-up/AuthContext";
-import Tracker from "../../simulation/tem";
 import { useNavigate, useLocation } from "react-router-dom";
-import {
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-  getDocs,
-  doc,
-  getDoc,
-} from "firebase/firestore";
+import { collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 import Buslist from "../../Components/busList/index";
-import {
-  MDBBtn,
-  MDBModal,
-  MDBModalDialog,
-  MDBModalContent,
-  MDBModalHeader,
-  MDBModalTitle,
-  MDBModalBody,
-  MDBModalFooter,
-} from "mdb-react-ui-kit";
-import Modal from "../../Components/Modal/index";
 import SourceComplete from "../../Components/Autocomplete/SourceAutocomplete";
-import Route1 from "../../simulation/tem/file.json";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -63,7 +23,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const baseURL1 = "https://dev.virtualearth.net/REST/v1/Locations?q=";
 const baseURL2 = "&key=";
-
 const key = process.env.REACT_APP_BING_KEY;
 const pointurl1 = "https://dev.virtualearth.net/REST/V1/Routes/Driving?wp.0=";
 const pointurl2 = "&wp.1=";
@@ -93,11 +52,6 @@ const AnnualReport = () => {
   const [mapDestination, setmapDestionation] = useState([
     10.95590759312288, 76.22946062699094,
   ]);
-  // console.log("source coordinate:" + sourceCoordinate);
-  // console.log("destination coordinate:" + destinationcoordinate);       //to check if dynamic marker is working or not
-
-  // console.log(source.label);
-  // console.log(destination.label);
 
   const [data, setData] = useState(null);
   const [duration, setduration] = useState("00");
@@ -112,37 +66,18 @@ const AnnualReport = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [date, setDate] = useState(dayjs(new Date()));
 
-  console.log(date)
+  console.log(date);
   useEffect(() => {
     localStorage.setItem("bdate", date.$D);
-    localStorage.setItem("bmonth", date.$M+1);
-    localStorage.setItem("byear", date.$y)
+    localStorage.setItem("bmonth", date.$M + 1);
+    localStorage.setItem("byear", date.$y);
 
+    console.log("date" + localStorage.getItem("bdate"));
+    console.log("month" + localStorage.getItem("bmonth"));
 
-    console.log("date"+localStorage.getItem("bdate"))
-    console.log("month"+localStorage.getItem("bmonth"))
-
-    console.log("year"+localStorage.getItem("byear"))
-
-
+    console.log("year" + localStorage.getItem("byear"));
   }, [date]);
-  // console.log("source and dest"+source,destination)
-  // console.log("useelocation====" + prevLocation.pathname);
 
-  // useEffect(() => {
-
-  //   const fetchPost = async () => {
-  //       await getDocs(collection(db, "buses")).then((querySnapshot) => {
-  //         const newData = querySnapshot.docs.map((doc) => ({
-  //           info: doc.data(),
-  //           id: doc.id,
-  //         }));
-  //         setbuses(setInfo);
-  //         console.log(buses, setInfo);
-  //       });
-  //     };
-
-  // }, [])
   const handleChange = (newValue) => {
     setValue(newValue);
   };
@@ -162,18 +97,6 @@ const AnnualReport = () => {
     setInfoStyle("infotabAfter");
   };
 
-  // console.log("current user=" + currentUser?.email);
-  // console.log(isLoggedin);
-
-  // const query=data;
-  // const [duration,setduration]=useState("");
-  // const [eta, seteta] = useState("")
-  // const [traffic, settraffic] = useState('')
-  // settraffic(query.resourceSets[0].resources[0].trafficCongestion)
-  // setduration(query.resourceSets[0].resources[0].travelDuration)
-  // seteta(query.resourceSets[0].resources[0].travelDurationTraffic)
-  // console.log("data is" + data.resourceSets[0].resources[0].travelDuration);
-
   const handleClick = (event) => {
     // 👇️ toggle shown state
     setIsShown((current) => !current);
@@ -192,7 +115,6 @@ const AnnualReport = () => {
     }
   }, []);
 
-  // console.log("logged in?" + isLoggedin);
   const options = [
     { label: "Perinthalmanna", id: "10.976088, 76.225511" },
     { label: "Manjeri", id: "11.1192317,76.1207973" },
@@ -236,8 +158,8 @@ const AnnualReport = () => {
   //   [50.505, -29.09],
   //   [52.505, 29.09],
   // ])
-console.log("sourcecoordinate"+sourceCoordinate)
-console.log("sourcecoordinate"+destinationcoordinate)
+  console.log("sourcecoordinate" + sourceCoordinate);
+  console.log("sourcecoordinate" + destinationcoordinate);
 
   useEffect(() => {
     points(sourceCoordinate, destinationcoordinate)
@@ -352,33 +274,12 @@ console.log("sourcecoordinate"+destinationcoordinate)
 
   const [click, setclick] = useState(false);
 
-
   function isClicked() {
     if (click === false) {
       console.log("this is   true");
       setclick(true);
     }
   }
-
-  // const [busdetails, setbusdetails] = useState("");
-  // useEffect(() => {
-  //   const currentUser = JSON.parse(localStorage.getItem("user"));
-  //   const fetchPost = async () => {
-  //     await getDocs(collection(db, "buses")).then((querySnapshot) => {
-  //       const newData = querySnapshot.docs.map((doc) => ({
-  //         info: doc.data(),
-  //         id: doc.id,
-  //       }));
-  //       setbuses(setInfo);
-  //       console.log(buses, setInfo);
-  //     });
-  //   };
-  // }, []);
-
-  // console.log("userdetails"+currentUser.displayName)
-  // console.log("busname====" + setbuses[0].data.busName);
-
-  // console.log("isloggedin"+isLoggedin)
 
   /////////////////////////////databse communication////////////
   const [busColl, setbusColl] = useState([]);
@@ -394,16 +295,6 @@ console.log("sourcecoordinate"+destinationcoordinate)
       );
     });
   }, []);
-
-  // console.log("fetched data isssss"+dummy.fullName)
-
-  //   const cityRef = db.collection('cities').doc('SF');
-  // const doc = await cityRef.get();
-  // if (!doc.exists) {
-  //   console.log('No such document!');
-  // } else {
-  //   console.log('Document data:', doc.data());
-  // }
 
   const [sortedList, setsortedList] = useState([]);
 
@@ -421,24 +312,6 @@ console.log("sourcecoordinate"+destinationcoordinate)
   useEffect(() => {
     sortedBusList(source.label, destination.label);
   }, [source, destination]);
-
-  // console.log("full buses" + busColl.length);
-
-  ////////////////////////////////////////////location working check/////////////////////////////
-
-  //   const [seconds, setSeconds] = useState(0);
-  //   const [cursor, setcursor] = useState(0)
-  // console.log(route1[cursor])
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       if(cursor>=route1.length){
-  //       setcursor(0)}
-  //       setcursor(cursor => cursor + 1);
-
-  //     }, 2000);
-  //     return () => clearInterval(interval);
-  //   }, []);
-  //   console.log(cursor)
 
   ///////////////////////////////////////handleclick//////////////
 
@@ -535,7 +408,12 @@ console.log("sourcecoordinate"+destinationcoordinate)
               <div className="busmap">
                 {click &&
                   sortedList.map((bus) => (
-                    <Buslist key={bus.id} Name={bus.data.busName} data={bus} eta={eta}/>
+                    <Buslist
+                      key={bus.id}
+                      Name={bus.data.busName}
+                      data={bus}
+                      eta={eta}
+                    />
                   ))}
               </div>
             </div>

@@ -5,6 +5,7 @@
   text-align: center;
   padding: 40px 20px;
   background-color: hsl(210, 10%, 98%);
+  border-radius:12px;
 }
 
 .verifyEmail h1{

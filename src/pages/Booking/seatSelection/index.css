@@ -16,7 +16,7 @@ html {
   backdrop-filter: saturate(200%) blur(25px);
 }
 
-.container{
+.container1{
   height:20vh;
   width:55%;
   border-radius:12px;
@@ -27,7 +27,10 @@ html {
 }
 .card
 
-
+.ss{
+  width:70%;
+  height:50%;
+}
 
 .row {
   background-color: hsla(0, 0%, 90%, 0.3) !important;
@@ -221,9 +224,10 @@ ol {
 
 .column2 {
   float: left;
-  width: 55%;
+  width: 60%;
   padding: 0;
-  margin: 0;
+  margin-top:5%;
+  margin:auto;
 }
 
 /* Clear floats after the columns */

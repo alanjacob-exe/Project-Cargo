@@ -1,0 +1,32 @@
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 12px;
+  }
+  
+  .main-heading {
+    font-weight: 600;
+    position: relative;
+    color: #000;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.75rem;
+  }
+  
+  .container{
+      width:100%;
+      height:80%;
+      position:relative;
+      display:flex;
+      flex-direction:row;
+      background-color:#000;
+  
+  }
+  .seperater{
+      height:70%;
+      border-left:black solid 1px;
+      margin-top:auto;
+      margin-bottom:auto;
+  }
+  

@@ -217,7 +217,7 @@ export default function Success() {
   };
 
   useEffect(() => {
-    // repopulateValues();
+    repopulateValues();
   }, []);
 
   const name = localStorage.getItem("bookingName");

@@ -54,38 +54,38 @@ export default function SeatSelection() {
     seatQuery();
   }, []);
 
-  useEffect(() => {
-    if (bookingColl != null) {
-      const limit = bookingColl.length;
-      console.log(limit + "limitttt");
-      for (var i = 0; i < limit; i++) {
-        console.log(bookingColl[i].data.Seatnumber);
-        setBseats(bookingColl[i].data.Seatnumber);
-        setsb([...sb, Bseats]);
-      }
-    }
-  }, [bookingColl]);
-  console.log(sb);
+  // useEffect(() => {
+  //   if (bookingColl != null) {
+  //     const limit = bookingColl.length;
+  //     console.log(limit + "limitttt");
+  //     for (var i = 0; i < limit; i++) {
+  //       console.log(bookingColl[i].data.Seatnumber);
+  //       setBseats(bookingColl[i].data.Seatnumber);
+  //       setsb([...sb, Bseats]);
+  //     }
+  //   }
+  // }, [bookingColl]);
+  // console.log(sb);
 
-  const [Bseats, setBseats] = useState([]);
+  // const [Bseats, setBseats] = useState([]);
 
-  useEffect(() => {
-    // console.log("fromuse"+seatNumber)
-    localStorage.setItem("bookedseat", seatNumber);
-    console.log("below");
-    console.log(localStorage.getItem("bookedseat"));
-  }, [seatNumber]);
+  // useEffect(() => {
+  //   // console.log("fromuse"+seatNumber)
+  //   localStorage.setItem("bookedseat", seatNumber);
+  //   console.log("below");
+  //   console.log(localStorage.getItem("bookedseat"));
+  // }, [seatNumber]);
 
-  // bookingColl.filter((buses) => setBseats(buses.data.seatNumber));
+  // // bookingColl.filter((buses) => setBseats(buses.data.seatNumber));
 
-  // console.log(Bseats);
+  // // console.log(Bseats);
 
-  const [user, setuser] = useState();
-  useEffect(() => {
-    setuser(localStorage.getItem("users"));
-  }, []);
-  const selectedBus = localStorage.getItem("busid");
-  // console.log("selected bus" + selectedBus);
+  // const [user, setuser] = useState();
+  // useEffect(() => {
+  //   setuser(localStorage.getItem("users"));
+  // }, []);
+  // const selectedBus = localStorage.getItem("busid");
+  // // console.log("selected bus" + selectedBus);
 
   const getSeatNumber = (e) => {
     renderPassengerData(seatNumber);
@@ -119,9 +119,9 @@ export default function SeatSelection() {
       // setPassengers(prevState => ({ ...prevState, SeatNo: seatNo, Name: value }))
     }
   };
-  useEffect(() => {
-    const userDetails = localStorage.getItem("user");
-  }, []);
+  // useEffect(() => {
+  //   const userDetails = localStorage.getItem("user");
+  // }, []);
 
   // const [book, setbook] = useState()
   //   useEffect(() => {

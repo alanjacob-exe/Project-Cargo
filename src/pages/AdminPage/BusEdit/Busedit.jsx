@@ -12,7 +12,7 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
 import MuiModal from "../../../Components/Modal/MuiModal";
-
+import "./busedit.css";
 
 export default function BusEdit() {
   const location = useLocation();
@@ -69,12 +69,12 @@ export default function BusEdit() {
   //   }
   // };
 
-      const [open, setOpen] = React.useState(false);
-    const handleOpen =  () => setOpen(true);
-    const handleClose = () => setOpen(false);
-  
-const bodyText=" has been updated successfully!"
-console.log(`${busName}${bodyText}`)
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const bodyText = " has been updated successfully!";
+  console.log(`${busName}${bodyText}`);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -92,23 +92,23 @@ console.log(`${busName}${bodyText}`)
         bookedSeats: bookedSeats,
         busName: busName,
       });
-      handleOpen()
+      handleOpen();
     } catch (e) {}
   };
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   return (
-    <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-      <div className="w-[60%] p-6 m-auto bg-white rounded-md shadow-xl shadow-black-300 lg:max-w-xl border">
-        <h1 className="text-3xl font-semibold text-center text-black underline uppercase ">
+    <div className="container">
+      <div className="content-container">
+        <h1 className="heading">
           Bus Editing Form
         </h1>
-        <form className="mt-6" onSubmit={handleSubmit}>
-          <div className="mb-2">
+        <form style={{marginTop:"1.5rem"}} onSubmit={handleSubmit}>
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Company Name
             </label>
@@ -119,13 +119,13 @@ console.log(`${busName}${bodyText}`)
               value={companyName}
               type="text"
               placeholder={location.state.busname[0].companyName}
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Bus Type
             </label>
@@ -133,13 +133,13 @@ console.log(`${busName}${bodyText}`)
               onChange={(e) => setbusType(e.target.value)}
               value={busType}
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Bus Number
             </label>
@@ -147,13 +147,13 @@ console.log(`${busName}${bodyText}`)
               onChange={(e) => setbusNumber(e.target.value.toUpperCase())}
               value={busNumber}
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Start city
             </label>
@@ -164,13 +164,13 @@ console.log(`${busName}${bodyText}`)
               value={startCity}
               type="text"
               disabled={true}
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               DestinationCity
             </label>
@@ -181,13 +181,13 @@ console.log(`${busName}${bodyText}`)
               }
               value={destinationCity}
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Available Seats
             </label>
@@ -195,13 +195,13 @@ console.log(`${busName}${bodyText}`)
               onChange={(e) => setavailableSeates(e.target.value)}
               value={availableSeates}
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Total Seats
             </label>
@@ -209,13 +209,13 @@ console.log(`${busName}${bodyText}`)
               onChange={(e) => settotalSeats(e.target.value)}
               value={totalSeats}
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Price per Seat
             </label>
@@ -223,13 +223,13 @@ console.log(`${busName}${bodyText}`)
               onChange={(e) => setpricePerSeat(e.target.value)}
               value={pricePerSeat}
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Booked Seats
             </label>
@@ -237,30 +237,30 @@ console.log(`${busName}${bodyText}`)
               onChange={(e) => setbookedSeats(e.target.value)}
               value={bookedSeats}
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               BusName
             </label>
             <input
-            disabled={true}
+              disabled={true}
               onChange={(e) =>
                 setbusName(capitalizeFirstLetter(e.target.value))
               }
               value={busName}
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="label-main"
             />
           </div>
-          <div className="mb-2">
+          <div style={{marginBottom:"0.5rem"}}>
             {/* <label
               for="text"
-              className="block text-sm font-semibold text-gray-800"
+              className="label-text"
             >
               Booked Seats
             </label>
@@ -269,15 +269,18 @@ console.log(`${busName}${bodyText}`)
             </div> */}
           </div>
           <div className="mt-9 ">
-            <Button variant="contained" type="submit" sx={{width:"100%  "}}>
+            <Button variant="contained" type="submit" sx={{ width: "100%  " }}>
               Update
             </Button>
           </div>
         </form>
-
       </div>
-      <MuiModal open={open} handleclose={() => setOpen(false)} heading="Success" content={`${busName}${bodyText}`}></MuiModal>
-
+      <MuiModal
+        open={open}
+        handleclose={() => setOpen(false)}
+        heading="Success"
+        content={`${busName}${bodyText}`}
+      ></MuiModal>
     </div>
   );
 }

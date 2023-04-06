@@ -1,6 +1,4 @@
 import React from "react";
-import "@coreui/coreui/dist/css/coreui.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./about.css";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 import Logo from "../../Photos/bus2.png";

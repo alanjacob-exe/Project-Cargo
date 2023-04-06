@@ -22,7 +22,7 @@ function DarkVariantExample() {
           <h2 > Your Next Destination Awaits You!</h2>
         </div>
         <div className="explore">
-        <Link href="/track" underline="hover">Explore!</Link>
+        <Link href="/track" sx={{color:"#fff",textDecoration:"none",fontWeight:"regular"}} underline="hover">Explore!</Link>
         </div>
       </div>
 

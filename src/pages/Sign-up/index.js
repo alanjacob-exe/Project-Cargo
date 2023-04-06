@@ -243,14 +243,14 @@ function Login() {
           <MDBCol
             md="6"
             className="text-center text-md-start d-flex flex-column justify-content-center   "
-            // style={{ marginTop: "-10%" }}
+            style={{ marginTop: "-20%" }}
           >
             <h1
               className="my-5 display-3 fw-bold ls-tight px-3 "
               style={{ color: "hsl(218, 81%, 95%)" }}
             >
               Be a part of <br />
-              <span style={{ color: "hsl(218, 81%, 75%)" }}>Project Cargo</span>
+              <span style={{ color: "hsl(218, 81%, 75%)" }}>Voyage</span>
             </h1>
 
             <p
@@ -258,7 +258,7 @@ function Login() {
               style={{
                 color: "hsl(218, 81%, 85%)",
                 display: "overlay",
-                marginTop: "-10%",
+                marginTop: "0%",
               }}
             >
               Be a part of our online community and get updated with latest news
@@ -278,8 +278,8 @@ function Login() {
             ></div>
 
             <MDBCard
-              className="my-5  bg-glass logincard"
-              style={{ marginBottom: "400px", borderRadius: "12px" }}
+              className="bg-glass logincard"
+              style={{ marginTop: "15%", borderRadius: "12px" }}
             >
               <MDBCardBody className="p-7 glass h-2/4">
                 <MDBCol col="6">
@@ -311,10 +311,9 @@ function Login() {
                       <MDBTabsPane show={justifyActive === "tab1"}>
                         <div
                           className="text-center mb-3"
-                          style={{ borderRadius: "12px", borderColor: "red" }}
+                          style={{ borderRadius: "12px" }}
                         >
-                          <p className="text-white font-semibold text-xl">
-                            {" "}
+                          <p className=" font-semibold text-xl"  style={{ color: "#495367" }}>
                             Sign in
                           </p>
 
@@ -389,64 +388,19 @@ function Login() {
                         </div>
 
                         <div className="d-flex justify-content-between mx-4 mb-4">
-                          <MDBCheckbox
-                            name="flexCheck"
-                            value=""
-                            id="flexCheckDefault"
-                            label="Remember me"
-                          />
-                          <Button variant="text" onClick={resetPassword}>
-                            Forgot password?/
+                          <Button
+                            sx={{ color: "#495367" }}
+                            variant="text"
+                            onClick={resetPassword}
+                          >
+                            Forgot password?
                           </Button>
                         </div>
                       </MDBTabsPane>
 
                       <MDBTabsPane show={justifyActive === "tab2"}>
                         <div className="text-center mb-3">
-                          <p>Sign in with:</p>
-
-                          <div
-                            className="d-flex justify-content-between mx-auto"
-                            style={{ width: "40%" }}
-                          >
-                            <MDBBtn
-                              tag="a"
-                              color="none"
-                              className="m-1"
-                              style={{ color: "#1266f1" }}
-                            >
-                              <MDBIcon fab icon="facebook-f" size="sm" />
-                            </MDBBtn>
-
-                            <MDBBtn
-                              tag="a"
-                              color="none"
-                              className="m-1"
-                              style={{ color: "#1266f1" }}
-                            >
-                              <MDBIcon fab icon="twitter" size="sm" />
-                            </MDBBtn>
-
-                            <MDBBtn
-                              tag="a"
-                              color="none"
-                              className="m-1"
-                              style={{ color: "#1266f1" }}
-                            >
-                              <MDBIcon fab icon="google" size="sm" />
-                            </MDBBtn>
-
-                            <MDBBtn
-                              tag="a"
-                              color="none"
-                              className="m-1"
-                              style={{ color: "#1266f1" }}
-                            >
-                              <MDBIcon fab icon="github" size="sm" />
-                            </MDBBtn>
-                          </div>
-
-                          <p className="text-center mt-3">or:</p>
+                          <p>Sign in with Email:</p>
                         </div>
                         {error && <div className="auth__error">{error}</div>}
                         <form name="registration_form" onSubmit={register}>
@@ -498,14 +452,11 @@ function Login() {
                               borderRadius: "12px",
                             }}
                           />
-                          <div className="d-flex justify-content-center mb-4">
-                            {/* <MDBCheckbox
-                              name="flexCheck"
-                              id="flexCheckDefault"
-                              label="I have read and agree to the terms"
-                            /> */}
-                          </div>
-                          <Button variant="contained" type="submit">
+                          <Button
+                            sx={{ width: "100%" }}
+                            variant="contained"
+                            type="submit"
+                          >
                             Signup
                           </Button>{" "}
                         </form>

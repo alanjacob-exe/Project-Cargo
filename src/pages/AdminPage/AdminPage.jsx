@@ -27,14 +27,12 @@ import {
 import Logo from "../../Photos/bus2.png";
 import { IoAddOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-
+import "./adminpage.css";
 export default function Just(props) {
   const db = getFirestore();
   const navigate = useNavigate();
   const [Bus, setBus] = useState("");
 
-
-  
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -62,7 +60,6 @@ export default function Just(props) {
     console.log("useeffect" + removeBus[0]?.busName);
   }, [removeBus]);
 
-  
   const style = {
     position: "absolute",
     top: "50%",
@@ -85,7 +82,7 @@ export default function Just(props) {
   }, []);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 130 },
     {
       field: "busName",
       headerName: "Bus name",
@@ -178,111 +175,64 @@ export default function Just(props) {
   ];
 
   return (
-    <main className="bg-slate-50 min-h-screen flex justify-center py-12 ">
-      <div className="h-[8vh] absolute top-0 bg-sky-900 w-screen">
-        <div className="flex">
-          <div className=" left-0 w-5 h-5 mt-2 ml-8 flex">
+    <main className="main ">
+      <div className="navcontainer">
+        <div style={{ display: "flex" }}>
+          <div className=" logoholder">
             <Avatar alt="project Cargo" src={Logo} />
           </div>
-          <div className="text-white right-20  font-bold text-lg   top-0 absolute mt-3 ">
-            Project Cargo
-          </div>
+          <div className="cargoholder">Voyage</div>
         </div>
       </div>
-      <div className="rounded-xl bg-white w-[90%] flex flex-col p-10 min-h-[50vh] space-y-4 border mt-5 ">
-        <div className="flex justify-between">
+      <div className="align-container">
+      <div className="main-container">
+        <div style={{ display: "flex" }}>
           <div>
-            <h4 className="font-semibold">Buses Currently Running </h4>
-            <p className="text-secondary text-sm"></p>
-          </div>
-          <div className="flex">
-            <Button
-              variant="text"
-              onClick={() => {
-                navigate("/registration");
+            <h4 style={{ fontWeight: 600 }}>Welcome Administrator!</h4>
+            <p
+              style={{
+                color: "black",
+                fontSize: "0.875rem",
+                lineHeight: "1.25rem",
+                right: "0px",
+                display: "flex",
               }}
-              startIcon={<IoAddOutline />}
-              sx={{ color: "black" }}
-            >
-              Add Buses
-            </Button>
-            {/* <IconButton color="primary" component="label">
-            <IoAddOutline></IoAddOutline> 
-          </IconButton> */}
-            {/* <div className="inline-block my-auto text-black font-semibold">
-              Add Bus
-            </div> */}
+              className="text-secondary text-sm"
+            ></p>
+          </div>
+
+          <div
+            style={{ right: "0px", position: "relative", marginLeft: "auto" }}
+          >
+            <IconButton color="primary" component="label">
+              <IoMdLogOut />
+            </IconButton>
+            <Divider />
           </div>
         </div>
-        {/* <DataGrid
-          rows={appointments}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          disableSelectionOnClick
-        /> */}
-        <DataGrid
-          rows={Bus}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 10,
-              },
-            },
-          }}
-          pageSizeOptions={[5]}
-        />
-      </div>
-      <Modal
-        sx={{ backgroundColor: "none" }}
-        aria-labelledby="spring-modal-title"
-        aria-describedby="spring-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        //   slots={{ backdrop: Backdrop }}
-        //   slotProps={{
-        //     backdrop: {
-        //       TransitionComponent: Fade,
-        //     },
-        //   }}
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Are You Sure?
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Proceeding with this action will result in the data being removed
-            from the database permanantly.
-            <Typography sx={{ mt: 2, color: "red" }}>
-              Do you want to continue?
-            </Typography>
-          </Typography>
-          <Divider sx={{ mt: 2 }} />
-          <div className="flex">
-            <div className="mx-auto relative right-0 mt-2 ">
-              <Button
-                sx={{ marginRight: "8px" }}
-                variant="contained"
-                onClick={handleClose}
-              >
-                Cancel
-              </Button>
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => {
-                  deleteRecord();
-                  handleClose();
-                }}
-              >
-                Continue
-              </Button>
-            </div>
+        <Divider />
+        <div className="sub-container">
+          <div style={{width:"100%",marginTop:"2%"}}>
+            <DataGrid
+              sx={{ height: "20%" }}
+              autoHeight
+              rows={Bus}
+              columns={columns}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 6,
+                  },
+                },
+              }}
+              pageSizeOptions={[6]}
+            />
           </div>
-        </Box>
-      </Modal>
+        </div>
+      </div>
+      </div>
+
+      {/* <MuiModal open={open} handleclose={() => setOpen(false)} heading="hello" content="Testing content"></MuiModal> */}
     </main>
   );
 }
