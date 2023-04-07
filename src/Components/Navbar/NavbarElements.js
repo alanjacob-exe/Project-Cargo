@@ -35,7 +35,6 @@ export const NavLink = styled(Link)`
   &.active {
     color: #fff;
     margin: 20px;
-    text-decoration-line: underline;
     text-decoration-style: solid;
   }
   &:hover {

@@ -240,7 +240,7 @@ ol {
 
 .ss {
   /*/ parent container  width: auto; */
-  width: 100%;
+  width: 100vw;
   
   height: 100vh;
   border: 1px solid #00acee;
@@ -265,11 +265,11 @@ ol {
 }
 
 .seatInfo {
-  /* position: relative;  */
-  left: -50px;
+  position: relative; 
+  width:70%;
   margin-top: 49px;
   height: auto;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 .seatfrm {

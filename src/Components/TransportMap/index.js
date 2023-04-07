@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import {
   MapContainer,
   Circle,
@@ -10,27 +10,79 @@ import {
 } from "react-leaflet";
 import file from "../../file.json";
 import Control from "react-leaflet-custom-control";
+import { useMapEvents } from "react-leaflet";
+import { Map, L } from "leaflet";
+import { useEffect } from "react";
 
+// function LocationMarker(location) {
+//   const [position, setPosition] = useState([11.035224, 76.099321]);
+//   const map = useMapEvents({
+//     click() {
+//       setPosition(mark);
 
-// import Marker from 'react-leaflet-animated-marker';
+//       map.flyTo(location, 12);
+//     },
+//   });
 
+//   return position === null ? null : (
+//     <Marker position={position}>
+//       <Popup>source</Popup>
+//     </Marker>
+//   );
+// }
+// const usetemp = [11.035224, 76.099321];
+
+// function LocationMarker() {
+//   const [position, setPosition] = useState(null);
+//   const map = useMapEvents({
+//     click() {
+//       setPosition({ lat: 11.035224, lng: 76.099321 });
+//       map.flyTo({ lat: 11.035224, lng: 76.099321 }, map.getZoom());
+//     },
+//   });
+// }
 export function TransportMap(position) {
+  const mapRef = useRef();
   const polyline = position.pointers;
   const blueOptions = { color: "blue" };
   const data = file;
-  const bbox=position.bbox;
-  console.log("from transport"+bbox)
- const bboxValues=[[bbox[0],bbox[1]],[bbox[2],bbox[3]]];
-  console.log("from transport"+bboxValues[0])
-
-
+  const bbox = position.bbox;
+  console.log("from transport" + bbox);
+  const bboxValues = [
+    [bbox[0], bbox[1]],
+    [bbox[2], bbox[3]],
+  ];
+  console.log("from transport" + bboxValues[0]);
 
   console.log("marker 1  " + position.location1);
   const marker1 = position.location1;
   const marker2 = position.location2;
+  console.log("source......" + marker1);
+  const [sourceChange, setsourceChange] = useState([11.035224, 76.099321]);
+  const [map, setMap] = useState(null);
 
+
+
+  // const SourceFlyTo = (fly) => {
+  //   const map = useMapEvents({
+  //     preclick() {
+
+  //       map.flyTo(sourceChange, 12);
+  //     },
+  //   });
+  //   return sourceChange === null ? null : (
+  //     <Marker position={sourceChange}>
+  //       <Popup>source</Popup>
+  //     </Marker>
+  //   );
+  // };
+  // useEffect(() => {
+  //   setsourceChange(marker1)
+  // }, [marker1])
   const sourceBusstops = nearbyBusstops(marker1);
   const destinationBusstops = nearbyBusstops(marker2);
+
+  // import Marker from 'react-leaflet-animated-marker';
 
   // console.log("location 2 " + position.location2);
   // console.log("points"+polyline[2]);
@@ -58,14 +110,14 @@ export function TransportMap(position) {
     // console.log("West" + newWest);
 
     function ToNorthPosition(coordinate) {
-        var North = coordinate[0] + (1 / r_earth) * (180 / pi);
-        var South = coordinate[0] - (1 / r_earth) * (180 / pi);
-        var East =
-          coordinate[1] +
-          ((1 / r_earth) * (180 / pi)) / Math.cos((coordinate[0] * pi) / 180);
-        var west =
-          coordinate[1] -
-          ((1 / r_earth) * (180 / pi)) / Math.cos((coordinate[0] * pi) / 180);
+      var North = coordinate[0] + (1 / r_earth) * (180 / pi);
+      var South = coordinate[0] - (1 / r_earth) * (180 / pi);
+      var East =
+        coordinate[1] +
+        ((1 / r_earth) * (180 / pi)) / Math.cos((coordinate[0] * pi) / 180);
+      var west =
+        coordinate[1] -
+        ((1 / r_earth) * (180 / pi)) / Math.cos((coordinate[0] * pi) / 180);
 
       // console.log("South 1kms is"+South))
       // console.log("north 1kms is"+North);
@@ -161,7 +213,7 @@ export function TransportMap(position) {
       const value = index4[i];
       coordinates[i] = data.features[value].geometry.coordinates;
     }
-    console.log(index4)
+    console.log(index4);
     return index4;
     // return coordinates[1];
   }
@@ -198,19 +250,29 @@ export function TransportMap(position) {
   const outerBounds = [
     [50.505, -29.09],
     [52.505, 29.09],
-  ]
-  
+  ];
+
   return (
-    <MapContainer bounds={bboxValues} center={[11.035224, 76.099321]} zoom={11} zoomOffset={-1}>
+    <MapContainer
+      bounds={bboxValues}
+      center={[11.035224, 76.099321]}
+      zoom={11}
+      zoomOffset={-1}
+      whenCreated={setMap}    >
       <TileLayer
         attribution='&copy; <a href="https://www.thunderforest.com/">Transport Map</a> contributors'
         url="https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=b27fc203562944ceb7363792b9e8c9d2"
       ></TileLayer>
-
       <Control prepend position="topright">
-        <Button variant="outlined" onClick={handleClick}>Show Stops</Button>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          Show Stops
+        </Button>
       </Control>
-
       <Marker position={position.location1} />
       <Marker position={position.location2} />
       {isShown &&
@@ -225,14 +287,14 @@ export function TransportMap(position) {
             <Popup>{data.features[value].properties["name"]}</Popup>
           </Marker>
         ))}
-
       {/* {maarker1.map((value) => (
         <Marker key={value} position={[data.features[value].geometry.coordinates[1],data.features[value].geometry.coordinates[0]]}>
           <Popup>{value}</Popup>
           </Marker>
       ))} */}
-
+      <Marker position={[11.035224, 76.099321]}/>
       <Polyline pathOptions={blueOptions} positions={polyline} />
     </MapContainer>
+     
   );
 }

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./index.css";
 import { useState } from "react";
 
-
 function Ui(props) {
   // const query=props.data;
   // console.log("details"+query.resourceSets[0].resources[0].travelDuration)
@@ -21,13 +20,32 @@ function Ui(props) {
   const arrrivalminutes = (Arrival / 60).toPrecision(4);
   const shrink = props.shrink;
 
+  console.log("shrink" + shrink);
+
+  const [trafficstyle, settrafficstyle] = useState("normal");
+
+  const trafficColor = () => {
+    if (props.traffic == "Heavy") {
+      settrafficstyle("heavy");
+    }
+    else if(props.traffic == "None"){
+      settrafficstyle("none")
+    }
+    else if(props.traffic == "Mild"){
+      settrafficstyle("mild")
+    }
+    else if(props.traffic == "Medium"){
+      settrafficstyle("medium")
+    }
+    else{
+      settrafficstyle("normal")
+    }
+  };
 
 
-
-console.log("shrink"+shrink)
-
-
-
+  useEffect(() => {
+    trafficColor();
+  }, [props.traffic]);
 
   return (
     <div className={shrink}>
@@ -40,7 +58,10 @@ console.log("shrink"+shrink)
         <div className="down">Estimated Arrival: {etaminutes} mins</div>
       </div>
       <div className="section3">
-        <div className="top">Traffic: {props.traffic}</div>
+        <div className="trafficTop">
+          Traffic:
+          <div className={trafficstyle}> {props.traffic}</div>
+        </div>
         <div className="down">Distance: {props.distance} Kms</div>
       </div>
     </div>

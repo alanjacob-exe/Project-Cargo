@@ -9,7 +9,7 @@ export default function Events(props) {
       <div className="container">
         <div className="card">
           <h1>Perinthalmanna</h1>
-          <img src="https://www.onmanorama.com/content/dam/mm/en/news/kerala/images/2020/1/8/Aerial-View-of-Malappuram-Town.jpg.transform/845x440/image.jpg"></img>
+          <img src="https://www.keralatourism.org/images/enchanting_kerala/large/kodikuthimala_malappuram20220207100430_1160_1.jpg"></img>
           <div className="text">
             A buzzling town, Perinthalmanna is a municipality in Malappuram
             district, Kerala, India. It serves as the headquarters of the
@@ -21,7 +21,7 @@ export default function Events(props) {
 
         <div className="card">
           <h1>Kottakal</h1>
-          <img src="https://www.onmanorama.com/content/dam/mm/en/news/kerala/images/2020/1/8/Aerial-View-of-Malappuram-Town.jpg.transform/845x440/image.jpg"></img>
+          <img className="image" src="https://www.aryavaidyasala.com/images/about_us_banner.jpg"></img>
           <div className="text">
             A side stop on the way to Tirur, Kottakkal is a municipal town 12 km
             southwet of Malappuram.The town is best known for the Arya Vaidya
@@ -34,7 +34,7 @@ export default function Events(props) {
 
         <div className="card">
           <h1>Manjeri</h1>
-          <img src="https://www.onmanorama.com/content/dam/mm/en/news/kerala/images/2020/1/8/Aerial-View-of-Malappuram-Town.jpg.transform/845x440/image.jpg"></img>
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/13/98/1b/nedumkayam-bridge-largejpg.jpg?w=600&h=-1&s="></img>
           <div className="text">
             A brimming town, Manjeri is also a municipality in Malappuram
             district, Kerala, India. It is the fourth-most populous municipality

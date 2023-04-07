@@ -3,38 +3,42 @@ import "./index.css";
 import React from "react";
 import { Button } from "bootstrap";
 import { useNavigate } from "react-router-dom";
+import { ContactsOutlined } from "@material-ui/icons";
+import { useState,useEffect } from "react";
 
 export default function Buslist(props) {
-
   var currentdate = new Date();
   var currentdatetime =
-    
     currentdate.getHours() +
     ":" +
     currentdate.getMinutes() +
     ":" +
     currentdate.getSeconds();
 
-    console.log(currentdatetime)
+  console.log(currentdatetime);
 
   var etatime;
   const navigate = useNavigate();
   const data = props.data;
-  const eta=props.eta;
-  const etah=Math.trunc(eta/60);
-  if (etah>60)
-  {
+  const eta = props.eta;
+  const etah = Math.trunc(eta / 60);
 
-  }
-  else{
-    etatime=currentdate.getHours() +
-    ":" +
-    currentdate.getMinutes() +
-    ":" +
-    currentdate.getSeconds();
+  const [time, settime] = useState("");
+  
 
 
-  }
+  const etaCalculator = (props) => {
+    var d = new Date(); // get current date
+    d.setHours(d.getHours(), d.getMinutes() + props, 0, 0);
+    settime(d.toLocaleTimeString());
+    console.log("date=" + d, "time:" + d.toLocaleTimeString());
+    return d.toLocaleTimeString()
+  };
+
+  useEffect(() => {
+    etaCalculator(etah)
+  }, [etah])
+
   const a = localStorage.getItem("busid");
   console.log(a);
   return (
@@ -53,7 +57,7 @@ export default function Buslist(props) {
       <div className="time">
         <div className="arrival block">Bus No:{data.data.busNumber}</div>
         <br></br>
-        <div className="departure">Reaches at:{etah}</div>
+        <div className="departure">Reaches at:{time}</div>
       </div>
     </div>
     // </div>

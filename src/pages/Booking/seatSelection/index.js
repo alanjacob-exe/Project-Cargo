@@ -145,12 +145,12 @@ export default function SeatSelection() {
   const renderPassengerData = (seatArray) => {
     return seatArray.map((seat, idx) => {
       return (
-        <form key={idx} className="container bg-glass px-5 mb-2 mt-4 ">
-          <div className="text-xl text-center text-white">Seat No.{seat}</div>
+        <form key={idx} style={{borderRadius:"12px"}} className="container bg-glass px-5 mb-2 mt-4 ">
+          <div className="text-xl text-center text-black">Seat No.{seat}</div>
 
           <div className="mt-3 text-white">
             <MDBInput
-            className="text-white"
+            className="text-black"
               label="Enter Name"
               id="formWhite"
               onBlur={(e) => handlePassengerName(e, seat)}
@@ -453,7 +453,7 @@ export default function SeatSelection() {
         </div>
         <div className="column2 mt-9 ">
           <div className="seatInfo">
-            <form className="form-group mt-3">
+            <form style={{borderRadius:"12px"}} className="form-group mt-3">
               {renderPassengerData(seatNumber)}
             </form>
             <div>

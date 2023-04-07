@@ -1,36 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap");
+
 body {
-  background-color: #0a1d2e;
-}
-.top {
-  margin-top: 100px;
-  color: #fff;
+  background-color: #000;
 }
 
-.margin{
-  margin-top:75px;
-}
-
-
-
-.maps {
-  
-  position: center;
-  margin-left:5%;
-  width:100%;
-  height:500px;
-  display:absolute;
-
-
-}
-.container {
-  justify-content: center;
+.parent {
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  align-items:center;
-  margin-left:5%;
+}
+.main-container {
+  height: 90%;
+  display: flex;
+  width: 100vw;
+  margin-top: auto;
+  position: relative;
+}
+.sub-container {
+  height: 99%;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+}
+.item-container1 {
+  width: 33.3%;
+  height: 100%;
+  padding:5px;
+  overflow: hidden;
+  position: relative;
+}
+.item-container2 {
+  margin-top: 0.25rem;
+  width: 33.3%;
+  height: 50%;
+  border: 1px solid white;
+}
+.item-holder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.item-bottom {
+  display: flex;;
+  width: 100%;
+  height: 100%;
+
+}
+.details-container{
+  width:66.6%;
+  margin-left:auto;
+  position:relative;
+  display:flex;
+}
+.img {
+  width: 100%;
+  border-radius: 8px;
+  height: 43vh;
+  margin-left: auto;
+}
+/* .img:hover{
+  opacity: 0.3;
+  cursor: pointer;
+
+  transition:.5s;
+} */
+
+.name {
+  margin-top: 12%;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+  font-size: 35px;
+  margin-left: 10%;
+  font-family: "EB Garamond", serif;
+
+  opacity: 1;
+}
+.position {
+  font-size: 18px;
+  margin-top: -3%;
+  font-style: italic;
+}
+.media {
+  margin-top: 20%;
+}
+.media2 {
+  margin-top:-7%;
 }
 
-.leaflet-container {
+.item-container1:hover img {
+  cursor: pointer;
+  trasnsition: 1s;
+  opacity: 0.5;
+  cursor: pointer;
+
+}
+
+.item-container1:hover div {
+  visibility: visible;
+  opacity: 1;
+
+}
+
+.item-container1 div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+  margin-bottom: 5px;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.alan {
   width: 100%;
-  height:500px;
-  ;
+  height: 100%;
 }

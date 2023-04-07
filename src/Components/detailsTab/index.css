@@ -7,27 +7,26 @@
   font-family: "Inter", sans-serif;
 }
 .bg-glass {
-  
 }
 .container {
-  width:80%;
+  width: 80%;
   height: 20vh;
   border-radius: 12px;
   border: 2px;
-  color:#fff;
+  color: #fff;
   background-color: hsla(0, 0%, 90%, 0.3) !important;
   backdrop-filter: saturate(200%) blur(25px);
 }
 .containerAfter {
   background-color: hsla(0, 0%, 90%, 0.3) !important;
   backdrop-filter: saturate(200%) blur(25px);
-  
+
   height: 20vh;
   border-radius: 12px;
   border: 2px;
-  color:#fff;
+  color: #fff;
   transition: 1s;
-  width:100%
+  width: 100%;
 }
 .section1 {
   float: left;
@@ -62,4 +61,49 @@
 .down {
   margin-left: 3%;
   margin-top: 15px;
+}
+
+.trafficTop {
+  margin-top: 7%;
+  position: relative;
+  margin-left: 3%;
+  display:flex;
+}
+.normal {
+  position: relative;
+  margin-left: 3%;
+  display: inline-block;
+  position: relative;
+}
+.none {
+  position: relative;
+  margin-left: 3%;
+  display: inline-block;
+  position: relative;
+  color: #00ef00;
+  font-weight: 600;
+}
+.medium {
+  position: relative;
+  margin-left: 3%;
+  display: inline-block;
+  position: relative;
+  color: #18D3D4;
+  font-weight: 600;
+}
+.heavy {
+  position: relative;
+  margin-left: 3%;
+  display: inline-block;
+  position: relative;
+  color: red;
+  font-weight: 600;
+}
+.medium {
+  position: relative;
+  margin-left: 3%;
+  display: inline-block;
+  position: relative;
+  color: #FFB800;
+  font-weight: 600;
 }

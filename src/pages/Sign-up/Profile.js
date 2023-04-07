@@ -64,7 +64,6 @@ export default function Just(props) {
         return <CancelTickets />;
       case 3:
         return <EditProfile />;
-      //   return <Success />;
       default:
         return "Unknown step";
     }

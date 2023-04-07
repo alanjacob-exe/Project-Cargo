@@ -19,7 +19,7 @@ const Navbar = () => {
     setshown((current) => !current);
   };
 
-  console.log(shown)
+  console.log(shown);
   return (
     <div>
       <Nav>
@@ -33,26 +33,54 @@ const Navbar = () => {
           }}
         />
 
-        
-
         <NavMenu>
           <NavLink to="/Home">Home</NavLink>
-          <NavLink to="/buses">Destinations</NavLink>
+          <Link
+            href="/buses"
+            className="button"
+            sx={{
+              color: "#fff",
+              fontSize: "18px",
+              textDecoration: "none",
+              marginRight: "23px",
+            }}
+          >
+            Destination
+          </Link>
           <Link
             href="/track"
             className="button"
-            sx={{ color: "#fff", fontSize: "18px" ,textDecoration:"none"}}
+            sx={{
+              color: "#fff",
+              fontSize: "18px",
+              textDecoration: "none",
+              marginRight: "23px",
+            }}
           >
             Location
           </Link>
-          <NavLink to="/Dev">Developers</NavLink>
-          <NavLink to="/help">Help</NavLink>
+          <Link
+            href="/dev"
+            className="button"
+            sx={{
+              color: "#fff",
+              fontSize: "18px",
+              textDecoration: "none",
+              marginRight: "23px",
+            }}
+          >
+            Developers
+          </Link>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-          
+
         <div className="sign">
-          <NavLink2><Link sx={{textDecoration:"none",color:"#fff"}}href="/signin">Signin</Link></NavLink2>
+          <NavLink2>
+            <Link sx={{ textDecoration: "none", color: "#fff" }} href="/signin">
+              Signin
+            </Link>
+          </NavLink2>
           {/* <Link
             href="/signin"
             className="button"

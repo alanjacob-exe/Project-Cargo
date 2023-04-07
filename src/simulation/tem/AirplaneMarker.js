@@ -3,13 +3,13 @@ import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 import L from "leaflet";
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import { IoLockOpen } from "react-icons/io5";
-// import airplaneIcon from "../../Photos/busIcon.png";
+import airplaneIcon from "../../Photos/busIcon.png";
 import { Popup } from "react-leaflet";
 
 const icon = L.icon({
   iconSize: [45, 45],
   popupAnchor: [2, -20],
-  iconUrl: IoLockOpen,
+  iconUrl: airplaneIcon,
 });
 
 export default function AirplaneMarker({ data, display }) {
