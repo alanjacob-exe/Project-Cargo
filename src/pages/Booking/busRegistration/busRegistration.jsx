@@ -4,16 +4,32 @@ import { collection, addDoc, Timestamp, doc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { Button } from "@mui/material";
 import TimePicker from "react-time-picker";
-import 'react-time-picker/dist/TimePicker.css';
-import 'react-clock/dist/Clock.css';
+import "react-time-picker/dist/TimePicker.css";
+import "react-clock/dist/Clock.css";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
+import "./registration.css";
+import {
+  Avatar,
+  ButtonBase,
+  Divider,
+  IconButton,
+  Modal,
+  Typography,
+} from "@mui/material";
+import Box from "@mui/material/Box";
 
-import { useLocation } from "react-router-dom";
+
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function FormExample5() {
+  const navigate=useNavigate();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const [companyName, setcompanyName] = useState(null);
   const [busType, setbusType] = useState(null);
   const [busNumber, setbusNumber] = useState(null);
@@ -26,7 +42,23 @@ export default function FormExample5() {
   const [busName, setbusName] = useState(null);
   const [value, onChange] = useState("10:00");
 
-  const location=useLocation();
+  const location = useLocation();
+
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "50%",
+    height: "30%",
+    // border: "2px solid #000",
+    backgroundColor: "white",
+    boxShadow: 24,
+    borderRadius: "12px",
+    p: 4,
+  };
+
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -68,26 +100,21 @@ export default function FormExample5() {
         bookedSeats: bookedSeats,
         busName: busName,
       });
-      alert("Inserted Sucessfully");
+      handleOpen();
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   return (
-    <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-      <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-black-100 lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center text-indigo-700 underline uppercase ">
-          Bus Registration Form
-        </h1>
-        <form className="mt-6" onSubmit={handleSubmit}>
+    <div className="reg-container color">
+      <div className="reg-subcontainer">
+        <h1 className="reg-formcontainer ">Bus Registration Form</h1>
+        <form className="mt:6" onSubmit={handleSubmit}>
           <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
+            <label for="text" className="text-style">
               Company Name
             </label>
             <input
@@ -95,43 +122,37 @@ export default function FormExample5() {
                 setcompanyName(capitalizeFirstLetter(e.target.value))
               }
               value={companyName}
+              style={{ width: "100%" }}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
+            <label for="text" className="text-style">
               Bus Type
             </label>
             <input
               onChange={(e) => setbusType(e.target.value)}
               value={busType}
               type="text"
+              style={{ width: "100%" }}
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
+            <label for="text" className="text-style">
               Bus Number
             </label>
             <input
               onChange={(e) => setbusNumber(e.target.value.toUpperCase())}
               value={busNumber}
               type="text"
+              style={{ width: "100%" }}
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
+            <label for="text" className="text-style">
               Start city
             </label>
             <input
@@ -139,15 +160,13 @@ export default function FormExample5() {
                 setstartCity(capitalizeFirstLetter(e.target.value))
               }
               value={startCity}
+              style={{ width: "100%" }}
               type="text"
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
+            <label for="text" className="text-style">
               DestinationCity
             </label>
             <input
@@ -156,70 +175,13 @@ export default function FormExample5() {
               }
               value={destinationCity}
               type="text"
+              style={{ width: "100%" }}
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
+
           <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
-              Available Seats
-            </label>
-            <input
-              onChange={(event) => setavailableSeates(event.target.value)}
-              value={availableSeates}
-              type="number"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-          <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
-              Total Seats
-            </label>
-            <input
-              onChange={(e) => settotalSeats(e.target.value)}
-              value={totalSeats}
-              type="number"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-          <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
-              Price per Seat
-            </label>
-            <input
-              onChange={(e) => setpricePerSeat(e.target.value)}
-              value={pricePerSeat}
-              type="number"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-          <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
-              Booked Seats
-            </label>
-            <input
-              onChange={(e) => setbookedSeats(e.target.value)}
-              value={bookedSeats}
-              type="text"
-              className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-          <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
+            <label for="text" className="text-style">
               BusName
             </label>
             <input
@@ -228,22 +190,17 @@ export default function FormExample5() {
               }
               value={busName}
               type="text"
+              style={{ width: "100%" }}
               className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
-          <div className="mb-2">
-            <label
-              for="text"
-              className="block text-sm font-semibold text-gray-800"
-            >
-              Booked Seats
-            </label>
-            <div>
-              <TimePicker className="w-[20%]" onChange={onChange} value={"22:15:00"} />
-            </div>
-          </div>
+
           <div className="mt-6">
-            <Button variant="contained" type="submit" sx={{}}>
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{ width: "100%", backgroundColor: "black" }}
+            >
               Register
             </Button>
           </div>
@@ -251,6 +208,47 @@ export default function FormExample5() {
 
         <p className="mt-8 text-xs font-light text-center text-gray-700"> </p>
       </div>
+      <Modal
+        sx={{ backgroundColor: "none" }}
+        aria-labelledby="spring-modal-title"
+        aria-describedby="spring-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        //   slots={{ backdrop: Backdrop }}
+        //   slotProps={{
+        //     backdrop: {
+        //       TransitionComponent: Fade,
+        //     },
+        //   }}
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Inserted Sucessfully!
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            The Bus has Been Registered with Voyage Sucessfully.
+            <Typography sx={{ mt: 2, color: "red" }}>
+            </Typography>
+          </Typography>
+          <Divider sx={{ mt: 2 }} />
+          <div className="flex">
+            <div className="mx-auto relative right-0 mt-2 ">
+              
+              <Button
+                variant="contained"
+                // color="sucess"
+                onClick={() => {
+                  handleClose();
+                  navigate("/adminbuses")
+                }}
+              >
+                Continue
+              </Button>
+            </div>
+          </div>
+        </Box>
+      </Modal>
     </div>
   );
 }

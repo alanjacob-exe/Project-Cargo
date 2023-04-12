@@ -2,7 +2,7 @@ import React from "react";
 import "./alan.css";
 export default function Alan(props) {
   return (
-    <div className="container">
+    <div className="top-container">
       <div className="header">
         <div className="name-container">
           Alan Jacob

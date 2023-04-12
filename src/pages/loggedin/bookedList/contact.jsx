@@ -11,7 +11,7 @@ export default function Contact(props) {
           Contact Us
           <Divider />
         </h1>
-        <div className="container">
+        <div className="container-contact">
           <div style={{ width: "50%", height: "100%", display: "flex",float:"left" }}>
             <div
               style={{ margin: "auto", display: "flex", position: "relative" }}

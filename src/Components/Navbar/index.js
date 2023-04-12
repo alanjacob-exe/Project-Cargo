@@ -27,9 +27,9 @@ const Navbar = () => {
           src={logo}
           alt="Logo"
           style={{
-            width: "70px",
-            height: "70px",
-            marginTop: "6px",
+            width: "60px",
+            height: "60px",
+            marginTop: "4px",
           }}
         />
 

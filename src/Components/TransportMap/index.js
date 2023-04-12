@@ -7,6 +7,7 @@ import {
   Marker,
   Polyline,
   Popup,
+  useMap
 } from "react-leaflet";
 import file from "../../file.json";
 import Control from "react-leaflet-custom-control";
@@ -41,8 +42,37 @@ import { useEffect } from "react";
 //     },
 //   });
 // }
+
+
+function Test({ location }) {
+  const map = useMap();
+  if (location) map.flyTo(location, 12);
+
+  return location ? (
+    <Marker
+      position={location}
+      //ref={markerRef}
+    >
+      <Popup>You are here:</Popup>
+    </Marker>
+  ) : null;
+}
+
+function Test2({ location }) {
+  const map = useMap();
+  if (location) map.flyTo(location, 10);
+
+  return location ? (
+    <Marker
+      position={location}
+      //ref={markerRef}
+    >
+      <Popup>You are here:</Popup>
+    </Marker>
+  ) : null;
+}
+
 export function TransportMap(position) {
-  const mapRef = useRef();
   const polyline = position.pointers;
   const blueOptions = { color: "blue" };
   const data = file;
@@ -273,8 +303,6 @@ export function TransportMap(position) {
           Show Stops
         </Button>
       </Control>
-      <Marker position={position.location1} />
-      <Marker position={position.location2} />
       {isShown &&
         maarker.map((value) => (
           <Marker
@@ -292,7 +320,8 @@ export function TransportMap(position) {
           <Popup>{value}</Popup>
           </Marker>
       ))} */}
-      <Marker position={[11.035224, 76.099321]}/>
+      <Test location={position.location1}/>
+      <Test2 location={position.location2}/>
       <Polyline pathOptions={blueOptions} positions={polyline} />
     </MapContainer>
      

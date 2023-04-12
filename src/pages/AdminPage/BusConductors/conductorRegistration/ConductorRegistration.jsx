@@ -7,11 +7,14 @@ import {
   Modal,
   Typography,
 } from "@mui/material";
+import { Box } from "@mui/system";
+import { DataGrid } from "@mui/x-data-grid";
+import { Link } from "react-router-dom";
+
 import React, { useEffect, useState } from "react";
 import { IoMdLogOut } from "react-icons/io";
-import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
+import "./conductor.css";
 import {
   collection,
   query,
@@ -23,12 +26,22 @@ import {
   deleteDoc,
   getFirestore,
 } from "firebase/firestore";
-// import { db } from "../../firebase";
-import Logo from "../../../../Photos/bus2.png";
-import { IoAddOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { db, auth } from "../../../../firebase";
 
-export default function Just(props) {
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import Logo from "../../../../Photos/bus2.png";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { IoAddOutline } from "react-icons/io5";
+
+export default function AdminHome(props) {
   const db = getFirestore();
   const navigate = useNavigate();
   const [Bus, setBus] = useState("");
@@ -122,8 +135,8 @@ export default function Just(props) {
               Edit
             </Button>
             {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
-                Uploaded
-              </Button> */}
+                  Uploaded
+                </Button> */}
           </Link>
         );
       },
@@ -148,8 +161,8 @@ export default function Just(props) {
             </Button>
             <div className="my-auto left-0 top-0 w-[40%] h-[60%] absolute"></div>
             {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
-                Uploaded
-              </Button> */}
+                  Uploaded
+                </Button> */}
           </Link>
         );
       },
@@ -157,24 +170,34 @@ export default function Just(props) {
   ];
 
   return (
-    <main className="bg-slate-50 min-h-screen flex justify-center py-12 ">
-      <div className="h-[8vh] absolute top-0 bg-sky-900 w-screen">
-        <div className="flex">
-          <div className=" left-0 w-5 h-5 mt-2 ml-8 flex">
+    <main className="main ">
+      <div className="navcontainer">
+        <div style={{ display: "flex" }}>
+          <div className=" logoholder">
             <Avatar alt="project Cargo" src={Logo} />
           </div>
-          <div className="text-white right-20  font-bold text-lg   top-0 absolute mt-3 ">
-            Project Cargo
-          </div>
+          <div className="cargoholder">Project Cargo</div>
         </div>
       </div>
-      <div className="rounded-xl bg-white w-[90%] flex flex-col p-10 min-h-[50vh] space-y-4 border mt-5 ">
-        <div className="flex justify-between">
+      <div className="main-container">
+        <div style={{ display: "flex" }}>
           <div>
-            <h4 className="font-semibold">Manage Bus Conductors </h4>
-            <p className="text-secondary text-sm"></p>
+            <h4 style={{ fontWeight: 600 }}>Conductor Details</h4>
+            <p
+              style={{
+                color: "black",
+                fontSize: "0.875rem",
+                lineHeight: "1.25rem",
+                right: "0px",
+                display: "flex",
+              }}
+              className="text-secondary text-sm"
+            ></p>
           </div>
-          <div className="flex">
+
+          <div
+            style={{ right: "0px", position: "relative", marginLeft: "auto" }}
+          >
             <Button
               variant="text"
               onClick={() => {
@@ -185,17 +208,13 @@ export default function Just(props) {
             >
               Add Conductors
             </Button>
-            {/* <IconButton color="primary" component="label">
-              <IoAddOutline></IoAddOutline> 
-            </IconButton> */}
-            {/* <div className="inline-block my-auto text-black font-semibold">
-                Add Bus
-              </div> */}
           </div>
         </div>
-        <div className="w-[70%] h-full mx-auto">
+        <Divider />
+        <div className="sub-container">
           <DataGrid
             rows={conductor}
+            autoHeight
             columns={columns}
             pageSize={10}
             rowsPerPageOptions={[10]}
@@ -252,6 +271,8 @@ export default function Just(props) {
           </div>
         </Box>
       </Modal>
+
+      {/* <MuiModal open={open} handleclose={() => setOpen(false)} heading="hello" content="Testing content"></MuiModal> */}
     </main>
   );
 }

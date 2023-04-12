@@ -38,7 +38,7 @@ export default function Just(props) {
   const handleClose = () => setOpen(false);
 
   var deleteRecord = async (e) => {
-    var deleteBus = String(removeBus[0].busName);
+    var deleteBus = String(removeBus[0].busNumber);
 
     var docRef = doc(db, "buses", deleteBus);
     deleteDoc(docRef)
@@ -164,7 +164,7 @@ export default function Just(props) {
             >
               Remove
             </Button>
-            <div className="my-auto left-0 top-0 w-[40%] h-[60%] absolute"></div>
+            {/* <div className="my-auto left-0 top-0 w-[40%] h-[60%] absolute"></div> */}
             {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
               Uploaded
             </Button> */}
@@ -185,54 +185,118 @@ export default function Just(props) {
         </div>
       </div>
       <div className="align-container">
-      <div className="main-container">
-        <div style={{ display: "flex" }}>
-          <div>
-            <h4 style={{ fontWeight: 600 }}>Welcome Administrator!</h4>
-            <p
-              style={{
-                color: "black",
-                fontSize: "0.875rem",
-                lineHeight: "1.25rem",
-                right: "0px",
-                display: "flex",
-              }}
-              className="text-secondary text-sm"
-            ></p>
-          </div>
+        <div className="main-container">
+          <div style={{ display: "flex" }}>
+            <div>
+              <h4 style={{ fontWeight: 600 }}>Welcome Administrator!</h4>
+              <p
+                style={{
+                  color: "black",
+                  fontSize: "0.875rem",
+                  lineHeight: "1.25rem",
+                  right: "0px",
+                  display: "flex",
+                }}
+                className="text-secondary text-sm"
+              ></p>
+            </div>
 
-          <div
-            style={{ right: "0px", position: "relative", marginLeft: "auto" }}
-          >
-            <IconButton color="primary" component="label">
-              <IoMdLogOut />
-            </IconButton>
-            <Divider />
+            <div
+              style={{ right: "0px", position: "relative", marginLeft: "auto" }}
+            >
+              <Link
+              to="/registration"
+              state={
+                {
+                  // busname: Bus.filter((item) => item.id === params.id),
+                }
+              }
+            >
+              <Button
+              sx={{color:"black"}}
+                variant="text"
+                size="small"
+                startIcon={<IoAddOutline />}
+              >
+                Add Bus
+              </Button>
+              {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
+              Uploaded
+            </Button> */}
+            </Link>
+              <Divider />
+            </div>
           </div>
-        </div>
-        <Divider />
-        <div className="sub-container">
-          <div style={{width:"100%",marginTop:"2%"}}>
-            <DataGrid
-              sx={{ height: "20%" }}
-              autoHeight
-              rows={Bus}
-              columns={columns}
-              initialState={{
-                pagination: {
-                  paginationModel: {
-                    pageSize: 6,
+          <Divider />
+          <div className="sub-container">
+            <div style={{ width: "100%", marginTop: "2%" }}>
+              <DataGrid
+                sx={{ height: "20%" }}
+                autoHeight
+                rows={Bus}
+                columns={columns}
+                initialState={{
+                  pagination: {
+                    paginationModel: {
+                      pageSize: 6,
+                    },
                   },
-                },
-              }}
-              pageSizeOptions={[6]}
-            />
+                }}
+                pageSizeOptions={[6]}
+              />
+            </div>
           </div>
         </div>
       </div>
-      </div>
-
-      {/* <MuiModal open={open} handleclose={() => setOpen(false)} heading="hello" content="Testing content"></MuiModal> */}
+      <Modal
+        sx={{ backgroundColor: "none" }}
+        aria-labelledby="spring-modal-title"
+        aria-describedby="spring-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        //   slots={{ backdrop: Backdrop }}
+        //   slotProps={{
+        //     backdrop: {
+        //       TransitionComponent: Fade,
+        //     },
+        //   }}
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Are You Sure?
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Proceeding with this action will result in the data being removed
+            from the database permanantly.
+            <Typography sx={{ mt: 2, color: "red" }}>
+              Do you want to continue?
+            </Typography>
+          </Typography>
+          <Divider sx={{ mt: 2 }} />
+          <div className="flex">
+            <div className="mx-auto relative right-0 mt-2 ">
+              <Button
+                sx={{ marginRight: "8px" }}
+                variant="contained"
+                onClick={handleClose}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                color="error"
+                onClick={() => {
+                  deleteRecord();
+                  handleClose();
+                }}
+              >
+                Continue
+              </Button>
+            </div>
+          </div>
+        </Box>
+      </Modal>{" "}
     </main>
   );
 }

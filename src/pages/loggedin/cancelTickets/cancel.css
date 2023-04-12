@@ -210,7 +210,7 @@ h1 {
   bottom: 10px;
 }
 
-.card-cont a {
+.card-cont button {
   display: block;
   text-decoration: none;
   width: 80px;
@@ -232,6 +232,8 @@ h1 {
 .row:last-child .card:last-child .card-cont a {
   background-color: #f8504c;
 }
+
+
 
 @media screen and (max-width: 860px) {
   .card {

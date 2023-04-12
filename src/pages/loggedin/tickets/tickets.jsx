@@ -88,8 +88,24 @@ export default function Tickets(props) {
   // console.log(Bus+"from Tickets")
 
   const [sortedBooking, setsortedBooking] = useState();
-  console.log(busColl)
 
+  let dates=[]
+  for(let i=0;i<busColl.length;i++){
+    dates.push(busColl[i].data.bookingDate)
+    console.log("heyy"+busColl[i].data.bookingDate)
+  }
+console.log("dates are"+removeDuplicates(dates))
+
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+
+
+function checkdate(item){
+  return item.data.BookingDate="11"
+}
+let sortedDates=removeDuplicates(dates);
   return (
     <div className="main">
       <div className="parent-container">
@@ -100,9 +116,9 @@ export default function Tickets(props) {
           <div style={{fontWeight:"600",marginTop:"0.75rem",marginLeft:"0.75rem",height:"10%"}} 
           >Select a Date: </div>
           <List style={{width:"90%",marginLeft:"auto",marginRight:"auto"}}  >
-            {busColl?.map((value) => (
+            {sortedDates?.map((value) => (
               <IconButton
-                key={value.id}
+                key={value}
                 size="medium"
                 color="primary"
                 sx={{ backgroundColor: "#F5F5F5" }}
@@ -110,7 +126,7 @@ export default function Tickets(props) {
                   setsortedBooking(
                     busColl.filter(
                       (bus) => {
-                        if(bus.data.bookingDate === value.data.bookingDate)
+                        if(bus.data.bookingDate === value)
                         {
                           return bus
                         }
@@ -120,14 +136,16 @@ export default function Tickets(props) {
                 }}
               >
                 <div style={{fontSize:"1.25rem",lineHeight:"1.75rem",}} >
-                  {value.data.bookingDate}
+                  {value}
                 </div>
               </IconButton>
             ))}
             {sortedBooking?.map((value) => (
               <ListItem
                 key={value.id}
+                sx={{height:"50%"}}
                 disableGutters
+                
                 secondaryAction={
                   <IconButton
                     className="hover:bg-black hover:text-black"

@@ -162,15 +162,17 @@ export default function Success() {
   };
 
   const repopulateValues = async () => {
-    const name = localStorage.getItem("bookingName");
-    const gender = localStorage.getItem("bookingGender");
-    const seatNumber = localStorage.getItem("bookedseat");
+    const name = JSON.parse(localStorage.getItem("bookingName"));
+    const gender = JSON.parse(localStorage.getItem("bookingGender"));
+    let seatNumber = JSON.parse(localStorage.getItem("bookedseat"));
     const address = localStorage.getItem("address");
     const busid = localStorage.getItem("busid");
     const bookingDate = localStorage.getItem("bdate");
     const bookingMonth = localStorage.getItem("bmonth");
     const bookingYear = localStorage.getItem("byear");
     const busName = localStorage.getItem("busname");
+
+    console.log("seat from booking" + seatNumber);
 
     // console.log(seatNumber);
     // console.log(bookingDate);

@@ -329,14 +329,15 @@ export default function Tickets(props) {
                   {currentBus?.startCity} TO {currentBus?.destinationCity}
                 </p>
               </div>
-              <a
-                style={{ backgroundColor: "red" }}
+              <button
+              className="but"
+                style={{ backgroundColor: "red"  }}
                 onClick={() => {
                   handleOpen();
                 }}
               >
                 Cancel
-              </a>
+              </button>
             </section>
           </article>
         </div>

@@ -1,15 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap");
 
 body {
-  background-color: #000;
-}
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218, 41%, 35%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218, 41%, 45%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%
+    );}
 
 .parent {
   height: 100vh;
   width: 100vw;
   display: flex;
+
 }
 .main-container {
+  
   height: 90%;
   display: flex;
   width: 100vw;
@@ -17,6 +34,8 @@ body {
   position: relative;
 }
 .sub-container {
+  background-color: hsla(0, 0%, 90%, 0.3) !important;
+  backdrop-filter: saturate(200%) blur(25px);
   height: 99%;
   width: 70%;
   margin-left: auto;

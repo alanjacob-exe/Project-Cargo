@@ -174,7 +174,27 @@ export default function Just(props) {
           <div
             style={{ right: "0px", position: "relative", marginLeft: "auto" }}
           >
-            <Button
+            <Link
+              to="/adminadduser"
+              state={
+                {
+                  // busname: Bus.filter((item) => item.id === params.id),
+                }
+              }
+            >
+              <Button
+              sx={{backgroundColor:'black'}}
+                variant="contained"
+                size="small"
+                startIcon={<IoAddOutline />}
+              >
+                Add User
+              </Button>
+              {/* <Button variant="contained" size="small" color="success" disabled startIcon={ <IoIosDoneAll />}>
+              Uploaded
+            </Button> */}
+            </Link>
+            {/* <Button
               variant="text"
               onClick={() => {
                 navigate("/adminadduser");
@@ -183,7 +203,7 @@ export default function Just(props) {
               sx={{ color: "black" }}
             >
               Add user
-            </Button>
+            </Button> */}
             {/* <IconButton color="primary" component="label">
               <IoAddOutline></IoAddOutline> 
             </IconButton> */}
@@ -203,7 +223,6 @@ export default function Just(props) {
         <div className="sub-container">
           <DataGrid
             autoHeight
-            
             rows={User}
             columns={columns}
             initialState={{

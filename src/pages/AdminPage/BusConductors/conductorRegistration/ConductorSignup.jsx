@@ -1,9 +1,17 @@
-import { Avatar, Button, Divider, IconButton } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  ButtonBase,
+  Divider,
+  IconButton,
+  Modal,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { IoMdLogOut } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
+import "./conductor.css";
 import {
   collection,
   query,
@@ -15,22 +23,21 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { db, auth } from "../../../../firebase";
-import Logo from "../../../../Photos/bus2.png";
-import MuiModal from "../../../../Components/Modal/MuiModal";
-import { Password } from "@mui/icons-material";
+
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import Logo from "../../../../Photos/bus2.png";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function Just(props) {
-    const navigate=useNavigate()
+export default function AdminHome(props) {
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [Name, setName] = useState(null);
   const [email, setemail] = useState(null);
@@ -61,7 +68,6 @@ export default function Just(props) {
     BusCollection();
   }, []);
 
-
   const validatePassword = () => {
     let isValid = true;
     if (password !== "" && confirmPassword !== "") {
@@ -89,7 +95,7 @@ export default function Just(props) {
 
         await updateProfile(res.user, {
           displayName: Name,
-        }); 
+        });
 
         const conductorRef = doc(db, "conductors", email);
         await setDoc(conductorRef, {
@@ -102,7 +108,7 @@ export default function Just(props) {
         setIsLoading(false);
 
         alert("Registration Successfull");
-        navigate("/admin-conductor")
+        navigate("/admin-conductor");
       } catch (e) {
         // alert(e.message);
         setError(e.message.slice(9));
@@ -110,151 +116,214 @@ export default function Just(props) {
       }
     }
   };
+
   const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "50%",
+    height: "30%",
+    // border: "2px solid #000",
+    backgroundColor: "white",
+    boxShadow: 24,
+    borderRadius: "12px",
+    p: 4,
+  };
+
   return (
-    <main className="bg-slate-50 min-h-screen flex justify-center py-12 ">
-      <div className="h-[8vh] absolute top-0 bg-sky-900 w-screen">
-        <div className="flex">
-          <div className=" left-0 w-5 h-5 mt-2 ml-8 flex">
+    <main className="main ">
+      <div className="navcontainer">
+        <div style={{ display: "flex" }}>
+          <div className=" logoholder">
             <Avatar alt="project Cargo" src={Logo} />
           </div>
-          <div className="text-white right-20  font-bold text-lg   top-0 absolute mt-3 ">
-            Project Cargo
-          </div>
+          <div className="cargoholder">Project Cargo</div>
         </div>
       </div>
-      <div className="rounded-xl bg-white w-[90%] flex flex-col p-10 min-h-[50vh] space-y-4 border mt-5 ">
-        <div className="flex justify-between">
+      <div className="main-container">
+        <div style={{ display: "flex" }}>
           <div>
-            <h4 className="font-semibold">Conductor Registration </h4>
-            <p className="text-secondary text-sm"></p>
+            <h4 style={{ fontWeight: 600 }}>Register Conductor</h4>
+            <p
+              style={{
+                color: "black",
+                fontSize: "0.875rem",
+                lineHeight: "1.25rem",
+                right: "0px",
+                display: "flex",
+              }}
+              className="text-secondary text-sm"
+            ></p>
           </div>
-          <IconButton color="primary" component="label">
-            <IoMdLogOut />
-          </IconButton>
+
+          <div
+            style={{ right: "0px", position: "relative", marginLeft: "auto" }}
+          >
+            <IconButton color="primary" component="label">
+              <IoMdLogOut />
+            </IconButton>
+          </div>
         </div>
         <Divider />
-        <div className="w-[40%] m-auto h-full rounded-xl mt-5 ">
-          {error && (
-            <div className="w-full border my-auto bg-red-200 rounded-sm">
-              {error}
-            </div>
-          )}
+        <div className="sub-container">
+          <div className="login-holder ">
+            {error && (
+              <div className="w-full border my-auto bg-red-200 rounded-sm">
+                {error}
+              </div>
+            )}
 
-          <form name="registration_form" onSubmit={register}>
-            <div className="mb-2">
-              <label
-                for="text"
-                className="block text-sm font-semibold text-gray-800"
-              >
-                Enter Name
-              </label>
-              <input
-                onChange={(e) => setName(capitalizeFirstLetter(e.target.value))}
-                value={Name}
-                type="text"
-                className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-            <div className="mb-2">
-              <label
-                for="text"
-                className="block text-sm font-semibold text-gray-800 mb-2"
-              >
-                Select bus
-              </label>
-              <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Bus</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={age}
-                    label="Bus"
-                    onChange={handleChange}
-                    className="h-[50%]"
-                  >
-                    {busColl?.map((value) => (
-                      <MenuItem
-                        key={value.id}
-                        value={value.id}
-                        onClick={() => {
-                          setbusid(value.id);
-                        }}
-                      >
-                        {value.data.busName}
-                      </MenuItem>
-                    ))}
-                    {/* <MenuItem value={10}>Ten</MenuItem>
+            <form name="registration_form" onSubmit={register}>
+              <div className="mb-2">
+                <label for="text" className="text-style">
+                  Enter Name
+                </label>
+                <input
+                  onChange={(e) =>
+                    setName(capitalizeFirstLetter(e.target.value))
+                  }
+                  value={Name}
+                  style={{ width: "100%" }}
+                  type="text"
+                  className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+              <div className="mb-2">
+                <label for="text" className="text-style mb-2">
+                  Select bus
+                </label>
+                <Box sx={{ minWidth: 120 }}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Bus</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={age}
+                      label="Bus"
+                      style={{ width: "100%" }}
+                      required
+                      onChange={handleChange}
+                      className="h-[50%]"
+                    >
+                      {busColl?.map((value) => (
+                        <MenuItem
+                          key={value.id}
+                          value={value.id}
+                          onClick={() => {
+                            setbusid(value.id);
+                          }}
+                        >
+                          {value.data.busName}
+                        </MenuItem>
+                      ))}
+                      {/* <MenuItem value={10}>Ten</MenuItem>
                     <MenuItem value={20}>Twenty</MenuItem>
                     <MenuItem value={30}>Thirty</MenuItem> */}
-                  </Select>
-                </FormControl>
-              </Box>
-            </div>
-            <div className="mb-2">
-              <label
-                for="text"
-                className="block text-sm font-semibold text-gray-800"
-              >
-                Enter Email
-              </label>
-              <input
-                onChange={(e) => setemail(e.target.value)}
-                value={email}
-                type="email"
-                className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-            <div className="mb-2">
-              <label
-                for="text"
-                className="block text-sm font-semibold text-gray-800"
-              >
-                Enter Password
-              </label>
-              <input
-                onChange={(e) => setpassword(e.target.value)}
-                value={password}
-                type="text"
-                className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-            <div className="mb-2">
-              <label
-                for="text"
-                className="block text-sm font-semibold text-gray-800"
-              >
-                Confirm Password
-              </label>
-              <input
-                onChange={(e) => setconfirmPassword(e.target.value)}
-                value={confirmPassword}
-                type="text"
-                className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
+                    </Select>
+                  </FormControl>
+                </Box>
+              </div>
+              <div className="mb-2">
+                <label for="text" className="text-style">
+                  Enter Email
+                </label>
+                <input
+                  onChange={(e) => setemail(e.target.value)}
+                  value={email}
+                  required
+                  style={{ width: "100%" }}
+                  type="email"
+                  className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+              <div className="mb-2">
+                <label for="text" className="text-style">
+                  Enter Password
+                </label>
+                <input
+                  onChange={(e) => setpassword(e.target.value)}
+                  value={password}
+                  required
+                  style={{ width: "100%" }}
+                  type="password"
+                  className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+              <div className="mb-2">
+                <label for="text" className="text-style">
+                  Confirm Password
+                </label>
+                <input
+                  onChange={(e) => setconfirmPassword(e.target.value)}
+                  value={confirmPassword}
+                  required
+                  style={{ width: "100%" }}
+                  type="password"
+                  className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
 
-            <div>
+              <div>
+                <Button
+                  sx={{ width: "100%" }}
+                  className="w-full mt-2 bg-black"
+                  variant="contained"
+                  type="submit"
+                >
+                  {isLoading ? "Loading.." : "Register"}{" "}
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <Modal
+        sx={{ backgroundColor: "none" }}
+        aria-labelledby="spring-modal-title"
+        aria-describedby="spring-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        //   slots={{ backdrop: Backdrop }}
+        //   slotProps={{
+        //     backdrop: {
+        //       TransitionComponent: Fade,
+        //     },
+        //   }}
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Success!
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Data has been Updated Successfully!
+            <Typography sx={{ mt: 2, color: "red" }}></Typography>
+          </Typography>
+          <Divider sx={{ mt: 2 }} />
+          <div className="flex">
+            <div className="mx-auto relative right-0 mt-2 ">
               <Button
-                className="w-full mt-2 bg-black"
                 variant="contained"
-                type="submit"
+                color="success"
+                onClick={() => {
+                  handleClose();
+                }}
               >
-                {isLoading ? "Loading.." : "Sign up"}{" "}
+                Continue
               </Button>
             </div>
-          </form>
-        </div>
-        {/* <Button variant="outlined" onClick={handleOpen}>
-          TestButton
-        </Button> */}
-      </div>
+          </div>
+        </Box>
+      </Modal>
+
       {/* <MuiModal open={open} handleclose={() => setOpen(false)} heading="hello" content="Testing content"></MuiModal> */}
     </main>
   );

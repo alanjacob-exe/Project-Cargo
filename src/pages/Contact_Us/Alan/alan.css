@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap");
 
-.container {
-  background-color: #000;
+.top-container {
   color: #fff;
+  padding:10px;
+  border:1px solid white;
+  border-radius:12px;
+  
 }
 .header {
   display: flex;
