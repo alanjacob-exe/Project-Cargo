@@ -17,14 +17,18 @@ import {
 import { db } from "../../firebase";
 import { useState, useEffect } from "react";
 
-export default function BusMap({Bus,busId}) {
-  // const busname = props.busName;
-  // console.log("from busmap" + busname);
-  // console.log("from busmap bus"+Bus)
+export default function BusMap({ Bus, busId }) {
+  // const busNumber = bus?.busNumber;
+  // console.log("from busmap" + busNumber);
+  // console.log("from busmap bus" + bus);
   // const [Bus, setBus] = useState([11.027775, 76.099903]);
+  // console.log("busssssssssss" + Bus);
 
-
-  // const [detach, setdetach] = useState(0);
+  // useEffect(() => {
+  //   const busNumber = bus.busNumber;
+  //   console.log(busNumber);
+  // }, [bus]);
+  // // const [detach, setdetach] = useState(0);
   // const selectedBus = localStorage.getItem("busid");
 
   // const busTracker = async (busname) => {
@@ -35,14 +39,23 @@ export default function BusMap({Bus,busId}) {
   //   // }
   //   const docRef = doc(db, "buses", busname, "location", busname);
 
-  //   const unsub = onSnapshot(docRef, (doc) => {
-  //     setBus(doc.data().location);
-  //     console.log(
-  //       "current bus" + busname + "Current data: ",
-  //       doc.data().locacation
-  //     );
-  //   });
-  //   console.log("data is" + test.location);
+    //   const unsub = onSnapshot(docRef, (doc) => {
+    //     setBus(doc.data().location);
+    //     console.log(
+    //       "current bus" + busname + "Current data: ",
+    //       doc.data().location
+    //     );
+    //   });
+    //   return unsub();
+    //   // console.log("data is" + test.location);
+    // };
+
+  //   const unsub = onSnapshot(
+  //     doc(db, "buses", busname, "location", busname),
+  //     (doc) => {
+  //       setBus(doc.data().location);
+  //     }
+  //   );
   // };
 
   // const unsubscribe = onSnapshot(
@@ -71,9 +84,8 @@ export default function BusMap({Bus,busId}) {
 
   // });
   // useEffect(() => {
-  //   // busTracker(busname)
-  // }, [busname])
-
+  //   busTracker(busNumber);
+  // }, [bus]);
 
   // console.log("from busmanp"+Bus)
 

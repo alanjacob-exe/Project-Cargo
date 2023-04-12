@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -22,8 +22,7 @@ import { IoArrowForwardOutline } from "react-icons/io5";
 import { useAuthValue } from "../../Sign-up/AuthContext";
 import { TransportMap } from "../../../Components/TransportMap";
 import BusMap from "../../../Components/Busmap/busMap";
-import "./tickets.css"
-
+import "./tickets.css";
 
 export default function Tickets(props) {
   const { currentUser } = useAuthValue();
@@ -32,7 +31,7 @@ export default function Tickets(props) {
     { id: "bus", data: { busName: "test" } },
   ]);
 
-  const [busId, setbusId] = useState(null);
+  const [busId, setbusId] = useState("KL108923");
 
   ///////////////////to load the user email before calling the code ////////
   const userEmail = localStorage.getItem("userEmail");
@@ -58,29 +57,42 @@ export default function Tickets(props) {
   const [Bus, setBus] = useState([11.027775, 76.099903]);
   const busIDstore = [];
 
-  
+  const unsubscribeRef = useRef();
   const bustracker = () => {
     console.log("bus tracker" + busId);
     // const docRef2 = doc(db, "buses", "KL108923", "location", "KL108923");
     // docRef2.off()
 
-    busIDstore.push(busId);
-    if (busId != null) {
-      const docRef = doc(db, "buses", busId, "location", busId);
-      console.log(docRef);
-      const unsub = onSnapshot(docRef, (doc) => {
-        setBus(doc.data().location);
-        console.log(
-          "current bus" + busId + "Current data: ",
-          doc.data().location
-        );
-      });
-      return () => unsub();
-    }
+    const docRef = doc(db, "buses", busId, "location", busId);
+    const unsub = onSnapshot(docRef, (doc) => {
+      setBus(doc.data().location);
+      console.log(
+        "current bus" + busId + "Current data: ",
+        doc.data().location
+      );
+    });
+    unsubscribeRef.current = unsub;
   };
+
+  //   if (busId != null) {
+  //     console.log(docRef);
+  //     const unsub = onSnapshot(docRef, (doc) => {
+  //       setBus(doc.data().location);
+  //       console.log(
+  //         "current bus" + busId + "Current data: ",
+  //         doc.data().location
+  //       );
+  //     });
+  //     return () => unsub();
+  //   }
+  // };
 
   useEffect(() => {
     bustracker();
+
+    return()=>{
+      unsubscribeRef.current?.();
+    }
   }, [busId]);
 
   // const cancelSubs=()=>{
@@ -89,33 +101,55 @@ export default function Tickets(props) {
 
   const [sortedBooking, setsortedBooking] = useState();
 
-  let dates=[]
-  for(let i=0;i<busColl.length;i++){
-    dates.push(busColl[i].data.bookingDate)
-    console.log("heyy"+busColl[i].data.bookingDate)
+  let dates = [];
+  for (let i = 0; i < busColl.length; i++) {
+    dates.push(busColl[i].data.bookingDate);
+    console.log("heyy" + busColl[i].data.bookingDate);
   }
-console.log("dates are"+removeDuplicates(dates))
+  console.log("dates are" + removeDuplicates(dates));
 
-function removeDuplicates(arr) {
-  return [...new Set(arr)];
-}
+  function removeDuplicates(arr) {
+    return [...new Set(arr)];
+  }
 
-
-
-function checkdate(item){
-  return item.data.BookingDate="11"
-}
-let sortedDates=removeDuplicates(dates);
+  function checkdate(item) {
+    return (item.data.BookingDate = "11");
+  }
+  let sortedDates = removeDuplicates(dates);
   return (
     <div className="main">
       <div className="parent-container">
         <div className="parent-subcontainer ">
-          <div style={{fontWeight:"600",fontSize:"1.25rem",lineHeight:"1.75rem",marginLeft:"auto",marginRight:"auto",marginTop:"auto",marginBottom:"auto",height:"10%",height:"50%"}}>Your Bookings </div>
+          <div
+            style={{
+              fontWeight: "600",
+              fontSize: "1.25rem",
+              lineHeight: "1.75rem",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginTop: "auto",
+              marginBottom: "auto",
+              height: "10%",
+              height: "50%",
+            }}
+          >
+            Your Bookings{" "}
+          </div>
         </div>
-        <div style={{display:"block",height:"50%"}} >
-          <div style={{fontWeight:"600",marginTop:"0.75rem",marginLeft:"0.75rem",height:"10%"}} 
-          >Select a Date: </div>
-          <List style={{width:"90%",marginLeft:"auto",marginRight:"auto"}}  >
+        <div style={{ display: "block", height: "50%" }}>
+          <div
+            style={{
+              fontWeight: "600",
+              marginTop: "0.75rem",
+              marginLeft: "0.75rem",
+              height: "10%",
+            }}
+          >
+            Select a Date:{" "}
+          </div>
+          <List
+            style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}
+          >
             {sortedDates?.map((value) => (
               <IconButton
                 key={value}
@@ -124,18 +158,15 @@ let sortedDates=removeDuplicates(dates);
                 sx={{ backgroundColor: "#F5F5F5" }}
                 onClick={() => {
                   setsortedBooking(
-                    busColl.filter(
-                      (bus) => {
-                        if(bus.data.bookingDate === value)
-                        {
-                          return bus
-                        }
+                    busColl.filter((bus) => {
+                      if (bus.data.bookingDate === value) {
+                        return bus;
                       }
-                    )
+                    })
                   );
                 }}
               >
-                <div style={{fontSize:"1.25rem",lineHeight:"1.75rem",}} >
+                <div style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}>
                   {value}
                 </div>
               </IconButton>
@@ -143,9 +174,8 @@ let sortedDates=removeDuplicates(dates);
             {sortedBooking?.map((value) => (
               <ListItem
                 key={value.id}
-                sx={{height:"50%"}}
+                sx={{ height: "50%" }}
                 disableGutters
-                
                 secondaryAction={
                   <IconButton
                     className="hover:bg-black hover:text-black"
@@ -162,7 +192,6 @@ let sortedDates=removeDuplicates(dates);
               </ListItem>
             ))}
           </List>
-          
         </div>
       </div>
       <div className="mapcontainer">
@@ -171,5 +200,4 @@ let sortedDates=removeDuplicates(dates);
     </div>
   );
   console.log(sortedBooking);
-
 }

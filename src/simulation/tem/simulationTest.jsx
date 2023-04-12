@@ -8,6 +8,12 @@ import PM_MJ from "./BusRoutes/PM-MJ.json";
 import KK_ML from "./BusRoutes/KK_ML.json";
 import KK_PM from "./BusRoutes/KK_PM.json";
 import KK_TIR from "./BusRoutes/KK_TIR.json";
+import PM_KK from "./BusRoutes/PM_KK.json";
+import PM_ML from "./BusRoutes/PM_ML.json";
+import PM_TIR from "./BusRoutes/PM_TIR.json";
+import MJ_PM from "./BusRoutes/MJ_PM.json"
+import MJ_KK from "./BusRoutes/MJ_KK.json"
+
 
 export default function SimulationTest(props) {
   var cursor = 0;
@@ -57,42 +63,106 @@ export default function SimulationTest(props) {
   //   }
   // };
 
-  /////////////////////////////////Kottakkal - Malappuram    ////////////////////
-  useEffect(() => {
-    Walter(lailaCursor);
+  // /////////////////////////////////Kottakkal - Malappuram    ////////////////////
+  // useEffect(() => {
+  //   Walter(lailaCursor);
 
-    const interval = setInterval(() => {
-      if (cursor === 115) {
-        cursor = 0;
+  //   const interval = setInterval(() => {
+  //     if (cursor === 115) {
+  //       cursor = 0;
 
-        Walter(cursor);
+  //       Walter(cursor);
 
-        return;
-      }
-      if (cursor1 === 115) {
-        cursor1 = 0;
+  //       return;
+  //     }
+  //     if (cursor1 === 115) {
+  //       cursor1 = 0;
 
-        Walter(cursor);
+  //       Walter(cursor);
 
-        return;
-      }
+  //       return;
+  //     }
 
-      cursor += 1;
+  //     cursor += 1;
 
-      Walter(cursor);
-    }, 3000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  //     Walter(cursor);
+  //   }, 3000);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
 
-  const Walter = async (i) => {
-    const Route = KK_ML.resourceSets[0].resources[0].routePath.line.coordinates;
+  // const Walter = async (i) => {
+  //   const Route = KK_ML.resourceSets[0].resources[0].routePath.line.coordinates;
+  //   // const coordinates=props
+  //   console.log("from Walter==" + "i:  " + i + "route: " + Route[i]);
+
+  //   try {
+  //     await setDoc(doc(db, "buses", "KL108923", "location", "KL108923"), {
+  //       location: Route[i],
+  //     });
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
+  // //////////////////// Kottakkal - Tirur    /////////
+  // var lailaCursor = 0;
+
+  // useEffect(() => {
+  //   Laila(lailaCursor);
+
+  //   const interval = setInterval(() => {
+  //     if (lailaCursor === 115) {
+  //       lailaCursor = 0;
+
+  //       Laila(lailaCursor);
+
+  //       return;
+  //     }
+  //     if (cursor1 === 115) {
+  //       cursor1 = 0;
+
+  //       Laila(lailaCursor);
+
+  //       return;
+  //     }
+
+  //     lailaCursor += 1;
+
+  //     Laila(lailaCursor);
+  //   }, 3000);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
+
+  // const Laila = async (i) => {
+  //   const Route =
+  //     KK_TIR.resourceSets[0].resources[0].routePath.line.coordinates;
+  //   // const coordinates=props
+  //   console.log("from Laila==" + "i:  " + i + "route: " + Route[i]);
+
+  //   try {
+  //     await setDoc(doc(db, "buses", "KL102978", "location", "KL102978"), {
+  //       location: Route[i],
+  //     });
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
+  //////////////////perinthalmanna kottakkal /////////////////
+  var jcursor = 0;
+  var jcursor1 = 70;
+
+  const Javaz = async (i) => {
+    const Route = PM_KK.resourceSets[0].resources[0].routePath.line.coordinates;
     // const coordinates=props
-    console.log("from Walter==" + "i:  " + i + "route: " + Route[i]);
+    console.log("from Javaz==" + "i:  " + i + "route: " + Route[i]);
 
     try {
-      await setDoc(doc(db, "buses", "KL108923", "location", "KL108923"), {
+      await setDoc(doc(db, "buses", "KL 10 1453", "location", "KL 10 1453"), {
         location: Route[i],
       });
     } catch (err) {
@@ -100,31 +170,123 @@ export default function SimulationTest(props) {
     }
   };
 
-  //////////////////// Kottakkal - Tirur    /////////
-  var lailaCursor = 0;
+  const Charlie = async (i) => {
+    const Route = PM_KK.resourceSets[0].resources[0].routePath.line.coordinates;
+    // const coordinates=props
+    console.log("from Charlie==" + "i:  " + i + "route: " + Route[i]);
+
+    try {
+      await setDoc(doc(db, "buses", "KL53E1185", "location", "KL53E1185"), {
+        location: Route[i],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
-    Laila(lailaCursor);
+    Javaz(jcursor);
+    Charlie(jcursor1);
 
     const interval = setInterval(() => {
-      if (lailaCursor === 115) {
-        lailaCursor = 0;
+      if (jcursor === 240) {
+        jcursor = 0;
 
-        Laila(lailaCursor);
-
-        return;
-      }
-      if (cursor1 === 115) {
-        cursor1 = 0;
-
-        Laila(lailaCursor);
+        Javaz(jcursor);
 
         return;
       }
+      if (jcursor1 === 240) {
+        jcursor1 = 0;
 
-      lailaCursor += 1;
+        Charlie(jcursor1);
 
-      Laila(lailaCursor);
+        return;
+      }
+
+      jcursor += 1;
+      jcursor1 += 1;
+
+      Javaz(jcursor);
+      Charlie(jcursor1);
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  ////////////////////////////////     Perinthalmanna Malappuram//////////
+
+  var icursor = 0;
+
+  const Ichayanz = async (i) => {
+    const Route = PM_ML.resourceSets[0].resources[0].routePath.line.coordinates;
+    // const coordinates=props
+    console.log("from Ichayanz==" + "i" + i + "route: " + Route[i]);
+
+    try {
+      await setDoc(doc(db, "buses", "KL 10 2431", "location", "KL 10 2431"), {
+        location: Route[i],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    Ichayanz(icursor);
+
+    const interval = setInterval(() => {
+      if (icursor === 197) {
+        icursor = 0;
+
+        Ichayanz(icursor);
+
+        return;
+      }
+
+      icursor += 1;
+
+      Ichayanz(icursor);
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  //////////////////////////////    Perinthalmann Tirur//////////////////
+
+  var mahancur = 0;
+
+  const Mahan = async (i) => {
+    const Route = PM_TIR.resourceSets[0].resources[0].routePath.line.coordinates;
+    // const coordinates=props
+    console.log("from Mahan==" + "i" + i + "route: " + Route[i]);
+
+    try {
+      await setDoc(doc(db, "buses", "KL 10 3333", "location", "KL 10 3333"), {
+        location: Route[i],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    Mahan(mahancur);
+
+    const interval = setInterval(() => {
+      if (mahancur === 392) {
+        mahancur = 0;
+
+        Mahan(mahancur);
+
+        return;
+      }
+
+      mahancur += 1;
+
+      Mahan(mahancur);
     }, 3000);
     return () => {
       clearInterval(interval);
@@ -132,20 +294,126 @@ export default function SimulationTest(props) {
   }, []);
 
 
-  const Laila = async (i) => {
-    const Route =
-      KK_TIR.resourceSets[0].resources[0].routePath.line.coordinates;
+
+  /////////////////////////////////manjeriperinthalmanna////////////
+
+
+  var selenacur = 0;
+
+  const Selena = async (i) => {
+    const Route = MJ_PM.resourceSets[0].resources[0].routePath.line.coordinates;
     // const coordinates=props
-    console.log("from Laila==" + "i:  " + i + "route: " + Route[i]);
+    console.log("from Selena==" + "i" + i + "route: " + Route[i]);
 
     try {
-      await setDoc(doc(db, "buses", "KL102978", "location", "KL102978"), {
+      await setDoc(doc(db, "buses", "Selena", "location", "Selena"), {
         location: Route[i],
       });
     } catch (err) {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    Selena(selenacur);
+
+    const interval = setInterval(() => {
+      if (selenacur === 244) {
+        selenacur = 0;
+
+        Selena(selenacur);
+
+        return;
+      }
+
+      selenacur += 1;
+
+      Selena(selenacur);
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+
+
+
+  //////////////////////////        manjeri kottakkal ///////////////
+
+  
+  var shinycur = 0;
+
+  const Shiny = async (i) => {
+    const Route = MJ_KK.resourceSets[0].resources[0].routePath.line.coordinates;
+    // const coordinates=props
+    console.log("from Shiny==" + "i" + i + "route: " + Route[i]);
+
+    try {
+      await setDoc(doc(db, "buses", "KL105678", "location", "KL105678"), {
+        location: Route[i],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    Shiny(shinycur);
+
+    const interval = setInterval(() => {
+      if (shinycur === 255) {
+        shinycur = 0;
+
+        Shiny(shinycur);
+
+        return;
+      }
+
+      shinycur += 1;
+
+      Shiny(shinycur);
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ///////////////////////     Perinthalmanna - Malappuram     ////////////////
   // useEffect(() => {

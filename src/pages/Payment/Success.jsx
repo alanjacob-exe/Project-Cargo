@@ -32,6 +32,7 @@ import { db } from "../../firebase";
 import { useAuthValue } from "../Sign-up/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import "./styles.css";
 
 const useStyles = makeStyles({
   root: {
@@ -241,7 +242,7 @@ export default function Success() {
   return (
     <Card className={classes.root}>
       <CardContent>
-        {/* <div className=" ">
+        <div className=" form">
           <form ref={emailform} onSubmit={sendEmail}>
             <input type="text" name="user_name" value={busname} />
             <input type="text" name="seatNumber" value={eseatnumber} />
@@ -252,7 +253,7 @@ export default function Success() {
 
             <input type="submit" value="Send" />
           </form>
-        </div> */}
+        </div>
         <div className={classes.con}>
           <img src={succlogo} alt="loading..." className={classes.img} />
         </div>
@@ -293,7 +294,13 @@ export default function Success() {
           </Typography>
           <div className="flex">
             <div className="flex mx-auto relative right-0 mt-2 ">
-              <Button variant="contained" color="error" onClick={handleClose}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  handleClose();
+                  navigate("/profile");
+                }}
+              >
                 Continue
               </Button>
             </div>

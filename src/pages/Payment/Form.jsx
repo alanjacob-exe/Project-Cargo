@@ -77,7 +77,7 @@ export default function Form() {
   const navigate = useNavigate();
 
   const isStepOptional = (step) => {
-    return step === 1;
+    return ;
   };
 
   const isStepSkipped = (step) => {
@@ -231,21 +231,7 @@ export default function Form() {
                   <Grid item xs={12}>
                     <div className={classes.actions}>
                       {activeStep === steps.length ? (
-                        <React.Fragment>
-                          <Typography sx={{ mt: 2, mb: 1 }}>
-                            All steps completed - you&apos;re finished
-                          </Typography>
-                          <Box
-                            sx={{
-                              display: "flex",
-                              flexDirection: "row",
-                              pt: 2,
-                            }}
-                          >
-                            <Box sx={{ flex: "1 1 auto" }} />
-                            <Button onClick={handleReset}>Reset</Button>
-                          </Box>
-                        </React.Fragment>
+                        navigate("/profile")
                       ) : (
                         <React.Fragment>
                           <Typography sx={{ mt: 2, mb: 1 }}>
@@ -285,13 +271,9 @@ export default function Form() {
                               <Button
                                 onClick={() => {
                                   if (activeStep === steps.length - 1) {
+                                    emailform.current && emailform.current.submit();
                                     handleNext();
-                                    emailform?.current.dispatchEvent(
-                                      new Event("submit", {
-                                        cancelable: true,
-                                        bubbles: true,
-                                      })
-                                    );
+                                    
                                   }
                                   else
                                   handleNext();

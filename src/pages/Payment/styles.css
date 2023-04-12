@@ -28,7 +28,12 @@ h4 {
 .App-payment {
   padding: 20px;
 }
-
+.form{
+  visibility:hidden;
+  display:inline-flex;
+  height:3px;
+  z-index:-1;
+}
 form {
   margin: 30px auto 0;
   max-width: 400px;
