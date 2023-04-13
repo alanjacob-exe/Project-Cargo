@@ -34,5 +34,17 @@ etc...
 
 ## Photos of the Project
 
-Images of the project (upload images in the asset folder and call the images here)
+Homescreen
 
+
+![Home Screen](Assets/Homepage.png)
+Bus Search
+![Bus Search](Assets/Bus_Search.png)
+
+Seat Selection
+![Seat Selection](Assets/Seat_Selection.png)
+
+Payment Gateway
+![Payment Gateway](Assets/Payment_Gateway.png)
+After Loggin in
+![Logged In](Assets/Logged_In.png)
