@@ -13,7 +13,6 @@ export default function NavbarMobile(props) {
   const handleShown = (e) => {
     setisshown((current) => !current);
     handleContainer();
-    console.log(isshown);
     handleExpand();
   };
 
@@ -26,7 +25,6 @@ export default function NavbarMobile(props) {
     if (expand === "container") setexpand("container2");
     if (expand === "container2") setexpand("container");
   };
-  console.log(container);
   return (
     <div>
       <div className="cont">

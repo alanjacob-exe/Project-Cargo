@@ -2,24 +2,11 @@ import React, { useState, useEffect } from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import "./index.css";
 import { MDBInput } from "mdb-react-ui-kit";
-import { MDBRadio, MDBBtnGroup } from "mdb-react-ui-kit";
 import Navbar from "../../../Components/Navbar";
-import {
-  collection,
-  getDocs,
-  setDoc,
-  doc,
-  addDoc,
-  getDoc,
-  updateDoc,
-  query,
-  onSnapshot,
-  Timestamp,
-} from "firebase/firestore";
+import { collection, query, onSnapshot } from "firebase/firestore";
 import db from "../../../firebase";
 import { useAuthValue } from "../../Sign-up/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { add } from "date-fns/esm";
 
 export default function SeatSelection() {
   const [name, setName] = useState([]);
@@ -36,7 +23,7 @@ export default function SeatSelection() {
   const set = localStorage.getItem("busid");
   const busid = set.trim();
 
-  console.log("bus id" + busid);
+  // console.log("bus id" + busid);
   const test = [];
 
   const busId = localStorage.getItem("busid");
@@ -74,7 +61,7 @@ export default function SeatSelection() {
   useEffect(() => {
     // console.log("fromuse"+seatNumber)
     localStorage.setItem("bookedseat", seatNumber);
-    console.log(localStorage.getItem("bookedseat"));
+    // console.log(localStorage.getItem("bookedseat"));
   }, [seatNumber]);
 
   // // bookingColl.filter((buses) => setBseats(buses.data.seatNumber));
@@ -97,7 +84,7 @@ export default function SeatSelection() {
         setSeatnumber(seatNumber.filter((seat) => seat !== newSeat));
       }
     } else {
-      console.log("selected seat:" + seatNumber);
+      // console.log("selected seat:" + seatNumber);
       setSeatnumber([...seatNumber, newSeat]);
       setReservedSeat([...reservedSeat, newSeat]);
     }
@@ -105,7 +92,7 @@ export default function SeatSelection() {
   const handleGender = (e, seatNo) => {
     const { value } = e.target;
     setGender(gender.concat(value));
-    console.log(value);
+    // console.log(value);
     // setPassengers(prevState => ({ ...prevState, SeatNo: seatNo, Gender: value }))
   };
   const handlePassengerName = (e, seatNo) => {
@@ -121,7 +108,7 @@ export default function SeatSelection() {
   };
 
   useEffect(() => {
-    console.log("useeffect seat" + seatNumber[0]);
+    // console.log("useeffect seat" + seatNumber[0]);
   }, [seatNumber]);
 
   // const [book, setbook] = useState()
@@ -267,11 +254,11 @@ export default function SeatSelection() {
   //     }
   //   }
   // }
-  let limit=0;
+  let limit = 0;
   var booked = [];
   if (bookingColl != null) {
     for (let i = 0; i < bookingColl.length; i++) {
-      console.log(bookingColl[i].data.Seatnumber.length);
+      // console.log(bookingColl[i].data.Seatnumber.length);
       test.push(bookingColl[i].data.Seatnumber);
     }
   }
@@ -280,13 +267,13 @@ export default function SeatSelection() {
       if (bookingColl[i].data.Seatnumber.length > 0) {
         limit = bookingColl[i].data.Seatnumber.length;
         for (let temp = 0; temp < limit; temp++) {
-          console.log(bookingColl[i].data.Seatnumber[temp])
+          // console.log(bookingColl[i].data.Seatnumber[temp])
           booked.push(bookingColl[i].data.Seatnumber[temp]);
         }
       }
     }
   }
-  console.log("testtttttt" +booked);
+  // console.log("testtttttt" +booked);
 
   let is1a = false;
   let is1b = false;
@@ -328,7 +315,7 @@ export default function SeatSelection() {
   let is10b = false;
   let is10c = false;
 
-  console.log("bookings " + test[0]);
+  // console.log("bookings " + test[0]);
 
   if (booked?.length > 0) {
     for (let i = 0; i < booked.length; i++) {
@@ -425,7 +412,7 @@ export default function SeatSelection() {
           is10c = true;
           break;
         default:
-          console.log("nothing");
+        // console.log("nothing");
       }
     }
   }

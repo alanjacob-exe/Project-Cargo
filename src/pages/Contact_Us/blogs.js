@@ -1,6 +1,4 @@
 import React from "react";
-import BingMap from "../../Components/BingMaps/BingMaps";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./blogs.css";
 import Navbar from "../../Components/Navbar";
 import Alan from "../Contact_Us/Alan/Alan";

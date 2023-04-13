@@ -1,21 +1,9 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer} from "react-leaflet";
 import "./busmap.css";
-import { IoLockOpen } from "react-icons/io5";
 
-import BusPositionTracker from "./BusTracker";
 import AirplaneMarker from "../../simulation/tem/AirplaneMarker";
-import {
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-  getDocs,
-  doc,
-  getDoc,
-} from "firebase/firestore";
-import { db } from "../../firebase";
-import { useState, useEffect } from "react";
+
 
 export default function BusMap({ Bus, busId }) {
   // const busNumber = bus?.busNumber;

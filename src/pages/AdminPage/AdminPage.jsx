@@ -1,33 +1,28 @@
 import {
   Avatar,
   Button,
-  ButtonBase,
   Divider,
-  IconButton,
   Modal,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { IoMdLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import {
   collection,
   query,
-  orderBy,
   onSnapshot,
-  getDocs,
   doc,
-  getDoc,
   deleteDoc,
   getFirestore,
 } from "firebase/firestore";
-// import { db } from "../../firebase";
 import Logo from "../../Photos/bus2.png";
 import { IoAddOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import "./adminpage.css";
+
+
 export default function Just(props) {
   const db = getFirestore();
   const navigate = useNavigate();
@@ -57,7 +52,7 @@ export default function Just(props) {
 
   const [removeBus, setremoveBus] = useState("");
   useEffect(() => {
-    console.log("useeffect" + removeBus[0]?.busName);
+    // console.log("useeffect" + removeBus[0]?.busName);
   }, [removeBus]);
 
   const style = {

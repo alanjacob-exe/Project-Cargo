@@ -1,8 +1,6 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useState } from "react";
 
 // function AutocompleteOption(source){
 //   // console.log(source.label)
@@ -28,7 +26,7 @@ export default function SourceComplete({
       options={options}
       sx={{}}
       getOptionLabel={getOptionLabel}
-      getOptionSelected={getOptionSelected}
+      // getOptionSelected={getOptionSelected}
       onChange={onChange}
       isOptionEqualToValue={isOptionEqualToValue}
       renderInput={(params) => (

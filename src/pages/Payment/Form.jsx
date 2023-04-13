@@ -17,7 +17,6 @@ import Details from "./Details";
 import PaymentMode from "./PaymentMode";
 import Success from "./Success";
 import PayCard from "./PayCard";
-import Footer from "./Footer";
 import { useAuthValue } from "../Sign-up/AuthContext";
 import { useNavigate } from "react-router-dom";
 

@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Redirect,
 } from "react-router-dom";
 import Loading from "./pages/Loading";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -38,32 +37,64 @@ const Temp = React.lazy(() => import("./pages/tem/index"));
 const Sim = React.lazy(() => import("./simulation/tem/index"));
 const SeatSelection = React.lazy(() => import("./pages/Booking/seatSelection"));
 const Ticket = React.lazy(() => import("./pages/Booking/ticketPage/index"));
-const BusRegistration=React.lazy(()=> import("./pages/Booking/busRegistration/busRegistration"))
-const Payment=React.lazy(()=>import("./pages/Payment/Form"));
-const SimTest=React.lazy(()=>import("./simulation/tem/simulationTest"))
-const AdminPage=React.lazy(()=>import("./pages/AdminPage/AdminPage"))
-const BusEdit=React.lazy(()=>import("./pages/AdminPage/BusEdit/Busedit"))
-const AdminHome=React.lazy(()=>import("./pages/AdminPage/AdminHome/AdminHome"))
-const UserDetails=React.lazy(()=> import("./pages/AdminPage/Userlist/UserList"))
-const AddUser=React.lazy(()=>import("./pages/AdminPage/Userlist/AddUser"))
-const BusAdmin=React.lazy(()=> import("./pages/AdminPage/BusAdmin/busadmin"))
-const ConductorReg=React.lazy(()=>import("./pages/AdminPage/BusConductors/conductorRegistration/ConductorRegistration"))
-const ConductorSignup=React.lazy(()=>import("./pages/AdminPage/BusConductors/conductorRegistration/ConductorSignup"))
-const ConductorEdit=React.lazy(()=> import("./pages/AdminPage/BusConductors/conductorRegistration/ConductorEdit"))
-
+const BusRegistration = React.lazy(() =>
+  import("./pages/Booking/busRegistration/busRegistration")
+);
+const Payment = React.lazy(() => import("./pages/Payment/Form"));
+const SimTest = React.lazy(() => import("./simulation/tem/simulationTest"));
+const AdminPage = React.lazy(() => import("./pages/AdminPage/AdminPage"));
+const BusEdit = React.lazy(() => import("./pages/AdminPage/BusEdit/Busedit"));
+const AdminHome = React.lazy(() =>
+  import("./pages/AdminPage/AdminHome/AdminHome")
+);
+const UserDetails = React.lazy(() =>
+  import("./pages/AdminPage/Userlist/UserList")
+);
+const AddUser = React.lazy(() => import("./pages/AdminPage/Userlist/AddUser"));
+const BusAdmin = React.lazy(() =>
+  import("./pages/AdminPage/BusAdmin/busadmin")
+);
+const ConductorReg = React.lazy(() =>
+  import(
+    "./pages/AdminPage/BusConductors/conductorRegistration/ConductorRegistration"
+  )
+);
+const ConductorSignup = React.lazy(() =>
+  import(
+    "./pages/AdminPage/BusConductors/conductorRegistration/ConductorSignup"
+  )
+);
+const ConductorEdit = React.lazy(() =>
+  import("./pages/AdminPage/BusConductors/conductorRegistration/ConductorEdit")
+);
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [timeActive, setTimeActive] = useState(false);
   const [isLoggedin, setisLoggedin] = useState(false);
+  let msg = "%cCoded with ❤️ by Alan  ";
+  let styles = [
+    "font-size: 24px",
+    "font-family: monospace",
+    "background: white",
+    "display: inline-block",
+    "color: black",
+    "padding: 8px 19px",
+    "border: 1px dashed;",
+  ].join(";");
 
+  useEffect(() => {
+    // console.log("%c Smile 😃 its just code", "color:blue; font-size: 24px");
+
+    console.log(msg, styles);
+  }, []);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
 
       if (user) {
         setisLoggedin(true);
-        localStorage.setItem('user', JSON.stringify(currentUser));
+        localStorage.setItem("user", JSON.stringify(currentUser));
 
         // console.log("from appjs"+isLoggedin)
       } else {
@@ -75,8 +106,6 @@ function App() {
   useEffect(() => {
     // localStorage.setItem('user', JSON.stringify(currentUser));
   }, [currentUser]);
-
-
 
   return (
     <Router>
@@ -101,18 +130,21 @@ function App() {
             <Route path="/sim" element={<Sim />} />
             <Route path="/seatselection" element={<SeatSelection />} />
             <Route path="/ticket" element={<Ticket />} />
-            <Route path="/registration" element={<BusRegistration/>}/>
-            <Route path="/payment" element={<Payment/>}/>
-            <Route path="/simtest" element={<SimTest/>}/>
-            <Route path="/adminbuses" element={<AdminPage/>}/>
-            <Route path="/adminedit" element={<BusEdit/>}/>
-            <Route path="/adminhome" element={<AdminHome/>}/>
-            <Route path="/adminuser" element={<UserDetails/>}/>
-            <Route path="/adminadduser" element={<AddUser/>}/>
-            <Route path="/adminbus" element={<BusAdmin/>}/>
-            <Route path="/admin-conductor" element={<ConductorReg/>}/>
-            <Route path="/admin-conductor-registration" element={<ConductorSignup/>}/>
-            <Route path="/admin-conductor-edit" element={<ConductorEdit/>}/>
+            <Route path="/registration" element={<BusRegistration />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/simtest" element={<SimTest />} />
+            <Route path="/adminbuses" element={<AdminPage />} />
+            <Route path="/adminedit" element={<BusEdit />} />
+            <Route path="/adminhome" element={<AdminHome />} />
+            <Route path="/adminuser" element={<UserDetails />} />
+            <Route path="/adminadduser" element={<AddUser />} />
+            <Route path="/adminbus" element={<BusAdmin />} />
+            <Route path="/admin-conductor" element={<ConductorReg />} />
+            <Route
+              path="/admin-conductor-registration"
+              element={<ConductorSignup />}
+            />
+            <Route path="/admin-conductor-edit" element={<ConductorEdit />} />
           </Routes>
         </AuthProvider>
       </Suspense>

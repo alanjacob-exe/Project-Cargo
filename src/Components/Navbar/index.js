@@ -3,10 +3,7 @@ import logo from "../../Photos/bus2.png";
 import {
   Nav,
   NavLink,
-  Bars,
   NavMenu,
-  NavBtn,
-  NavBtnLink,
   NavLink2,
 } from "./NavbarElements";
 import { Link } from "@mui/material";
@@ -19,7 +16,6 @@ const Navbar = () => {
     setshown((current) => !current);
   };
 
-  console.log(shown);
   return (
     <div>
       <Nav>

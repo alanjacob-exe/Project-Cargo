@@ -1,6 +1,5 @@
 import { Divider } from "@mui/material";
 import React from "react";
-import BusMap from "../../../Components/Busmap/busMap";
 import "./contacts.css";
 
 export default function Contact(props) {

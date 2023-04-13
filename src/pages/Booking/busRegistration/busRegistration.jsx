@@ -1,21 +1,13 @@
 import { useState } from "react";
 import React from "react";
-import { collection, addDoc, Timestamp, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { Button } from "@mui/material";
-import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs from "dayjs";
 import "./registration.css";
 import {
-  Avatar,
-  ButtonBase,
   Divider,
-  IconButton,
   Modal,
   Typography,
 } from "@mui/material";

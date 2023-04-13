@@ -1,9 +1,7 @@
 import "./index.css";
 
 import React from "react";
-import { Button } from "bootstrap";
 import { useNavigate } from "react-router-dom";
-import { ContactsOutlined } from "@material-ui/icons";
 import { useState,useEffect } from "react";
 
 export default function Buslist(props) {
@@ -15,7 +13,6 @@ export default function Buslist(props) {
     ":" +
     currentdate.getSeconds();
 
-  console.log(currentdatetime);
 
   var etatime;
   const navigate = useNavigate();
@@ -31,7 +28,6 @@ export default function Buslist(props) {
     var d = new Date(); // get current date
     d.setHours(d.getHours(), d.getMinutes() + props, 0, 0);
     settime(d.toLocaleTimeString());
-    console.log("date=" + d, "time:" + d.toLocaleTimeString());
     return d.toLocaleTimeString()
   };
 
@@ -40,7 +36,6 @@ export default function Buslist(props) {
   }, [etah])
 
   const a = localStorage.getItem("busid");
-  console.log(a);
   return (
     // <div className="buslist ">
     <div
@@ -49,7 +44,6 @@ export default function Buslist(props) {
         localStorage.setItem("busid", data.id);
         localStorage.setItem("busname", data.data.busName);
 
-        console.log(data.id);
         navigate("/seatselection");
       }}
     >

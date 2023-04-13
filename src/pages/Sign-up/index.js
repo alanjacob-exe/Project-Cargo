@@ -7,19 +7,13 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBCheckbox,
-  MDBIcon,
   MDBTabs,
   MDBTabsItem,
   MDBTabsLink,
   MDBTabsContent,
   MDBTabsPane,
 } from "mdb-react-ui-kit";
-import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
-
-import Form from "react-bootstrap/Form";
-import { useContext } from "react";
 
 import "./index.css";
 import { useState } from "react";
@@ -31,25 +25,11 @@ import {
   updateProfile,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthValue } from "./AuthContext";
 
 import "./forms.css";
-import userEvent from "@testing-library/user-event";
-import Modal from "../../Components/Modal";
-import {
-  collection,
-  getDocs,
-  setDoc,
-  doc,
-  addDoc,
-  getDoc,
-  updateDoc,
-  query,
-  onSnapshot,
-  Timestamp,
-} from "firebase/firestore";
-import { Email } from "@material-ui/icons";
+import { collection, setDoc, doc, query, onSnapshot } from "firebase/firestore";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -80,7 +60,7 @@ function Login() {
   useEffect(() => {
     bookedData();
   }, []);
-  console.log(busColl); // console.log("user data"+users.id);
+  // console.log(busColl); // console.log("user data"+users.id);
 
   const validatePassword = () => {
     let isValid = true;
@@ -313,7 +293,10 @@ function Login() {
                           className="text-center mb-3"
                           style={{ borderRadius: "12px" }}
                         >
-                          <p className=" font-semibold text-xl"  style={{ color: "#495367" }}>
+                          <p
+                            className=" font-semibold text-xl"
+                            style={{ color: "#495367" }}
+                          >
                             Sign in
                           </p>
 

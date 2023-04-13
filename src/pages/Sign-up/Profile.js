@@ -1,9 +1,6 @@
 import React from "react";
 import "./Profile.css";
-import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import { IoTicketSharp } from "react-icons/io5";
 import { IoMdLocate } from "react-icons/io";
 import { MdEmail,MdDelete } from "react-icons/md";
@@ -13,25 +10,14 @@ import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material"; // import Logo from "../Photos/bus2.png";
 import { useAuthValue } from "../Sign-up/AuthContext";
-import Details from "../Payment/Details";
-import Form from "../Payment/Form";
-import PayCard from "../Payment/PayCard";
-import Success from "../Payment/Success";
-import PaymentMode from "../Payment/PaymentMode";
+
 import { Link } from "@mui/material";
 import Contact from "../loggedin/bookedList/contact";
 import Tickets from "../loggedin/tickets/tickets";
 import {
   collection,
-  getDocs,
-  setDoc,
-  doc,
-  addDoc,
-  getDoc,
-  updateDoc,
   query,
   onSnapshot,
-  Timestamp,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import CancelTickets from "../loggedin/cancelTickets/cancel";
@@ -52,7 +38,7 @@ export default function Just(props) {
     setisshown((current) => !current);
   };
   // console.log("welcome back!")
-  console.log(isshown);
+  // console.log(isshown);
 
   function getStepContent(step) {
     switch (step) {
@@ -84,7 +70,7 @@ export default function Just(props) {
     });
   }, []);
 
-  console.log(users);
+  // console.log(users);
 
   return (
     <div className="parent">

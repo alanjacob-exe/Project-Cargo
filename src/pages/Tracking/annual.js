@@ -66,16 +66,13 @@ const AnnualReport = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [date, setDate] = useState(dayjs(new Date()));
 
-  console.log(date);
+
   useEffect(() => {
     localStorage.setItem("bdate", date.$D);
     localStorage.setItem("bmonth", date.$M + 1);
     localStorage.setItem("byear", date.$y);
 
-    console.log("date" + localStorage.getItem("bdate"));
-    console.log("month" + localStorage.getItem("bmonth"));
-
-    console.log("year" + localStorage.getItem("byear"));
+  
   }, [date]);
 
   const handleChange = (newValue) => {
@@ -131,12 +128,15 @@ const AnnualReport = () => {
     // { label: "Areekode", id: "11.235016, 76.051832" },
   ];
 
+
+  ////////////////////////////    Enable The Console log  in the function below to access the url 
+
   ///////////////////////////////////////       for finding Polyline ////////////////////////////////
 
   const points = async (location1, location2) => {
-    console.log(
-      `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
-    );
+    // console.log(
+    //   `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
+    // );
     const response = await fetch(
       `${pointurl1}${location1}${pointurl2}${location2}${pointurl3}${key}`
     );
@@ -158,8 +158,8 @@ const AnnualReport = () => {
   //   [50.505, -29.09],
   //   [52.505, 29.09],
   // ])
-  console.log("sourcecoordinate" + sourceCoordinate);
-  console.log("sourcecoordinate" + destinationcoordinate);
+  // console.log("sourcecoordinate" + sourceCoordinate);
+  // console.log("sourcecoordinate" + destinationcoordinate);
 
   useEffect(() => {
     points(sourceCoordinate, destinationcoordinate)
@@ -174,11 +174,10 @@ const AnnualReport = () => {
         }
       })
       .catch((e) => {
-        console.error(e.message);
+        // console.error(e.message);
       });
   }, [sourceCoordinate, destinationcoordinate]);
 
-  console.log("bbox" + bbox[0]);
 
   useEffect(() => {
     points(sourceCoordinate, destinationcoordinate)
@@ -195,7 +194,7 @@ const AnnualReport = () => {
         }
       })
       .catch((e) => {
-        console.log(e.message);
+        // console.error(e.message);
       });
   }, [sourceCoordinate, destinationcoordinate]);
 
@@ -235,7 +234,7 @@ const AnnualReport = () => {
           var longitude = firstResult.point.coordinates[1];
           // console.log(latitude, longitude);
           setsourceCoordinate([latitude, longitude]);
-          console.log("source is " + [latitude, longitude]);
+          // console.log("source is " + [latitude, longitude]);
           return coordinates;
         }
       })
@@ -276,7 +275,7 @@ const AnnualReport = () => {
 
   function isClicked() {
     if (click === false) {
-      console.log("this is   true");
+      // console.log("this is   true");
       setclick(true);
     }
   }
@@ -299,7 +298,7 @@ const AnnualReport = () => {
   const [sortedList, setsortedList] = useState([]);
 
   const sortedBusList = (start, destination) => {
-    console.log("start location" + start, destination);
+    // console.log("start location" + start, destination);
     setsortedList(
       busColl.filter(
         (buses) =>

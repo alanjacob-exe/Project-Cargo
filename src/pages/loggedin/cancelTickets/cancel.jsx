@@ -2,38 +2,23 @@ import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import CommentIcon from "@mui/icons-material/Comment";
 import IconButton from "@mui/material/IconButton";
-import {
-  Avatar,
-  Button,
-  ButtonBase,
-  Modal,
-  Box,
-  Typography,
-} from "@mui/material";
+import { Button, Modal, Box, Typography } from "@mui/material";
 import {
   collection,
-  getDocs,
-  setDoc,
   doc,
-  addDoc,
-  getDoc,
   deleteDoc,
-  updateDoc,
   query,
   onSnapshot,
-  Timestamp,
 } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { useEffect, useState } from "react";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { useAuthValue } from "../../Sign-up/AuthContext";
-import { TransportMap } from "../../../Components/TransportMap";
-import BusMap from "../../../Components/Busmap/busMap";
 import "./cancel.css";
 import { Divider } from "@mui/material";
-import MuiModal from "../../../Components/Modal/MuiModal";
+
+
 
 export default function Tickets(props) {
   const { currentUser } = useAuthValue();
@@ -86,18 +71,18 @@ export default function Tickets(props) {
   const busIDstore = [];
 
   const bustracker = () => {
-    console.log("bus tracker" + busId);
+    // console.log("bus tracker" + busId);
 
     busIDstore.push(busId);
     if (busId != null) {
       const docRef = doc(db, "buses", busId, "location", busId);
-      console.log(docRef);
+      // console.log(docRef);
       const unsub = onSnapshot(docRef, (doc) => {
         setBus(doc.data().location);
-        console.log(
-          "current bus" + busId + "Current data: ",
-          doc.data().location
-        );
+        // console.log(
+        //   "current bus" + busId + "Current data: ",
+        //   doc.data().location
+        // );
       });
       return () => unsub();
     }
@@ -128,7 +113,7 @@ export default function Tickets(props) {
       const docRef = doc(db, "buses", busId);
       const unsub = onSnapshot(docRef, (doc) => {
         setcurrentBus(doc.data());
-        console.log(doc.data());
+        // console.log(doc.data());
       });
       return () => unsub();
     }
@@ -330,8 +315,8 @@ export default function Tickets(props) {
                 </p>
               </div>
               <button
-              className="but"
-                style={{ backgroundColor: "red"  }}
+                className="but"
+                style={{ backgroundColor: "red" }}
                 onClick={() => {
                   handleOpen();
                 }}

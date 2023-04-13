@@ -1,22 +1,17 @@
 import { useState } from "react";
 import React from "react";
-import { collection, addDoc, Timestamp, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { Button } from "@mui/material";
-import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
 import { useLocation } from "react-router-dom";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs from "dayjs";
 import MuiModal from "../../../Components/Modal/MuiModal";
 import "./busedit.css";
 
 export default function BusEdit() {
   const location = useLocation();
-  console.log(location.state.busname[0].id);
+  // console.log(location.state.busname[0]?.id);
   const [companyName, setcompanyName] = useState(
     location.state.busname[0].companyName
   );
@@ -45,7 +40,6 @@ export default function BusEdit() {
   const [busName, setbusName] = useState(location.state.busname[0].busName);
   const [value, onChange] = useState("10:00");
 
-  console.log("time:" + value);
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   try {
@@ -74,7 +68,9 @@ export default function BusEdit() {
   const handleClose = () => setOpen(false);
 
   const bodyText = " has been updated successfully!";
-  console.log(`${busName}${bodyText}`);
+  // console.log(`${busName}${bodyText}`);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 

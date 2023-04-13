@@ -1,7 +1,6 @@
 import {
   Avatar,
   Button,
-  ButtonBase,
   Divider,
   IconButton,
   Modal,
@@ -15,19 +14,14 @@ import "./conductor.css";
 import {
   collection,
   query,
-  orderBy,
   onSnapshot,
-  getDocs,
-  doc,
   setDoc,
-  getDoc,
+  doc,
 } from "firebase/firestore";
 import { db, auth } from "../../../../firebase";
 
 import {
   createUserWithEmailAndPassword,
-  sendEmailVerification,
-  signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import Logo from "../../../../Photos/bus2.png";

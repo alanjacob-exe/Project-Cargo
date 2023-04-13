@@ -1,9 +1,7 @@
 import {
   Avatar,
   Button,
-  ButtonBase,
   Divider,
-  IconButton,
   Modal,
   Typography,
 } from "@mui/material";
@@ -12,33 +10,19 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 
 import React, { useEffect, useState } from "react";
-import { IoMdLogOut } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import "./conductor.css";
 import {
   collection,
   query,
-  orderBy,
   onSnapshot,
-  getDocs,
   doc,
-  getDoc,
   deleteDoc,
   getFirestore,
 } from "firebase/firestore";
-import { db, auth } from "../../../../firebase";
 
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
 import Logo from "../../../../Photos/bus2.png";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+
 import { IoAddOutline } from "react-icons/io5";
 
 export default function AdminHome(props) {
@@ -53,7 +37,7 @@ export default function AdminHome(props) {
 
   var deleteRecord = async (e) => {
     var deleteBus = String(removeBus[0].email);
-    console.log("gggg  " + deleteBus);
+    // console.log("gggg  " + deleteBus);
 
     var docRef = doc(db, "conductors", deleteBus);
     deleteDoc(docRef)
@@ -72,7 +56,7 @@ export default function AdminHome(props) {
 
   const [removeBus, setremoveBus] = useState("");
   useEffect(() => {
-    console.log("useeffect" + removeBus[0]?.busName);
+    // console.log("useeffect" + removeBus[0]?.busName);
   }, [removeBus]);
 
   const style = {

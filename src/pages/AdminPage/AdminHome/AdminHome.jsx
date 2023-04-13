@@ -1,13 +1,9 @@
 import {
   Avatar,
-  Button,
-  Card,
   Divider,
   IconButton,
-  Paper,
 } from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { IoMdLogOut } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import "./adminhome.css";

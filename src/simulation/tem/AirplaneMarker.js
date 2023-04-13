@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 import L from "leaflet";
-import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
-import { IoLockOpen } from "react-icons/io5";
 import airplaneIcon from "../../Photos/busIcon.png";
 import { Popup } from "react-leaflet";
 

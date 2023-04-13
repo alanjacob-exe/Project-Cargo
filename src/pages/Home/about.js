@@ -1,7 +1,5 @@
 import React from "react";
 import "./about.css";
-import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
-import Logo from "../../Photos/bus2.png";
 import DarkVariantExample from "../../Components/Carousel/index";
 import Navbar from "../../Components/Navbar";
 import NavbarMobile from "../../Components/MobileNavbar/navbarMobile";

@@ -1,31 +1,21 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import succlogo from "../../Photos/animat-checkmark.gif";
 import { useEffect, useState } from "react";
-import emailjs from "@emailjs/browser";
 import { Modal } from "@mui/material";
 import {
-  Avatar,
   Button,
-  ButtonBase,
-  Divider,
   Box,
-  IconButton,
   Typography,
 } from "@mui/material";
 
 import {
-  collection,
-  getDocs,
+ 
   setDoc,
   doc,
-  addDoc,
-  getDoc,
-  updateDoc,
-  query,
+
   Timestamp,
 } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -154,12 +144,12 @@ export default function Success() {
     const name = localStorage.getItem("bookingName");
     const seatNumber = localStorage.getItem("bookedseat");
 
-    console.log(seatNumber + "hellooo");
-    console.log(bookingDate);
-    console.log(bookingMonth);
-    console.log(bookingYear);
+    // console.log(seatNumber + "hellooo");
+    // console.log(bookingDate);
+    // console.log(bookingMonth);
+    // console.log(bookingYear);
     const BookingDate = [[bookingDate], [bookingMonth], [bookingYear]];
-    console.log(BookingDate);
+    // console.log(BookingDate);
   };
 
   const repopulateValues = async () => {
@@ -173,7 +163,7 @@ export default function Success() {
     const bookingYear = localStorage.getItem("byear");
     const busName = localStorage.getItem("busname");
 
-    console.log("seat from booking" + seatNumber);
+    // console.log("seat from booking" + seatNumber);
 
     // console.log(seatNumber);
     // console.log(bookingDate);

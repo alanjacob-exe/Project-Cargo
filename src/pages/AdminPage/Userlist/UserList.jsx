@@ -37,7 +37,7 @@ export default function Just(props) {
   const handleClose = () => setOpen(false);
 
   var deleteRecord = async (e) => {
-    var deleteBus = String(removeBus[0].busName);
+    var deleteBus = String(removeBus[0]?.busName);
 
     var docRef = doc(db, "buses", deleteBus);
     deleteDoc(docRef)
@@ -104,7 +104,7 @@ export default function Just(props) {
             to="/adminedit"
             state={
               {
-                // busname: Bus.filter((item) => item.id === params.id),
+                busname: User.filter((item) => item.id === params.id),
               }
             }
           >
@@ -131,7 +131,7 @@ export default function Just(props) {
               size="small"
               onClick={() => {
                 handleOpen();
-                // setremoveBus(Bus.filter((item) => item.id === params.id));
+                setremoveBus(User.filter((item) => item.id === params.id));
               }}
             >
               Remove
@@ -178,7 +178,7 @@ export default function Just(props) {
               to="/adminadduser"
               state={
                 {
-                  // busname: Bus.filter((item) => item.id === params.id),
+                  // busname: User.filter((item) => item.id === params.id),
                 }
               }
             >

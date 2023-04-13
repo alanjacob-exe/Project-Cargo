@@ -1,8 +1,7 @@
 import { Button } from "@mui/material";
-import { React, useState, useRef } from "react";
+import { React, useState } from "react";
 import {
   MapContainer,
-  Circle,
   TileLayer,
   Marker,
   Polyline,
@@ -11,9 +10,6 @@ import {
 } from "react-leaflet";
 import file from "../../file.json";
 import Control from "react-leaflet-custom-control";
-import { useMapEvents } from "react-leaflet";
-import { Map, L } from "leaflet";
-import { useEffect } from "react";
 
 // function LocationMarker(location) {
 //   const [position, setPosition] = useState([11.035224, 76.099321]);
@@ -77,17 +73,17 @@ export function TransportMap(position) {
   const blueOptions = { color: "blue" };
   const data = file;
   const bbox = position.bbox;
-  console.log("from transport" + bbox);
+  // console.log("from transport" + bbox);
   const bboxValues = [
     [bbox[0], bbox[1]],
     [bbox[2], bbox[3]],
   ];
-  console.log("from transport" + bboxValues[0]);
+  // console.log("from transport" + bboxValues[0]);
 
-  console.log("marker 1  " + position.location1);
+  // console.log("marker 1  " + position.location1);
   const marker1 = position.location1;
   const marker2 = position.location2;
-  console.log("source......" + marker1);
+  // console.log("source......" + marker1);
   const [sourceChange, setsourceChange] = useState([11.035224, 76.099321]);
   const [map, setMap] = useState(null);
 
@@ -243,7 +239,7 @@ export function TransportMap(position) {
       const value = index4[i];
       coordinates[i] = data.features[value].geometry.coordinates;
     }
-    console.log(index4);
+    // console.log(index4);
     return index4;
     // return coordinates[1];
   }
@@ -323,7 +319,7 @@ export function TransportMap(position) {
       <Test location={position.location1}/>
       <Test2 location={position.location2}/>
       <Polyline pathOptions={blueOptions} positions={polyline} />
-    </MapContainer>
+    </MapContainer> 
      
   );
 }

@@ -20,7 +20,6 @@ function Ui(props) {
   const arrrivalminutes = (Arrival / 60).toPrecision(4);
   const shrink = props.shrink;
 
-  console.log("shrink" + shrink);
 
   const [trafficstyle, settrafficstyle] = useState("normal");
 

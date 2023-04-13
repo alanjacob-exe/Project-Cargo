@@ -5,11 +5,9 @@ import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
-import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import {  useNavigate } from "react-router-dom";
-import { Button } from "@mui/material"; // import Logo from "../Photos/bus2.png";
 
 
 export default function Sidebar(props) {

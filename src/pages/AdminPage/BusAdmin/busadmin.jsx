@@ -1,30 +1,14 @@
-import { Avatar, Button, Divider, IconButton } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Avatar, Divider, IconButton } from "@mui/material";
+import React from "react";
 import { IoMdLogOut } from "react-icons/io";
-import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
-import {
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-  getDocs,
-  doc,
-  getDoc,
-} from "firebase/firestore";
-import { db } from "../../../firebase";
+
 import Logo from "../../../Photos/bus2.png";
-// import Sidebar from "../Components/Sidebar/Sidebar";
-// import MuiModal from "../Components/Modal/MuiModal";
-
-
 
 export default function BusAdmin(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
+
   return (
     <main className="bg-slate-50 min-h-screen flex justify-center py-12 ">
       <div className="h-[8vh] absolute top-0 bg-sky-900 w-screen">
@@ -47,13 +31,11 @@ export default function BusAdmin(props) {
             <IoMdLogOut />
           </IconButton>
         </div>{" "}
-        <Divider/>
+        <Divider />
         <div className="h-full w-full bg-black">
-        <div className="w-[20%] h-full bg-white border"> 11</div>
+          <div className="w-[20%] h-full bg-white border"> 11</div>
         </div>
-        <div>
-
-        </div>
+        <div></div>
       </div>
       {/* <MuiModal open={open} handleclose={() => setOpen(false)} heading="hello" content="Testing content"></MuiModal> */}
     </main>

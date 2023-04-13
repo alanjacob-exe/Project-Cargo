@@ -2,25 +2,19 @@ import React, { useRef } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import CommentIcon from "@mui/icons-material/Comment";
 import IconButton from "@mui/material/IconButton";
 import {
   collection,
-  getDocs,
-  setDoc,
+
   doc,
-  addDoc,
-  getDoc,
-  updateDoc,
+
   query,
   onSnapshot,
-  Timestamp,
 } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { useEffect, useState } from "react";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { useAuthValue } from "../../Sign-up/AuthContext";
-import { TransportMap } from "../../../Components/TransportMap";
 import BusMap from "../../../Components/Busmap/busMap";
 import "./tickets.css";
 
@@ -59,17 +53,17 @@ export default function Tickets(props) {
 
   const unsubscribeRef = useRef();
   const bustracker = () => {
-    console.log("bus tracker" + busId);
+    // console.log("bus tracker" + busId);
     // const docRef2 = doc(db, "buses", "KL108923", "location", "KL108923");
     // docRef2.off()
 
     const docRef = doc(db, "buses", busId, "location", busId);
     const unsub = onSnapshot(docRef, (doc) => {
       setBus(doc.data().location);
-      console.log(
-        "current bus" + busId + "Current data: ",
-        doc.data().location
-      );
+      // console.log(
+      //   "current bus" + busId + "Current data: ",
+      //   doc.data().location
+      // );
     });
     unsubscribeRef.current = unsub;
   };
@@ -104,9 +98,9 @@ export default function Tickets(props) {
   let dates = [];
   for (let i = 0; i < busColl.length; i++) {
     dates.push(busColl[i].data.bookingDate);
-    console.log("heyy" + busColl[i].data.bookingDate);
+    // console.log("heyy" + busColl[i].data.bookingDate);
   }
-  console.log("dates are" + removeDuplicates(dates));
+  // console.log("dates are" + removeDuplicates(dates));
 
   function removeDuplicates(arr) {
     return [...new Set(arr)];
@@ -199,5 +193,5 @@ export default function Tickets(props) {
       </div>
     </div>
   );
-  console.log(sortedBooking);
+  // console.log(sortedBooking);
 }
