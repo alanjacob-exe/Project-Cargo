@@ -1,5 +1,8 @@
 # Voyage
+<img alt="Logo" align="right" src="https://create-react-app.dev/img/logo.svg" width="20%" />
+
 ### Codename [Project Cargo]
+
 
 ## Project Description
 
